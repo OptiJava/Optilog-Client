@@ -19,6 +19,8 @@ public interface Log {
     
     void info(Object msg, Object... occupy);
     
+    void info(Object msg, Throwable ex);
+    
     void info(long x);
     
     void info(double x);
@@ -38,6 +40,8 @@ public interface Log {
     void error();
     
     void error(Object msg, Object... occupy);
+    
+    void error(Object msg, Throwable ex);
     
     void error(long x);
     
@@ -59,6 +63,8 @@ public interface Log {
     
     void warn(Object msg, Object... occupy);
     
+    void warn(Object msg, Throwable ex);
+    
     void warn(long x);
     
     void warn(double x);
@@ -79,6 +85,8 @@ public interface Log {
     
     void debug(Object msg, Object... occupy);
     
+    void debug(Object msg, Throwable ex);
+    
     void debug(long x);
     
     void debug(double x);
@@ -98,6 +106,8 @@ public interface Log {
     void fatal();
     
     void fatal(Object msg, Object... occupy);
+    
+    void fatal(Object msg, Throwable ex);
     
     void fatal(long x);
     

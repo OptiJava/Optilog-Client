@@ -54,6 +54,29 @@ public class Optilog implements Log {
     }
     
     @Override
+    public void info(Object msg, Throwable ex) {
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(msg.toString()).append("\n");
+        returnString.append(ex);
+        returnString.append("\n");
+        for (StackTraceElement s : ex.getStackTrace()) {
+            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
+        }
+        
+        Throwable throwable = ex;
+        
+        while (throwable.getCause() != null) {
+            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+            }
+            throwable = throwable.getCause();
+        }
+        LogEvent infoEvent = new LogEvent(returnString.toString(), Level.INFO);
+        Logger.INSTANCE.logInfo(infoEvent, this);
+    }
+    
+    @Override
     public void info(long x) {
         LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
         Logger.INSTANCE.logInfo(infoEvent, this);
@@ -140,6 +163,29 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
+        Logger.INSTANCE.logError(errorEvent, this);
+    }
+    
+    @Override
+    public void error(Object msg, Throwable ex) {
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(msg.toString()).append("\n");
+        returnString.append(ex);
+        returnString.append("\n");
+        for (StackTraceElement s : ex.getStackTrace()) {
+            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
+        }
+        
+        Throwable throwable = ex;
+        
+        while (throwable.getCause() != null) {
+            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+            }
+            throwable = throwable.getCause();
+        }
+        LogEvent errorEvent = new LogEvent(returnString.toString(), Level.ERROR);
         Logger.INSTANCE.logError(errorEvent, this);
     }
     
@@ -234,6 +280,29 @@ public class Optilog implements Log {
     }
     
     @Override
+    public void warn(Object msg, Throwable ex) {
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(msg.toString()).append("\n");
+        returnString.append(ex);
+        returnString.append("\n");
+        for (StackTraceElement s : ex.getStackTrace()) {
+            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
+        }
+        
+        Throwable throwable = ex;
+        
+        while (throwable.getCause() != null) {
+            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+            }
+            throwable = throwable.getCause();
+        }
+        LogEvent warnEvent = new LogEvent(returnString.toString(), Level.WARN);
+        Logger.INSTANCE.logWarn(warnEvent, this);
+    }
+    
+    @Override
     public void warn(long x) {
         LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
         Logger.INSTANCE.logWarn(warnEvent, this);
@@ -319,8 +388,31 @@ public class Optilog implements Log {
             }
             i0++;
         }
-        LogEvent infoEvent = new LogEvent(previousMsg, Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this);
+        LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
+        Logger.INSTANCE.logDebug(debugEvent, this);
+    }
+    
+    @Override
+    public void debug(Object msg, Throwable ex) {
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(msg.toString()).append("\n");
+        returnString.append(ex);
+        returnString.append("\n");
+        for (StackTraceElement s : ex.getStackTrace()) {
+            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
+        }
+        
+        Throwable throwable = ex;
+        
+        while (throwable.getCause() != null) {
+            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+            }
+            throwable = throwable.getCause();
+        }
+        LogEvent debugEvent = new LogEvent(returnString.toString(), Level.DEBUG);
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
@@ -410,6 +502,29 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
+        Logger.INSTANCE.logFatal(fatalEvent, this);
+    }
+    
+    @Override
+    public void fatal(Object msg, Throwable ex) {
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(msg.toString()).append("\n");
+        returnString.append(ex);
+        returnString.append("\n");
+        for (StackTraceElement s : ex.getStackTrace()) {
+            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
+        }
+        
+        Throwable throwable = ex;
+        
+        while (throwable.getCause() != null) {
+            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+            }
+            throwable = throwable.getCause();
+        }
+        LogEvent fatalEvent = new LogEvent(returnString.toString(), Level.FATAL);
         Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
