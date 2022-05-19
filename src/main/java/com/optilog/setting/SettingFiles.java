@@ -2,8 +2,11 @@ package com.optilog.setting;
 
 import com.google.gson.Gson;
 import com.optilog.log.Optilog;
+import com.optilog.util.Util;
+import com.optilog.util.exception.ConfigureException;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -44,13 +47,40 @@ public class SettingFiles {
     
     public static void check(String str, Optilog instance) throws IOException {
         if (!str.isBlank()) {
-            getSetting(str, instance);
+            if (str.startsWith("%prop -cp ")) {
+                String s = str.substring(10);
+                try (InputStream input = Optilog.class.getResourceAsStream(s)) {
+                    if (input == null) {
+                        instance.consoleFileMasterCaution = false;
+                        Util.getOutput().println("Optilog Note: Can't find'" + s + "'in classpath.");
+                        throw new ConfigureException("Can't find'" + s + "'in classpath.");
+                    }
+                    PropSettings.properties(input, instance);
+                    return;
+                }
+            }
+            if (str.startsWith("%prop ")) {
+                return;
+            }
+            getSetting(str, instance, str.startsWith("-cp "));
         }
     }
     
-    public static void getSetting(String s, Optilog instance) throws IOException {
+    public static void getSetting(String s, Optilog instance, boolean isClasspath) throws IOException {
         try {
-            String content = Files.readString(Paths.get(s), StandardCharsets.UTF_8);
+            String content;
+            if (isClasspath) {
+                try (InputStream input = Optilog.class.getResourceAsStream(s.substring(4))) {
+                    if (input == null) {
+                        instance.consoleFileMasterCaution = false;
+                        Util.getOutput().println("Optilog Note: Can't find'" + s.substring(4) + "'in classpath.");
+                        throw new ConfigureException("Can't find'" + s.substring(4) + "'in classpath.");
+                    }
+                    content = readAsString(input);
+                }
+            } else {
+                content = Files.readString(Paths.get(s), StandardCharsets.UTF_8);
+            }
             object = new Gson().fromJson(content, Settings.class);
         } catch (NoSuchFileException e) {
             e.printStackTrace();
@@ -95,5 +125,14 @@ public class SettingFiles {
         if (object.packingFormat != null) {
             instance.allSetting.packingFormat = object.packingFormat;
         }
+    }
+    
+    private static String readAsString(InputStream input) throws IOException {
+        int n;
+        StringBuilder sb = new StringBuilder();
+        while ((n = input.read()) != -1) {
+            sb.append((char) n);
+        }
+        return sb.toString();
     }
 }

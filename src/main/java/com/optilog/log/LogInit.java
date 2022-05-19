@@ -5,6 +5,7 @@ import com.optilog.log.console.Console;
 import com.optilog.setting.SettingFiles;
 import com.optilog.util.Util;
 import com.optilog.util.exception.GsonNotFoundException;
+import com.optilog.util.exception.OptilogException;
 
 import java.io.IOException;
 
@@ -26,6 +27,7 @@ public class LogInit {
         } catch (RuntimeException | IOException e) {
             e.printStackTrace();
             Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
+            throw new OptilogException("An Exception was thrown when Optilog init logger", e);
         }
     }
 }

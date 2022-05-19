@@ -4,7 +4,7 @@ import com.optilog.log.Log;
 
 public class OptilogTest {
     public static void main(String[] args) {
-        Log log = Log.initLog("D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\Settings.json");
+        Log log = Log.initLog("%prop -cp /Settings.properties");
         log.info("---常规输出测试---");
         log.info("info" + new Object());
         log.error("error");

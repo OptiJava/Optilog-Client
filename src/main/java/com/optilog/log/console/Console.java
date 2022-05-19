@@ -45,8 +45,10 @@ public class Console {
             if (instance.allSetting.Path1 != null && !instance.allSetting.Path1.equals("")) {
                 File file = new File(instance.allSetting.Path1 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
                 try {
-                    if (!file.createNewFile()) {
-                        throw new IOException("Create new file failed!");
+                    if (!file.isFile()) {
+                        if (!file.createNewFile()) {
+                            throw new IOException("Create new file failed!");
+                        }
                     }
                     stream1 = new FileOutputStream(file);
                 } catch (IOException e) {
@@ -56,8 +58,10 @@ public class Console {
             if (instance.allSetting.Path2 != null && !instance.allSetting.Path2.equals("")) {
                 File file = new File(instance.allSetting.Path2 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
                 try {
-                    if (!file.createNewFile()) {
-                        throw new IOException("Create new file failed!");
+                    if (!file.isFile()) {
+                        if (!file.createNewFile()) {
+                            throw new IOException("Create new file failed!");
+                        }
                     }
                     stream2 = new FileOutputStream(file);
                 } catch (IOException e) {
@@ -67,8 +71,10 @@ public class Console {
             if (instance.allSetting.Path3 != null && !instance.allSetting.Path3.equals("")) {
                 File file = new File(instance.allSetting.Path3 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
                 try {
-                    if (!file.createNewFile()) {
-                        throw new IOException("Create new file failed!");
+                    if (!file.isFile()) {
+                        if (!file.createNewFile()) {
+                            throw new IOException("Create new file failed!");
+                        }
                     }
                     stream3 = new FileOutputStream(file);
                 } catch (IOException e) {
@@ -78,8 +84,10 @@ public class Console {
             if (instance.allSetting.Path4 != null && !instance.allSetting.Path4.equals("")) {
                 File file = new File(instance.allSetting.Path4 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
                 try {
-                    if (!file.createNewFile()) {
-                        throw new IOException("Create new file failed!");
+                    if (!file.isFile()) {
+                        if (!file.createNewFile()) {
+                            throw new IOException("Create new file failed!");
+                        }
                     }
                     stream4 = new FileOutputStream(file);
                 } catch (IOException e) {
@@ -89,8 +97,10 @@ public class Console {
             if (instance.allSetting.Path5 != null && !instance.allSetting.Path5.equals("")) {
                 File file = new File(instance.allSetting.Path5 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
                 try {
-                    if (!file.createNewFile()) {
-                        throw new IOException("Create new file failed!");
+                    if (!file.isFile()) {
+                        if (!file.createNewFile()) {
+                            throw new IOException("Create new file failed!");
+                        }
                     }
                     stream5 = new FileOutputStream(file);
                 } catch (IOException e) {
