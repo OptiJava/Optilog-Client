@@ -1,0 +1,4 @@
+[2022-05-16|16:48:56][com.optilog.OptilogTest main(OptilogTest.java:8)/main] info:Hello,World!
+[2022-05-16|16:48:56][com.optilog.OptilogTest main(OptilogTest.java:9)/main] Error:Hello,World!
+[2022-05-16|16:48:56][com.optilog.OptilogTest main(OptilogTest.java:10)/main] Warning:Hello,World!
+[2022-05-16|16:48:56][com.optilog.OptilogTest main(OptilogTest.java:11)/main] debug:Hello,World!

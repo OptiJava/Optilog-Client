@@ -1,0 +1,21 @@
+[2022-05-18|17:20:57(45))][com.optilog.OptilogTest main(OptilogTest.java:8)/main] info:---常规输出测试---
+[2022-05-18|17:20:57(46))][com.optilog.OptilogTest main(OptilogTest.java:9)/main] info:infojava.lang.Object@5474c6c
+[2022-05-18|17:20:57(46))][com.optilog.OptilogTest main(OptilogTest.java:10)/main] Error:error
+[2022-05-18|17:20:57(46))][com.optilog.OptilogTest main(OptilogTest.java:11)/main] debug:debug32.0
+[2022-05-18|17:20:57(47))][com.optilog.OptilogTest main(OptilogTest.java:12)/main] FATAL:null
+[2022-05-18|17:20:57(47))][com.optilog.OptilogTest main(OptilogTest.java:13)/main] FATAL:null
+[2022-05-18|17:20:57(47))][com.optilog.OptilogTest main(OptilogTest.java:14)/main] Warning:warnnull
+[2022-05-18|17:20:57(47))][com.optilog.OptilogTest main(OptilogTest.java:15)/main] info:---特殊符号测试---
+[2022-05-18|17:20:57(47))][com.optilog.OptilogTest %method(OptilogTest.java:16)/main] info:%msg
+[2022-05-18|17:20:57(48))][com.optilog.OptilogTest %method(OptilogTest.java:17)/main] Error:%msg
+[2022-05-18|17:20:57(48))][com.optilog.OptilogTest %method(OptilogTest.java:18)/main] Warning:%msg
+[2022-05-18|17:20:57(48))][com.optilog.OptilogTest %method(OptilogTest.java:19)/main] debug:%msg
+[2022-05-18|17:20:57(48))][com.optilog.OptilogTest %method(OptilogTest.java:20)/main] FATAL:%msg
+[2022-05-18|17:20:57(48))][com.optilog.OptilogTest main(OptilogTest.java:21)/main] info:---占位符---
+[2022-05-18|17:20:57(49))][com.optilog.OptilogTest main(OptilogTest.java:22)/main] info:1 2
+[2022-05-18|17:20:57(49))][com.optilog.OptilogTest main(OptilogTest.java:23)/main] Error:1 1
+[2022-05-18|17:20:57(49))][com.optilog.OptilogTest main(OptilogTest.java:24)/main] Warning:null
+[2022-05-18|17:20:57(49))][com.optilog.OptilogTest main(OptilogTest.java:25)/main] info:1 2 #3
+[2022-05-18|17:20:57(49))][com.optilog.OptilogTest main(OptilogTest.java:26)/main] FATAL:1 #2
+[2022-05-18|17:20:57(49))][com.optilog.OptilogTest test(OptilogTest.java:31)/main] Warning:---变化栈测试---
+[2022-05-18|17:20:57(49))][com.optilog.OptilogTest test(OptilogTest.java:32)/main] info:info(test)

@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'com.optilog'
+version '2022.5'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}

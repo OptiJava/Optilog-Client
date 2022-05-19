@@ -1,0 +1,21 @@
+{
+  "printInfo": true,
+  "printError": true,
+  "printWarn": true,
+  "printDebug": true,
+  "printFatal": true,
+  "defaultConsolePath": "D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs",
+  "consoleInfo": true,
+  "consoleDebug": true,
+  "consoleError": true,
+  "consoleWarn": true,
+  "consoleFatal": true,
+  "infoSendToServer": true,
+  "errorSendToServer": true,
+  "warnSendToServer": true,
+  "debugSendToServer": true,
+  "fatalSendToServer": true,
+  "startClient": true,
+  "socketNumber": 65535,
+  "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
+}
