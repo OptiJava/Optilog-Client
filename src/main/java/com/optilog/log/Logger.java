@@ -1,5 +1,6 @@
 package com.optilog.log;
 
+import com.optilog.log.client.Client;
 import com.optilog.util.Util;
 import com.optilog.util.exception.InvalidCommandException;
 
@@ -99,15 +100,16 @@ public class Logger {
         }
     }
     
-    static void logCommand(String command) {
-        switch (command) {
-            default:
-                try {
-                    throw new InvalidCommandException("Invalid Command '" + command + "' ", new IllegalArgumentException());
-                } catch (RuntimeException e) {
-                    e.printStackTrace();
-                    Util.getOutput().println("Optilog Note:Invalid command ' " + command + " '");
-                }
+    static void logCommand(String command, Optilog instance) {
+        if (command.equals("%stop -client")) {
+            Client.stop(instance);
+        } else {
+            try {
+                throw new InvalidCommandException("Invalid Command '" + command + "' ", new IllegalArgumentException());
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                Util.getOutput().println("Optilog Note:Invalid command ' " + command + " '");
+            }
         }
     }
 }

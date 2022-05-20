@@ -3,10 +3,12 @@ package com.optilog.log;
 import com.optilog.setting.SettingFiles;
 
 import java.io.OutputStream;
+import java.net.DatagramSocket;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Optilog implements Log {
+    public DatagramSocket socket;
     public boolean consoleFileMasterCaution = true;
     boolean alreadyInit;
     
@@ -590,7 +592,7 @@ public class Optilog implements Log {
         if (cmd == null) {
             cmd = "null";
         }
-        Logger.logCommand(cmd);
+        Logger.logCommand(cmd, this);
     }
 }
 

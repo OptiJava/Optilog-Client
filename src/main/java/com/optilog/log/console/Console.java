@@ -16,8 +16,10 @@ public class Console {
             if (Console.checkFile(f) && instance.consoleFileMasterCaution) {
                 File defFile = new File(instance.allSetting.defaultConsolePath + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
                 try {
-                    if (!defFile.createNewFile()) {
-                        instance.consoleFileMasterCaution = false;
+                    if (!defFile.isFile()) {
+                        if (!defFile.createNewFile()) {
+                            instance.consoleFileMasterCaution = false;
+                        }
                     }
                     if (instance.consoleFileMasterCaution) {
                         OutputStream defStream = new FileOutputStream(defFile);

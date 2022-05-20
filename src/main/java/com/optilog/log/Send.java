@@ -45,6 +45,6 @@ public class Send {
     
     void loggerToServer(String level, String message, Optilog instance) {
         message = Packing.packMessage(message, level, instance);
-        Client.send(message + level);
+        Client.send(message + level, instance);
     }
 }

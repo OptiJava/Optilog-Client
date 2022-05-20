@@ -1,4 +1,0 @@
-[2022-05-19|15:56:02(24))][com.optilog.PerformanceTester main(PerformanceTester.java:9)/main] info:Test
-java.lang.Throwable
-    at com.optilog.PerformanceTester main(PerformanceTester.java:9)
-
