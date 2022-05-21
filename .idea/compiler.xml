@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="17" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
+  </component>
+  <component name="EclipseCompilerSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="--add-exports jdk.compiler/com.sun.tools.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.processing=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.util=ALL-UNNAMED" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Optilog-Client.main" options="--add-exports jdk.compiler/com.sun.tools.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.processing=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.util=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=OptilogClient --add-exports jdk.compiler/com.sun.tools.javac.tree=OptilogClient --add-exports jdk.compiler/com.sun.tools.javac.processing=OptilogClient --add-exports jdk.compiler/com.sun.tools.javac.api=OptilogClient" />
+    </option>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Optilog-Client" options="" />
+      <module name="Optilog-Client.main" options="--add-exports jdk.compiler/com.sun.tools.javac.api=OptilogClient --add-exports jdk.compiler/com.sun.tools.javac.tree=OptilogClient --add-exports jdk.compiler/com.sun.tools.javac.util=OptilogClient --add-exports jdk.compiler/com.sun.tools.javac.processing=OptilogClient --add-exports jdk.compiler/com.sun.tools.javac.code=OptilogClient" />
+      <module name="Optilog-Client.test" options="" />
+    </option>
   </component>
 </project>

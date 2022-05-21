@@ -44,7 +44,8 @@
     </inspection_tool>
     <inspection_tool class="JavadocLinkAsPlainText" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="JavadocReference" enabled="false" level="ERROR" enabled_by_default="false" />
-    <inspection_tool class="MarkedForRemoval" enabled="true" level="CRITICAL" enabled_by_default="true" />
+    <inspection_tool class="MarkedForRemoval" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="MissingDeprecatedAnnotationOnScheduledForRemovalApi" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="MissingJavadoc" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="PACKAGE_SETTINGS">
         <Options>
@@ -82,6 +83,7 @@
       <option name="ignoreObjectMethods" value="true" />
       <option name="ignoreAnonymousClassMethods" value="false" />
     </inspection_tool>
+    <inspection_tool class="MustAlreadyBeRemovedApi" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PackageInfoWithoutPackage" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>
