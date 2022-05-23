@@ -25,5 +25,6 @@ public class OptilogTest {
         log.warn("---变化栈测试---");
         log.info("info(test)");
         new Thread(() -> log.info("hello")).start();
+        log.info("$");
     }
 }

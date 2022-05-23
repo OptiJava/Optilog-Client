@@ -14,37 +14,41 @@ public class Send {
     
     @OnlyInLog
     void loggerPrint(String level, String message, Optilog instance) {
-        synchronized (this) {
+        synchronized (Send.INSTANCE) {
             Util.getOutput().print(Packing.packMessage(message, level, instance));
         }
     }
     
     @OnlyInLog
     void loggerConsole(String level, String message, Optilog instance) {
-        try {
-            if (Level.INFO.getName().equals(level)) {
-                Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
+        synchronized (Send.INSTANCE) {
+            try {
+                if (Level.INFO.getName().equals(level)) {
+                    Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
+                }
+                if (Level.ERROR.getName().equals(level)) {
+                    Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
+                }
+                if (Level.DEBUG.getName().equals(level)) {
+                    Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
+                }
+                if (Level.WARN.getName().equals(level)) {
+                    Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
+                }
+                if (Level.FATAL.getName().equals(level)) {
+                    Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
+                }
+            } catch (RuntimeException | IOException e) {
+                instance.error("Optilog Note:Java throws Exception when log is output", e);
             }
-            if (Level.ERROR.getName().equals(level)) {
-                Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
-            }
-            if (Level.DEBUG.getName().equals(level)) {
-                Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
-            }
-            if (Level.WARN.getName().equals(level)) {
-                Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
-            }
-            if (Level.FATAL.getName().equals(level)) {
-                Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
-            }
-        } catch (RuntimeException | IOException e) {
-            instance.error("Optilog Note:Java throws Exception when log is output", e);
         }
     }
     
     @OnlyInLog
     void loggerToServer(String level, String message, Optilog instance) {
-        message = Packing.packMessage(message, level, instance);
-        Client.send(message + level, instance);
+        synchronized (Send.INSTANCE) {
+            message = Packing.packMessage(message, level, instance);
+            Client.send(message + level, instance);
+        }
     }
 }
