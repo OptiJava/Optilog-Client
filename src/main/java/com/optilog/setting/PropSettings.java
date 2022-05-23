@@ -1,14 +1,17 @@
 package com.optilog.setting;
 
 import com.optilog.log.Optilog;
+import com.optilog.util.OnlyInInit;
+import com.optilog.util.Util;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class PropSettings {
+    @OnlyInInit
     static void properties(InputStream content, Optilog instance) {
-        Properties p = new Properties();
+        final Properties p = new Properties();
         try {
             p.load(content);
             instance.allSetting = new SettingFiles();
@@ -48,7 +51,9 @@ public class PropSettings {
             
             instance.allSetting.packingFormat = p.getProperty("packingFormat", "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg");
             
+            instance.allSetting.fileName = p.getProperty("fileName", "%time Log(Client).log");
         } catch (IOException e) {
+            Util.getOutput().println("Optilog Note:Read file failed.");
             e.printStackTrace();
         }
     }

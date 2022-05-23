@@ -1,14 +1,19 @@
 package com.optilog.log;
 
+import com.optilog.util.OnlyInLog;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Packing {
+    @OnlyInLog
     public static String packMessage(String msg, String level, Optilog instance) {
         StackTraceElement[] arr = Thread.currentThread().getStackTrace();
         String returnString = instance.allSetting.packingFormat;
         try {
+            returnString = searchMessage(returnString);
+            
             returnString = returnString.replaceAll("%yyyy", DateTimeFormatter.ofPattern("yyyy").format(LocalDateTime.now()));
             returnString = returnString.replaceAll("%MM", DateTimeFormatter.ofPattern("MM").format(LocalDateTime.now()));
             returnString = returnString.replaceAll("%dd", DateTimeFormatter.ofPattern("dd").format(LocalDateTime.now()));
@@ -18,18 +23,17 @@ public class Packing {
             returnString = returnString.replaceAll("%SS", DateTimeFormatter.ofPattern("SS").format(LocalDateTime.now()));
             
             returnString = returnString.replaceAll("%level", level);
-            returnString = returnString.replaceAll("%thread", getLocalThread());
-            returnString = returnString.replaceAll("%class", arr[5].getClassName());
-            returnString = returnString.replaceAll("%line", String.valueOf(arr[5].getLineNumber()));
-            returnString = returnString.replaceAll("%file", Objects.requireNonNull(arr[5].getFileName()));
-            returnString = returnString.replaceAll("%msg", msg);
-            returnString = returnString.replaceAll("%method", arr[5].getMethodName());
-            returnString = searchMessage(returnString);
+            returnString = returnString.replaceAll("%thread", getLocalThread().replaceAll("\\$", "\\&"));
+            returnString = returnString.replaceAll("%class", arr[5].getClassName().replaceAll("\\$", "\\&"));
+            returnString = returnString.replaceAll("%line", String.valueOf(arr[5].getLineNumber()).replaceAll("\\$", "\\&"));
+            returnString = returnString.replaceAll("%file", Objects.requireNonNull(arr[5].getFileName()).replaceAll("\\$", "\\&"));
+            returnString = returnString.replaceAll("%msg", msg.replaceAll("\\$", "\\&"));
+            returnString = returnString.replaceAll("%method", arr[5].getMethodName().replaceAll("\\$", "\\&"));
         } catch (NullPointerException ignored) {
         
         } catch (IllegalArgumentException e) {
             try {
-                throw new RuntimeException("Maybe you input '$' in log,delete it and rerun.", e);
+                throw new RuntimeException("Maybe you input illegal char in log,delete it and rerun.", e);
             } catch (RuntimeException ex) {
                 ex.printStackTrace();
                 return returnString + "\n";
@@ -38,6 +42,7 @@ public class Packing {
         return returnString + "\n";
     }
     
+    @OnlyInLog
     private static String searchMessage(String previousMessage) {
         previousMessage = previousMessage.replaceAll("%os.name", " " + System.getProperty("os.name") + " ");
         previousMessage = previousMessage.replaceAll("%java.version", " " + System.getProperty("java.version") + " ");
@@ -61,6 +66,7 @@ public class Packing {
         return previousMessage;
     }
     
+    @OnlyInLog
     private static String getLocalThread() {
         return Thread.currentThread().getName();
     }

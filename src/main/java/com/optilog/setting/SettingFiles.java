@@ -2,6 +2,7 @@ package com.optilog.setting;
 
 import com.google.gson.Gson;
 import com.optilog.log.Optilog;
+import com.optilog.util.OnlyInInit;
 import com.optilog.util.Util;
 import com.optilog.util.exception.ConfigureException;
 
@@ -43,8 +44,11 @@ public class SettingFiles {
     public int socketNumber = 65535;
     public String packingFormat = "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg";
     
+    public String fileName = "%time Log(Client).log";
+    
     private static Settings object;
     
+    @OnlyInInit
     public static void check(String str, Optilog instance) throws IOException {
         if (!str.isBlank()) {
             if (str.startsWith("%prop -cp ")) {
@@ -66,6 +70,7 @@ public class SettingFiles {
         }
     }
     
+    @OnlyInInit
     public static void getSetting(String s, Optilog instance, boolean isClasspath) throws IOException {
         try {
             String content;
@@ -119,6 +124,9 @@ public class SettingFiles {
         instance.allSetting.serverFatal = object.fatalSendToServer;
         instance.allSetting.startClient = object.startClient;
         
+        if (object.fileName != null) {
+            instance.allSetting.fileName = object.fileName;
+        }
         if (object.socketNumber != 0) {
             instance.allSetting.socketNumber = object.socketNumber;
         }
@@ -127,6 +135,7 @@ public class SettingFiles {
         }
     }
     
+    @OnlyInInit
     private static String readAsString(InputStream input) throws IOException {
         int n;
         StringBuilder sb = new StringBuilder();

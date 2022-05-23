@@ -1,6 +1,6 @@
 package com.optilog.util.exception;
 
-public class ConfigureException extends OptilogException {
+public final class ConfigureException extends OptilogException {
     public ConfigureException() {
         super();
     }

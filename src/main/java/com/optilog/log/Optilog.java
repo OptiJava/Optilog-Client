@@ -2,7 +2,6 @@ package com.optilog.log;
 
 import com.optilog.setting.SettingFiles;
 
-import java.io.OutputStream;
 import java.net.DatagramSocket;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,11 +15,11 @@ public class Optilog implements Log {
     
     String settingFilePath;
     
-    public OutputStream info;
-    public OutputStream error;
-    public OutputStream warn;
-    public OutputStream debug;
-    public OutputStream fatal;
+    public String info;
+    public String error;
+    public String warn;
+    public String debug;
+    public String fatal;
     
     @Override
     public void info() {

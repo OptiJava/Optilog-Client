@@ -1,12 +1,13 @@
 package com.optilog.log;
 
 import com.optilog.log.client.Client;
-import com.optilog.util.Util;
+import com.optilog.util.OnlyInLog;
 import com.optilog.util.exception.InvalidCommandException;
 
 public class Logger {
     static final Logger INSTANCE = new Logger();
     
+    @OnlyInLog
     void logInfo(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
@@ -26,6 +27,7 @@ public class Logger {
         
     }
     
+    @OnlyInLog
     void logError(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
@@ -45,6 +47,7 @@ public class Logger {
         
     }
     
+    @OnlyInLog
     void logWarn(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
@@ -64,6 +67,7 @@ public class Logger {
         
     }
     
+    @OnlyInLog
     void logDebug(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
@@ -82,6 +86,7 @@ public class Logger {
         }
     }
     
+    @OnlyInLog
     void logFatal(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
@@ -100,6 +105,7 @@ public class Logger {
         }
     }
     
+    @OnlyInLog
     static void logCommand(String command, Optilog instance) {
         if (command.equals("%stop -client")) {
             Client.stop(instance);
@@ -107,8 +113,7 @@ public class Logger {
             try {
                 throw new InvalidCommandException("Invalid Command '" + command + "' ", new IllegalArgumentException());
             } catch (RuntimeException e) {
-                e.printStackTrace();
-                Util.getOutput().println("Optilog Note:Invalid command ' " + command + " '");
+                instance.error("Optilog Note:Invalid command ' " + command + " '", e);
             }
         }
     }

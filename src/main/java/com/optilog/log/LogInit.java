@@ -3,6 +3,7 @@ package com.optilog.log;
 import com.optilog.log.client.Client;
 import com.optilog.log.console.Console;
 import com.optilog.setting.SettingFiles;
+import com.optilog.util.OnlyInInit;
 import com.optilog.util.Util;
 import com.optilog.util.exception.GsonNotFoundException;
 import com.optilog.util.exception.OptilogException;
@@ -10,6 +11,7 @@ import com.optilog.util.exception.OptilogException;
 import java.io.IOException;
 
 public class LogInit {
+    @OnlyInInit
     protected static void initLog(String settingFilePath, Optilog instance) {
         try {
             Class.forName("com.google.gson.Gson");
@@ -25,8 +27,8 @@ public class LogInit {
             Console.file(instance);
             Client.startClient(instance);
         } catch (RuntimeException | IOException e) {
-            e.printStackTrace();
             Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
+            e.printStackTrace();
             throw new OptilogException("An Exception was thrown when Optilog init logger", e);
         }
     }

@@ -1,20 +1,22 @@
 package com.optilog.log.console;
 
 import com.optilog.log.Optilog;
+import com.optilog.util.OnlyInInit;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Console {
+    @OnlyInInit
     public static void file(Optilog instance) {
+        instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()));
+        
         if (instance.allSetting.defaultConsolePath != null && !instance.allSetting.defaultConsolePath.equals("")) {
-            File f = new File(instance.allSetting.defaultConsolePath);
+            final File f = new File(instance.allSetting.defaultConsolePath);
             if (Console.checkFile(f) && instance.consoleFileMasterCaution) {
-                File defFile = new File(instance.allSetting.defaultConsolePath + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
+                File defFile = new File(instance.allSetting.defaultConsolePath + "//" + instance.allSetting.fileName);
                 try {
                     if (!defFile.isFile()) {
                         if (!defFile.createNewFile()) {
@@ -22,12 +24,11 @@ public class Console {
                         }
                     }
                     if (instance.consoleFileMasterCaution) {
-                        OutputStream defStream = new FileOutputStream(defFile);
-                        instance.info = defStream;
-                        instance.error = defStream;
-                        instance.warn = defStream;
-                        instance.debug = defStream;
-                        instance.fatal = defStream;
+                        instance.info = defFile.getAbsolutePath();
+                        instance.error = defFile.getAbsolutePath();
+                        instance.warn = defFile.getAbsolutePath();
+                        instance.debug = defFile.getAbsolutePath();
+                        instance.fatal = defFile.getAbsolutePath();
                     }
                     return;
                 } catch (IOException e) {
@@ -39,72 +40,62 @@ public class Console {
             }
         }
         if (instance.allSetting.infoPath != null) {
-            OutputStream stream1 = null;
-            OutputStream stream2 = null;
-            OutputStream stream3 = null;
-            OutputStream stream4 = null;
-            OutputStream stream5 = null;
             if (instance.allSetting.Path1 != null && !instance.allSetting.Path1.equals("")) {
-                File file = new File(instance.allSetting.Path1 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
+                File file = new File(instance.allSetting.Path1 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
                             throw new IOException("Create new file failed!");
                         }
                     }
-                    stream1 = new FileOutputStream(file);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             if (instance.allSetting.Path2 != null && !instance.allSetting.Path2.equals("")) {
-                File file = new File(instance.allSetting.Path2 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
+                File file = new File(instance.allSetting.Path2 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
                             throw new IOException("Create new file failed!");
                         }
                     }
-                    stream2 = new FileOutputStream(file);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             if (instance.allSetting.Path3 != null && !instance.allSetting.Path3.equals("")) {
-                File file = new File(instance.allSetting.Path3 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
+                File file = new File(instance.allSetting.Path3 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
                             throw new IOException("Create new file failed!");
                         }
                     }
-                    stream3 = new FileOutputStream(file);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             if (instance.allSetting.Path4 != null && !instance.allSetting.Path4.equals("")) {
-                File file = new File(instance.allSetting.Path4 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
+                File file = new File(instance.allSetting.Path4 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
                             throw new IOException("Create new file failed!");
                         }
                     }
-                    stream4 = new FileOutputStream(file);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             if (instance.allSetting.Path5 != null && !instance.allSetting.Path5.equals("")) {
-                File file = new File(instance.allSetting.Path5 + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()) + "Log(Client).log");
+                File file = new File(instance.allSetting.Path5 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
                             throw new IOException("Create new file failed!");
                         }
                     }
-                    stream5 = new FileOutputStream(file);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -113,126 +104,127 @@ public class Console {
             if (instance.allSetting.infoPath.startsWith("%path")) {
                 try {
                     if (instance.allSetting.infoPath.replace("%path", "").equals("1")) {
-                        instance.info = stream1;
+                        instance.info = instance.allSetting.Path1;
                     }
                     if (instance.allSetting.infoPath.replace("%path", "").equals("2")) {
-                        instance.info = stream2;
+                        instance.info = instance.allSetting.Path2;
                     }
                     if (instance.allSetting.infoPath.replace("%path", "").equals("3")) {
-                        instance.info = stream3;
+                        instance.info = instance.allSetting.Path3;
                     }
                     if (instance.allSetting.infoPath.replace("%path", "").equals("4")) {
-                        instance.info = stream4;
+                        instance.info = instance.allSetting.Path4;
                     }
                     if (instance.allSetting.infoPath.replace("%path", "").equals("5")) {
-                        instance.info = stream5;
+                        instance.info = instance.allSetting.Path5;
                     }
                     if (instance.info == null) {
-                        throw new NullPointerException();
+                        instance.consoleFileMasterCaution = false;
                     }
                 } catch (NullPointerException e) {
-                    throw new RuntimeException(e);
+                    instance.consoleFileMasterCaution = false;
                 }
             }
             if (instance.allSetting.errorPath.startsWith("%path")) {
                 try {
                     if (instance.allSetting.errorPath.replace("%path", "").equals("1")) {
-                        instance.error = stream1;
+                        instance.error = instance.allSetting.Path1;
                     }
                     if (instance.allSetting.errorPath.replace("%path", "").equals("2")) {
-                        instance.error = stream2;
+                        instance.error = instance.allSetting.Path2;
                     }
                     if (instance.allSetting.errorPath.replace("%path", "").equals("3")) {
-                        instance.error = stream3;
+                        instance.error = instance.allSetting.Path3;
                     }
                     if (instance.allSetting.errorPath.replace("%path", "").equals("4")) {
-                        instance.error = stream4;
+                        instance.error = instance.allSetting.Path4;
                     }
                     if (instance.allSetting.errorPath.replace("%path", "").equals("5")) {
-                        instance.error = stream5;
+                        instance.error = instance.allSetting.Path5;
                     }
                     if (instance.error == null) {
-                        throw new NullPointerException();
+                        instance.consoleFileMasterCaution = false;
                     }
                 } catch (NullPointerException e) {
-                    throw new RuntimeException(e);
+                    instance.consoleFileMasterCaution = false;
                 }
             }
             if (instance.allSetting.warnPath.startsWith("%path")) {
                 try {
                     if (instance.allSetting.warnPath.replace("%path", "").equals("1")) {
-                        instance.warn = stream1;
+                        instance.warn = instance.allSetting.Path1;
                     }
                     if (instance.allSetting.warnPath.replace("%path", "").equals("2")) {
-                        instance.warn = stream2;
+                        instance.warn = instance.allSetting.Path2;
                     }
                     if (instance.allSetting.warnPath.replace("%path", "").equals("3")) {
-                        instance.warn = stream3;
+                        instance.warn = instance.allSetting.Path3;
                     }
                     if (instance.allSetting.warnPath.replace("%path", "").equals("4")) {
-                        instance.warn = stream4;
+                        instance.warn = instance.allSetting.Path4;
                     }
                     if (instance.allSetting.warnPath.replace("%path", "").equals("5")) {
-                        instance.warn = stream5;
+                        instance.warn = instance.allSetting.Path5;
                     }
                     if (instance.warn == null) {
-                        throw new NullPointerException();
+                        instance.consoleFileMasterCaution = false;
                     }
                 } catch (NullPointerException e) {
-                    throw new RuntimeException(e);
+                    instance.consoleFileMasterCaution = false;
                 }
             }
             if (instance.allSetting.debugPath.startsWith("%path")) {
                 try {
                     if (instance.allSetting.debugPath.replace("%path", "").equals("1")) {
-                        instance.debug = stream1;
+                        instance.debug = instance.allSetting.Path1;
                     }
                     if (instance.allSetting.debugPath.replace("%path", "").equals("2")) {
-                        instance.debug = stream2;
+                        instance.debug = instance.allSetting.Path2;
                     }
                     if (instance.allSetting.debugPath.replace("%path", "").equals("3")) {
-                        instance.debug = stream3;
+                        instance.debug = instance.allSetting.Path3;
                     }
                     if (instance.allSetting.debugPath.replace("%path", "").equals("4")) {
-                        instance.debug = stream4;
+                        instance.debug = instance.allSetting.Path4;
                     }
                     if (instance.allSetting.debugPath.replace("%path", "").equals("5")) {
-                        instance.debug = stream5;
+                        instance.debug = instance.allSetting.Path5;
                     }
                     if (instance.debug == null) {
-                        throw new NullPointerException();
+                        instance.consoleFileMasterCaution = false;
                     }
                 } catch (NullPointerException e) {
-                    throw new RuntimeException(e);
+                    instance.consoleFileMasterCaution = false;
                 }
             }
             if (instance.allSetting.fatalPath.startsWith("%path")) {
                 try {
                     if (instance.allSetting.fatalPath.replace("%path", "").equals("1")) {
-                        instance.fatal = stream1;
+                        instance.fatal = instance.allSetting.Path1;
                     }
                     if (instance.allSetting.fatalPath.replace("%path", "").equals("2")) {
-                        instance.fatal = stream2;
+                        instance.fatal = instance.allSetting.Path2;
                     }
                     if (instance.allSetting.fatalPath.replace("%path", "").equals("3")) {
-                        instance.fatal = stream3;
+                        instance.fatal = instance.allSetting.Path3;
                     }
                     if (instance.allSetting.fatalPath.replace("%path", "").equals("4")) {
-                        instance.fatal = stream4;
+                        instance.fatal = instance.allSetting.Path4;
                     }
                     if (instance.allSetting.fatalPath.replace("%path", "").equals("5")) {
-                        instance.fatal = stream5;
+                        instance.fatal = instance.allSetting.Path5;
                     }
                     if (instance.fatal == null) {
-                        throw new NullPointerException();
+                        instance.consoleFileMasterCaution = false;
                     }
                 } catch (NullPointerException e) {
-                    throw new RuntimeException(e);
+                    instance.consoleFileMasterCaution = false;
                 }
             }
         }
     }
     
+    @OnlyInInit
     private static boolean checkFile(File f) {
         try {
             return f.isDirectory() & f.canRead() & f.canWrite();

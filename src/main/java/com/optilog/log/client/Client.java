@@ -1,35 +1,40 @@
 package com.optilog.log.client;
 
 import com.optilog.log.Optilog;
+import com.optilog.util.OnlyInInit;
+import com.optilog.util.OnlyInLog;
 
 import java.io.IOException;
 import java.net.*;
 
 public class Client {
+    @OnlyInInit
     public static void startClient(Optilog instance) {
         if (instance.allSetting.startClient) {
             try {
                 instance.socket = new DatagramSocket();
                 instance.socket.setSoTimeout(1000);
                 instance.socket.connect(InetAddress.getByName("localhost"), instance.allSetting.socketNumber);
-            } catch (UnknownHostException | SocketException var1) {
-                var1.printStackTrace();
+            } catch (UnknownHostException | SocketException exception) {
+                System.out.println("Optilog Note:Exception in init client.");
+                exception.printStackTrace();
             }
         }
         
     }
     
+    @OnlyInLog
     public static void send(String msg, Optilog instance) {
         try {
-            byte[] data = msg.getBytes();
-            DatagramPacket packet = new DatagramPacket(data, data.length);
-            instance.socket.send(packet);
-        } catch (IOException var3) {
-            var3.printStackTrace();
+            instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));
+        } catch (IOException e) {
+            instance.error("Optilog Note:IOException in Client.", e);
         }
     }
     
+    @OnlyInLog
     public static void stop(Optilog instance) {
         instance.socket.disconnect();
+        instance.info("Optilog Note:Socket Disconnected!");
     }
 }

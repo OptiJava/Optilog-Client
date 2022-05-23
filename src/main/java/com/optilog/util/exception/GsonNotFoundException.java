@@ -1,7 +1,7 @@
 package com.optilog.util.exception;
 
 
-public class GsonNotFoundException extends OptilogException {
+public final class GsonNotFoundException extends OptilogException {
     public GsonNotFoundException() {
     }
     

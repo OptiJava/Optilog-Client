@@ -5,10 +5,12 @@ public class LogEvent {
     
     public Level level;
     
+    @Deprecated
     public String getMessage() {
         return this.message;
     }
     
+    @Deprecated
     public Level getLevel() {
         return this.level;
     }

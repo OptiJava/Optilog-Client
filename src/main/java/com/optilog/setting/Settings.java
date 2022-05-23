@@ -31,6 +31,8 @@ class Settings {
     int socketNumber;
     String packingFormat;
     
+    String fileName;
+    
     Settings() {
     }
 }
