@@ -27,9 +27,9 @@ float and double,
  一个例子：
  <pre>
  Log log = optilog.initlog("(path of setting file .json,if haven't,make it blank)");
- Log log = optilog.initlog("-prop (path of setting file .properties,if haven't,make it blank)");
- Log log = optilog.initlog("-prop -cp (path of setting file .properties in classpath,if haven't,make it blank)");
- Log log = optilog.initlog("=-cp (path of setting file .json in classpath,if haven't,make it blank)");
+ 或Log log = optilog.initlog("-prop (path of setting file .properties,if haven't,make it blank)");
+ 或Log log = optilog.initlog("-prop -cp (path of setting file .properties in classpath,if haven't,make it blank)");
+ 或Log log = optilog.initlog("=-cp (path of setting file .json in classpath,if haven't,make it blank)");
  int n = 1;
  log.info("Start! " + n);
  </pre>
@@ -39,15 +39,15 @@ float and double,
  </pre>
  <p>
  配置文件实例：
- <pre> (以properties为实例)
+ <pre> (以properties为示范)
 printInfo=true
 printError=true
 printWarn=true
 printDebug=true
 printFatal=true
-#defaultConsolePath=D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs
-Path1=D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs
-Path2=D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources
+#defaultConsolePath=D:\\Program\\resources\\logs
+Path1=D:\\Program\\test\\resources\\logs
+Path2=D:\\Program\\test
 infoPath=%path1
 errorPath=%path2
 warnPath=%path1
