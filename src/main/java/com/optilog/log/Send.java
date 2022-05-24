@@ -23,22 +23,23 @@ public class Send {
     void loggerConsole(String level, String message, Optilog instance) {
         synchronized (Send.INSTANCE) {
             try {
-                if (Level.INFO.getName().equals(level)) {
+                if (instance.consoleFileMasterCaution && Level.INFO.getName().equals(level) && !instance.info.isBlank()) {
                     Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
                 }
-                if (Level.ERROR.getName().equals(level)) {
+                if (instance.consoleFileMasterCaution && Level.ERROR.getName().equals(level) && !instance.error.isBlank()) {
                     Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
                 }
-                if (Level.DEBUG.getName().equals(level)) {
+                if (instance.consoleFileMasterCaution && Level.DEBUG.getName().equals(level) && !instance.debug.isBlank()) {
                     Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
                 }
-                if (Level.WARN.getName().equals(level)) {
+                if (instance.consoleFileMasterCaution && Level.WARN.getName().equals(level) && !instance.warn.isBlank()) {
                     Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
                 }
-                if (Level.FATAL.getName().equals(level)) {
+                if (instance.consoleFileMasterCaution && Level.FATAL.getName().equals(level) && !instance.fatal.isBlank()) {
                     Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(message, level, instance), StandardCharsets.UTF_8);
                 }
             } catch (RuntimeException | IOException e) {
+                instance.consoleFileMasterCaution = false;
                 instance.error("Optilog Note:Java throws Exception when log is output", e);
             }
         }

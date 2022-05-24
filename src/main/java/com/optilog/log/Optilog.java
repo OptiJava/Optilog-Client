@@ -13,13 +13,13 @@ public class Optilog implements Log {
     
     public SettingFiles allSetting;
     
-    String settingFilePath;
+    String settingFilePath = "";
     
-    public String info;
-    public String error;
-    public String warn;
-    public String debug;
-    public String fatal;
+    public String info = "";
+    public String error = "";
+    public String warn = "";
+    public String debug = "";
+    public String fatal = "";
     
     @Override
     public void info() {

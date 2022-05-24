@@ -30,7 +30,6 @@ public class Packing {
             returnString = returnString.replaceAll("%file", Matcher.quoteReplacement(Objects.requireNonNull(arr[5].getFileName())));
             returnString = returnString.replaceAll("%msg", Matcher.quoteReplacement(msg));
             returnString = returnString.replaceAll("%method", Matcher.quoteReplacement(arr[5].getMethodName()));
-            //Matcher.quoteReplacement()
         } catch (NullPointerException ignored) {
         
         }

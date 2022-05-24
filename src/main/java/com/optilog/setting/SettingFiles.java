@@ -20,16 +20,16 @@ public class SettingFiles {
     public boolean printWarn = true;
     public boolean printFatal = true;
     public String defaultConsolePath;
-    public String Path1;
-    public String Path2;
-    public String Path3;
-    public String Path4;
-    public String Path5;
-    public String infoPath;
-    public String errorPath;
-    public String warnPath;
-    public String debugPath;
-    public String fatalPath;
+    public String Path1 = "";
+    public String Path2 = "";
+    public String Path3 = "";
+    public String Path4 = "";
+    public String Path5 = "";
+    public String infoPath = "";
+    public String errorPath = "";
+    public String warnPath = "";
+    public String debugPath = "";
+    public String fatalPath = "";
     public boolean consoleInfo = true;
     public boolean consoleError = true;
     public boolean consoleDebug = true;
@@ -94,18 +94,39 @@ public class SettingFiles {
         
         instance.allSetting = new SettingFiles();
         
-        instance.allSetting.defaultConsolePath = object.defaultConsolePath;
-        
-        instance.allSetting.Path1 = object.Path1;
-        instance.allSetting.Path2 = object.Path2;
-        instance.allSetting.Path3 = object.Path3;
-        instance.allSetting.Path4 = object.Path4;
-        instance.allSetting.Path5 = object.Path5;
-        instance.allSetting.infoPath = object.infoPath;
-        instance.allSetting.errorPath = object.errorPath;
-        instance.allSetting.warnPath = object.warnPath;
-        instance.allSetting.debugPath = object.debugPath;
-        instance.allSetting.fatalPath = object.fatalPath;
+        if (object.defaultConsolePath != null) {
+            instance.allSetting.defaultConsolePath = object.defaultConsolePath;
+        }
+        if (object.Path1 != null) {
+            instance.allSetting.Path1 = object.Path1;
+        }
+        if (object.Path2 != null) {
+            instance.allSetting.Path2 = object.Path2;
+        }
+        if (object.Path3 != null) {
+            instance.allSetting.Path3 = object.Path3;
+        }
+        if (object.Path4 != null) {
+            instance.allSetting.Path4 = object.Path4;
+        }
+        if (object.Path5 != null) {
+            instance.allSetting.Path5 = object.Path5;
+        }
+        if (object.infoPath != null) {
+            instance.allSetting.infoPath = object.infoPath;
+        }
+        if (object.errorPath != null) {
+            instance.allSetting.errorPath = object.errorPath;
+        }
+        if (object.warnPath != null) {
+            instance.allSetting.warnPath = object.warnPath;
+        }
+        if (object.debugPath != null) {
+            instance.allSetting.debugPath = object.debugPath;
+        }
+        if (object.fatalPath != null) {
+            instance.allSetting.fatalPath = object.fatalPath;
+        }
         
         instance.allSetting.printDebug = object.printDebug;
         instance.allSetting.printInfo = object.printInfo;
