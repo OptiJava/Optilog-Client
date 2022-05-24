@@ -2,7 +2,7 @@
 
 这是一个用java语言编写的开源日志框架。（OpenOptilog）
 <p>
-先导入包 com.optilog.log.Optilog 和 com.optilog.log.Log
+先导入包 com.optilog.log.Log
 <pre>
 import com.optilog.*;
 ...
@@ -26,7 +26,10 @@ float and double,
  <p>
  一个例子：
  <pre>
- Log log = optilog.initlog(Main.class,"(path of setting file .json,if haven't,make it blank)");
+ Log log = optilog.initlog("(path of setting file .json,if haven't,make it blank)");
+ Log log = optilog.initlog("-prop (path of setting file .properties,if haven't,make it blank)");
+ Log log = optilog.initlog("-prop -cp (path of setting file .properties in classpath,if haven't,make it blank)");
+ Log log = optilog.initlog("=-cp (path of setting file .json in classpath,if haven't,make it blank)");
  int n = 1;
  log.info("Start! " + n);
  </pre>
@@ -34,24 +37,36 @@ float and double,
  <pre>
  [2022-03-25|09:06:04][(package)] info: Start! 1
  </pre>
- 如果你需要重新实例化日志接口，你需要调用reInitLog方法：
- <pre>
- Log log = optilog.reInitLog();
- </pre>
  <p>
  配置文件实例：
- <pre>
-"printPath": "D:\\work\\.\\logs",  -> console file path
-"printInfo": true,     -> print info on screen
-"printDebug": true,    -> print debug on screen
-"printWarn": true,     -> print warn on screen
-"printError": true,    -> print error on screen
-"printCommand": true,  -> print command result on screen
-
-"consoleInfo": true, -> console info to file
-"consoleDebug": true, -> console debug to file
-"consoleError": true, -> console error to file
-"consoleWarn": true -> console warning to file
+ <pre> (以properties为实例)
+printInfo=true
+printError=true
+printWarn=true
+printDebug=true
+printFatal=true
+#defaultConsolePath=D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs
+Path1=D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs
+Path2=D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources
+infoPath=%path1
+errorPath=%path2
+warnPath=%path1
+debugPath=%path1
+fatalPath=%path2
+consoleInfo=true
+consoleDebug=true
+consoleError=true
+consoleWarn=true
+consoleFatal=true
+infoSendToServer=true
+errorSendToServer=true
+warnSendToServer=true
+debugSendToServer=true
+fatalSendToServer=true
+startClient=true
+socketNumber=65535
+packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg
+fileName=%timeLog.log
 </pre>
 
 **_Dependency:_**
