@@ -10,4 +10,4 @@
 
 _**Author:**_
 \
-`opti`
+`OptiJava`
