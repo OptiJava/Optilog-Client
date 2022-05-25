@@ -9,11 +9,11 @@ import java.util.regex.Pattern;
 public class Optilog implements Log {
     public DatagramSocket socket;
     public boolean consoleFileMasterCaution = true;
-    boolean alreadyInit;
+    public boolean alreadyInit;
     
     public SettingFiles allSetting;
     
-    String settingFilePath = "";
+    public String settingFilePath = "";
     
     public String info = "";
     public String error = "";

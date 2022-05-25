@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class LogInit {
     @OnlyInInit
-    protected static void initLog(String settingFilePath, Optilog instance) {
+    public static void initLog(String settingFilePath, Optilog instance) {
         try {
             Class.forName("com.google.gson.Gson");
         } catch (ClassNotFoundException e) {
