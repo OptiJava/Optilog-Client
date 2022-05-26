@@ -1,5 +1,7 @@
 package com.optilog.log;
 
+import com.optilog.util.LambdaExecute;
+
 public interface Log {
     static Optilog initLog(String pathOfSettingFile) {
         Optilog optilog = new Optilog();
@@ -18,6 +20,8 @@ public interface Log {
     void info();
     
     void info(Object msg, Object... occupy);
+    
+    void info(Object msg, LambdaExecute... occupy);
     
     void info(Object msg, Throwable ex);
     
@@ -41,6 +45,8 @@ public interface Log {
     
     void error(Object msg, Object... occupy);
     
+    void error(Object msg, LambdaExecute... occupy);
+    
     void error(Object msg, Throwable ex);
     
     void error(long x);
@@ -62,6 +68,8 @@ public interface Log {
     void warn();
     
     void warn(Object msg, Object... occupy);
+    
+    void warn(Object msg, LambdaExecute... occupy);
     
     void warn(Object msg, Throwable ex);
     
@@ -85,6 +93,8 @@ public interface Log {
     
     void debug(Object msg, Object... occupy);
     
+    void debug(Object msg, LambdaExecute... occupy);
+    
     void debug(Object msg, Throwable ex);
     
     void debug(long x);
@@ -106,6 +116,8 @@ public interface Log {
     void fatal();
     
     void fatal(Object msg, Object... occupy);
+    
+    void fatal(Object msg, LambdaExecute... occupy);
     
     void fatal(Object msg, Throwable ex);
     

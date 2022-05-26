@@ -1,6 +1,7 @@
 package com.optilog.log;
 
 import com.optilog.setting.SettingFiles;
+import com.optilog.util.LambdaExecute;
 
 import java.net.DatagramSocket;
 import java.util.regex.Matcher;
@@ -44,6 +45,33 @@ public class Optilog implements Log {
                 }
                 if (!occupy[i - 1].toString().contains("#")) {
                     previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1]);
+                } else {
+                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                }
+            }
+            i0++;
+        }
+        LogEvent infoEvent = new LogEvent(previousMsg, Level.INFO);
+        Logger.INSTANCE.logInfo(infoEvent, this);
+    }
+    
+    @Override
+    public void info(Object x, LambdaExecute... occupy) {
+        if (x == null) {
+            x = "null";
+        }
+        String previousMsg = x.toString();
+        int i0 = 0;
+        while (i0 < occupy.length) {
+            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+            if (matcher.find()) {
+                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                int i = Integer.parseInt(st);
+                if (occupy[i - 1] == null) {
+                    occupy[i - 1] = () -> "null";
+                }
+                if (!occupy[i - 1].toString().contains("#")) {
+                    previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1].execute());
                 } else {
                     throw new IllegalArgumentException("Can't contain '#' in occupy log!");
                 }
@@ -168,6 +196,33 @@ public class Optilog implements Log {
     }
     
     @Override
+    public void error(Object x, LambdaExecute... occupy) {
+        if (x == null) {
+            x = "null";
+        }
+        String previousMsg = x.toString();
+        int i0 = 0;
+        while (i0 < occupy.length) {
+            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+            if (matcher.find()) {
+                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                int i = Integer.parseInt(st);
+                if (occupy[i - 1] == null) {
+                    occupy[i - 1] = () -> "null";
+                }
+                if (!occupy[i - 1].toString().contains("#")) {
+                    previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1].execute());
+                } else {
+                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                }
+            }
+            i0++;
+        }
+        LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
+        Logger.INSTANCE.logError(errorEvent, this);
+    }
+    
+    @Override
     public void error(Object msg, Throwable ex) {
         StringBuilder returnString = new StringBuilder();
         returnString.append(msg.toString()).append("\n");
@@ -270,6 +325,33 @@ public class Optilog implements Log {
                 }
                 if (!occupy[i - 1].toString().contains("#")) {
                     previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1]);
+                } else {
+                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                }
+            }
+            i0++;
+        }
+        LogEvent warnEvent = new LogEvent(previousMsg, Level.WARN);
+        Logger.INSTANCE.logWarn(warnEvent, this);
+    }
+    
+    @Override
+    public void warn(Object x, LambdaExecute... occupy) {
+        if (x == null) {
+            x = "null";
+        }
+        String previousMsg = x.toString();
+        int i0 = 0;
+        while (i0 < occupy.length) {
+            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+            if (matcher.find()) {
+                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                int i = Integer.parseInt(st);
+                if (occupy[i - 1] == null) {
+                    occupy[i - 1] = () -> "null";
+                }
+                if (!occupy[i - 1].toString().contains("#")) {
+                    previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1].execute());
                 } else {
                     throw new IllegalArgumentException("Can't contain '#' in occupy log!");
                 }
@@ -394,6 +476,33 @@ public class Optilog implements Log {
     }
     
     @Override
+    public void debug(Object x, LambdaExecute... occupy) {
+        if (x == null) {
+            x = "null";
+        }
+        String previousMsg = x.toString();
+        int i0 = 0;
+        while (i0 < occupy.length) {
+            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+            if (matcher.find()) {
+                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                int i = Integer.parseInt(st);
+                if (occupy[i - 1] == null) {
+                    occupy[i - 1] = () -> "null";
+                }
+                if (!occupy[i - 1].toString().contains("#")) {
+                    previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1].execute());
+                } else {
+                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                }
+            }
+            i0++;
+        }
+        LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
+        Logger.INSTANCE.logDebug(debugEvent, this);
+    }
+    
+    @Override
     public void debug(Object msg, Throwable ex) {
         StringBuilder returnString = new StringBuilder();
         returnString.append(msg.toString()).append("\n");
@@ -496,6 +605,33 @@ public class Optilog implements Log {
                 }
                 if (!occupy[i - 1].toString().contains("#")) {
                     previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1]);
+                } else {
+                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                }
+            }
+            i0++;
+        }
+        LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
+        Logger.INSTANCE.logFatal(fatalEvent, this);
+    }
+    
+    @Override
+    public void fatal(Object x, LambdaExecute... occupy) {
+        if (x == null) {
+            x = "null";
+        }
+        String previousMsg = x.toString();
+        int i0 = 0;
+        while (i0 < occupy.length) {
+            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+            if (matcher.find()) {
+                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                int i = Integer.parseInt(st);
+                if (occupy[i - 1] == null) {
+                    occupy[i - 1] = () -> "null";
+                }
+                if (!occupy[i - 1].toString().contains("#")) {
+                    previousMsg = previousMsg.replace("#" + st, (String) occupy[i - 1].execute());
                 } else {
                     throw new IllegalArgumentException("Can't contain '#' in occupy log!");
                 }

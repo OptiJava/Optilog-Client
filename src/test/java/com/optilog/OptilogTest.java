@@ -18,6 +18,7 @@ public class OptilogTest {
         log.warn(null, "(Object) null");
         log.debug("#1 #2 #3", "1", "2");
         log.fatal("#1 ##2", "1", "2");
+        log.debug("#1", () -> "de");
         test(log);
     }
     
