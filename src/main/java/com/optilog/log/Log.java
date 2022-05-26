@@ -126,4 +126,34 @@ public interface Log {
     void fatal(Object x);
     
     void command(String x);
+    
+    void setPrintInfo(boolean printInfo);
+    
+    void setPrintError(boolean printError);
+    
+    void setPrintWarn(boolean printWarn);
+    
+    void setPrintDebug(boolean printDebug);
+    
+    void setPrintFatal(boolean printFatal);
+    
+    void setConsoleInfo(boolean consoleInfo);
+    
+    void setConsoleError(boolean consoleError);
+    
+    void setConsoleWarn(boolean consoleWarn);
+    
+    void setConsoleDebug(boolean serverDebug);
+    
+    void setConsoleFatal(boolean serverFatal);
+    
+    void setServerInfo(boolean serverInfo);
+    
+    void setServerError(boolean serverError);
+    
+    void setServerWarn(boolean serverWarn);
+    
+    void setServerDebug(boolean serverDebug);
+    
+    void setServerFatal(boolean serverFatal);
 }
