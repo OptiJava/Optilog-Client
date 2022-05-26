@@ -10,7 +10,7 @@ import java.net.*;
 public class Client {
     @OnlyInInit
     public static void startClient(Optilog instance) {
-        if (instance.allSetting.startClient) {
+        if (instance.consoleFileMasterCaution & instance.allSetting.startClient) {
             try {
                 instance.socket = new DatagramSocket();
                 instance.socket.setSoTimeout(1000);
@@ -26,7 +26,9 @@ public class Client {
     @OnlyInLog
     public static void send(String msg, Optilog instance) {
         try {
-            instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));
+            if (instance.consoleFileMasterCaution) {
+                instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));
+            }
         } catch (IOException e) {
             instance.error("Optilog Note:IOException in Client.", e);
         }

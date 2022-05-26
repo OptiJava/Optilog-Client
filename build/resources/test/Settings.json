@@ -18,5 +18,6 @@
   "startClient": true,
   "socketNumber": 65535,
   "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg",
-  "fileName": "%timeLog(Client).log"
+  "fileName": "%timeLog(Client).log",
+  "host": "localhost"
 }

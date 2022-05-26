@@ -3,6 +3,7 @@ package com.optilog.log;
 import com.optilog.setting.SettingFiles;
 import com.optilog.util.LambdaExecute;
 
+import java.lang.reflect.Field;
 import java.net.DatagramSocket;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -803,6 +804,21 @@ public class Optilog implements Log {
     @Override
     public void setServerFatal(boolean serverFatal) {
         this.allSetting.serverFatal = serverFatal;
+    }
+    
+    @Override
+    public void getAllField(Object instance) {
+        final StringBuilder str = new StringBuilder();
+        str.append("\n").append(instance.getClass()).append(" -> ").append(instance).append(":\n");
+        for (Field f : instance.getClass().getDeclaredFields()) {
+            f.setAccessible(true);
+            try {
+                str.append("    ").append(f.getName()).append("(").append(f.getType()).append(")").append(" = ").append(f.get(instance)).append("\n");
+            } catch (IllegalAccessException ignored) {
+            
+            }
+        }
+        this.info(str.append("end").toString());
     }
 }
 

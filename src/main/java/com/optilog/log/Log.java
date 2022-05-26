@@ -168,4 +168,6 @@ public interface Log {
     void setServerDebug(boolean serverDebug);
     
     void setServerFatal(boolean serverFatal);
+    
+    void getAllField(Object instance);
 }

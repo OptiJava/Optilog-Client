@@ -13,6 +13,10 @@ import java.io.IOException;
 public class LogInit {
     @OnlyInInit
     public static void initLog(String settingFilePath, Optilog instance) {
+        if (settingFilePath.isBlank()) {
+            instance.consoleFileMasterCaution = false;
+            instance.allSetting = new SettingFiles();
+        }
         try {
             Class.forName("com.google.gson.Gson");
         } catch (ClassNotFoundException e) {
@@ -24,8 +28,10 @@ public class LogInit {
         
         try {
             SettingFiles.check(settingFilePath, instance);
-            Console.file(instance);
-            Client.startClient(instance);
+            if (instance.consoleFileMasterCaution) {
+                Console.file(instance);
+                Client.startClient(instance);
+            }
         } catch (RuntimeException | IOException e) {
             Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
             e.printStackTrace();
