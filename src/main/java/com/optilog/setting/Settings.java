@@ -28,6 +28,7 @@ class Settings {
     boolean debugSendToServer;
     boolean fatalSendToServer;
     boolean startClient;
+    String host;
     int socketNumber;
     String packingFormat;
     

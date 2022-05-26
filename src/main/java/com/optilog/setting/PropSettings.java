@@ -47,6 +47,8 @@ public class PropSettings {
             instance.allSetting.debugPath = p.getProperty("debugPath", "");
             instance.allSetting.fatalPath = p.getProperty("fatalPath", "");
             
+            instance.allSetting.host = p.getProperty("host", "localhost");
+            
             instance.allSetting.startClient = Boolean.parseBoolean(p.getProperty("startClient", "false"));
             
             instance.allSetting.packingFormat = p.getProperty("packingFormat", "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg");

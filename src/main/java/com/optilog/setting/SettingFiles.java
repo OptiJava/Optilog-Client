@@ -41,6 +41,7 @@ public class SettingFiles {
     public boolean serverWarn = false;
     public boolean serverFatal = false;
     public boolean startClient = false;
+    public String host = "localhost";
     public int socketNumber = 65535;
     public String packingFormat = "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg";
     
@@ -145,6 +146,9 @@ public class SettingFiles {
         instance.allSetting.serverFatal = object.fatalSendToServer;
         instance.allSetting.startClient = object.startClient;
         
+        if (object.host != null) {
+            instance.allSetting.host = object.host;
+        }
         if (object.fileName != null) {
             instance.allSetting.fileName = object.fileName;
         }

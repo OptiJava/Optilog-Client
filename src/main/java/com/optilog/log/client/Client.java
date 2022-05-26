@@ -14,7 +14,7 @@ public class Client {
             try {
                 instance.socket = new DatagramSocket();
                 instance.socket.setSoTimeout(1000);
-                instance.socket.connect(InetAddress.getByName("localhost"), instance.allSetting.socketNumber);
+                instance.socket.connect(InetAddress.getByName(instance.allSetting.host), instance.allSetting.socketNumber);
             } catch (UnknownHostException | SocketException exception) {
                 System.out.println("Optilog Note:Exception in init client.");
                 exception.printStackTrace();
