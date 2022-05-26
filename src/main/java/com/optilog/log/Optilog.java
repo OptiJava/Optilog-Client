@@ -593,5 +593,65 @@ public class Optilog implements Log {
         }
         Logger.logCommand(cmd, this);
     }
+    
+    public void setPrintInfo(boolean printInfo) {
+        this.allSetting.printInfo = printInfo;
+    }
+    
+    public void setPrintError(boolean printError) {
+        this.allSetting.printError = printError;
+    }
+    
+    public void setPrintWarn(boolean printWarn) {
+        this.allSetting.printWarn = printWarn;
+    }
+    
+    public void setPrintDebug(boolean printDebug) {
+        this.allSetting.printDebug = printDebug;
+    }
+    
+    public void setPrintFatal(boolean printFatal) {
+        this.allSetting.printFatal = printFatal;
+    }
+    
+    public void setConsoleInfo(boolean consoleInfo) {
+        this.allSetting.consoleInfo = consoleInfo;
+    }
+    
+    public void setConsoleError(boolean consoleError) {
+        this.allSetting.consoleError = consoleError;
+    }
+    
+    public void setConsoleWarn(boolean consoleWarn) {
+        this.allSetting.consoleWarn = consoleWarn;
+    }
+    
+    public void setConsoleDebug(boolean consoleDebug) {
+        this.allSetting.consoleDebug = consoleDebug;
+    }
+    
+    public void setConsoleFatal(boolean consoleFatal) {
+        this.allSetting.consoleFatal = consoleFatal;
+    }
+    
+    public void setServerInfo(boolean serverInfo) {
+        this.allSetting.serverInfo = serverInfo;
+    }
+    
+    public void setServerError(boolean serverError) {
+        this.allSetting.serverError = serverError;
+    }
+    
+    public void setServerWarn(boolean serverWarn) {
+        this.allSetting.serverWarn = serverWarn;
+    }
+    
+    public void setServerDebug(boolean serverDebug) {
+        this.allSetting.serverDebug = serverDebug;
+    }
+    
+    public void setServerFatal(boolean serverFatal) {
+        this.allSetting.serverFatal = serverFatal;
+    }
 }
 
