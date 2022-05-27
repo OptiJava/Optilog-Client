@@ -1,0 +1,7 @@
+[2022-05-27|17:38:47(65))][com.optilog.OptilogTest main(OptilogTest.java:8)/main] info:---常规输出测试---
+[2022-05-27|17:38:47(68))][com.optilog.OptilogTest main(OptilogTest.java:9)/main] info:infojava.lang.Object@2b9627bc
+[2022-05-27|17:38:47(69))][com.optilog.OptilogTest main(OptilogTest.java:15)/main] info:---占位符---
+[2022-05-27|17:38:47(70))][com.optilog.OptilogTest main(OptilogTest.java:16)/main] info:1 2
+[2022-05-27|17:38:47(71))][com.optilog.OptilogTest test(OptilogTest.java:27)/main] info:info(test)
+[2022-05-27|17:38:47(71))][com.optilog.OptilogTest test(OptilogTest.java:29)/main] info:$
+[2022-05-27|17:38:47(71))][com.optilog.OptilogTest lambda$test$1(OptilogTest.java:28)/Thread-0] info:hello

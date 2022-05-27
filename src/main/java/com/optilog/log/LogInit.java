@@ -9,12 +9,10 @@ import com.optilog.util.exception.GsonNotFoundException;
 import com.optilog.util.exception.OptilogException;
 
 import java.io.IOException;
-import java.util.concurrent.Executors;
 
 public class LogInit {
     @OnlyInInit
     public static void initLog(String settingFilePath, Optilog instance) {
-        instance.logThread = Executors.newCachedThreadPool();
         if (settingFilePath.isBlank()) {
             instance.consoleFileMasterCaution = false;
             instance.allSetting = new SettingFiles();

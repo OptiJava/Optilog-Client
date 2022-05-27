@@ -5,13 +5,10 @@ import com.optilog.util.LambdaExecute;
 
 import java.lang.reflect.Field;
 import java.net.DatagramSocket;
-import java.util.concurrent.ExecutorService;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Optilog implements Log {
-    public volatile ExecutorService logThread;
-    
     public volatile DatagramSocket socket;
     public volatile boolean consoleFileMasterCaution = true;
     public volatile boolean alreadyInit;
@@ -26,14 +23,9 @@ public class Optilog implements Log {
     public volatile String debug = "";
     public volatile String fatal = "";
     
-    @Override
-    public void shutdown() {
-        this.logThread.shutdown();
-    }
-    
-    @Override
-    public void shutdownNow() {
-        this.logThread.shutdownNow();
+    Optilog(String var1, boolean alreadyInit) {
+        this.settingFilePath = var1;
+        this.alreadyInit = alreadyInit;
     }
     
     @Override

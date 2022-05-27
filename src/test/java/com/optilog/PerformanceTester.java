@@ -7,7 +7,6 @@ public class PerformanceTester {
         long l = System.currentTimeMillis();
         Log log = Log.initLog("%prop -cp /Settings.properties");
         log.info("Hello World!");
-        log.shutdown();
         System.out.println(System.currentTimeMillis() - l);
     }
 }

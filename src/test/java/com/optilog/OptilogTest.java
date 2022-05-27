@@ -20,7 +20,6 @@ public class OptilogTest {
         log.fatal("#1 ##2", "1", "2");
         log.debug("#1", () -> "de");
         test(log);
-        log.shutdown();
     }
     
     private static void test(Log log) {

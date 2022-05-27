@@ -4,17 +4,11 @@ import com.optilog.util.LambdaExecute;
 
 public interface Log {
     static Optilog initLog(String pathOfSettingFile) {
-        Optilog optilog = new Optilog();
-        optilog.settingFilePath = pathOfSettingFile;
-        optilog.alreadyInit = false;
-        return optilog;
+        return new Optilog(pathOfSettingFile, false);
     }
     
     static Optilog reInitLog(String pathOfSettingFile) {
-        Optilog optilog = new Optilog();
-        optilog.settingFilePath = pathOfSettingFile;
-        optilog.alreadyInit = false;
-        return optilog;
+        return new Optilog(pathOfSettingFile, false);
     }
     
     void info();
@@ -170,8 +164,4 @@ public interface Log {
     void setServerFatal(boolean serverFatal);
     
     void getAllField(Object instance);
-    
-    void shutdown();
-    
-    void shutdownNow();
 }

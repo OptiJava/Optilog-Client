@@ -1,0 +1,5 @@
+[2022-05-27|17:44:19(86))][com.optilog.OptilogTest main(OptilogTest.java:10)/main] Error:error
+[2022-05-27|17:44:19(86))][com.optilog.OptilogTest main(OptilogTest.java:12)/main] FATAL:null
+[2022-05-27|17:44:19(87))][com.optilog.OptilogTest main(OptilogTest.java:13)/main] FATAL:null
+[2022-05-27|17:44:19(88))][com.optilog.OptilogTest main(OptilogTest.java:17)/main] Error:1 1
+[2022-05-27|17:44:19(89))][com.optilog.OptilogTest main(OptilogTest.java:20)/main] FATAL:1 #2

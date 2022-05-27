@@ -13,7 +13,6 @@ public class Console {
     @OnlyInInit
     public static void file(Optilog instance) {
         if (instance.consoleFileMasterCaution) {
-            
             if (instance.allSetting != null) {
                 instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()));
             } else {
@@ -55,7 +54,6 @@ public class Console {
                         if (!file.createNewFile()) {
                             throw new IOException("Create new file failed!");
                         }
-                        
                     }
                     instance.allSetting.Path1 = file.getAbsolutePath();
                 } catch (IOException e) {
@@ -133,8 +131,7 @@ public class Console {
                         instance.info = instance.allSetting.Path5;
                     }
                     if (instance.info.equals("")) {
-                        instance.consoleFileMasterCaution = false;
-                        Util.getOutput().println("Optilog Note:Init console failed.");
+                        instance.allSetting.consoleInfo = false;
                     }
                 } catch (NullPointerException e) {
                     instance.consoleFileMasterCaution = false;
@@ -159,8 +156,7 @@ public class Console {
                         instance.error = instance.allSetting.Path5;
                     }
                     if (instance.error.equals("")) {
-                        instance.consoleFileMasterCaution = false;
-                        Util.getOutput().println("Optilog Note:Init console failed.");
+                        instance.allSetting.consoleError = false;
                     }
                 } catch (NullPointerException e) {
                     instance.consoleFileMasterCaution = false;
@@ -185,8 +181,7 @@ public class Console {
                         instance.warn = instance.allSetting.Path5;
                     }
                     if (instance.warn.equals("")) {
-                        instance.consoleFileMasterCaution = false;
-                        Util.getOutput().println("Optilog Note:Init console failed.");
+                        instance.allSetting.consoleWarn = false;
                     }
                 } catch (NullPointerException e) {
                     instance.consoleFileMasterCaution = false;
@@ -211,8 +206,7 @@ public class Console {
                         instance.debug = instance.allSetting.Path5;
                     }
                     if (instance.debug.equals("")) {
-                        instance.consoleFileMasterCaution = false;
-                        Util.getOutput().println("Optilog Note:Init console failed.");
+                        instance.allSetting.consoleDebug = false;
                     }
                 } catch (NullPointerException e) {
                     instance.consoleFileMasterCaution = false;
@@ -237,8 +231,7 @@ public class Console {
                         instance.fatal = instance.allSetting.Path5;
                     }
                     if (instance.fatal.equals("")) {
-                        instance.consoleFileMasterCaution = false;
-                        Util.getOutput().println("Optilog Note:Init console failed.");
+                        instance.allSetting.consoleFatal = false;
                     }
                 } catch (NullPointerException e) {
                     instance.consoleFileMasterCaution = false;

@@ -1,9 +1,9 @@
 package com.optilog.log;
 
 public class LogEvent {
-    public String message;
+    public volatile String message;
     
-    public Level level;
+    public volatile Level level;
     
     @Deprecated
     public String getMessage() {
