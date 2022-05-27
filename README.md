@@ -5,10 +5,12 @@ _截止目前，Optilog代码总量2247行！_
 
 Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看本项目Wiki (https://github.com/OptiJava/Optilog-Client/wiki) 
 
-如果你愿意，欢迎Fork这个仓库为Optilog做出贡献！
+与OptilogClient配套的OptilogServer：[OptilogServer地址](github.com/OptiJava/Optilog-Server)，具体怎么用去看wiki
+
+如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础~~萌新可以看代码学习Java~~
 
 # 注意事项：
-**一整个java项目建议全程只用一个初始化出来的实例，不然会出bug！**
+**一整个java项目建议全程只用一个初始化出来的实例，不然会出bug！（具体看wiki）**
 
 # Optilog的优势
 1.性能高:初始化日志+输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端） 最多只需要162毫秒（后续还会再优化）
