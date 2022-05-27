@@ -3,7 +3,9 @@ _截止目前，Optilog代码总量2247行！_
 
 这是一个用java语言编写的开源日志框架。
 
-使用前一！定！看本项目Wiki (https://github.com/OptiJava/Optilog-Client/wiki) 
+Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看本项目Wiki (https://github.com/OptiJava/Optilog-Client/wiki) 
+
+如果你愿意，欢迎Fork这个仓库为Optilog做出贡献！
 
 # 注意事项：
 **一整个java项目建议全程只用一个初始化出来的实例，不然会出bug！**
