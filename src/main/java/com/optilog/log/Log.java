@@ -170,4 +170,8 @@ public interface Log {
     void setServerFatal(boolean serverFatal);
     
     void getAllField(Object instance);
+    
+    void shutdown();
+    
+    void shutdownNow();
 }

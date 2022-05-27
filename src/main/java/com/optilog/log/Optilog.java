@@ -5,23 +5,36 @@ import com.optilog.util.LambdaExecute;
 
 import java.lang.reflect.Field;
 import java.net.DatagramSocket;
+import java.util.concurrent.ExecutorService;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Optilog implements Log {
-    public DatagramSocket socket;
-    public boolean consoleFileMasterCaution = true;
-    public boolean alreadyInit;
+    public volatile ExecutorService logThread;
     
-    public SettingFiles allSetting;
+    public volatile DatagramSocket socket;
+    public volatile boolean consoleFileMasterCaution = true;
+    public volatile boolean alreadyInit;
     
-    public String settingFilePath = "";
+    public volatile SettingFiles allSetting;
     
-    public String info = "";
-    public String error = "";
-    public String warn = "";
-    public String debug = "";
-    public String fatal = "";
+    public volatile String settingFilePath = "";
+    
+    public volatile String info = "";
+    public volatile String error = "";
+    public volatile String warn = "";
+    public volatile String debug = "";
+    public volatile String fatal = "";
+    
+    @Override
+    public void shutdown() {
+        this.logThread.shutdown();
+    }
+    
+    @Override
+    public void shutdownNow() {
+        this.logThread.shutdownNow();
+    }
     
     @Override
     public void info() {
