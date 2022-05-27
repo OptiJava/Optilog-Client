@@ -6,6 +6,7 @@ import com.optilog.util.OnlyInInit;
 import com.optilog.util.Util;
 import com.optilog.util.exception.ConfigureException;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -168,5 +169,86 @@ public class SettingFiles {
             sb.append((char) n);
         }
         return sb.toString();
+    }
+    
+    public static void generateJsonSettings(String path) {
+        File f = new File(path + "//Setting.json");
+        try {
+            if (!f.createNewFile()) {
+                throw new IOException();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Files.writeString(f.toPath(), "{\n" +
+                    "  \"printInfo\": true,\n" +
+                    "  \"printError\": true,\n" +
+                    "  \"printWarn\": true,\n" +
+                    "  \"printDebug\": true,\n" +
+                    "  \"printFatal\": true,\n" +
+                    "  \"defaultConsolePath\": \"\",\n" +
+                    "  \"consoleInfo\": false,\n" +
+                    "  \"consoleDebug\": false,\n" +
+                    "  \"consoleError\": false,\n" +
+                    "  \"consoleWarn\": false,\n" +
+                    "  \"consoleFatal\": false,\n" +
+                    "  \"infoSendToServer\": false,\n" +
+                    "  \"errorSendToServer\": false,\n" +
+                    "  \"warnSendToServer\": false,\n" +
+                    "  \"debugSendToServer\": false,\n" +
+                    "  \"fatalSendToServer\": false,\n" +
+                    "  \"startClient\": false,\n" +
+                    "  \"socketNumber\": 65535,\n" +
+                    "  \"packingFormat\": \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\",\n" +
+                    "  \"fileName\": \"%timeLog(Client).log\",\n" +
+                    "  \"host\": \"localhost\"\n" +
+                    "}", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void generatePropertiesSettings(String path) {
+        File f = new File(path + "//Setting.properties");
+        try {
+            if (!f.createNewFile()) {
+                throw new IOException();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Files.writeString(f.toPath(), "printInfo=true\n" +
+                    "printError=true\n" +
+                    "printWarn=true\n" +
+                    "printDebug=true\n" +
+                    "printFatal=true\n" +
+                    "defaultConsolePath=\n" +
+                    "#Path1=\n" +
+                    "#Path2=\n" +
+                    "#infoPath=%path1\n" +
+                    "#errorPath=%path2\n" +
+                    "#warnPath=%path1\n" +
+                    "#debugPath=%path1\n" +
+                    "#fatalPath=%path2\n" +
+                    "consoleInfo=false\n" +
+                    "consoleDebug=false\n" +
+                    "consoleError=false\n" +
+                    "consoleWarn=false\n" +
+                    "consoleFatal=false\n" +
+                    "infoSendToServer=false\n" +
+                    "errorSendToServer=false\n" +
+                    "warnSendToServer=false\n" +
+                    "debugSendToServer=false\n" +
+                    "fatalSendToServer=false\n" +
+                    "startClient=false\n" +
+                    "socketNumber=65535\n" +
+                    "packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
+                    "fileName=%timeLog.log\n" +
+                    "host=localhost", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

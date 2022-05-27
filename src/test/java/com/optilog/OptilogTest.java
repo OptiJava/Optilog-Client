@@ -20,6 +20,7 @@ public class OptilogTest {
         log.fatal("#1 ##2", "1", "2");
         log.debug("#1", () -> "de");
         test(log);
+        log.command("%zip D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs");
     }
     
     private static void test(Log log) {
@@ -27,5 +28,7 @@ public class OptilogTest {
         log.info("info(test)");
         new Thread(() -> log.info("hello")).start();
         log.info("$");
+        Log log2 = Log.initLog("");
+        log2.info("log2");
     }
 }

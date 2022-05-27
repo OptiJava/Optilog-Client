@@ -110,10 +110,10 @@ public class Logger {
     static void logCommand(String command, Optilog instance) {
         if (command.equals("%stop -client")) {
             Client.stop(instance);
-        } else if (command.equals("%zip")) {
-            ZipLog.zipAllLog(false, instance);
-        } else if (command.equals("%zip -d")) {
-            ZipLog.zipAllLog(true, instance);
+        } else if (command.startsWith("%zip -d")) {
+            ZipLog.zipAllLog(true, instance, command.substring(8));
+        } else if (command.startsWith("%zip")) {
+            ZipLog.zipAllLog(false, instance, command.substring(5));
         } else {
             try {
                 throw new InvalidCommandException("Invalid Command '" + command + "' ", new IllegalArgumentException());
