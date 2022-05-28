@@ -38,25 +38,25 @@ public class Packing {
     
     @OnlyInLog
     private static String searchMessage(String previousMessage) {
-        previousMessage = previousMessage.replaceAll("%os.name", " " + System.getProperty("os.name") + " ");
-        previousMessage = previousMessage.replaceAll("%java.version", " " + System.getProperty("java.version") + " ");
-        previousMessage = previousMessage.replaceAll("%java.vendor", " " + System.getProperty("java.vendor") + " ");
-        previousMessage = previousMessage.replaceAll("%java.vendor.url", " " + System.getProperty("java.vendor.url") + " ");
-        previousMessage = previousMessage.replaceAll("%java.home", " " + System.getProperty("java.home") + " ");
-        previousMessage = previousMessage.replaceAll("%java.vm.specification.version", " " + System.getProperty("java.vm.specification.version") + " ");
-        previousMessage = previousMessage.replaceAll("%java.vm.name", " " + System.getProperty("java.vm.name") + " ");
-        previousMessage = previousMessage.replaceAll("%java.vm.version", " " + System.getProperty("java.vm.version") + " ");
-        previousMessage = previousMessage.replaceAll("%java.class.version", " " + System.getProperty("java.class.version") + " ");
-        previousMessage = previousMessage.replaceAll("%java.class.path", " " + System.getProperty("java.class.path") + " ");
-        previousMessage = previousMessage.replaceAll("%java.library.path", " " + System.getProperty("java.library.path") + " ");
-        previousMessage = previousMessage.replaceAll("%os.arch", " " + System.getProperty("os.arch") + " ");
-        previousMessage = previousMessage.replaceAll("%os.version", " " + System.getProperty("os.version") + " ");
-        previousMessage = previousMessage.replaceAll("%user.name", " " + System.getProperty("user.name") + " ");
-        previousMessage = previousMessage.replaceAll("%user.home", " " + System.getProperty("user.home") + " ");
-        previousMessage = previousMessage.replaceAll("%user.dir", " " + System.getProperty("user.dir") + " ");
-        previousMessage = previousMessage.replaceAll("%java.compiler", " " + System.getProperty("java.compiler") + " ");
-        previousMessage = previousMessage.replaceAll("%file.separator", " " + System.getProperty("file.separator") + " ");
-        previousMessage = previousMessage.replaceAll("%java.io.tmpdir", " " + System.getProperty("java.io.tmpdir") + " ");
+        previousMessage = previousMessage.replaceAll("%os.name", " " +  Matcher.quoteReplacement(System.getProperty("os.name") + " "));
+        previousMessage = previousMessage.replaceAll("%java.version", " " +  Matcher.quoteReplacement(System.getProperty("java.version") + " "));
+        previousMessage = previousMessage.replaceAll("%java.vendor", " " +  Matcher.quoteReplacement(System.getProperty("java.vendor") + " "));
+        previousMessage = previousMessage.replaceAll("%java.vendor.url", " " +  Matcher.quoteReplacement(System.getProperty("java.vendor.url") + " "));
+        previousMessage = previousMessage.replaceAll("%java.home", " " +  Matcher.quoteReplacement(System.getProperty("java.home") + " "));
+        previousMessage = previousMessage.replaceAll("%java.vm.specification.version", " " +  Matcher.quoteReplacement(System.getProperty("java.vm.specification.version") + " "));
+        previousMessage = previousMessage.replaceAll("%java.vm.name", " " +  Matcher.quoteReplacement(System.getProperty("java.vm.name") + " "));
+        previousMessage = previousMessage.replaceAll("%java.vm.version", " " +  Matcher.quoteReplacement(System.getProperty("java.vm.version") + " "));
+        previousMessage = previousMessage.replaceAll("%java.class.version", " " +  Matcher.quoteReplacement(System.getProperty("java.class.version") + " "));
+        previousMessage = previousMessage.replaceAll("%java.class.path", " " +  Matcher.quoteReplacement(System.getProperty("java.class.path") + " "));
+        previousMessage = previousMessage.replaceAll("%java.library.path", " " +  Matcher.quoteReplacement(System.getProperty("java.library.path") + " "));
+        previousMessage = previousMessage.replaceAll("%os.arch", " " +  Matcher.quoteReplacement(System.getProperty("os.arch") + " "));
+        previousMessage = previousMessage.replaceAll("%os.version", " " +  Matcher.quoteReplacement(System.getProperty("os.version") + " "));
+        previousMessage = previousMessage.replaceAll("%user.name", " " +  Matcher.quoteReplacement(System.getProperty("user.name") + " "));
+        previousMessage = previousMessage.replaceAll("%user.home", " " +  Matcher.quoteReplacement(System.getProperty("user.home") + " "));
+        previousMessage = previousMessage.replaceAll("%user.dir", " " +  Matcher.quoteReplacement(System.getProperty("user.dir") + " "));
+        previousMessage = previousMessage.replaceAll("%java.compiler", " " +  Matcher.quoteReplacement(System.getProperty("java.compiler") + " "));
+        previousMessage = previousMessage.replaceAll("%file.separator", " " +  Matcher.quoteReplacement(System.getProperty("file.separator") + " "));
+        previousMessage = previousMessage.replaceAll("%java.io.tmpdir", " " + Matcher.quoteReplacement(System.getProperty("java.io.tmpdir") + " "));
         return previousMessage;
     }
     
