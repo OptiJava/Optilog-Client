@@ -14,7 +14,7 @@ public class Console {
     public static void file(Optilog instance) {
         if (instance.consoleFileMasterCaution) {
             if (instance.allSetting != null) {
-                instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now()));
+                instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now())));
             } else {
                 instance.consoleFileMasterCaution = false;
                 return;
