@@ -1,0 +1,6 @@
+.gradle
+
+# Cache of project
+.gradletasknamecache
+
+.idea
