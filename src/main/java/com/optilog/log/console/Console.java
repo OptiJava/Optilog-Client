@@ -38,7 +38,6 @@ public class Console {
                             instance.debug = defFile.getAbsolutePath();
                             instance.fatal = defFile.getAbsolutePath();
                         }
-                        return;
                     } catch (IOException e) {
                         instance.consoleFileMasterCaution = false;
                     }
