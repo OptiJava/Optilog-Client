@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 
 public class Console {
     @OnlyInInit
-    public static void file(Optilog instance) {
+    public static void initAppender(Optilog instance) {
         if (instance.consoleFileMasterCaution) {
             if (instance.allSetting != null) {
                 instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now())));
@@ -21,7 +21,7 @@ public class Console {
                 return;
             }
             
-            if (!instance.allSetting.defaultConsolePath.equals("") && instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.defaultConsolePath.equals("") & instance.consoleFileMasterCaution) {
                 final File f = new File(instance.allSetting.defaultConsolePath);
                 if (Console.checkFile(f, instance) && instance.consoleFileMasterCaution) {
                     File defFile = new File(instance.allSetting.defaultConsolePath + "//" + instance.allSetting.fileName);
@@ -47,12 +47,12 @@ public class Console {
                 }
             }
             
-            if (!instance.allSetting.Path1.equals("") && instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path1.equals("") & instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path1 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
-                            throw new IOException("Create new file failed!");
+                            throw new IOException("Create new initAppender failed!");
                         }
                     }
                     instance.allSetting.Path1 = file.getAbsolutePath();
@@ -60,12 +60,12 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path2.equals("") && instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path2.equals("") & instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path2 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
-                            throw new IOException("Create new file failed!");
+                            throw new IOException("Create new initAppender failed!");
                         }
                     }
                     instance.allSetting.Path2 = file.getAbsolutePath();
@@ -73,12 +73,12 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path3.equals("") && instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path3.equals("") & instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path3 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
-                            throw new IOException("Create new file failed!");
+                            throw new IOException("Create new initAppender failed!");
                         }
                     }
                     instance.allSetting.Path3 = file.getAbsolutePath();
@@ -86,12 +86,12 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path4.equals("") && instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path4.equals("") & instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path4 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
-                            throw new IOException("Create new file failed!");
+                            throw new IOException("Create new initAppender failed!");
                         }
                     }
                     instance.allSetting.Path4 = file.getAbsolutePath();
@@ -99,12 +99,12 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path5.equals("") && instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path5.equals("") & instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path5 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
-                            throw new IOException("Create new file failed!");
+                            throw new IOException("Create new initAppender failed!");
                         }
                     }
                     instance.allSetting.Path5 = file.getAbsolutePath();
@@ -113,7 +113,7 @@ public class Console {
                 }
             }
             
-            if (instance.allSetting.infoPath.startsWith("%path") && instance.consoleFileMasterCaution) {
+            if (instance.allSetting.infoPath.startsWith("%path") & instance.consoleFileMasterCaution) {
                 try {
                     if (instance.allSetting.infoPath.replace("%path", "").equals("1")) {
                         instance.info = instance.allSetting.Path1;
@@ -138,7 +138,7 @@ public class Console {
                     Util.getOutput().println("Optilog Note:Init console failed.");
                 }
             }
-            if (instance.allSetting.errorPath.startsWith("%path") && instance.consoleFileMasterCaution) {
+            if (instance.allSetting.errorPath.startsWith("%path") & instance.consoleFileMasterCaution) {
                 try {
                     if (instance.allSetting.errorPath.replace("%path", "").equals("1")) {
                         instance.error = instance.allSetting.Path1;
@@ -163,7 +163,7 @@ public class Console {
                     Util.getOutput().println("Optilog Note:Init console failed.");
                 }
             }
-            if (instance.allSetting.warnPath.startsWith("%path") && instance.consoleFileMasterCaution) {
+            if (instance.allSetting.warnPath.startsWith("%path") & instance.consoleFileMasterCaution) {
                 try {
                     if (instance.allSetting.warnPath.replace("%path", "").equals("1")) {
                         instance.warn = instance.allSetting.Path1;
@@ -188,7 +188,7 @@ public class Console {
                     Util.getOutput().println("Optilog Note:Init console failed.");
                 }
             }
-            if (instance.allSetting.debugPath.startsWith("%path") && instance.consoleFileMasterCaution) {
+            if (instance.allSetting.debugPath.startsWith("%path") & instance.consoleFileMasterCaution) {
                 try {
                     if (instance.allSetting.debugPath.replace("%path", "").equals("1")) {
                         instance.debug = instance.allSetting.Path1;
@@ -213,7 +213,7 @@ public class Console {
                     Util.getOutput().println("Optilog Note:Init console failed.");
                 }
             }
-            if (instance.allSetting.fatalPath.startsWith("%path") && instance.consoleFileMasterCaution) {
+            if (instance.allSetting.fatalPath.startsWith("%path") & instance.consoleFileMasterCaution) {
                 try {
                     if (instance.allSetting.fatalPath.replace("%path", "").equals("1")) {
                         instance.fatal = instance.allSetting.Path1;
@@ -244,7 +244,7 @@ public class Console {
     @OnlyInInit
     private static boolean checkFile(File f, Optilog instance) {
         try {
-            return f.isDirectory() & f.canRead() & f.canWrite() && instance.consoleFileMasterCaution;
+            return f.isDirectory() & f.canRead() & f.canWrite() & instance.consoleFileMasterCaution;
         } catch (NullPointerException npe) {
             return false;
         } catch (Exception e) {

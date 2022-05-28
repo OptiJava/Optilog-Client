@@ -35,10 +35,10 @@ public class ZipLog {
                     }
                 }
             } else {
-                instance.info("Optilog Note:No log file in fatal file path.");
+                instance.info("Optilog Note:No log initAppender in fatal initAppender path.");
             }
         } catch (IOException e) {
-            instance.error("Optilog Note:Failed to pack log file.", e);
+            instance.error("Optilog Note:Failed to pack log initAppender.", e);
         }
     }
 }

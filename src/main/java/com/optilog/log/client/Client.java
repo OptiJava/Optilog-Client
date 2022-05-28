@@ -9,7 +9,7 @@ import java.net.*;
 
 public class Client {
     @OnlyInInit
-    public static void startClient(Optilog instance) {
+    public static void initAppender(Optilog instance) {
         if (instance.consoleFileMasterCaution & instance.allSetting.startClient) {
             try {
                 instance.socket = new DatagramSocket();
@@ -20,11 +20,10 @@ public class Client {
                 exception.printStackTrace();
             }
         }
-        
     }
     
     @OnlyInLog
-    public static void send(String msg, Optilog instance) {
+    public static void logAppender(String msg, Optilog instance) {
         try {
             if (instance.consoleFileMasterCaution) {
                 instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));

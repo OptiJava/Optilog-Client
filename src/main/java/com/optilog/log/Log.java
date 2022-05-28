@@ -164,4 +164,12 @@ public interface Log {
     void setServerFatal(boolean serverFatal);
     
     void getAllField(Object instance);
+    
+    void log(Object obj, LevelBuild levelBuild);
+    
+    void log(Object x, LevelBuild levelBuild, Object... occupy);
+    
+    void log(Object x, LevelBuild levelBuild, LambdaExecute... occupy);
+    
+    void log(Object msg, LevelBuild levelBuild, Throwable ex);
 }

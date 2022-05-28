@@ -1,18 +1,14 @@
 package com.optilog.log;
 
 public class LogEvent {
+    
     public volatile String message;
     
     public volatile Level level;
     
-    @Deprecated
-    public String getMessage() {
-        return this.message;
-    }
-    
-    @Deprecated
-    public Level getLevel() {
-        return this.level;
+    @Override
+    public String toString() {
+        return this.level + " " + this.message;
     }
     
     public LogEvent(String msg, Level level) {

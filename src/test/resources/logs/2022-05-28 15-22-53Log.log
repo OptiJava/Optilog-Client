@@ -1,0 +1,18 @@
+[2022-05-28|15:22:53(59))][com.optilog.OptilogTest main(OptilogTest.java:8)/main] info:---常规输出测试---
+[2022-05-28|15:22:53(60))][com.optilog.OptilogTest main(OptilogTest.java:9)/main] info:infojava.lang.Object@64bfbc86
+[2022-05-28|15:22:53(60))][com.optilog.OptilogTest main(OptilogTest.java:10)/main] Error:error
+[2022-05-28|15:22:53(62))][com.optilog.OptilogTest main(OptilogTest.java:11)/main] debug:debug32.0
+[2022-05-28|15:22:53(62))][com.optilog.OptilogTest main(OptilogTest.java:12)/main] FATAL:null
+[2022-05-28|15:22:53(62))][com.optilog.OptilogTest main(OptilogTest.java:13)/main] FATAL:null
+[2022-05-28|15:22:53(62))][com.optilog.OptilogTest main(OptilogTest.java:14)/main] Warning:warnnull
+[2022-05-28|15:22:53(62))][com.optilog.OptilogTest main(OptilogTest.java:15)/main] info:---占位符---
+[2022-05-28|15:22:53(63))][com.optilog.OptilogTest main(OptilogTest.java:16)/main] info:1 2
+[2022-05-28|15:22:53(63))][com.optilog.OptilogTest main(OptilogTest.java:17)/main] Error:1 1
+[2022-05-28|15:22:53(63))][com.optilog.OptilogTest main(OptilogTest.java:18)/main] Warning:null
+[2022-05-28|15:22:53(63))][com.optilog.OptilogTest main(OptilogTest.java:19)/main] debug:1 2 #3
+[2022-05-28|15:22:53(63))][com.optilog.OptilogTest main(OptilogTest.java:20)/main] FATAL:1 #2
+[2022-05-28|15:22:53(65))][com.optilog.OptilogTest main(OptilogTest.java:21)/main] debug:de
+[2022-05-28|15:22:53(65))][com.optilog.OptilogTest test(OptilogTest.java:27)/main] Warning:---变化栈测试---
+[2022-05-28|15:22:53(65))][com.optilog.OptilogTest test(OptilogTest.java:28)/main] info:info(test)
+[2022-05-28|15:22:53(65))][com.optilog.OptilogTest lambda$test$1(OptilogTest.java:29)/Thread-32] info:hello
+[2022-05-28|15:22:53(65))][com.optilog.OptilogTest test(OptilogTest.java:30)/main] info:$

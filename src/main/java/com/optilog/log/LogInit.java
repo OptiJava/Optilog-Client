@@ -29,8 +29,8 @@ public class LogInit {
         try {
             SettingFiles.check(settingFilePath, instance);
             if (instance.consoleFileMasterCaution) {
-                Console.file(instance);
-                Client.startClient(instance);
+                Console.initAppender(instance);
+                Client.initAppender(instance);
             }
         } catch (RuntimeException | IOException e) {
             Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
