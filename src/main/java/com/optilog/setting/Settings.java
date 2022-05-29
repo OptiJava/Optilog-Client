@@ -1,6 +1,6 @@
 package com.optilog.setting;
 
-class Settings {
+public class Settings {
     public boolean printInfo;
     public boolean printDebug;
     public boolean printWarn;
@@ -35,6 +35,7 @@ class Settings {
     public String fileName;
     
     public Settings() {
+    
     }
 }
 

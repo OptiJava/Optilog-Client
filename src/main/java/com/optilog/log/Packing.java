@@ -8,6 +8,10 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class Packing {
+    private Packing() {
+        super();
+    }
+    
     @OnlyInLog
     public static String packMessage(String msg, String level, Optilog instance) {
         StackTraceElement[] arr = Thread.currentThread().getStackTrace();

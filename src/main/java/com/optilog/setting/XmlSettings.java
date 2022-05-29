@@ -12,7 +12,7 @@ import java.io.InputStream;
 
 public class XmlSettings {
     @OnlyInInit
-    public static void xml(String path, boolean isClasspath, Optilog instance) {
+    static void xml(String path, boolean isClasspath, Optilog instance) {
         if (isClasspath) {
             try (InputStream input = Optilog.class.getResourceAsStream(path)) {
                 if (input == null) {
@@ -23,7 +23,7 @@ public class XmlSettings {
                 Settings object = new XmlMapper(new JacksonXmlModule()).readValue(input, Settings.class);
                 
                 if (instance.allSetting == null) {
-                    instance.allSetting = new JsonSettings();
+                    instance.allSetting = new SettingFiles();
                 }
                 
                 if (object.defaultConsolePath != null) {
@@ -97,7 +97,7 @@ public class XmlSettings {
             try (InputStream input = new FileInputStream(path)) {
                 Settings object = new XmlMapper(new JacksonXmlModule()).readValue(input, Settings.class);
                 if (instance.allSetting == null) {
-                    instance.allSetting = new JsonSettings();
+                    instance.allSetting = new SettingFiles();
                 }
                 
                 if (object.defaultConsolePath != null) {

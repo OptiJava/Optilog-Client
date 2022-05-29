@@ -10,6 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Send {
+    private Send() {
+        super();
+    }
+    
     final static Send INSTANCE = new Send();
     
     @OnlyInLog

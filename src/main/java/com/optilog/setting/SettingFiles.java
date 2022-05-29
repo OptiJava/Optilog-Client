@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 
-public class JsonSettings {
+public class SettingFiles {
     public boolean printError = true;
     public boolean printInfo = true;
     public boolean printDebug = true;
@@ -63,6 +63,15 @@ public class JsonSettings {
                 throw new GsonNotFoundException("Can't found Gson in classpath", new ClassNotFoundException("Class:com.google.gson.Gson not found"));
             }
         }
+        try {
+            Class.forName("com.fasterxml.jackson.dataformat.xml.JacksonXmlModule");
+        } catch (ClassNotFoundException e) {
+            if (!str.isBlank()) {
+                Util.getOutput().println("Can't find jackson in classpath");
+                instance.consoleFileMasterCaution = false;
+                throw new GsonNotFoundException("Can't found jackson in classpath", new ClassNotFoundException("Class:com.fasterxml.jackson.dataformat.xml.JacksonXmlModule not found"));
+            }
+        }
         if (!str.isBlank()) {
             if (str.startsWith("%xml -cp ")) {
                 XmlSettings.xml(str.substring(9), true, instance);
@@ -96,7 +105,7 @@ public class JsonSettings {
     }
     
     @OnlyInInit
-    public static void getSetting(String s, Optilog instance, boolean isClasspath) throws IOException {
+    private static void getSetting(String s, Optilog instance, boolean isClasspath) throws IOException {
         try {
             String content;
             if (isClasspath) {
@@ -118,7 +127,7 @@ public class JsonSettings {
         }
         
         if (instance.allSetting == null) {
-            instance.allSetting = new JsonSettings();
+            instance.allSetting = new SettingFiles();
         }
         
         if (object.defaultConsolePath != null) {
@@ -272,6 +281,45 @@ public class JsonSettings {
                     "packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
                     "fileName=%timeLog.log\n" +
                     "host=localhost", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void generateXmlSettings(String path) {
+        File f = new File(path + "//Setting.xml");
+        try {
+            if (!f.createNewFile()) {
+                throw new IOException();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Files.writeString(f.toPath(), "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
+                    "<Optilog>\n" +
+                    "    <printInfo>true</printInfo>\n" +
+                    "    <printError>true</printError>\n" +
+                    "    <printWarn>true</printWarn>\n" +
+                    "    <printDebug>true</printDebug>\n" +
+                    "    <printFatal>true</printFatal>\n" +
+                    "    <consoleInfo>false</consoleInfo>\n" +
+                    "    <consoleError>false</consoleError>\n" +
+                    "    <consoleWarn>false</consoleWarn>\n" +
+                    "    <consoleDebug>false</consoleDebug>\n" +
+                    "    <consoleFatal>false</consoleFatal>\n" +
+                    "    <infoSendToServer>false</infoSendToServer>\n" +
+                    "    <errorSendToServer>false</errorSendToServer>\n" +
+                    "    <warnSendToServer>false</warnSendToServer>\n" +
+                    "    <debugSendToServer>false</debugSendToServer>\n" +
+                    "    <fatalSendToServer>false</fatalSendToServer>\n" +
+                    "    <startClient>false</startClient>\n" +
+                    "    <defaultConsolePath></defaultConsolePath>\n" +
+                    "    <fileName>%timeLog(Client).log</fileName>\n" +
+                    "    <host>localhost</host>\n" +
+                    "    <socketNumber>65535</socketNumber>\n" +
+                    "    <packingFormat>[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg</packingFormat>\n" +
+                    "</Optilog>", StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }

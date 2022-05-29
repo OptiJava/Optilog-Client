@@ -2,9 +2,9 @@ package com.optilog.log;
 
 public class LogEvent {
     
-    public volatile String message;
+    volatile String message;
     
-    public volatile Level level;
+    volatile Level level;
     
     @Override
     public String toString() {

@@ -1,6 +1,6 @@
 package com.optilog.log;
 
-import com.optilog.setting.JsonSettings;
+import com.optilog.setting.SettingFiles;
 import com.optilog.util.LambdaExecute;
 
 import java.lang.reflect.Field;
@@ -13,7 +13,7 @@ public class Optilog implements Log {
     public volatile boolean consoleFileMasterCaution = true;
     public volatile boolean alreadyInit;
     
-    public volatile JsonSettings allSetting;
+    public volatile SettingFiles allSetting;
     
     public volatile String settingFilePath;
     

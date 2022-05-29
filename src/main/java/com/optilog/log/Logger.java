@@ -6,6 +6,10 @@ import com.optilog.util.OnlyInLog;
 import com.optilog.util.exception.InvalidCommandException;
 
 public class Logger {
+    private Logger() {
+        super();
+    }
+    
     static final Logger INSTANCE = new Logger();
     
     @OnlyInLog
