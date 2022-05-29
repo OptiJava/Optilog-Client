@@ -43,9 +43,14 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 3.文件输出路径的配置相对麻烦    <-这个缺陷已经解决了，Optilog的缺陷将会陆续解决
 
 # Dependency:
-
 `Gson-2.9.0`
 
 # Author:
-
 `OptiJava`
+
+# 未来计划
+1.添加对xml格式配置文件的支持
+\
+2.使用web服务器取代现在的使用UDP协议实现Client -> Server，大概的思路是在OptilogClient上实现httpClient，在OptilogServer上实现web服务器，用每一次request/reponse收发日志，这样方便远程日志传递
+\
+3.实现远程调用
