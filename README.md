@@ -4,11 +4,11 @@ _截止目前，Optilog代码总量2737行！_
 
 这是一个用java语言编写的开源日志框架。
 
-Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看本项目Wiki (https://github.com/OptiJava/Optilog-Client/wiki)
+Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
-与OptilogClient配套的OptilogServer：[OptilogServer地址](https://github.com/OptiJava/Optilog-Server)，具体怎么用去看wiki
+与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server)，具体怎么用去看wiki
 
-如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础~~萌新可以看代码学习Java~~
+如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献~~包括不会编程的人，因为他们可以写教程~~
 
 # 注意事项：
 
@@ -16,9 +16,9 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 # Optilog的优势
 
-1.性能高:初始化日志+输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端） 最快只需要130毫秒（后续还会再优化）
+1.性能高:初始化日志+输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端） 最快只需要130毫秒（后续还会再优化），log4j至少300毫秒
 
-2.占位符方便：Optilog支持无限个占位符，并且可以重复使用（#1 #1输出两次第一个占位符）
+2.占位符方便：Optilog支持无限个占位符，并且可以重复使用（#1 #1输出两次第一个占位符），log4j只支持9个占位符
 
 3.配置文件可以放在任意位置，配置文件名字不限，支持两种配置文件，在log4j中配置文件只能在classpath中且名字只能是log4j2.xml
 
@@ -30,9 +30,13 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 7.适用于初学者，没有复杂的配置文件
 
-8.需要的依赖少，只有一个Gson2.9.0
+8.需要的依赖少，只有一个Gson2.9.0和jackson-format-xml
 
 9.日志中输出的Class、Method等信息是绝对准确的，因为Optilog内部使用StackTrace确定这些信息，并且无需在初始化日志时写入Class实例
+
+10.Optilog可以直接生成一个默认的配置文件，初学者不用找配置文件范例
+
+11.支持多种格式的配置文件，包括json,xml和properties，后续还会增加对yaml和toml配置文件的支持
 
 # Optilog的缺陷
 
@@ -58,7 +62,4 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 1.添加对xml格式配置文件的支持（已实现）
 \
-2.使用web服务器取代现在的使用UDP协议实现Client ->
-Server，大概的思路是在OptilogClient上实现httpClient，在OptilogServer上实现web服务器，用每一次request/reponse收发日志，这样方便远程日志传递
-\
-3.实现远程调用
+2.实现远程调用
