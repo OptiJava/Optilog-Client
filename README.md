@@ -48,6 +48,9 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 3.文件输出路径的配置相对麻烦    <-这个缺陷已经解决了，Optilog的缺陷将会陆续解决
 
+# Optilog输出日志预览：
+![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
+
 # Dependency:
 
 `Gson-2.9.0` `jackson-dataformat-xml-2.13.3`
