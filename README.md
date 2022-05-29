@@ -26,7 +26,7 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 5.Optilog内部可能出现的异常全部被捕获，不影响主要逻辑
 
-6.只需一个jar包，打进classpath就能直接用
+6.只需一个jar包，打进classpath就能直接用（用gradle的不知道一下子加几十个jar包的感受）
 
 7.适用于初学者，没有复杂的配置文件
 
