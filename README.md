@@ -4,7 +4,7 @@ _截止目前，Optilog代码总量2750行！_
 
 **_See English README.md page in [English Page](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)_**
 
-这是一个用java语言编写的开源日志框架。
+**这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)**
 
 Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
