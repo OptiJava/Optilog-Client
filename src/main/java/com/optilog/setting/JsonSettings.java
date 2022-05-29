@@ -5,8 +5,10 @@ import com.optilog.log.Optilog;
 import com.optilog.util.OnlyInInit;
 import com.optilog.util.Util;
 import com.optilog.util.exception.ConfigureException;
+import com.optilog.util.exception.GsonNotFoundException;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -14,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 
-public class SettingFiles {
+public class JsonSettings {
     public boolean printError = true;
     public boolean printInfo = true;
     public boolean printDebug = true;
@@ -52,7 +54,24 @@ public class SettingFiles {
     
     @OnlyInInit
     public static void check(String str, Optilog instance) throws IOException {
+        try {
+            Class.forName("com.google.gson.Gson");
+        } catch (ClassNotFoundException e) {
+            if (!str.isBlank()) {
+                Util.getOutput().println("Can't find Gson in classpath");
+                instance.consoleFileMasterCaution = false;
+                throw new GsonNotFoundException("Can't found Gson in classpath", new ClassNotFoundException("Class:com.google.gson.Gson not found"));
+            }
+        }
         if (!str.isBlank()) {
+            if (str.startsWith("%xml -cp ")) {
+                XmlSettings.xml(str.substring(9), true, instance);
+                return;
+            }
+            if (str.startsWith("%xml ")) {
+                XmlSettings.xml(str.substring(5), false, instance);
+                return;
+            }
             if (str.startsWith("%prop -cp ")) {
                 String s = str.substring(10);
                 try (InputStream input = Optilog.class.getResourceAsStream(s)) {
@@ -66,7 +85,11 @@ public class SettingFiles {
                 }
             }
             if (str.startsWith("%prop ")) {
-                return;
+                String s = str.substring(6);
+                try (InputStream input = new FileInputStream(s)) {
+                    PropSettings.properties(input, instance);
+                    return;
+                }
             }
             getSetting(str, instance, str.startsWith("-cp "));
         }
@@ -94,7 +117,9 @@ public class SettingFiles {
             System.exit(1);
         }
         
-        instance.allSetting = new SettingFiles();
+        if (instance.allSetting == null) {
+            instance.allSetting = new JsonSettings();
+        }
         
         if (object.defaultConsolePath != null) {
             instance.allSetting.defaultConsolePath = object.defaultConsolePath;

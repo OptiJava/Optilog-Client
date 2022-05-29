@@ -23,9 +23,10 @@ public class Console {
             
             if (!instance.allSetting.defaultConsolePath.equals("") & instance.consoleFileMasterCaution) {
                 final File f = new File(instance.allSetting.defaultConsolePath);
-                if (Console.checkFile(f, instance) && instance.consoleFileMasterCaution) {
+                if (Console.checkFile(f, instance) & instance.consoleFileMasterCaution) {
                     File defFile = new File(instance.allSetting.defaultConsolePath + "//" + instance.allSetting.fileName);
                     try {
+                        
                         if (!defFile.isFile()) {
                             if (!defFile.createNewFile()) {
                                 instance.consoleFileMasterCaution = false;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Optilog>
+    <printInfo>true</printInfo>
+    <printError>true</printError>
+    <printWarn>true</printWarn>
+    <printDebug>true</printDebug>
+    <printFatal>true</printFatal>
+    <consoleInfo>true</consoleInfo>
+    <consoleError>true</consoleError>
+    <consoleWarn>true</consoleWarn>
+    <consoleDebug>true</consoleDebug>
+    <consoleFatal>true</consoleFatal>
+    <infoSendToServer>true</infoSendToServer>
+    <errorSendToServer>true</errorSendToServer>
+    <warnSendToServer>true</warnSendToServer>
+    <debugSendToServer>true</debugSendToServer>
+    <fatalSendToServer>true</fatalSendToServer>
+    <startClient>true</startClient>
+    <defaultConsolePath>
+        D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs
+    </defaultConsolePath>
+    <fileName>%timeLog(Client).log</fileName>
+    <host>localhost</host>
+    <socketNumber>65535</socketNumber>
+    <packingFormat>[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg</packingFormat>
+</Optilog>

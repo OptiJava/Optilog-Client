@@ -1,40 +1,40 @@
 package com.optilog.setting;
 
 class Settings {
-    boolean printInfo;
-    boolean printDebug;
-    boolean printWarn;
-    boolean printError;
-    boolean printFatal;
-    String defaultConsolePath;
-    String Path1;
-    String Path2;
-    String Path3;
-    String Path4;
-    String Path5;
-    String infoPath;
-    String errorPath;
-    String warnPath;
-    String debugPath;
-    String fatalPath;
-    boolean consoleInfo;
-    boolean consoleDebug;
-    boolean consoleError;
-    boolean consoleWarn;
-    boolean consoleFatal;
-    boolean infoSendToServer;
-    boolean errorSendToServer;
-    boolean warnSendToServer;
-    boolean debugSendToServer;
-    boolean fatalSendToServer;
-    boolean startClient;
-    String host;
-    int socketNumber;
-    String packingFormat;
+    public boolean printInfo;
+    public boolean printDebug;
+    public boolean printWarn;
+    public boolean printError;
+    public boolean printFatal;
+    public String defaultConsolePath;
+    public String Path1;
+    public String Path2;
+    public String Path3;
+    public String Path4;
+    public String Path5;
+    public String infoPath;
+    public String errorPath;
+    public String warnPath;
+    public String debugPath;
+    public String fatalPath;
+    public boolean consoleInfo;
+    public boolean consoleDebug;
+    public boolean consoleError;
+    public boolean consoleWarn;
+    public boolean consoleFatal;
+    public boolean infoSendToServer;
+    public boolean errorSendToServer;
+    public boolean warnSendToServer;
+    public boolean debugSendToServer;
+    public boolean fatalSendToServer;
+    public boolean startClient;
+    public String host;
+    public int socketNumber;
+    public String packingFormat;
     
-    String fileName;
+    public String fileName;
     
-    Settings() {
+    public Settings() {
     }
 }
 
