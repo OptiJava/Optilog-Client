@@ -60,6 +60,9 @@ configuration files will be added later
 3. The configuration of file output path is relatively troublesome <- this defect has been solved, and the defects of
    optilog will be solved one after another
 
+# Optilog log picture:
+![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
+
 # Dependency:
 
 Gson-2.9.0 jackson-dataformat-xml-2.13.3
