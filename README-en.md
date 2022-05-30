@@ -77,6 +77,6 @@ JavauserO
 
 # Future plans
 
-1. add support for XML format configuration files (implemented)
+add support for XML format configuration files (implemented)
 
-2. realize remote call
+realize remote call
