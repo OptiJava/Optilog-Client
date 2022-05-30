@@ -17,18 +17,18 @@ public class Send {
     final static Send INSTANCE = new Send();
     
     @OnlyInLog
-    void loggerPrint(String level, String message, Optilog instance) {
+    void loggerPrint(LogEvent le, Optilog instance) {
         synchronized (Send.INSTANCE) {
-            Util.getOutput().print(Packing.packMessage(message, level, instance));
+            Util.getOutput().print(Packing.packMessage(le.message, le.level.getName(), instance));
         }
     }
     
     @OnlyInLog
-    void loggerConsole(String level, String message, Optilog instance, LogMarker marker) {
-        String s = Packing.packMessage(message, level, instance);
+    void loggerConsole(LogEvent le, Optilog instance) {
+        String s = Packing.packMessage(le.message, le.level.getName(), instance);
         try {
             new Thread(() -> {
-                if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(level) & !instance.info.isBlank()) {
+                if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank()) {
                     //String s = Packing.packMessage(message, level, instance);
                     try {
                         synchronized (Send.INSTANCE) {
@@ -40,7 +40,7 @@ public class Send {
                     }
                     return;
                 }
-                if (instance.consoleFileMasterCaution & Level.ERROR.getName().equals(level) & !instance.error.isBlank()) {
+                if (instance.consoleFileMasterCaution & Level.ERROR.getName().equals(le.level.getName()) & !instance.error.isBlank()) {
                     //String s = Packing.packMessage(message, level, instance);
                     try {
                         synchronized (Send.INSTANCE) {
@@ -52,7 +52,7 @@ public class Send {
                     }
                     return;
                 }
-                if (instance.consoleFileMasterCaution & Level.DEBUG.getName().equals(level) & !instance.debug.isBlank()) {
+                if (instance.consoleFileMasterCaution & Level.DEBUG.getName().equals(le.level.getName()) & !instance.debug.isBlank()) {
                     //String s = Packing.packMessage(message, level, instance);
                     try {
                         synchronized (Send.INSTANCE) {
@@ -64,7 +64,7 @@ public class Send {
                     }
                     return;
                 }
-                if (instance.consoleFileMasterCaution & Level.WARN.getName().equals(level) & !instance.warn.isBlank()) {
+                if (instance.consoleFileMasterCaution & Level.WARN.getName().equals(le.level.getName()) & !instance.warn.isBlank()) {
                     //String s = Packing.packMessage(message, level, instance);
                     try {
                         synchronized (Send.INSTANCE) {
@@ -76,7 +76,7 @@ public class Send {
                     }
                     return;
                 }
-                if (instance.consoleFileMasterCaution & Level.FATAL.getName().equals(level) & !instance.fatal.isBlank()) {
+                if (instance.consoleFileMasterCaution & Level.FATAL.getName().equals(le.level.getName()) & !instance.fatal.isBlank()) {
                     try {
                         synchronized (Send.INSTANCE) {
                             Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -88,12 +88,11 @@ public class Send {
                     return;
                 }
                 if (instance.consoleFileMasterCaution) {
-                    if (marker == LogMarker.TEMPLATEInfo) {
+                    if (le.marker == LogMark.TEMPLATEInfo) {
                         try {
                             synchronized (Send.INSTANCE) {
                                 Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
                             }
-                            
                         } catch (IOException e) {
                             instance.consoleFileMasterCaution = false;
                             instance.error("Optilog Note:Java throws Exception when log is output", e);
@@ -101,7 +100,7 @@ public class Send {
                         return;
                     }
                     
-                    if (marker == LogMarker.TEMPLATEError) {
+                    if (le.marker == LogMark.TEMPLATEError) {
                         try {
                             synchronized (Send.INSTANCE) {
                                 Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -113,7 +112,7 @@ public class Send {
                         return;
                     }
                     
-                    if (marker == LogMarker.TEMPLATEWarn) {
+                    if (le.marker == LogMark.TEMPLATEWarn) {
                         try {
                             synchronized (Send.INSTANCE) {
                                 Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -125,7 +124,7 @@ public class Send {
                         return;
                     }
                     
-                    if (marker == LogMarker.TEMPLATEDebug) {
+                    if (le.marker == LogMark.TEMPLATEDebug) {
                         try {
                             synchronized (Send.INSTANCE) {
                                 Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -137,7 +136,7 @@ public class Send {
                         return;
                     }
                     
-                    if (marker == LogMarker.TEMPLATEFatal) {
+                    if (le.marker == LogMark.TEMPLATEFatal) {
                         try {
                             synchronized (Send.INSTANCE) {
                                 Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -156,11 +155,11 @@ public class Send {
     }
     
     @OnlyInLog
-    void loggerToServer(final String level, String message, final Optilog instance) {
+    void loggerToServer(LogEvent le, final Optilog instance) {
         synchronized (Send.INSTANCE) {
-            message = Packing.packMessage(message, level, instance);
-            String finalMessage = message;
-            new Thread(() -> Client.logAppender(finalMessage + level, instance)).start();
+            le.message = Packing.packMessage(le.message, le.level.getName(), instance);
+            String finalMessage = le.message;
+            new Thread(() -> Client.logAppender(finalMessage + le.level.getName(), instance)).start();
         }
     }
 }

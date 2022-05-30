@@ -31,7 +31,8 @@ public class Optilog implements Log {
     @Override
     public void info() {
         LogEvent infoEvent = new LogEvent(" ", Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
@@ -58,7 +59,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent infoEvent = new LogEvent(previousMsg, Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
@@ -85,7 +87,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent infoEvent = new LogEvent(previousMsg, Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
@@ -108,19 +111,22 @@ public class Optilog implements Log {
             throwable = throwable.getCause();
         }
         LogEvent infoEvent = new LogEvent(returnString.toString(), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
     public void info(long x) {
         LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
     public void info(double x) {
         LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
@@ -129,25 +135,29 @@ public class Optilog implements Log {
             x = new char[]{'n', 'u', 'l', 'l'};
         }
         LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
     public void info(short x) {
         LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
     public void info(int x) {
         LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
     public void info(float x) {
         LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
@@ -156,7 +166,8 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent infoEvent = new LogEvent(x, Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
@@ -165,13 +176,15 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent infoEvent = new LogEvent(x.toString(), Level.INFO);
-        Logger.INSTANCE.logInfo(infoEvent, this, LogMarker.NONE);
+        infoEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logInfo(infoEvent, this);
     }
     
     @Override
     public void error() {
         LogEvent errorEvent = new LogEvent(" ", Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
@@ -198,7 +211,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
@@ -225,7 +239,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
@@ -248,19 +263,22 @@ public class Optilog implements Log {
             throwable = throwable.getCause();
         }
         LogEvent errorEvent = new LogEvent(returnString.toString(), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
     public void error(long x) {
         LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
     public void error(double x) {
         LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
@@ -269,25 +287,29 @@ public class Optilog implements Log {
             x = new char[]{'n', 'u', 'l', 'l'};
         }
         LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
     public void error(short x) {
         LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
     public void error(int x) {
         LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
     public void error(float x) {
         LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
@@ -296,7 +318,8 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent errorEvent = new LogEvent(x, Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
@@ -305,13 +328,15 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent errorEvent = new LogEvent(x.toString(), Level.ERROR);
-        Logger.INSTANCE.logError(errorEvent, this, LogMarker.NONE);
+        errorEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logError(errorEvent, this);
     }
     
     @Override
     public void warn() {
         LogEvent warnEvent = new LogEvent(" ", Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
@@ -338,7 +363,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent warnEvent = new LogEvent(previousMsg, Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
@@ -365,7 +391,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent warnEvent = new LogEvent(previousMsg, Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
@@ -388,19 +415,22 @@ public class Optilog implements Log {
             throwable = throwable.getCause();
         }
         LogEvent warnEvent = new LogEvent(returnString.toString(), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
     public void warn(long x) {
         LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
     public void warn(double x) {
         LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
@@ -409,25 +439,29 @@ public class Optilog implements Log {
             x = new char[]{'n', 'u', 'l', 'l'};
         }
         LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
     public void warn(short x) {
         LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
     public void warn(int x) {
         LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
     public void warn(float x) {
         LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
@@ -436,7 +470,8 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent warnEvent = new LogEvent(x, Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
@@ -445,13 +480,15 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent warnEvent = new LogEvent(x.toString(), Level.WARN);
-        Logger.INSTANCE.logWarn(warnEvent, this, LogMarker.NONE);
+        warnEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logWarn(warnEvent, this);
     }
     
     @Override
     public void debug() {
         LogEvent debugEvent = new LogEvent(" ", Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
@@ -478,7 +515,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
@@ -505,7 +543,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
@@ -528,19 +567,22 @@ public class Optilog implements Log {
             throwable = throwable.getCause();
         }
         LogEvent debugEvent = new LogEvent(returnString.toString(), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
     public void debug(long x) {
         LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
     public void debug(double x) {
         LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
@@ -549,25 +591,29 @@ public class Optilog implements Log {
             x = new char[]{'n', 'u', 'l', 'l'};
         }
         LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
     public void debug(short x) {
         LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
     public void debug(int x) {
         LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
     public void debug(float x) {
         LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
@@ -576,7 +622,8 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent debugEvent = new LogEvent(x, Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
@@ -585,13 +632,15 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent debugEvent = new LogEvent(x.toString(), Level.DEBUG);
-        Logger.INSTANCE.logDebug(debugEvent, this, LogMarker.NONE);
+        debugEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logDebug(debugEvent, this);
     }
     
     @Override
     public void fatal() {
         LogEvent fatalEvent = new LogEvent(" ", Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
@@ -618,7 +667,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
@@ -645,7 +695,8 @@ public class Optilog implements Log {
             i0++;
         }
         LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
@@ -668,19 +719,22 @@ public class Optilog implements Log {
             throwable = throwable.getCause();
         }
         LogEvent fatalEvent = new LogEvent(returnString.toString(), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
     public void fatal(long x) {
         LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
     public void fatal(double x) {
         LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
@@ -689,25 +743,29 @@ public class Optilog implements Log {
             x = new char[]{'n', 'u', 'l', 'l'};
         }
         LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
     public void fatal(short x) {
         LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
     public void fatal(int x) {
         LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
     public void fatal(float x) {
         LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
@@ -716,7 +774,8 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent fatalEvent = new LogEvent(x, Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
@@ -725,7 +784,8 @@ public class Optilog implements Log {
             x = "null";
         }
         LogEvent fatalEvent = new LogEvent(x.toString(), Level.FATAL);
-        Logger.INSTANCE.logFatal(fatalEvent, this, LogMarker.NONE);
+        fatalEvent.marker = LogMark.NONE;
+        Logger.INSTANCE.logFatal(fatalEvent, this);
     }
     
     @Override
@@ -828,26 +888,34 @@ public class Optilog implements Log {
     
     @Override
     public void log(Object obj, LevelBuild levelBuild) {
-        LogEvent logEvent = new LogEvent(obj.toString(), new Level(levelBuild.levelName));
-        
         if (levelBuild.levelTemplate.equals(Level.INFO)) {
-            Logger.INSTANCE.logInfo(logEvent, this, LogMarker.TEMPLATEInfo);
+            LogEvent logEvent = new LogEvent(obj.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEInfo;
+            Logger.INSTANCE.logInfo(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.ERROR)) {
-            Logger.INSTANCE.logError(logEvent, this, LogMarker.TEMPLATEError);
+            LogEvent logEvent = new LogEvent(obj.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEError;
+            Logger.INSTANCE.logError(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.WARN)) {
-            Logger.INSTANCE.logWarn(logEvent, this, LogMarker.TEMPLATEWarn);
+            LogEvent logEvent = new LogEvent(obj.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEWarn;
+            Logger.INSTANCE.logWarn(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.DEBUG)) {
-            Logger.INSTANCE.logDebug(logEvent, this, LogMarker.TEMPLATEDebug);
+            LogEvent logEvent = new LogEvent(obj.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEDebug;
+            Logger.INSTANCE.logDebug(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.FATAL)) {
-            Logger.INSTANCE.logFatal(logEvent, this, LogMarker.TEMPLATEFatal);
+            LogEvent logEvent = new LogEvent(obj.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEFatal;
+            Logger.INSTANCE.logFatal(logEvent, this);
         }
     }
     
@@ -874,26 +942,35 @@ public class Optilog implements Log {
             }
             i0++;
         }
-        LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
         
         if (levelBuild.levelTemplate.equals(Level.INFO)) {
-            Logger.INSTANCE.logInfo(logEvent, this, LogMarker.TEMPLATEInfo);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEInfo;
+            Logger.INSTANCE.logInfo(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.ERROR)) {
-            Logger.INSTANCE.logError(logEvent, this, LogMarker.TEMPLATEError);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEError;
+            Logger.INSTANCE.logError(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.WARN)) {
-            Logger.INSTANCE.logWarn(logEvent, this, LogMarker.TEMPLATEWarn);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEWarn;
+            Logger.INSTANCE.logWarn(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.DEBUG)) {
-            Logger.INSTANCE.logDebug(logEvent, this, LogMarker.TEMPLATEDebug);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEDebug;
+            Logger.INSTANCE.logDebug(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.FATAL)) {
-            Logger.INSTANCE.logFatal(logEvent, this, LogMarker.TEMPLATEFatal);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEFatal;
+            Logger.INSTANCE.logFatal(logEvent, this);
         }
     }
     
@@ -920,26 +997,35 @@ public class Optilog implements Log {
             }
             i0++;
         }
-        LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
         
         if (levelBuild.levelTemplate.equals(Level.INFO)) {
-            Logger.INSTANCE.logInfo(logEvent, this, LogMarker.TEMPLATEInfo);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEInfo;
+            Logger.INSTANCE.logInfo(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.ERROR)) {
-            Logger.INSTANCE.logError(logEvent, this, LogMarker.TEMPLATEError);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEError;
+            Logger.INSTANCE.logError(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.WARN)) {
-            Logger.INSTANCE.logWarn(logEvent, this, LogMarker.TEMPLATEWarn);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEWarn;
+            Logger.INSTANCE.logWarn(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.DEBUG)) {
-            Logger.INSTANCE.logDebug(logEvent, this, LogMarker.TEMPLATEDebug);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEDebug;
+            Logger.INSTANCE.logDebug(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.FATAL)) {
-            Logger.INSTANCE.logFatal(logEvent, this, LogMarker.TEMPLATEFatal);
+            LogEvent logEvent = new LogEvent(previousMsg, new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEFatal;
+            Logger.INSTANCE.logFatal(logEvent, this);
         }
     }
     
@@ -962,26 +1048,35 @@ public class Optilog implements Log {
             }
             throwable = throwable.getCause();
         }
-        LogEvent logEvent = new LogEvent(returnString.toString(), new Level(levelBuild.levelName));
         
         if (levelBuild.levelTemplate.equals(Level.INFO)) {
-            Logger.INSTANCE.logInfo(logEvent, this, LogMarker.TEMPLATEInfo);
+            LogEvent logEvent = new LogEvent(returnString.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEInfo;
+            Logger.INSTANCE.logInfo(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.ERROR)) {
-            Logger.INSTANCE.logError(logEvent, this, LogMarker.TEMPLATEError);
+            LogEvent logEvent = new LogEvent(returnString.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEError;
+            Logger.INSTANCE.logError(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.WARN)) {
-            Logger.INSTANCE.logWarn(logEvent, this, LogMarker.TEMPLATEWarn);
+            LogEvent logEvent = new LogEvent(returnString.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEWarn;
+            Logger.INSTANCE.logWarn(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.DEBUG)) {
-            Logger.INSTANCE.logDebug(logEvent, this, LogMarker.TEMPLATEDebug);
+            LogEvent logEvent = new LogEvent(returnString.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEDebug;
+            Logger.INSTANCE.logDebug(logEvent, this);
             return;
         }
         if (levelBuild.levelTemplate.equals(Level.FATAL)) {
-            Logger.INSTANCE.logFatal(logEvent, this, LogMarker.TEMPLATEFatal);
+            LogEvent logEvent = new LogEvent(returnString.toString(), new Level(levelBuild.levelName));
+            logEvent.marker = LogMark.TEMPLATEFatal;
+            Logger.INSTANCE.logFatal(logEvent, this);
         }
     }
 }

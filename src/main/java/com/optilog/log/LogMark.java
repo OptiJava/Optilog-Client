@@ -1,5 +1,5 @@
 package com.optilog.log;
 
-public enum LogMarker {
+public enum LogMark {
     NONE, TEMPLATEInfo, TEMPLATEError, TEMPLATEWarn, TEMPLATEDebug, TEMPLATEFatal
 }

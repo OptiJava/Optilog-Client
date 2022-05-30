@@ -13,100 +13,100 @@ public class Logger {
     static final Logger INSTANCE = new Logger();
     
     @OnlyInLog
-    void logInfo(LogEvent le, Optilog instance, LogMarker marker) {
+    void logInfo(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
             instance.alreadyInit = true;
         }
         
         if (instance.allSetting.printInfo) {
-            Send.INSTANCE.loggerPrint(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerPrint(le, instance);
         }
         
         if (instance.consoleFileMasterCaution & instance.allSetting.consoleInfo) {
-            Send.INSTANCE.loggerConsole(le.level.getName(), le.message, instance, marker);
+            Send.INSTANCE.loggerConsole(le, instance);
         }
         
         if (instance.allSetting.serverInfo & instance.allSetting.startClient) {
-            Send.INSTANCE.loggerToServer(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerToServer(le, instance);
         }
     }
     
     @OnlyInLog
-    void logError(LogEvent le, Optilog instance, LogMarker marker) {
+    void logError(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
             instance.alreadyInit = true;
         }
         if (instance.allSetting.printError) {
-            Send.INSTANCE.loggerPrint(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerPrint(le, instance);
         }
         
         if (instance.consoleFileMasterCaution & instance.allSetting.consoleError) {
-            Send.INSTANCE.loggerConsole(le.level.getName(), le.message, instance, marker);
+            Send.INSTANCE.loggerConsole(le, instance);
         }
         
         if (instance.allSetting.serverError & instance.allSetting.startClient) {
-            Send.INSTANCE.loggerToServer(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerToServer(le, instance);
         }
         
     }
     
     @OnlyInLog
-    void logWarn(LogEvent le, Optilog instance, LogMarker marker) {
+    void logWarn(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
             instance.alreadyInit = true;
         }
         if (instance.allSetting.printWarn) {
-            Send.INSTANCE.loggerPrint(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerPrint(le, instance);
         }
         
         if (instance.consoleFileMasterCaution & instance.allSetting.consoleWarn) {
-            Send.INSTANCE.loggerConsole(le.level.getName(), le.message, instance, marker);
+            Send.INSTANCE.loggerConsole(le, instance);
         }
         
         if (instance.allSetting.serverWarn & instance.allSetting.startClient) {
-            Send.INSTANCE.loggerToServer(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerToServer(le, instance);
         }
         
     }
     
     @OnlyInLog
-    void logDebug(LogEvent le, Optilog instance, LogMarker marker) {
+    void logDebug(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
             instance.alreadyInit = true;
         }
         if (instance.allSetting.printDebug) {
-            Send.INSTANCE.loggerPrint(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerPrint(le, instance);
         }
         
         if (instance.consoleFileMasterCaution & instance.allSetting.consoleDebug) {
-            Send.INSTANCE.loggerConsole(le.level.getName(), le.message, instance, marker);
+            Send.INSTANCE.loggerConsole(le, instance);
         }
         
         if (instance.allSetting.serverDebug & instance.allSetting.startClient) {
-            Send.INSTANCE.loggerToServer(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerToServer(le, instance);
         }
     }
     
     @OnlyInLog
-    void logFatal(LogEvent le, Optilog instance, LogMarker marker) {
+    void logFatal(LogEvent le, Optilog instance) {
         if (!instance.alreadyInit) {
             LogInit.initLog(instance.settingFilePath, instance);
             instance.alreadyInit = true;
         }
         if (instance.allSetting.printFatal) {
-            Send.INSTANCE.loggerPrint(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerPrint(le, instance);
         }
         
         if (instance.consoleFileMasterCaution & instance.allSetting.consoleFatal) {
-            Send.INSTANCE.loggerConsole(le.level.getName(), le.message, instance, marker);
+            Send.INSTANCE.loggerConsole(le, instance);
         }
         
         if (instance.allSetting.serverFatal & instance.allSetting.startClient) {
-            Send.INSTANCE.loggerToServer(le.level.getName(), le.message, instance);
+            Send.INSTANCE.loggerToServer(le, instance);
         }
     }
     

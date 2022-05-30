@@ -6,6 +6,8 @@ public class LogEvent {
     
     volatile Level level;
     
+    volatile LogMark marker;
+    
     @Override
     public String toString() {
         return this.level + " " + this.message;

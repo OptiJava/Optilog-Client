@@ -18,7 +18,6 @@ public class Packing {
         String returnString = instance.allSetting.packingFormat;
         try {
             returnString = returnString.replaceAll("%thread", Matcher.quoteReplacement(getLocalThread()));
-            returnString = searchMessage(returnString);
             
             returnString = returnString.replaceAll("%yyyy", DateTimeFormatter.ofPattern("yyyy").format(LocalDateTime.now()));
             returnString = returnString.replaceAll("%MM", DateTimeFormatter.ofPattern("MM").format(LocalDateTime.now()));
@@ -35,15 +34,10 @@ public class Packing {
             returnString = returnString.replaceAll("%file", Matcher.quoteReplacement(Objects.requireNonNull(arr[5].getFileName())));
             returnString = returnString.replaceAll("%msg", Matcher.quoteReplacement(msg));
             returnString = returnString.replaceAll("%method", Matcher.quoteReplacement(arr[5].getMethodName()));
-        } catch (NullPointerException ignored) {
-        
+        } catch (NullPointerException i) {
+            i.getStackTrace();
         }
         return returnString + "\n";
-    }
-    
-    @OnlyInLog
-    private static String searchMessage(String previousMessage) {
-        return previousMessage;
     }
     
     @OnlyInLog
