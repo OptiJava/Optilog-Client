@@ -159,7 +159,7 @@ public class Send {
         synchronized (Send.INSTANCE) {
             le.message = Packing.packMessage(le.message, le.level.getName(), instance);
             String finalMessage = le.message;
-            new Thread(() -> Client.logAppender(finalMessage + le.level.getName(), instance)).start();
+            Client.logAppender(finalMessage + le.level.getName(), instance);
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.optilog;
 
+import com.optilog.log.Level;
+import com.optilog.log.LevelBuild;
 import com.optilog.log.Log;
 
 public class OptilogTest {
@@ -19,6 +21,7 @@ public class OptilogTest {
         log.debug("#1 #2 #3", "1", "2");
         log.fatal("#1 ##2", "1", "2");
         log.debug("#1", () -> "de");
+        log.log("t!e!s!t！", new LevelBuild("test", Level.INFO));
         test(log);
         //log.command("%zip D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs");
     }
