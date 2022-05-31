@@ -10,11 +10,11 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server)，具体怎么用去看wiki
 
-如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献~~包括不会编程的人，因为他们可以写教程~~
+_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献~~包括不会编程的人，因为他们可以写教程~~_
 
 # 注意事项：
 
-**一整个java项目建议全程只用一个初始化出来的实例，不然会出bug！（具体看wiki）**
+**一整个java项目建议全程只用一个初始化出来的实例，不然会出bug...**
 
 # Optilog的优势
 
@@ -49,6 +49,7 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 3.文件输出路径的配置相对麻烦    <-这个缺陷已经解决了，Optilog的缺陷将会陆续解决
 
 # Optilog输出日志预览：
+~~"输出十分整齐"~~
 ![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
 
 # Dependency:
