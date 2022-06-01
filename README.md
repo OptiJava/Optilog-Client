@@ -8,7 +8,7 @@ _截止目前，Optilog代码总量2750行！_
 
 Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
-与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server)，具体怎么用去看wiki
+与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server)，具体怎么用去看wiki.
 
 _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献~~包括不会编程的人，因为他们可以写教程~~_
 

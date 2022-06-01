@@ -23,6 +23,7 @@ public class OptilogTest {
         log.debug("#1", () -> "de");
         log.log("t!e!s!t！", new LevelBuild("test", Level.INFO));
         test(log);
+        //打包日志
         //log.command("%zip D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs");
     }
     
@@ -31,6 +32,7 @@ public class OptilogTest {
         log.info("info(test)");
         new Thread(() -> log.info("hello")).start();
         log.info("$");
+        //重新获得实例
         Log log2 = Log.initLog("");
         log2.info("log2");
     }
