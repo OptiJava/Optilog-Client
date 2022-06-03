@@ -4,7 +4,8 @@ _截止目前，Optilog代码总量2750行！_
 
 **_See English README.md page in [English Page](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)_**
 
-**这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)**
+**
+这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)**
 
 Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
@@ -49,12 +50,13 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 3.文件输出路径的配置相对麻烦    <-这个缺陷已经解决了，Optilog的缺陷将会陆续解决
 
 # Optilog输出日志预览：
+
 ~~"输出十分整齐"~~
 ![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
 
 # Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3`
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`
 
 # Author:
 

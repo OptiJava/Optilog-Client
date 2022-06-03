@@ -1,6 +1,8 @@
 # Optilog
 
-**This is an open source logging framework written in java. Optilog has more [advantages](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF) than other open source logging frameworks (such as log4j and slf4j)**
+**This is an open source logging framework written in java. Optilog has
+more [advantages](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF) than other open source
+logging frameworks (such as log4j and slf4j)**
 
 The wiki of Optilog will be updated at any time. If there is a problem, ask the issues. You should see this
 project [wiki](https://github.com/OptiJava/Optilog-Client/wiki) before use Optilog.
@@ -61,11 +63,12 @@ configuration files will be added later
    optilog will be solved one after another
 
 # Optilog log picture:
+
 ![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
 
 # Dependency:
 
-Gson-2.9.0 jackson-dataformat-xml-2.13.3
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`
 
 # Author:
 
