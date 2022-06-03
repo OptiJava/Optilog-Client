@@ -15,11 +15,6 @@
     <warnSendToServer>true</warnSendToServer>
     <debugSendToServer>true</debugSendToServer>
     <fatalSendToServer>true</fatalSendToServer>
-    <httpInfo>true</httpInfo>
-    <httpError>true</httpError>
-    <httpWarn>true</httpWarn>
-    <httpDebug>true</httpDebug>
-    <httpFatal>true</httpFatal>
     <startClient>true</startClient>
     <defaultConsolePath>
         D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs

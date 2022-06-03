@@ -1,7 +1,6 @@
 package com.optilog.log;
 
 import com.optilog.log.client.Client;
-import com.optilog.log.web.LogServlet;
 import com.optilog.util.OnlyInLog;
 import com.optilog.util.Util;
 
@@ -151,13 +150,6 @@ public class Send {
 		} catch (Exception e) {
 			instance.consoleFileMasterCaution = false;
 			instance.error("Optilog Note:Java throws Exception when log is output", e);
-		}
-	}
-	
-	@OnlyInLog
-	public void loggerHttp(LogEvent le, Optilog instance) {
-		synchronized (Send.INSTANCE) {
-			LogServlet.s = Packing.packMessage(le.message, le.level.getName(), instance);
 		}
 	}
 	

@@ -54,12 +54,6 @@ public class PropSettings {
 			instance.allSetting.packingFormat = p.getProperty("packingFormat", "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg");
 			
 			instance.allSetting.fileName = p.getProperty("fileName", "%time Log(Client).log");
-			
-			instance.allSetting.httpInfo = Boolean.parseBoolean(p.getProperty("httpInfo", "false"));
-			instance.allSetting.httpError = Boolean.parseBoolean(p.getProperty("httpError", "false"));
-			instance.allSetting.httpWarn = Boolean.parseBoolean(p.getProperty("httpWarn", "false"));
-			instance.allSetting.httpDebug = Boolean.parseBoolean(p.getProperty("httpDebug", "false"));
-			instance.allSetting.httpFatal = Boolean.parseBoolean(p.getProperty("httpFatal", "false"));
 		} catch (IOException e) {
 			Util.getOutput().println("Optilog Note:Read file failed.");
 			e.printStackTrace();

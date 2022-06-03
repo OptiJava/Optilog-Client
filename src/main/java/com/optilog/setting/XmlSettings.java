@@ -151,12 +151,6 @@ public class XmlSettings {
 				instance.allSetting.serverFatal = object.fatalSendToServer;
 				instance.allSetting.startClient = object.startClient;
 				
-				instance.allSetting.httpInfo = object.httpInfo;
-				instance.allSetting.httpError = object.httpError;
-				instance.allSetting.httpWarn = object.httpWarn;
-				instance.allSetting.httpDebug = object.httpDebug;
-				instance.allSetting.httpFatal = object.httpFatal;
-				
 				if (object.host != null) {
 					instance.allSetting.host = object.host.trim();
 				}

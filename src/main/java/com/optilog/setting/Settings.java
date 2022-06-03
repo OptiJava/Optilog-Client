@@ -27,11 +27,6 @@ public class Settings {
 	public boolean warnSendToServer;
 	public boolean debugSendToServer;
 	public boolean fatalSendToServer;
-	public boolean httpInfo;
-	public boolean httpError;
-	public boolean httpWarn;
-	public boolean httpFatal;
-	public boolean httpDebug;
 	public boolean startClient;
 	public String host;
 	public int socketNumber;

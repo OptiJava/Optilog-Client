@@ -2,7 +2,7 @@
 
 **This is an open source logging framework written in java. Optilog has
 more [advantages](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF) than other open source
-logging frameworks (such as log4j and slf4j)**
+logging frameworks (such as log4j and SLF4j)**
 
 The wiki of Optilog will be updated at any time. If there is a problem, ask the issues. You should see this
 project [wiki](https://github.com/OptiJava/Optilog-Client/wiki) before use Optilog.
@@ -72,7 +72,7 @@ configuration files will be added later
 
 # Author:
 
-Optijava
+OptiJava
 
 # Contributor:
 

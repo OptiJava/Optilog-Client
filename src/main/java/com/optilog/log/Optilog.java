@@ -3,15 +3,12 @@ package com.optilog.log;
 import com.optilog.setting.SettingFiles;
 import com.optilog.util.LambdaExecute;
 
-import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.net.DatagramSocket;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Optilog implements Log {
-	public volatile PrintWriter writer;
-	
 	public volatile DatagramSocket socket;
 	public volatile boolean consoleFileMasterCaution = true;
 	public volatile boolean alreadyInit;
@@ -26,9 +23,9 @@ public class Optilog implements Log {
 	public volatile String debug = "";
 	public volatile String fatal = "";
 	
-	Optilog(String var1, boolean alreadyInit) {
+	Optilog(String var1) {
 		this.settingFilePath = var1;
-		this.alreadyInit = alreadyInit;
+		this.alreadyInit = false;
 	}
 	
 	@Override
