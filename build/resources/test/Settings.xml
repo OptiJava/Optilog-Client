@@ -17,7 +17,7 @@
     <fatalSendToServer>true</fatalSendToServer>
     <startClient>true</startClient>
     <defaultConsolePath>
-        D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs
+        D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs
     </defaultConsolePath>
     <fileName>%timeLog(Client).log</fileName>
     <host>localhost</host>

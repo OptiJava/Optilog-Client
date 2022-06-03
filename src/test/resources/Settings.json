@@ -4,7 +4,7 @@
   "printWarn": true,
   "printDebug": true,
   "printFatal": true,
-  "defaultConsolePath": "D:\\Program\\Feishu\\app\\assets\\object\\apps\\Intellij-IDEA\\Project\\Optilog-Client\\src\\test\\resources\\logs",
+  "defaultConsolePath": "D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs",
   "consoleInfo": true,
   "consoleDebug": true,
   "consoleError": true,

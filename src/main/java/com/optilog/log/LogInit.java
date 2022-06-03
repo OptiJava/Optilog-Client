@@ -6,7 +6,6 @@ import com.optilog.setting.SettingFiles;
 import com.optilog.util.OnlyInInit;
 import com.optilog.util.Util;
 import com.optilog.util.exception.OptilogException;
-import com.optilog.util.web_tools.Tomcat;
 
 import java.io.IOException;
 
@@ -26,7 +25,6 @@ public class LogInit {
 			if (instance.consoleFileMasterCaution) {
 				Console.initAppender(instance);
 				Client.initAppender(instance);
-				Tomcat.startTomcat(instance);
 			}
 		} catch (RuntimeException | IOException e) {
 			Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
