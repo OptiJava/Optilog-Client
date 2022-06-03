@@ -1,10 +1,10 @@
 package com.optilog;
 
-import org.apache.catalina.LifecycleException;
+import com.optilog.log.Log;
 
 public class Test {
-	public static void main(String[] args) throws LifecycleException {
-		
+	public static void main(String[] args) {
+		Log log = Log.initLog("%prop -cp /Settings.properties");
 	}
 }
 

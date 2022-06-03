@@ -6,30 +6,31 @@ import com.optilog.setting.SettingFiles;
 import com.optilog.util.OnlyInInit;
 import com.optilog.util.Util;
 import com.optilog.util.exception.OptilogException;
+import com.optilog.util.web_tools.Tomcat;
 
 import java.io.IOException;
 
 public class LogInit {
-    private LogInit() {
-        super();
-    }
-    
-    @OnlyInInit
-    public static void initLog(String settingFilePath, Optilog instance) {
-        if (settingFilePath.isBlank()) {
-            instance.consoleFileMasterCaution = false;
-            instance.allSetting = new SettingFiles();
-        }
-        
-        try {
-            SettingFiles.check(settingFilePath, instance);
-            if (instance.consoleFileMasterCaution) {
-                Console.initAppender(instance);
-                Client.initAppender(instance);
-            }
-        } catch (RuntimeException | IOException e) {
-            Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
-            throw new OptilogException("An Exception was thrown when Optilog init logger", e);
-        }
-    }
+	private LogInit() {
+	}
+	
+	@OnlyInInit
+	public static void initLog(String settingFilePath, Optilog instance) {
+		if (settingFilePath.isBlank()) {
+			instance.consoleFileMasterCaution = false;
+			instance.allSetting = new SettingFiles();
+		}
+		
+		try {
+			SettingFiles.check(settingFilePath, instance);
+			if (instance.consoleFileMasterCaution) {
+				Console.initAppender(instance);
+				Client.initAppender(instance);
+				Tomcat.startTomcat(instance);
+			}
+		} catch (RuntimeException | IOException e) {
+			Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
+			throw new OptilogException("An Exception was thrown when Optilog init logger", e);
+		}
+	}
 }

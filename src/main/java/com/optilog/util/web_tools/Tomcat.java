@@ -12,18 +12,24 @@ import javax.servlet.http.HttpServlet;
 import java.io.File;
 
 public class Tomcat extends HttpServlet {
-	public static void startTomcat(Optilog instance) throws LifecycleException {
-		LocalField.addField("instance", instance);
-		org.apache.catalina.startup.Tomcat tomcat = new org.apache.catalina.startup.Tomcat();
-		tomcat.setPort(Integer.getInteger("port", 8080));
-		tomcat.getConnector();
-		
-		Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
-		WebResourceRoot resources = new StandardRoot(ctx);
-		resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/classes", new File("build/classes").getAbsolutePath(), "/"));
-		ctx.setResources(resources);
-		
-		tomcat.start();
-		tomcat.getServer().await();
+	public static void startTomcat(Optilog instance) throws RuntimeException {
+		new Thread(() -> {
+			LocalField.addField("instance", instance);
+			org.apache.catalina.startup.Tomcat tomcat = new org.apache.catalina.startup.Tomcat();
+			tomcat.setPort(Integer.getInteger("port", 8080));
+			tomcat.getConnector();
+			
+			Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
+			WebResourceRoot resources = new StandardRoot(ctx);
+			resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/classes", new File("build/classes").getAbsolutePath(), "/"));
+			ctx.setResources(resources);
+			
+			try {
+				tomcat.start();
+			} catch (LifecycleException e) {
+				throw new RuntimeException(e);
+			}
+			tomcat.getServer().await();
+		}).start();
 	}
 }

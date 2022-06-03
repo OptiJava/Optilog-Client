@@ -44,6 +44,11 @@ public class SettingFiles {
 	public boolean serverWarn = false;
 	public boolean serverFatal = false;
 	public boolean startClient = false;
+	public boolean httpInfo = false;
+	public boolean httpError = false;
+	public boolean httpWarn = false;
+	public boolean httpFatal = false;
+	public boolean httpDebug = false;
 	public String host = "localhost"; // localhost
 	public int socketNumber = 65535;
 	public String packingFormat = "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg";
@@ -180,6 +185,11 @@ public class SettingFiles {
 		instance.allSetting.serverWarn = object.warnSendToServer;
 		instance.allSetting.serverFatal = object.fatalSendToServer;
 		instance.allSetting.startClient = object.startClient;
+		instance.allSetting.httpInfo = object.httpInfo;
+		instance.allSetting.httpError = object.httpError;
+		instance.allSetting.httpWarn = object.httpWarn;
+		instance.allSetting.httpDebug = object.httpDebug;
+		instance.allSetting.httpFatal = object.httpFatal;
 		
 		if (object.host != null) {
 			instance.allSetting.host = object.host;
@@ -193,6 +203,7 @@ public class SettingFiles {
 		if (object.packingFormat != null) {
 			instance.allSetting.packingFormat = object.packingFormat;
 		}
+		
 	}
 	
 	@OnlyInInit
@@ -232,6 +243,11 @@ public class SettingFiles {
 					"  \"warnSendToServer\": false,\n" +
 					"  \"debugSendToServer\": false,\n" +
 					"  \"fatalSendToServer\": false,\n" +
+					"\"httpInfo\": true,\n" +
+					"  \"httpError\": true,\n" +
+					"  \"httpWarn\": true,\n" +
+					"  \"httpDebug\": true,\n" +
+					"  \"httpFatal\": true,\n" +
 					"  \"startClient\": false,\n" +
 					"  \"socketNumber\": 65535,\n" +
 					"  \"packingFormat\": \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\",\n" +
@@ -276,6 +292,11 @@ public class SettingFiles {
 					"warnSendToServer=false\n" +
 					"debugSendToServer=false\n" +
 					"fatalSendToServer=false\n" +
+					"httpInfo=false\n" +
+					"httpError=false\n" +
+					"httpWarn=false\n" +
+					"httpDebug=false\n" +
+					"httpFatal=false\n" +
 					"startClient=false\n" +
 					"socketNumber=65535\n" +
 					"packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
@@ -313,6 +334,11 @@ public class SettingFiles {
 					"    <warnSendToServer>false</warnSendToServer>\n" +
 					"    <debugSendToServer>false</debugSendToServer>\n" +
 					"    <fatalSendToServer>false</fatalSendToServer>\n" +
+					"    <httpInfo>true</httpInfo>\n" +
+					"    <httpError>true</httpError>\n" +
+					"    <httpWarn>true</httpWarn>\n" +
+					"    <httpDebug>true</httpDebug>\n" +
+					"    <httpFatal>true</httpFatal>\n" +
 					"    <startClient>false</startClient>\n" +
 					"    <defaultConsolePath></defaultConsolePath>\n" +
 					"    <fileName>%timeLog(Client).log</fileName>\n" +

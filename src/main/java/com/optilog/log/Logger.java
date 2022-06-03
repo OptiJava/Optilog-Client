@@ -29,6 +29,10 @@ public class Logger {
 		if (instance.allSetting.serverInfo & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
+		
+		if (instance.consoleFileMasterCaution & instance.allSetting.httpInfo) {
+			Send.INSTANCE.loggerHttp(le, instance);
+		}
 	}
 	
 	@OnlyInLog
@@ -49,6 +53,9 @@ public class Logger {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
 		
+		if (instance.consoleFileMasterCaution & instance.allSetting.httpError) {
+			Send.INSTANCE.loggerHttp(le, instance);
+		}
 	}
 	
 	@OnlyInLog
@@ -69,6 +76,9 @@ public class Logger {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
 		
+		if (instance.consoleFileMasterCaution & instance.allSetting.httpWarn) {
+			Send.INSTANCE.loggerHttp(le, instance);
+		}
 	}
 	
 	@OnlyInLog
@@ -88,6 +98,10 @@ public class Logger {
 		if (instance.allSetting.serverDebug & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
+		
+		if (instance.consoleFileMasterCaution & instance.allSetting.httpDebug) {
+			Send.INSTANCE.loggerHttp(le, instance);
+		}
 	}
 	
 	@OnlyInLog
@@ -106,6 +120,10 @@ public class Logger {
 		
 		if (instance.allSetting.serverFatal & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
+		}
+		
+		if (instance.consoleFileMasterCaution & instance.allSetting.httpFatal) {
+			Send.INSTANCE.loggerHttp(le, instance);
 		}
 	}
 	
