@@ -35,7 +35,7 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 7.适用于初学者，没有复杂的配置文件
 
-8.需要的依赖少，只有一个Gson2.9.0和jackson-format-xml
+8.需要的依赖少，只有一个Gson2.9.0和jackson-format-xml(Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson和Jackson也可以不加)
 
 9.日志中输出的Class、Method等信息是绝对准确的，因为Optilog内部使用StackTrace确定这些信息，并且无需在初始化日志时写入Class实例
 
@@ -58,7 +58,7 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 # Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`(Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson和Jackson也可以不加)
 
 # Author:
 
