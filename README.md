@@ -1,4 +1,7 @@
 # [Optilog-Client](https://github.com/OptiJava/Optilog-Client/)
+![Build](https://img.shields.io/badge/Build-Passing-green)
+[![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
+[![Languege](https://img.shields.io/badge/Language-EnglishPage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
 _截止目前，Optilog代码总量2750行！_
 
