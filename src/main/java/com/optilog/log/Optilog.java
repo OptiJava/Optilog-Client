@@ -2,6 +2,7 @@ package com.optilog.log;
 
 import com.optilog.setting.SettingFiles;
 import com.optilog.util.LambdaExecute;
+import com.optilog.util.OnlyInInit;
 
 import java.lang.reflect.Field;
 import java.net.DatagramSocket;
@@ -23,6 +24,7 @@ public class Optilog implements Log {
 	public volatile String debug = "";
 	public volatile String fatal = "";
 	
+	@OnlyInInit
 	Optilog(String var1) {
 		this.settingFilePath = var1;
 		this.alreadyInit = false;

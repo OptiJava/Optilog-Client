@@ -1,5 +1,7 @@
 package com.optilog.log;
 
+import com.optilog.util.OnlyInLog;
+
 public class LogEvent {
 	volatile String message;
 	
@@ -12,6 +14,7 @@ public class LogEvent {
 		return this.level + " " + this.message;
 	}
 	
+	@OnlyInLog
 	public LogEvent(String msg, Level level) {
 		this.level = level;
 		this.message = msg;

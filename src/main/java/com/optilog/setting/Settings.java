@@ -1,5 +1,7 @@
 package com.optilog.setting;
 
+import com.optilog.util.OnlyInInit;
+
 public class Settings {
 	public boolean printInfo;
 	public boolean printDebug;
@@ -34,6 +36,7 @@ public class Settings {
 	
 	public String fileName;
 	
+	@OnlyInInit
 	public Settings() {
 	
 	}

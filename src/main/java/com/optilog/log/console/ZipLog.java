@@ -1,6 +1,7 @@
 package com.optilog.log.console;
 
 import com.optilog.log.Optilog;
+import com.optilog.util.OnlyInLog;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,6 +13,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class ZipLog {
+	@OnlyInLog
 	public static void zipAllLog(boolean delete, Optilog instance, String path) {
 		File f = new File(path + "//" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss(SS)").format(LocalDateTime.now()) + "LogPackage.zip");
 		try {

@@ -40,7 +40,6 @@ public class Send {
 					return;
 				}
 				if (instance.consoleFileMasterCaution & Level.ERROR.getName().equals(le.level.getName()) & !instance.error.isBlank()) {
-					//String s = Packing.packMessage(message, level, instance);
 					try {
 						synchronized (Send.INSTANCE) {
 							Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);

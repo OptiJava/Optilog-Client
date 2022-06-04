@@ -1,7 +1,5 @@
 package com.optilog.util.web_tools;
 
-import com.optilog.log.Optilog;
-import com.optilog.util.tools.LocalField;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
@@ -12,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import java.io.File;
 
 public class Tomcat extends HttpServlet {
-	public static void startTomcat(Optilog instance) throws RuntimeException {
+	public static void startTomcat() throws RuntimeException {
 		new Thread(() -> {
-			LocalField.addField("instance", instance);
 			org.apache.catalina.startup.Tomcat tomcat = new org.apache.catalina.startup.Tomcat();
 			tomcat.setPort(Integer.getInteger("port", 8080));
 			tomcat.getConnector();
