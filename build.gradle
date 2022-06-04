@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.optilog'
-version '2022.6'
+version '2022.6.1'
 
 repositories {
     mavenCentral()
