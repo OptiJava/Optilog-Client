@@ -33,7 +33,7 @@ public class OptilogTest {
 		new Thread(() -> log.info("hello")).start();
 		log.info("$");
 		//重新获得实例
-		Log log2 = Log.initLog("");
+		Log log2 = Log.initLog("%prop -cp /MinSetting.properties");
 		log2.info("log2");
 	}
 }
