@@ -21,7 +21,7 @@ public class ZipLog {
 				throw new IOException("Create file failed.");
 			}
 		} catch (IOException e) {
-			instance.warn("Optilog Note: Failed to create log package zip.");
+			instance.warn("Optilog Note: Failed to create log package zip.", e);
 			return;
 		}
 		
@@ -35,7 +35,7 @@ public class ZipLog {
 						output.closeEntry();
 						if (delete) {
 							if (!fff.delete()) {
-								System.out.println("Delete file failed.");
+								System.err.println("Delete file failed.");
 							}
 						}
 					}

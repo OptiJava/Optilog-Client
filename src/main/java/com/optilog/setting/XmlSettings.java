@@ -4,7 +4,6 @@ import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.optilog.log.Optilog;
 import com.optilog.util.OnlyInInit;
-import com.optilog.util.Util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class XmlSettings {
 			try (InputStream input = Optilog.class.getResourceAsStream(path)) {
 				if (input == null) {
 					instance.consoleFileMasterCaution = false;
-					Util.getOutput().println("Optilog Note: Can't find " + path + "in classpath.");
+					System.err.println("Optilog Note: Can't find " + path + "in classpath.");
 					return;
 				}
 				Settings object = new XmlMapper(new JacksonXmlModule()).readValue(input, Settings.class);
@@ -90,7 +89,7 @@ public class XmlSettings {
 					instance.allSetting.packingFormat = object.packingFormat.trim();
 				}
 			} catch (IOException e) {
-				Util.getOutput().println("Optilog Note: Failed to read xml setting file!");
+				System.err.println("Optilog Note: Failed to read xml setting file!");
 				e.printStackTrace();
 			}
 		} else {
@@ -164,7 +163,7 @@ public class XmlSettings {
 					instance.allSetting.packingFormat = object.packingFormat.trim();
 				}
 			} catch (IOException e) {
-				Util.getOutput().println("Optilog Note: Failed to read xml setting file!");
+				System.err.println("Optilog Note: Failed to read xml setting file!");
 				e.printStackTrace();
 			}
 		}

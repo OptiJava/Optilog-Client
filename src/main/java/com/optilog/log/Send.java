@@ -18,6 +18,9 @@ public class Send {
 	@OnlyInLog
 	void loggerPrint(LogEvent le, Optilog instance) {
 		synchronized (Send.INSTANCE) {
+			if (le.level.equals(Level.ERROR) || le.level.equals(Level.FATAL)) {
+				System.err.print(Packing.packMessage(le.message, le.level.getName(), instance));
+			}
 			Util.getOutput().print(Packing.packMessage(le.message, le.level.getName(), instance));
 		}
 	}
@@ -28,7 +31,6 @@ public class Send {
 		try {
 			new Thread(() -> {
 				if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank()) {
-					//String s = Packing.packMessage(message, level, instance);
 					try {
 						synchronized (Send.INSTANCE) {
 							Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);

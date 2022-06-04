@@ -3,7 +3,6 @@ package com.optilog.setting;
 import com.google.gson.Gson;
 import com.optilog.log.Optilog;
 import com.optilog.util.OnlyInInit;
-import com.optilog.util.Util;
 import com.optilog.util.exception.ConfigureException;
 import com.optilog.util.exception.GsonNotFoundException;
 
@@ -58,7 +57,7 @@ public class SettingFiles {
 			Class.forName("com.google.gson.Gson");
 		} catch (ClassNotFoundException e) {
 			if (!str.isBlank()) {
-				Util.getOutput().println("Can't find Gson in classpath");
+				System.err.println("Can't find Gson in classpath");
 				instance.consoleFileMasterCaution = false;
 				throw new GsonNotFoundException("Can't found Gson in classpath", new ClassNotFoundException("Class:com.google.gson.Gson not found"));
 			}
@@ -67,7 +66,7 @@ public class SettingFiles {
 			Class.forName("com.fasterxml.jackson.dataformat.xml.JacksonXmlModule");
 		} catch (ClassNotFoundException e) {
 			if (!str.isBlank()) {
-				Util.getOutput().println("Can't find jackson in classpath");
+				System.err.println("Can't find jackson in classpath");
 				instance.consoleFileMasterCaution = false;
 				throw new GsonNotFoundException("Can't found jackson in classpath", new ClassNotFoundException("Class:com.fasterxml.jackson.dataformat.xml.JacksonXmlModule not found"));
 			}
@@ -86,7 +85,7 @@ public class SettingFiles {
 				try (InputStream input = Optilog.class.getResourceAsStream(s)) {
 					if (input == null) {
 						instance.consoleFileMasterCaution = false;
-						Util.getOutput().println("Optilog Note: Can't find'" + s + "'in classpath.");
+						System.err.println("Optilog Note: Can't find'" + s + "'in classpath.");
 						throw new ConfigureException("Can't find'" + s + "'in classpath.");
 					}
 					PropSettings.properties(input, instance);
@@ -112,7 +111,7 @@ public class SettingFiles {
 				try (InputStream input = Optilog.class.getResourceAsStream(s.substring(4))) {
 					if (input == null) {
 						instance.consoleFileMasterCaution = false;
-						Util.getOutput().println("Optilog Note: Can't find'" + s.substring(4) + "'in classpath.");
+						System.err.println("Optilog Note: Can't find'" + s.substring(4) + "'in classpath.");
 						throw new ConfigureException("Can't find'" + s.substring(4) + "'in classpath.");
 					}
 					content = readAsString(input);

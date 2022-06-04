@@ -4,7 +4,6 @@ import com.optilog.log.client.Client;
 import com.optilog.log.console.Console;
 import com.optilog.setting.SettingFiles;
 import com.optilog.util.OnlyInInit;
-import com.optilog.util.Util;
 import com.optilog.util.exception.OptilogException;
 
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class LogInit {
 				Client.initAppender(instance);
 			}
 		} catch (RuntimeException | IOException e) {
-			Util.getOutput().println("Optilog Note:An Exception was thrown when Optilog init logger");
+			System.err.println("Optilog Note:An Exception was thrown when Optilog init logger");
 			throw new OptilogException("An Exception was thrown when Optilog init logger", e);
 		}
 	}

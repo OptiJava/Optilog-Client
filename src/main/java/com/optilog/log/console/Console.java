@@ -2,7 +2,6 @@ package com.optilog.log.console;
 
 import com.optilog.log.Optilog;
 import com.optilog.util.OnlyInInit;
-import com.optilog.util.Util;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,11 +39,11 @@ public class Console {
 							instance.fatal = defFile.getAbsolutePath();
 						}
 					} catch (IOException e) {
-						Util.getOutput().println("Optilog Note: IOException in init default path log file!");
+						System.err.println("Optilog Note: IOException in init default path log file!");
 						instance.consoleFileMasterCaution = false;
 					}
 				} else {
-					Util.getOutput().println("Optilog Note: File check is not correct or this console is stopped");
+					System.err.println("Optilog Note: ConsolePath maybe not correct or not exists");
 					instance.consoleFileMasterCaution = false;
 					return;
 				}
@@ -134,12 +133,12 @@ public class Console {
 						instance.info = instance.allSetting.Path5;
 					}
 					if (instance.info.equals("")) {
-						Util.getOutput().println("Optilog Note: Unexpected error occur when parse infoPath");
+						System.err.println("Optilog Note: Unexpected error occur when parse infoPath");
 						instance.allSetting.consoleInfo = false;
 					}
 				} catch (NullPointerException e) {
 					instance.consoleFileMasterCaution = false;
-					Util.getOutput().println("Optilog Note: Unexpected error occur when parse infoPath");
+					System.err.println("Optilog Note: Unexpected error occur when parse infoPath");
 					e.printStackTrace();
 				}
 			}
@@ -162,11 +161,11 @@ public class Console {
 					}
 					if (instance.error.equals("")) {
 						instance.allSetting.consoleError = false;
-						Util.getOutput().println("Optilog Note: Unexpected error occur when parse errorPath");
+						System.err.println("Optilog Note: Unexpected error occur when parse errorPath");
 					}
 				} catch (NullPointerException e) {
 					instance.consoleFileMasterCaution = false;
-					Util.getOutput().println("Optilog Note: Unexpected error occur when parse errorPath");
+					System.err.println("Optilog Note: Unexpected error occur when parse errorPath");
 					e.printStackTrace();
 				}
 			}
@@ -189,11 +188,11 @@ public class Console {
 					}
 					if (instance.warn.equals("")) {
 						instance.allSetting.consoleWarn = false;
-						Util.getOutput().println("Optilog Note: Unexpected error occur when parse warnPath");
+						System.err.println("Optilog Note: Unexpected error occur when parse warnPath");
 					}
 				} catch (NullPointerException e) {
 					instance.consoleFileMasterCaution = false;
-					Util.getOutput().println("Optilog Note: Unexpected error occur when parse warnPath");
+					System.err.println("Optilog Note: Unexpected error occur when parse warnPath");
 				}
 			}
 			if (instance.allSetting.debugPath.startsWith("%path") & instance.consoleFileMasterCaution) {
@@ -215,11 +214,11 @@ public class Console {
 					}
 					if (instance.debug.equals("")) {
 						instance.allSetting.consoleDebug = false;
-						Util.getOutput().println("Optilog Note: Unexpected error occur when parse debugPath");
+						System.err.println("Optilog Note: Unexpected error occur when parse debugPath");
 					}
 				} catch (NullPointerException e) {
 					instance.consoleFileMasterCaution = false;
-					Util.getOutput().println("Optilog Note: Unexpected error occur when parse debugPath");
+					System.err.println("Optilog Note: Unexpected error occur when parse debugPath");
 				}
 			}
 			if (instance.allSetting.fatalPath.startsWith("%path") & instance.consoleFileMasterCaution) {
@@ -241,11 +240,11 @@ public class Console {
 					}
 					if (instance.fatal.equals("")) {
 						instance.allSetting.consoleFatal = false;
-						Util.getOutput().println("Optilog Note: Unexpected error occur when parse fatalPath");
+						System.err.println("Optilog Note: Unexpected error occur when parse fatalPath");
 					}
 				} catch (NullPointerException e) {
 					instance.consoleFileMasterCaution = false;
-					Util.getOutput().println("Optilog Note: Unexpected error occur when parse fatalPath");
+					System.err.println("Optilog Note: Unexpected error occur when parse fatalPath");
 				}
 			}
 		}
