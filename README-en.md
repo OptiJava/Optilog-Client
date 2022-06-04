@@ -1,4 +1,7 @@
 # Optilog
+![Build](https://img.shields.io/badge/Build-Passing-green)
+[![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
+[![Languege](https://img.shields.io/badge/Language-ChinesePage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README.md)
 
 **This is an open source logging framework written in java. Optilog has
 more [advantages](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF) than other open source
