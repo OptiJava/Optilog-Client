@@ -13,7 +13,6 @@ public class PropSettings {
 		final Properties p = new Properties();
 		try {
 			p.load(content);
-			instance.allSetting = new SettingFiles();
 			
 			instance.allSetting.printInfo = Boolean.parseBoolean(p.getProperty("printInfo", "true"));
 			instance.allSetting.printError = Boolean.parseBoolean(p.getProperty("printError", "true"));

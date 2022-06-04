@@ -1,4 +1,5 @@
 # Optilog
+
 ![Build](https://img.shields.io/badge/Build-Passing-green)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 [![Languege](https://img.shields.io/badge/Language-ChinesePage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README.md)
@@ -22,8 +23,9 @@ will be a bug! (see wiki for details)(expect when you need change setting file)
 
 # Optilog advantages
 
-1.High performance: Initialization log + output a log (output to the screen + output to a file + output to the server
-through socket) only takes 130 milliseconds at most (it will be optimized later), and log4j takes at least 300
+1.High performance: After initialization log, output a log (output to the screen + output to a file + output to the
+server
+through socket) only takes 8 milliseconds at most (it will be optimized later), and log4j takes at least 41
 milliseconds.
 
 2.Optilog supports unlimited placeholders and can be reused (#1 #1 outputs the first placeholder twice). Log4j only

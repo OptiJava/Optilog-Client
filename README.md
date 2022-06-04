@@ -1,4 +1,5 @@
 # [Optilog-Client](https://github.com/OptiJava/Optilog-Client/)
+
 ![Build](https://img.shields.io/badge/Build-Passing-green)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 [![Languege](https://img.shields.io/badge/Language-EnglishPage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
@@ -21,7 +22,7 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 # Optilog的优势
 
-1.性能高:初始化日志+输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端） 最快只需要130毫秒（后续还会再优化），log4j至少300毫秒
+1.性能高:在初始化后，再输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端） 最快只需要8毫秒（后续还会再优化），log4j至少41毫秒
 
 2.占位符方便：Optilog支持无限个占位符，并且可以重复使用（#1 #1输出两次第一个占位符），log4j只支持9个占位符
 
@@ -58,7 +59,8 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 # Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`(Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson和Jackson也可以不加)
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`(
+Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson和Jackson也可以不加)
 
 # Author:
 

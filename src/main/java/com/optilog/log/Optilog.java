@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 public class Optilog implements Log {
 	public volatile DatagramSocket socket;
 	public volatile boolean consoleFileMasterCaution = true;
-	public volatile boolean alreadyInit;
 	
 	public volatile SettingFiles allSetting;
 	
@@ -27,7 +26,6 @@ public class Optilog implements Log {
 	@OnlyInInit
 	Optilog(String var1) {
 		this.settingFilePath = var1;
-		this.alreadyInit = false;
 	}
 	
 	@Override

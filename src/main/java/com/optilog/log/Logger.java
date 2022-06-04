@@ -13,11 +13,6 @@ public class Logger {
 	
 	@OnlyInLog
 	void logInfo(LogEvent le, Optilog instance) {
-		if (!instance.alreadyInit) {
-			LogInit.initLog(instance.settingFilePath, instance);
-			instance.alreadyInit = true;
-		}
-		
 		if (instance.allSetting.printInfo) {
 			Send.INSTANCE.loggerPrint(le, instance);
 		}
@@ -26,17 +21,13 @@ public class Logger {
 			Send.INSTANCE.loggerConsole(le, instance);
 		}
 		
-		if (instance.allSetting.serverInfo & instance.allSetting.startClient) {
+		if (instance.consoleFileMasterCaution & instance.allSetting.serverInfo & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
 	}
 	
 	@OnlyInLog
 	void logError(LogEvent le, Optilog instance) {
-		if (!instance.alreadyInit) {
-			LogInit.initLog(instance.settingFilePath, instance);
-			instance.alreadyInit = true;
-		}
 		if (instance.allSetting.printError) {
 			Send.INSTANCE.loggerPrint(le, instance);
 		}
@@ -45,17 +36,13 @@ public class Logger {
 			Send.INSTANCE.loggerConsole(le, instance);
 		}
 		
-		if (instance.allSetting.serverError & instance.allSetting.startClient) {
+		if (instance.consoleFileMasterCaution & instance.allSetting.serverError & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
 	}
 	
 	@OnlyInLog
 	void logWarn(LogEvent le, Optilog instance) {
-		if (!instance.alreadyInit) {
-			LogInit.initLog(instance.settingFilePath, instance);
-			instance.alreadyInit = true;
-		}
 		if (instance.allSetting.printWarn) {
 			Send.INSTANCE.loggerPrint(le, instance);
 		}
@@ -64,17 +51,13 @@ public class Logger {
 			Send.INSTANCE.loggerConsole(le, instance);
 		}
 		
-		if (instance.allSetting.serverWarn & instance.allSetting.startClient) {
+		if (instance.consoleFileMasterCaution & instance.allSetting.serverWarn & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
 	}
 	
 	@OnlyInLog
 	void logDebug(LogEvent le, Optilog instance) {
-		if (!instance.alreadyInit) {
-			LogInit.initLog(instance.settingFilePath, instance);
-			instance.alreadyInit = true;
-		}
 		if (instance.allSetting.printDebug) {
 			Send.INSTANCE.loggerPrint(le, instance);
 		}
@@ -83,17 +66,13 @@ public class Logger {
 			Send.INSTANCE.loggerConsole(le, instance);
 		}
 		
-		if (instance.allSetting.serverDebug & instance.allSetting.startClient) {
+		if (instance.consoleFileMasterCaution & instance.allSetting.serverDebug & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
 	}
 	
 	@OnlyInLog
 	void logFatal(LogEvent le, Optilog instance) {
-		if (!instance.alreadyInit) {
-			LogInit.initLog(instance.settingFilePath, instance);
-			instance.alreadyInit = true;
-		}
 		if (instance.allSetting.printFatal) {
 			Send.INSTANCE.loggerPrint(le, instance);
 		}
@@ -102,7 +81,7 @@ public class Logger {
 			Send.INSTANCE.loggerConsole(le, instance);
 		}
 		
-		if (instance.allSetting.serverFatal & instance.allSetting.startClient) {
+		if (instance.consoleFileMasterCaution & instance.allSetting.serverFatal & instance.allSetting.startClient) {
 			Send.INSTANCE.loggerToServer(le, instance);
 		}
 	}

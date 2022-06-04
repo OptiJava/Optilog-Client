@@ -21,10 +21,6 @@ public class XmlSettings {
 				}
 				Settings object = new XmlMapper(new JacksonXmlModule()).readValue(input, Settings.class);
 				
-				if (instance.allSetting == null) {
-					instance.allSetting = new SettingFiles();
-				}
-				
 				if (object.defaultConsolePath != null) {
 					instance.allSetting.defaultConsolePath = object.defaultConsolePath.trim();
 				}

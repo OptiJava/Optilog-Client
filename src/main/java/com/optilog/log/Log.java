@@ -4,11 +4,15 @@ import com.optilog.util.LambdaExecute;
 
 public interface Log {
 	static Optilog initLog(String pathOfSettingFile) {
-		return new Optilog(pathOfSettingFile);
+		Optilog optilog = new Optilog(pathOfSettingFile);
+		LogInit.initLog(pathOfSettingFile, optilog);
+		return optilog;
 	}
 	
 	static Optilog reInitLog(String pathOfSettingFile) {
-		return new Optilog(pathOfSettingFile);
+		Optilog optilog = new Optilog(pathOfSettingFile);
+		LogInit.initLog(pathOfSettingFile, optilog);
+		return optilog;
 	}
 	
 	void info();

@@ -16,8 +16,8 @@ public class LogInit {
 	public static void initLog(String settingFilePath, Optilog instance) {
 		if (settingFilePath.isBlank()) {
 			instance.consoleFileMasterCaution = false;
-			instance.allSetting = new SettingFiles();
 		}
+		instance.allSetting = new SettingFiles();
 		
 		try {
 			SettingFiles.check(settingFilePath, instance);

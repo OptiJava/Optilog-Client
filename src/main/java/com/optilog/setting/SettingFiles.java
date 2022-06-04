@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.optilog.log.Optilog;
 import com.optilog.util.OnlyInInit;
 import com.optilog.util.exception.ConfigureException;
-import com.optilog.util.exception.GsonNotFoundException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -53,24 +52,6 @@ public class SettingFiles {
 	
 	@OnlyInInit
 	public static void check(String str, Optilog instance) throws IOException {
-		try {
-			Class.forName("com.google.gson.Gson");
-		} catch (ClassNotFoundException e) {
-			if (!str.isBlank()) {
-				System.err.println("Can't find Gson in classpath");
-				instance.consoleFileMasterCaution = false;
-				throw new GsonNotFoundException("Can't found Gson in classpath", new ClassNotFoundException("Class:com.google.gson.Gson not found"));
-			}
-		}
-		try {
-			Class.forName("com.fasterxml.jackson.dataformat.xml.JacksonXmlModule");
-		} catch (ClassNotFoundException e) {
-			if (!str.isBlank()) {
-				System.err.println("Can't find jackson in classpath");
-				instance.consoleFileMasterCaution = false;
-				throw new GsonNotFoundException("Can't found jackson in classpath", new ClassNotFoundException("Class:com.fasterxml.jackson.dataformat.xml.JacksonXmlModule not found"));
-			}
-		}
 		if (!str.isBlank()) {
 			if (str.startsWith("%xml -cp ")) {
 				XmlSettings.xml(str.substring(9), true, instance);
@@ -123,10 +104,6 @@ public class SettingFiles {
 		} catch (NoSuchFileException e) {
 			e.printStackTrace();
 			System.exit(1);
-		}
-		
-		if (instance.allSetting == null) {
-			instance.allSetting = new SettingFiles();
 		}
 		
 		if (object.defaultConsolePath != null) {
