@@ -19,13 +19,13 @@ fatal:
   console: true
   server: true
 file:
-  defaultConsolePath: D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs
-  fileName: \%timeLog.log
+  defaultConsolePath: "D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs"
+  fileName: "%timeLog.log"
 #Path1: ....
 #infoPath:%path1
 server:
   startClient: true
   socketNumber: 65535
-  host: localhost
+  host: "localhost"
 packing:
-  packingFormat: \[\%yyyy-\%MM-\%dd|\%HH:\%mm:\%ss(\%SS))\]\[\%class \%method(\%file:\%line)/\%thread ] \%level:\%msg
+  packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"

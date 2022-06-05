@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class YamlSettings {
 	public static void yaml(String path, boolean isClasspath, Optilog instance) {
-		Map<Object, LinkedHashMap> map;
+		Map<String, LinkedHashMap> map;
 		if (!isClasspath) {
 			try (InputStream input = new FileInputStream(path)) {
 				Yaml yaml = new Yaml();
@@ -31,28 +31,30 @@ public class YamlSettings {
 				throw new ConfigureException("Can't find'" + path + "'.", e);
 			}
 		}
-		LinkedHashMap<Object, Object> lInfo = map.get("info");
-		LinkedHashMap<Object, Object> lError = map.get("error");
-		LinkedHashMap<Object, Object> lDebug = map.get("debug");
-		LinkedHashMap<Object, Object> lFatal = map.get("fatal");
-		LinkedHashMap<Object, Object> lWarn = map.get("warn");
-		instance.allSetting.printInfo = Boolean.parseBoolean(lInfo.get("print").toString());
-		instance.allSetting.printError = Boolean.parseBoolean(lError.get("print").toString());
-		instance.allSetting.printWarn = Boolean.parseBoolean(lWarn.get("print").toString());
-		instance.allSetting.printDebug = Boolean.parseBoolean(lDebug.get("print").toString());
-		instance.allSetting.printFatal = Boolean.parseBoolean(lFatal.get("print").toString());
 		
-		instance.allSetting.consoleInfo = Boolean.parseBoolean(lInfo.get("console").toString());
-		instance.allSetting.consoleError = Boolean.parseBoolean(lError.get("console").toString());
-		instance.allSetting.consoleDebug = Boolean.parseBoolean(lDebug.get("console").toString());
-		instance.allSetting.consoleWarn = Boolean.parseBoolean(lWarn.get("console").toString());
-		instance.allSetting.consoleFatal = Boolean.parseBoolean(lFatal.get("console").toString());
+		LinkedHashMap<String, Boolean> lInfo = map.get("info");
+		LinkedHashMap<String, Boolean> lError = map.get("error");
+		LinkedHashMap<String, Boolean> lDebug = map.get("debug");
+		LinkedHashMap<String, Boolean> lFatal = map.get("fatal");
+		LinkedHashMap<String, Boolean> lWarn = map.get("warn");
+		instance.allSetting.printInfo = lInfo.get("print");
+		instance.allSetting.printError = lError.get("print");
+		instance.allSetting.printWarn = lWarn.get("print");
+		instance.allSetting.printDebug = lDebug.get("print");
+		instance.allSetting.printFatal = lFatal.get("print");
 		
-		instance.allSetting.serverInfo = Boolean.parseBoolean(lInfo.get("server").toString());
-		instance.allSetting.serverError = Boolean.parseBoolean(lError.get("server").toString());
-		instance.allSetting.serverWarn = Boolean.parseBoolean(lWarn.get("server").toString());
-		instance.allSetting.serverDebug = Boolean.parseBoolean(lDebug.get("server").toString());
-		instance.allSetting.serverFatal = Boolean.parseBoolean(lFatal.get("server").toString());
+		instance.allSetting.consoleInfo = lInfo.get("console");
+		instance.allSetting.consoleError = lError.get("console");
+		instance.allSetting.consoleDebug = lDebug.get("console");
+		instance.allSetting.consoleWarn = lWarn.get("console");
+		instance.allSetting.consoleFatal = lFatal.get("console");
+		
+		instance.allSetting.serverInfo = lInfo.get("server");
+		instance.allSetting.serverError = lError.get("server");
+		instance.allSetting.serverWarn = lWarn.get("server");
+		instance.allSetting.serverDebug = lDebug.get("server");
+		instance.allSetting.serverFatal = lFatal.get("server");
+		
 		
 		String packing$packingFormat = (String) map.get("packing").get("packingFormat");
 		if (packing$packingFormat != null) {
@@ -110,7 +112,7 @@ public class YamlSettings {
 			instance.allSetting.fileName = file$fileName;
 		}
 		
-		instance.allSetting.startClient = Boolean.parseBoolean((String) map.get("server").get("startClient"));
+		instance.allSetting.startClient = Boolean.parseBoolean(map.get("server").get("startClient").toString());
 		
 		String server$host = (String) map.get("server").get("host");
 		if (server$host != null) {
@@ -118,11 +120,12 @@ public class YamlSettings {
 		}
 		
 		try {
-			int server$socketNumber = Integer.parseInt((String) map.get("server").get("socketNumber"));
+			int server$socketNumber = Integer.parseInt(map.get("server").get("socketNumber").toString());
 			if (server$socketNumber != 0) {
 				instance.allSetting.socketNumber = server$socketNumber;
 			}
 		} catch (NumberFormatException | NullPointerException ignored) {
 		}
+		
 	}
 }

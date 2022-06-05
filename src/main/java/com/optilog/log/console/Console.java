@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 public class Console {
 	@OnlyInInit
 	public static void initAppender(Optilog instance) {
+		
 		if (instance.consoleFileMasterCaution) {
 			instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now())));
 			//System.out.println(instance + "" + instance.allSetting + instance.allSetting.defaultConsolePath);
@@ -110,140 +111,141 @@ public class Console {
 					throw new RuntimeException(e);
 				}
 			}
-			
-			if (instance.allSetting.infoPath.startsWith("%path") & instance.consoleFileMasterCaution) {
-				try {
-					if (instance.allSetting.infoPath.replace("%path", "").equals("1")) {
-						instance.info = instance.allSetting.Path1;
-					}
-					if (instance.allSetting.infoPath.replace("%path", "").equals("2")) {
-						instance.info = instance.allSetting.Path2;
-					}
-					if (instance.allSetting.infoPath.replace("%path", "").equals("3")) {
-						instance.info = instance.allSetting.Path3;
-					}
-					if (instance.allSetting.infoPath.replace("%path", "").equals("4")) {
-						instance.info = instance.allSetting.Path4;
-					}
-					if (instance.allSetting.infoPath.replace("%path", "").equals("5")) {
-						instance.info = instance.allSetting.Path5;
-					}
-					if (instance.info.equals("")) {
-						System.err.println("Optilog Note: Unexpected error occur when parse infoPath");
-						instance.allSetting.consoleInfo = false;
-					}
-				} catch (NullPointerException e) {
-					instance.consoleFileMasterCaution = false;
+		}
+		
+		if (instance.allSetting.infoPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+			try {
+				if (instance.allSetting.infoPath.replace("%path", "").equals("1")) {
+					instance.info = instance.allSetting.Path1;
+				}
+				if (instance.allSetting.infoPath.replace("%path", "").equals("2")) {
+					instance.info = instance.allSetting.Path2;
+				}
+				if (instance.allSetting.infoPath.replace("%path", "").equals("3")) {
+					instance.info = instance.allSetting.Path3;
+				}
+				if (instance.allSetting.infoPath.replace("%path", "").equals("4")) {
+					instance.info = instance.allSetting.Path4;
+				}
+				if (instance.allSetting.infoPath.replace("%path", "").equals("5")) {
+					instance.info = instance.allSetting.Path5;
+				}
+				if (instance.info.equals("")) {
 					System.err.println("Optilog Note: Unexpected error occur when parse infoPath");
-					e.printStackTrace();
+					instance.allSetting.consoleInfo = false;
 				}
-			}
-			if (instance.allSetting.errorPath.startsWith("%path") & instance.consoleFileMasterCaution) {
-				try {
-					if (instance.allSetting.errorPath.replace("%path", "").equals("1")) {
-						instance.error = instance.allSetting.Path1;
-					}
-					if (instance.allSetting.errorPath.replace("%path", "").equals("2")) {
-						instance.error = instance.allSetting.Path2;
-					}
-					if (instance.allSetting.errorPath.replace("%path", "").equals("3")) {
-						instance.error = instance.allSetting.Path3;
-					}
-					if (instance.allSetting.errorPath.replace("%path", "").equals("4")) {
-						instance.error = instance.allSetting.Path4;
-					}
-					if (instance.allSetting.errorPath.replace("%path", "").equals("5")) {
-						instance.error = instance.allSetting.Path5;
-					}
-					if (instance.error.equals("")) {
-						instance.allSetting.consoleError = false;
-						System.err.println("Optilog Note: Unexpected error occur when parse errorPath");
-					}
-				} catch (NullPointerException e) {
-					instance.consoleFileMasterCaution = false;
-					System.err.println("Optilog Note: Unexpected error occur when parse errorPath");
-					e.printStackTrace();
-				}
-			}
-			if (instance.allSetting.warnPath.startsWith("%path") & instance.consoleFileMasterCaution) {
-				try {
-					if (instance.allSetting.warnPath.replace("%path", "").equals("1")) {
-						instance.warn = instance.allSetting.Path1;
-					}
-					if (instance.allSetting.warnPath.replace("%path", "").equals("2")) {
-						instance.warn = instance.allSetting.Path2;
-					}
-					if (instance.allSetting.warnPath.replace("%path", "").equals("3")) {
-						instance.warn = instance.allSetting.Path3;
-					}
-					if (instance.allSetting.warnPath.replace("%path", "").equals("4")) {
-						instance.warn = instance.allSetting.Path4;
-					}
-					if (instance.allSetting.warnPath.replace("%path", "").equals("5")) {
-						instance.warn = instance.allSetting.Path5;
-					}
-					if (instance.warn.equals("")) {
-						instance.allSetting.consoleWarn = false;
-						System.err.println("Optilog Note: Unexpected error occur when parse warnPath");
-					}
-				} catch (NullPointerException e) {
-					instance.consoleFileMasterCaution = false;
-					System.err.println("Optilog Note: Unexpected error occur when parse warnPath");
-				}
-			}
-			if (instance.allSetting.debugPath.startsWith("%path") & instance.consoleFileMasterCaution) {
-				try {
-					if (instance.allSetting.debugPath.replace("%path", "").equals("1")) {
-						instance.debug = instance.allSetting.Path1;
-					}
-					if (instance.allSetting.debugPath.replace("%path", "").equals("2")) {
-						instance.debug = instance.allSetting.Path2;
-					}
-					if (instance.allSetting.debugPath.replace("%path", "").equals("3")) {
-						instance.debug = instance.allSetting.Path3;
-					}
-					if (instance.allSetting.debugPath.replace("%path", "").equals("4")) {
-						instance.debug = instance.allSetting.Path4;
-					}
-					if (instance.allSetting.debugPath.replace("%path", "").equals("5")) {
-						instance.debug = instance.allSetting.Path5;
-					}
-					if (instance.debug.equals("")) {
-						instance.allSetting.consoleDebug = false;
-						System.err.println("Optilog Note: Unexpected error occur when parse debugPath");
-					}
-				} catch (NullPointerException e) {
-					instance.consoleFileMasterCaution = false;
-					System.err.println("Optilog Note: Unexpected error occur when parse debugPath");
-				}
-			}
-			if (instance.allSetting.fatalPath.startsWith("%path") & instance.consoleFileMasterCaution) {
-				try {
-					if (instance.allSetting.fatalPath.replace("%path", "").equals("1")) {
-						instance.fatal = instance.allSetting.Path1;
-					}
-					if (instance.allSetting.fatalPath.replace("%path", "").equals("2")) {
-						instance.fatal = instance.allSetting.Path2;
-					}
-					if (instance.allSetting.fatalPath.replace("%path", "").equals("3")) {
-						instance.fatal = instance.allSetting.Path3;
-					}
-					if (instance.allSetting.fatalPath.replace("%path", "").equals("4")) {
-						instance.fatal = instance.allSetting.Path4;
-					}
-					if (instance.allSetting.fatalPath.replace("%path", "").equals("5")) {
-						instance.fatal = instance.allSetting.Path5;
-					}
-					if (instance.fatal.equals("")) {
-						instance.allSetting.consoleFatal = false;
-						System.err.println("Optilog Note: Unexpected error occur when parse fatalPath");
-					}
-				} catch (NullPointerException e) {
-					instance.consoleFileMasterCaution = false;
-					System.err.println("Optilog Note: Unexpected error occur when parse fatalPath");
-				}
+			} catch (NullPointerException e) {
+				instance.consoleFileMasterCaution = false;
+				System.err.println("Optilog Note: Unexpected error occur when parse infoPath");
+				e.printStackTrace();
 			}
 		}
+		if (instance.allSetting.errorPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+			try {
+				if (instance.allSetting.errorPath.replace("%path", "").equals("1")) {
+					instance.error = instance.allSetting.Path1;
+				}
+				if (instance.allSetting.errorPath.replace("%path", "").equals("2")) {
+					instance.error = instance.allSetting.Path2;
+				}
+				if (instance.allSetting.errorPath.replace("%path", "").equals("3")) {
+					instance.error = instance.allSetting.Path3;
+				}
+				if (instance.allSetting.errorPath.replace("%path", "").equals("4")) {
+					instance.error = instance.allSetting.Path4;
+				}
+				if (instance.allSetting.errorPath.replace("%path", "").equals("5")) {
+					instance.error = instance.allSetting.Path5;
+				}
+				if (instance.error.equals("")) {
+					instance.allSetting.consoleError = false;
+					System.err.println("Optilog Note: Unexpected error occur when parse errorPath");
+				}
+			} catch (NullPointerException e) {
+				instance.consoleFileMasterCaution = false;
+				System.err.println("Optilog Note: Unexpected error occur when parse errorPath");
+				e.printStackTrace();
+			}
+		}
+		if (instance.allSetting.warnPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+			try {
+				if (instance.allSetting.warnPath.replace("%path", "").equals("1")) {
+					instance.warn = instance.allSetting.Path1;
+				}
+				if (instance.allSetting.warnPath.replace("%path", "").equals("2")) {
+					instance.warn = instance.allSetting.Path2;
+				}
+				if (instance.allSetting.warnPath.replace("%path", "").equals("3")) {
+					instance.warn = instance.allSetting.Path3;
+				}
+				if (instance.allSetting.warnPath.replace("%path", "").equals("4")) {
+					instance.warn = instance.allSetting.Path4;
+				}
+				if (instance.allSetting.warnPath.replace("%path", "").equals("5")) {
+					instance.warn = instance.allSetting.Path5;
+				}
+				if (instance.warn.equals("")) {
+					instance.allSetting.consoleWarn = false;
+					System.err.println("Optilog Note: Unexpected error occur when parse warnPath");
+				}
+			} catch (NullPointerException e) {
+				instance.consoleFileMasterCaution = false;
+				System.err.println("Optilog Note: Unexpected error occur when parse warnPath");
+			}
+		}
+		if (instance.allSetting.debugPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+			try {
+				if (instance.allSetting.debugPath.replace("%path", "").equals("1")) {
+					instance.debug = instance.allSetting.Path1;
+				}
+				if (instance.allSetting.debugPath.replace("%path", "").equals("2")) {
+					instance.debug = instance.allSetting.Path2;
+				}
+				if (instance.allSetting.debugPath.replace("%path", "").equals("3")) {
+					instance.debug = instance.allSetting.Path3;
+				}
+				if (instance.allSetting.debugPath.replace("%path", "").equals("4")) {
+					instance.debug = instance.allSetting.Path4;
+				}
+				if (instance.allSetting.debugPath.replace("%path", "").equals("5")) {
+					instance.debug = instance.allSetting.Path5;
+				}
+				if (instance.debug.equals("")) {
+					instance.allSetting.consoleDebug = false;
+					System.err.println("Optilog Note: Unexpected error occur when parse debugPath");
+				}
+			} catch (NullPointerException e) {
+				instance.consoleFileMasterCaution = false;
+				System.err.println("Optilog Note: Unexpected error occur when parse debugPath");
+			}
+		}
+		if (instance.allSetting.fatalPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+			try {
+				if (instance.allSetting.fatalPath.replace("%path", "").equals("1")) {
+					instance.fatal = instance.allSetting.Path1;
+				}
+				if (instance.allSetting.fatalPath.replace("%path", "").equals("2")) {
+					instance.fatal = instance.allSetting.Path2;
+				}
+				if (instance.allSetting.fatalPath.replace("%path", "").equals("3")) {
+					instance.fatal = instance.allSetting.Path3;
+				}
+				if (instance.allSetting.fatalPath.replace("%path", "").equals("4")) {
+					instance.fatal = instance.allSetting.Path4;
+				}
+				if (instance.allSetting.fatalPath.replace("%path", "").equals("5")) {
+					instance.fatal = instance.allSetting.Path5;
+				}
+				if (instance.fatal.equals("")) {
+					instance.allSetting.consoleFatal = false;
+					System.err.println("Optilog Note: Unexpected error occur when parse fatalPath");
+				}
+			} catch (NullPointerException e) {
+				instance.consoleFileMasterCaution = false;
+				System.err.println("Optilog Note: Unexpected error occur when parse fatalPath");
+			}
+		}
+		
 	}
 	
 	@OnlyInInit

@@ -321,36 +321,36 @@ public class SettingFiles {
 		}
 		try {
 			Files.writeString(f.toPath(), "info:\n" +
-					"  print:true\n" +
-					"  console:true\n" +
-					"  server:true\n" +
+					"  print: true\n" +
+					"  console: true\n" +
+					"  server: true\n" +
 					"error:\n" +
-					"  print:true\n" +
-					"  console:true\n" +
-					"  server:true\n" +
+					"  print: true\n" +
+					"  console: true\n" +
+					"  server: true\n" +
 					"warn:\n" +
-					"  print:true\n" +
-					"  console:true\n" +
-					"  server:true\n" +
+					"  print: true\n" +
+					"  console: true\n" +
+					"  server: true\n" +
 					"debug:\n" +
-					"  print:true\n" +
-					"  console:true\n" +
-					"  server:true\n" +
+					"  print: true\n" +
+					"  console: true\n" +
+					"  server: true\n" +
 					"fatal:\n" +
-					"  print:true\n" +
-					"  console:true\n" +
-					"  server:true\n" +
+					"  print: true\n" +
+					"  console: true\n" +
+					"  server: true\n" +
 					"file:\n" +
-					"  defaultConsolePath:D:\\\\Program\\\\Project\\\\resources\\\\app\\\\Git\\\\Projects\\\\Optilog-Client\\\\src\\\\test\\\\resources\\\\logs\n" +
-					"  fileName:%timeLog.log\n" +
-					"  #Path1: ....\n" +
-					"  #infoPath:%path1\n" +
+					"  defaultConsolePath: \"D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs\"\n" +
+					"  fileName: \"%timeLog.log\"\n" +
+					"#Path1: ....\n" +
+					"#infoPath:%path1\n" +
 					"server:\n" +
-					"  startClient:true\n" +
-					"  socketNumber:65535\n" +
-					"  host:localhost\n" +
+					"  startClient: true\n" +
+					"  socketNumber: 65535\n" +
+					"  host: \"localhost\"\n" +
 					"packing:\n" +
-					"  packingFormat:[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg", StandardCharsets.UTF_8);
+					"  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread ] %level:%msg\"", StandardCharsets.UTF_8);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
