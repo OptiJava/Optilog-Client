@@ -36,6 +36,7 @@ public class YamlSettings {
 		LinkedHashMap<String, String> lDebug = map.get("debug");
 		LinkedHashMap<String, String> lFatal = map.get("fatal");
 		LinkedHashMap<String, String> lWarn = map.get("warn");
+		
 		instance.allSetting.printInfo = Boolean.parseBoolean(lInfo.get("print"));
 		instance.allSetting.printError = Boolean.parseBoolean(lError.get("print"));
 		instance.allSetting.printWarn = Boolean.parseBoolean(lWarn.get("print"));
