@@ -51,21 +51,15 @@ adding dozens of jar packages at once when using gradle)
 9.Class, method and other information output in the log is absolutely accurate, because optilog uses stacktrace to
 determine this information internally, and there is no need to write the class instance when initializing the log
 
-10.optilog can directly generate a default configuration file. Beginners do not need to look for configuration file
+10.Optilog can directly generate a default configuration file. Beginners do not need to look for configuration file
 examples
 
-11.Support configuration files in multiple formats, including JSON, XML and properties. Support for yaml and toml
-configuration files will be added later
+11.Support configuration files in multiple formats, including JSON, XML and properties. Support for toml
+configuration files will be added later(Yaml was supported at latest commit)
 
 # Defects of optilog
 
 1. No JDBC support
-
-2. XML configuration files are not supported <- in the latest submission, optilog already supports XML format
-   configuration files
-
-3. The configuration of file output path is relatively troublesome <- this defect has been solved, and the defects of
-   optilog will be solved one after another
 
 # Optilog log picture:
 
@@ -73,7 +67,7 @@ configuration files will be added later
 
 # Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`(You needn't add dependency if you don't use these function.)
 
 # Author:
 
@@ -84,7 +78,5 @@ OptiJava
 JavauserO
 
 # Future plans
-
-add support for XML format configuration files (implemented)
 
 realize remote call
