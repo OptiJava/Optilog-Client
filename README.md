@@ -44,6 +44,8 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 11.支持多种格式的配置文件，包括json,xml和properties，后续还会增加对yaml和toml配置文件的支持
 
+12.Optilog支持在运行期修改配置，当然只能修改true和false的一些配置项，输出文件路径什么的不能修改
+
 # Optilog的缺陷
 
 1.没有对jdbc的支持
