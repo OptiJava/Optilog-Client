@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class YamlSettings {
 	public static void yaml(String path, boolean isClasspath, Optilog instance) {
-		Map<String, LinkedHashMap> map;
+		Map<Object, LinkedHashMap> map;
 		if (!isClasspath) {
 			try (InputStream input = new FileInputStream(path)) {
 				Yaml yaml = new Yaml();
@@ -31,29 +31,28 @@ public class YamlSettings {
 				throw new ConfigureException("Can't find'" + path + "'.", e);
 			}
 		}
-		LinkedHashMap<String, String> lInfo = map.get("info");
-		LinkedHashMap<String, String> lError = map.get("error");
-		LinkedHashMap<String, String> lDebug = map.get("debug");
-		LinkedHashMap<String, String> lFatal = map.get("fatal");
-		LinkedHashMap<String, String> lWarn = map.get("warn");
+		LinkedHashMap<Object, Object> lInfo = map.get("info");
+		LinkedHashMap<Object, Object> lError = map.get("error");
+		LinkedHashMap<Object, Object> lDebug = map.get("debug");
+		LinkedHashMap<Object, Object> lFatal = map.get("fatal");
+		LinkedHashMap<Object, Object> lWarn = map.get("warn");
+		instance.allSetting.printInfo = Boolean.parseBoolean(lInfo.get("print").toString());
+		instance.allSetting.printError = Boolean.parseBoolean(lError.get("print").toString());
+		instance.allSetting.printWarn = Boolean.parseBoolean(lWarn.get("print").toString());
+		instance.allSetting.printDebug = Boolean.parseBoolean(lDebug.get("print").toString());
+		instance.allSetting.printFatal = Boolean.parseBoolean(lFatal.get("print").toString());
 		
-		instance.allSetting.printInfo = Boolean.parseBoolean(lInfo.get("print"));
-		instance.allSetting.printError = Boolean.parseBoolean(lError.get("print"));
-		instance.allSetting.printWarn = Boolean.parseBoolean(lWarn.get("print"));
-		instance.allSetting.printDebug = Boolean.parseBoolean(lDebug.get("print"));
-		instance.allSetting.printFatal = Boolean.parseBoolean(lFatal.get("print"));
+		instance.allSetting.consoleInfo = Boolean.parseBoolean(lInfo.get("console").toString());
+		instance.allSetting.consoleError = Boolean.parseBoolean(lError.get("console").toString());
+		instance.allSetting.consoleDebug = Boolean.parseBoolean(lDebug.get("console").toString());
+		instance.allSetting.consoleWarn = Boolean.parseBoolean(lWarn.get("console").toString());
+		instance.allSetting.consoleFatal = Boolean.parseBoolean(lFatal.get("console").toString());
 		
-		instance.allSetting.consoleInfo = Boolean.parseBoolean(lInfo.get("console"));
-		instance.allSetting.consoleError = Boolean.parseBoolean(lError.get("console"));
-		instance.allSetting.consoleDebug = Boolean.parseBoolean(lDebug.get("console"));
-		instance.allSetting.consoleWarn = Boolean.parseBoolean(lWarn.get("console"));
-		instance.allSetting.consoleFatal = Boolean.parseBoolean(lFatal.get("console"));
-		
-		instance.allSetting.serverInfo = Boolean.parseBoolean(lInfo.get("server"));
-		instance.allSetting.serverError = Boolean.parseBoolean(lError.get("server"));
-		instance.allSetting.serverWarn = Boolean.parseBoolean(lWarn.get("server"));
-		instance.allSetting.serverDebug = Boolean.parseBoolean(lDebug.get("server"));
-		instance.allSetting.serverFatal = Boolean.parseBoolean(lFatal.get("server"));
+		instance.allSetting.serverInfo = Boolean.parseBoolean(lInfo.get("server").toString());
+		instance.allSetting.serverError = Boolean.parseBoolean(lError.get("server").toString());
+		instance.allSetting.serverWarn = Boolean.parseBoolean(lWarn.get("server").toString());
+		instance.allSetting.serverDebug = Boolean.parseBoolean(lDebug.get("server").toString());
+		instance.allSetting.serverFatal = Boolean.parseBoolean(lFatal.get("server").toString());
 		
 		String packing$packingFormat = (String) map.get("packing").get("packingFormat");
 		if (packing$packingFormat != null) {
