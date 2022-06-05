@@ -24,7 +24,7 @@ public class OptilogTest {
 		log.log("t!e!s!t！", new LevelBuild("test", Level.INFO));
 		test(log);
 		//打包日志
-		log.command("%zip -d D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs");
+		//log.command("%zip -d D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs");
 	}
 	
 	private static void test(Log log) {
@@ -33,7 +33,7 @@ public class OptilogTest {
 		new Thread(() -> log.info("hello")).start();
 		log.info("$");
 		//重新获得实例
-		Log log2 = Log.initLog("%prop -cp /MinSetting.properties");
+		Log log2 = Log.initLog("%prop -cp /Settings.properties");
 		log2.info("log2");
 	}
 }
