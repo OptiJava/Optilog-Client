@@ -14,6 +14,7 @@ public class Console {
 	public static void initAppender(Optilog instance) {
 		if (instance.consoleFileMasterCaution) {
 			instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now())));
+			//System.out.println(instance + "" + instance.allSetting + instance.allSetting.defaultConsolePath);
 			
 			if (!instance.allSetting.defaultConsolePath.equals("") & instance.consoleFileMasterCaution) {
 				final File f = new File(instance.allSetting.defaultConsolePath);

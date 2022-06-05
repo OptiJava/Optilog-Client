@@ -20,7 +20,7 @@ public class SettingFiles {
 	public boolean printDebug = true;
 	public boolean printWarn = true;
 	public boolean printFatal = true;
-	public String defaultConsolePath;
+	public String defaultConsolePath = "";
 	public String Path1 = "";
 	public String Path2 = "";
 	public String Path3 = "";
@@ -79,6 +79,14 @@ public class SettingFiles {
 					PropSettings.properties(input, instance);
 					return;
 				}
+			}
+			if (str.startsWith("%yaml -cp ")) {
+				YamlSettings.yaml(str.substring(10), true, instance);
+				return;
+			}
+			if (str.startsWith("%yaml ")) {
+				YamlSettings.yaml(str.substring(6), false, instance);
+				return;
 			}
 			getSetting(str, instance, str.startsWith("-cp "));
 		}
@@ -297,6 +305,52 @@ public class SettingFiles {
 					"    <socketNumber>65535</socketNumber>\n" +
 					"    <packingFormat>[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg</packingFormat>\n" +
 					"</Optilog>", StandardCharsets.UTF_8);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void generateYamlSettings(String path) {
+		File f = new File(path + "//Setting.yaml");
+		try {
+			if (!f.createNewFile()) {
+				throw new IOException();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			Files.writeString(f.toPath(), "info:\n" +
+					"  print:true\n" +
+					"  console:true\n" +
+					"  server:true\n" +
+					"error:\n" +
+					"  print:true\n" +
+					"  console:true\n" +
+					"  server:true\n" +
+					"warn:\n" +
+					"  print:true\n" +
+					"  console:true\n" +
+					"  server:true\n" +
+					"debug:\n" +
+					"  print:true\n" +
+					"  console:true\n" +
+					"  server:true\n" +
+					"fatal:\n" +
+					"  print:true\n" +
+					"  console:true\n" +
+					"  server:true\n" +
+					"file:\n" +
+					"  defaultConsolePath:D:\\\\Program\\\\Project\\\\resources\\\\app\\\\Git\\\\Projects\\\\Optilog-Client\\\\src\\\\test\\\\resources\\\\logs\n" +
+					"  fileName:%timeLog.log\n" +
+					"  #Path1: ....\n" +
+					"  #infoPath:%path1\n" +
+					"server:\n" +
+					"  startClient:true\n" +
+					"  socketNumber:65535\n" +
+					"  host:localhost\n" +
+					"packing:\n" +
+					"  packingFormat:[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg", StandardCharsets.UTF_8);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

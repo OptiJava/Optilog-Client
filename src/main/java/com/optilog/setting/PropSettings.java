@@ -2,6 +2,7 @@ package com.optilog.setting;
 
 import com.optilog.log.Optilog;
 import com.optilog.util.OnlyInInit;
+import com.optilog.util.exception.ConfigureException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,7 +55,7 @@ public class PropSettings {
 			instance.allSetting.fileName = p.getProperty("fileName", "%time Log(Client).log");
 		} catch (IOException e) {
 			System.err.println("Optilog Note:Read file failed.");
-			e.printStackTrace();
+			throw new ConfigureException("Can't find file.", e);
 		}
 	}
 }
