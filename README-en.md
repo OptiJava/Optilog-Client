@@ -67,7 +67,8 @@ configuration files will be added later(Yaml was supported at latest commit)
 
 # Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`(You needn't add dependency if you don't use these function.)
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `snakeyaml-1.30`(You needn't add dependency if you don't use these
+function.)
 
 # Author:
 

@@ -57,8 +57,7 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 # Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper-9.0.26` `snakeyaml-1.3.0`(
-Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson，Jackson，snakeyaml也可以不加)
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `org.yaml-1.30`（如果你只用properties作为配置文件的话Gson，Jackson，snakeyaml也可以不加)
 
 # Author:
 
