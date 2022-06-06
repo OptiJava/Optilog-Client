@@ -42,17 +42,13 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 10.Optilog可以直接生成一个默认的配置文件，初学者不用找配置文件范例
 
-11.支持多种格式的配置文件，包括json,xml和properties，后续还会增加对yaml和toml配置文件的支持
+11.支持多种格式的配置文件，包括json,xml和properties，后续还会增加对toml配置文件的支持（在最新的提交中，OptilogClient已经支持yaml格式配置文件，使用还是看wiki）
 
 12.Optilog支持在运行期修改配置，当然只能修改true和false的一些配置项，输出文件路径什么的不能修改
 
 # Optilog的缺陷
 
 1.没有对jdbc的支持
-
-2.不支持xml配置文件  <-在最新的提交中，Optilog已经支持xml格式配置文件
-
-3.文件输出路径的配置相对麻烦    <-这个缺陷已经解决了，Optilog的缺陷将会陆续解决
 
 # Optilog输出日志预览：
 
@@ -61,8 +57,8 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 # Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper:9.0.26`(
-Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson和Jackson也可以不加)
+`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `tomcat-embed-core-9.0.26` `tomcat-embed-jasper-9.0.26` `snakeyaml-1.3.0`(
+Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson，Jackson，snakeyaml也可以不加)
 
 # Author:
 
@@ -74,6 +70,4 @@ Tomcat依赖如果你不用的话可以没有，如果你只用properties作为�
 
 # 未来计划
 
-1.添加对xml格式配置文件的支持（已实现）
-\
-2.实现远程调用
+1.实现远程调用
