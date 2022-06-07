@@ -904,6 +904,11 @@ public class Optilog implements Log {
     }
 
     @Override
+    public void stopSendToJdbc(String url, String dataBaseName, String username, String password) {
+        this.connection.sendToJdbc = false;
+    }
+
+    @Override
     public void getAllField(Object instance) {
         final StringBuilder str = new StringBuilder();
         str.append("\n").append(instance.getClass()).append(" -> ").append(instance).append(":\n");

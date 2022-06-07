@@ -169,6 +169,8 @@ public interface Log {
 
     void startSendToJdbc(String url, String dataBaseName, String username, String password);
 
+    void stopSendToJdbc(String url, String dataBaseName, String username, String password);
+
     void getAllField(Object instance);
 
     void log(Object obj, LevelBuild levelBuild);
