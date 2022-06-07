@@ -2,6 +2,7 @@ package com.optilog.log;
 
 import com.optilog.log.client.Client;
 import com.optilog.log.console.Console;
+import com.optilog.log.jdbc.MySQL;
 import com.optilog.setting.SettingFiles;
 import com.optilog.util.LambdaExecute;
 import com.optilog.util.OnlyInInit;
@@ -16,6 +17,8 @@ import java.util.regex.Pattern;
 public class Optilog implements Log {
     public volatile DatagramSocket socket;
     public volatile boolean consoleFileMasterCaution = true;
+
+    public volatile MySQL connection;
 
     public volatile SettingFiles allSetting;
 
