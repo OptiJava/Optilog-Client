@@ -26,7 +26,7 @@ public class Logger {
         }
 
         if (instance.connection.sendToJdbc) {
-            
+            Send.INSTANCE.loggerToJdbc(le, instance);
         }
     }
 
@@ -43,6 +43,10 @@ public class Logger {
         if (instance.consoleFileMasterCaution & instance.allSetting.serverError & instance.allSetting.startClient) {
             Send.INSTANCE.loggerToServer(le, instance);
         }
+
+        if (instance.connection.sendToJdbc) {
+            Send.INSTANCE.loggerToJdbc(le, instance);
+        }
     }
 
     @OnlyInLog
@@ -57,6 +61,10 @@ public class Logger {
 
         if (instance.consoleFileMasterCaution & instance.allSetting.serverWarn & instance.allSetting.startClient) {
             Send.INSTANCE.loggerToServer(le, instance);
+        }
+
+        if (instance.connection.sendToJdbc) {
+            Send.INSTANCE.loggerToJdbc(le, instance);
         }
     }
 
@@ -73,6 +81,10 @@ public class Logger {
         if (instance.consoleFileMasterCaution & instance.allSetting.serverDebug & instance.allSetting.startClient) {
             Send.INSTANCE.loggerToServer(le, instance);
         }
+
+        if (instance.connection.sendToJdbc) {
+            Send.INSTANCE.loggerToJdbc(le, instance);
+        }
     }
 
     @OnlyInLog
@@ -87,6 +99,10 @@ public class Logger {
 
         if (instance.consoleFileMasterCaution & instance.allSetting.serverFatal & instance.allSetting.startClient) {
             Send.INSTANCE.loggerToServer(le, instance);
+        }
+
+        if (instance.connection.sendToJdbc) {
+            Send.INSTANCE.loggerToJdbc(le, instance);
         }
     }
 

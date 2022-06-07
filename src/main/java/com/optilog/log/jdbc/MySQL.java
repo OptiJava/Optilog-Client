@@ -12,8 +12,11 @@ public class MySQL {
 
     public volatile boolean sendToJdbc = false;
 
+    public volatile String dataBaseName = "";
+
     @OnlyInInit
     public static void initAppender(String url, String username, String password, String dataBaseName, Optilog instance) {
+        instance.connection.dataBaseName = dataBaseName;
         try (Connection conn = DriverManager.getConnection(url, username, password)) {
             instance.connection.conn = conn;
             try (Statement statement = instance.connection.conn.createStatement()) {
@@ -31,26 +34,32 @@ public class MySQL {
 
     @OnlyInLog
     public static void logAppender(LogEvent logEvent, String clazz, String allMessage, Optilog instance) {
-        try (PreparedStatement ps = instance.connection.conn.prepareStatement("INSERT INTO logs (lvl, class, message, AllMessage) VALUES (?,?,?,?)")) {
-            //instance.connection.conn.setAutoCommit(false);
-            ps.setObject(1, logEvent.level);
-            ps.setObject(2, clazz);
-            ps.setObject(3, logEvent.message);
-            ps.setObject(4, allMessage);
-            int n = ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            try {
-                instance.connection.conn.rollback();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        } finally {
-            try {
-                instance.connection.conn.setAutoCommit(true);
+        try (Statement statement = instance.connection.conn.createStatement()) {
+            statement.execute("USE " + instance.connection.dataBaseName);
+            try (PreparedStatement ps = instance.connection.conn.prepareStatement("INSERT INTO logs (lvl, class, message, AllMessage) VALUES (?,?,?,?);")) {
+                instance.connection.conn.setAutoCommit(false);
+                //instance.connection.conn.setAutoCommit(false);
+                ps.setObject(1, logEvent.level.getName());
+                ps.setObject(2, clazz);
+                ps.setObject(3, logEvent.message);
+                ps.setObject(4, allMessage);
+                int n = ps.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
+                try {
+                    instance.connection.conn.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            } finally {
+                try {
+                    instance.connection.conn.setAutoCommit(true);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
