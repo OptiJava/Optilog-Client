@@ -13,20 +13,26 @@ public class MySQL {
     public volatile boolean sendToJdbc = false;
 
     @OnlyInInit
-    public static void initAppender(String url, String username, String password, Optilog instance) {
-        try (Statement statement = instance.connection.conn.createStatement()) {
-            statement.execute("CREATE TABLE logs (id BIGINT AUTO_INCREMENT NOT NULL, lvl VARCHAR(10) NOT NULL, class VARCHAR(100) NOT NULL, message VARCHAR(900) NOT NULL, AllMessage VARCHAR(90000) NOT NULL, PRIMARY KEY(id)) Engine=INNODB DEFAULT CHARSET=UTF8;");
-            instance.connection.conn = DriverManager.getConnection(url, username, password);
+    public static void initAppender(String url, String username, String password, String dataBaseName, Optilog instance) {
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            instance.connection.conn = conn;
+            try (Statement statement = instance.connection.conn.createStatement()) {
+                statement.execute("USE " + dataBaseName);
+                statement.execute("CREATE TABLE IF NOT EXISTS logs (id BIGINT AUTO_INCREMENT NOT NULL, lvl VARCHAR(5) NOT NULL, class VARCHAR(20) NOT NULL, message VARCHAR(900) NOT NULL, AllMessage VARCHAR(2000) NOT NULL, PRIMARY KEY(id)) Engine=INNODB DEFAULT CHARSET=UTF8;");
+                instance.connection.conn = DriverManager.getConnection(url, username, password);
+            } catch (SQLException e) {
+                instance.connection = null;
+                e.printStackTrace();
+            }
         } catch (SQLException e) {
-            instance.connection = null;
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     @OnlyInLog
     public static void logAppender(LogEvent logEvent, String clazz, String allMessage, Optilog instance) {
         try (PreparedStatement ps = instance.connection.conn.prepareStatement("INSERT INTO logs (lvl, class, message, AllMessage) VALUES (?,?,?,?)")) {
-            instance.connection.conn.setAutoCommit(false);
+            //instance.connection.conn.setAutoCommit(false);
             ps.setObject(1, logEvent.level);
             ps.setObject(2, clazz);
             ps.setObject(3, logEvent.message);

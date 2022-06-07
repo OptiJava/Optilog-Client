@@ -1,8 +1,12 @@
 package com.optilog;
 
+import com.optilog.log.Log;
+
 public class Test {
     public static void main(String[] args) {
-        // jdbc
+        Log log = Log.initLog("");
+        log.startSendToJdbc("jdbc:mysql://localhost:3307", "logs", "root", "");
+        log.info("First JDBC Log!");
     }
 }
 

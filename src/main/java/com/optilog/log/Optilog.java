@@ -18,7 +18,7 @@ public class Optilog implements Log {
     public volatile DatagramSocket socket;
     public volatile boolean consoleFileMasterCaution = true;
 
-    public volatile MySQL connection;
+    public volatile MySQL connection = new MySQL();
 
     public volatile SettingFiles allSetting;
 
@@ -898,9 +898,9 @@ public class Optilog implements Log {
     }
 
     @Override
-    public void startSendToJdbc(String url, String username, String password) {
+    public void startSendToJdbc(String url, String dataBaseName, String username, String password) {
         this.connection.sendToJdbc = true;
-        MySQL.initAppender(url, username, password, this);
+        MySQL.initAppender(url, username, password, dataBaseName, this);
     }
 
     @Override
