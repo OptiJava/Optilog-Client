@@ -59,7 +59,7 @@ configuration files will be added later(Yaml was supported at latest commit)
 
 # Defects of optilog
 
-1. No JDBC support
+1. No JDBC support <- On 2022/6/7,Optilog can send log to DataBase,Optilog already support jdbc!!!
 
 # Optilog log picture:
 
