@@ -898,6 +898,12 @@ public class Optilog implements Log {
     }
 
     @Override
+    public void startSendToJdbc(String url, String username, String password) {
+        this.connection.sendToJdbc = true;
+        MySQL.initAppender(url, username, password, this);
+    }
+
+    @Override
     public void getAllField(Object instance) {
         final StringBuilder str = new StringBuilder();
         str.append("\n").append(instance.getClass()).append(" -> ").append(instance).append(":\n");

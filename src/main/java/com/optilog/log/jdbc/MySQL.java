@@ -24,15 +24,27 @@ public class MySQL {
     }
 
     @OnlyInLog
-    public static void logAppender(LogEvent logEvent, String clazz, String previousMessage, Optilog instance) {
-        try (PreparedStatement ps = instance.connection.conn.prepareStatement("INSERT INTO students (lvl, class, message, AllMessage) VALUES (?,?,?,?)")) {
-            ps.setObject(1, logEvent.level); // 注意：索引从1开始
-            ps.setObject(2, clazz); // grade
-            ps.setObject(3, previousMessage);
-            ps.setObject(4, logEvent.message); // gender
-            int n = ps.executeUpdate(); // 1
+    public static void logAppender(LogEvent logEvent, String clazz, String allMessage, Optilog instance) {
+        try (PreparedStatement ps = instance.connection.conn.prepareStatement("INSERT INTO logs (lvl, class, message, AllMessage) VALUES (?,?,?,?)")) {
+            instance.connection.conn.setAutoCommit(false);
+            ps.setObject(1, logEvent.level);
+            ps.setObject(2, clazz);
+            ps.setObject(3, logEvent.message);
+            ps.setObject(4, allMessage);
+            int n = ps.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            try {
+                instance.connection.conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } finally {
+            try {
+                instance.connection.conn.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.optilog.log;
 
 import com.optilog.log.client.Client;
+import com.optilog.log.jdbc.MySQL;
 import com.optilog.util.OnlyInLog;
 import com.optilog.util.Util;
 
@@ -157,5 +158,10 @@ public class Send {
             String finalMessage = le.message;
             Client.logAppender(finalMessage + le.level.getName(), instance);
         }
+    }
+
+    @OnlyInLog
+    void loggerToJdbc(LogEvent le, final Optilog instance) {
+        MySQL.logAppender(le, Thread.currentThread().getStackTrace()[4].getClassName(), Packing.packMessage(le.message, le.level.getName(), instance), instance);
     }
 }

@@ -167,6 +167,8 @@ public interface Log {
 
     void setServerFatal(boolean serverFatal);
 
+    void startSendToJdbc(String url, String username, String password);
+
     void getAllField(Object instance);
 
     void log(Object obj, LevelBuild levelBuild);
