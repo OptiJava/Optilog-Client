@@ -15,6 +15,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Optilog implements Log {
+    public volatile LogState logState = new LogState();
+
     public volatile DatagramSocket socket;
     public volatile boolean consoleFileMasterCaution = true;
 

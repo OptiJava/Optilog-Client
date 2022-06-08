@@ -13,6 +13,8 @@ public class Logger {
 
     @OnlyInLog
     void logInfo(LogEvent le, Optilog instance) {
+        instance.logState.allLogCount++;
+        instance.logState.infoLogCount++;
         if (instance.allSetting.printInfo) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -32,6 +34,8 @@ public class Logger {
 
     @OnlyInLog
     void logError(LogEvent le, Optilog instance) {
+        instance.logState.allLogCount++;
+        instance.logState.errorLogCount++;
         if (instance.allSetting.printError) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -51,6 +55,8 @@ public class Logger {
 
     @OnlyInLog
     void logWarn(LogEvent le, Optilog instance) {
+        instance.logState.allLogCount++;
+        instance.logState.warnLogCount++;
         if (instance.allSetting.printWarn) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -70,6 +76,8 @@ public class Logger {
 
     @OnlyInLog
     void logDebug(LogEvent le, Optilog instance) {
+        instance.logState.allLogCount++;
+        instance.logState.debugLogCount++;
         if (instance.allSetting.printDebug) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -89,6 +97,8 @@ public class Logger {
 
     @OnlyInLog
     void logFatal(LogEvent le, Optilog instance) {
+        instance.logState.allLogCount++;
+        instance.logState.fatalLogCount++;
         if (instance.allSetting.printFatal) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -108,6 +118,7 @@ public class Logger {
 
     @OnlyInLog
     static void logCommand(String command, Optilog instance) {
+        instance.logState.commandCount++;
         if (command.equals("%stop -client")) {
             Client.stop(instance);
         } else if (command.startsWith("%zip -d")) {
