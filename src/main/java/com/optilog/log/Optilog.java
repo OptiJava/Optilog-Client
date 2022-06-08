@@ -911,6 +911,66 @@ public class Optilog implements Log {
     }
 
     @Override
+    public int getAllLogCount() {
+        return this.logState.allLogCount;
+    }
+
+    @Override
+    public int getInfoLogCount() {
+        return this.logState.infoLogCount;
+    }
+
+    @Override
+    public int getErrorLogCount() {
+        return this.logState.errorLogCount;
+    }
+
+    @Override
+    public int getWarnLogCount() {
+        return this.logState.warnLogCount;
+    }
+
+    @Override
+    public int getDebugLogCount() {
+        return this.logState.debugLogCount;
+    }
+
+    @Override
+    public int getFatalLogCount() {
+        return this.logState.fatalLogCount;
+    }
+
+    @Override
+    public int getCommandCount() {
+        return this.logState.commandCount;
+    }
+
+    @Override
+    public String getInfoProportion() {
+        return (((double) this.logState.infoLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
+    }
+
+    @Override
+    public String getErrorProportion() {
+        return (((double) this.logState.errorLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
+    }
+
+    @Override
+    public String getWarnProportion() {
+        return (((double) this.logState.warnLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
+    }
+
+    @Override
+    public String getDebugProportion() {
+        return (((double) this.logState.debugLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
+    }
+
+    @Override
+    public String getFatalProportion() {
+        return (((double) this.logState.fatalLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
+    }
+
+    @Override
     public void getAllField(Object instance) {
         final StringBuilder str = new StringBuilder();
         str.append("\n").append(instance.getClass()).append(" -> ").append(instance).append(":\n");

@@ -9,12 +9,6 @@ public interface Log {
         return optilog;
     }
 
-    static Optilog reInitLog(String pathOfSettingFile) {
-        Optilog optilog = new Optilog(pathOfSettingFile);
-        Optilog.initLog(pathOfSettingFile, optilog);
-        return optilog;
-    }
-
     void info();
 
     void info(Object msg, Object... occupy);
@@ -170,6 +164,30 @@ public interface Log {
     void startSendToJdbc(String url, String dataBaseName, String username, String password);
 
     void stopSendToJdbc(String url, String dataBaseName, String username, String password);
+
+    int getAllLogCount();
+
+    int getInfoLogCount();
+
+    int getErrorLogCount();
+
+    int getWarnLogCount();
+
+    int getDebugLogCount();
+
+    int getFatalLogCount();
+
+    int getCommandCount();
+
+    String getInfoProportion();
+
+    String getErrorProportion();
+
+    String getWarnProportion();
+
+    String getDebugProportion();
+
+    String getFatalProportion();
 
     void getAllField(Object instance);
 

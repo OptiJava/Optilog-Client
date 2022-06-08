@@ -4,7 +4,7 @@
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 [![Languege](https://img.shields.io/badge/Language-EnglishPage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
-_截止目前，Optilog代码总量3012行！_
+_截止目前，Optilog代码总量3160行！_
 
 **_See English README.md page in [English Page](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)_**
 
