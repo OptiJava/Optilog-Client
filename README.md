@@ -3,12 +3,10 @@
 ![Build](https://img.shields.io/badge/Build-Passing-green)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 
-[![Languege](https://img.shields.io/badge/Language-EnglishPage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
-| [![Languege](https://img.shields.io/badge/Language-ChinesePage-green)](https://github.com/OptiJava/Optilog-Client/blob/master/README.md)
+[中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md) |
+[English](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
 _截止目前，Optilog代码总量3262行！_
-
-**_See English README.md page in [English Page](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)_**
 
 这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)
 
@@ -18,11 +16,7 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献~~包括不会编程的人，因为他们可以写教程~~_
 
-# 注意事项：
-
-**一整个java项目建议全程只用一个初始化出来的实例，不然会出bug**
-
-# Optilog的优势
+## Optilog的优势
 
 1.性能高:在初始化后，再输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端） 最快只需要8毫秒（后续还会再优化），log4j至少41毫秒
 
@@ -48,26 +42,28 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 12.Optilog支持在运行期修改配置，当然只能修改true和false的一些配置项，输出文件路径什么的不能修改
 
-# Optilog的缺陷
+## Optilog的缺陷
 
 1.没有对jdbc的支持  <-在2022/6/7最新的提交中，已经新增了将日志输出到DataBase的支持~~你们肯定不知道我装mysql装了5遍才成功~~
 
-# Optilog输出日志预览：
+## Optilog输出日志预览：
 
 ![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
+_使用[carbon.now.sh](https://carbon.now.sh)生成_
 
-# Dependency:
+## Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `org.yaml-1.30`（如果你只用properties作为配置文件的话Gson，Jackson，snakeyaml也可以不加)
+`com.google.code.gson:gson:2.9.0` `com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3` `org.yaml:snakeyaml:1.30` `mysql:mysql-connector-java:8.0.29`
+（如果你只用properties作为配置文件的话Gson，Jackson，snakeyaml也可以不加，mysql不用也可以不加)
 
-# Author:
+## Author:
 
 `OptiJava`
 
-# Contributor:
+## Contributor:
 
 `JavaUserO`
 
-# 未来计划
+## 未来计划
 
 实现远程调用

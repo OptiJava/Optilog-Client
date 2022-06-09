@@ -1,10 +1,10 @@
-# Optilog
+# [Optilog-Client](https://github.com/OptiJava/Optilog-Client)
 
 ![Build](https://img.shields.io/badge/Build-Passing-green)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 
-[![Languege](https://img.shields.io/badge/Language-EnglishPage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
-| [![Languege](https://img.shields.io/badge/Language-ChinesePage-green)](https://github.com/OptiJava/Optilog-Client/blob/master/README.md)
+[中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md) |
+[English](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
 **This is an open source logging framework written in java. Optilog has
 more [advantages](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF) than other open source
@@ -18,12 +18,7 @@ project [wiki](https://github.com/OptiJava/Optilog-Client/wiki) before use Optil
 If you like, you are welcome to contribute to Optilog through fork. The code of this project is quite basic. Anyone can
 contribute.
 
-# Precautions:
-
-For a whole java project, it is recommended to use only one initialized instance in the whole process, otherwise there
-will be a bug! (see wiki for details)(expect when you need change setting file)
-
-# Optilog advantages
+## Optilog advantages
 
 1.High performance: After initialization log, output a log (output to the screen + output to a file + output to the
 server through socket) only takes 8 milliseconds at most (it will be optimized later), and log4j takes at least 41
@@ -57,27 +52,29 @@ examples
 11.Support configuration files in multiple formats, including JSON,YAML, XML and properties. Support for toml
 configuration files will be added later
 
-# Defects of optilog
+## Defects of optilog
 
 1. No JDBC support <- On 2022/6/7,Optilog can send log to DataBase,Optilog already support jdbc!!!
 
-# Optilog log picture:
+## Optilog log picture:
 
 ![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
+_Generate by [carbon.now.sh](https://carbon.now.sh)_
 
-# Dependency:
+## Dependency:
 
-`Gson-2.9.0` `jackson-dataformat-xml-2.13.3` `snakeyaml-1.30`(You needn't add dependency if you don't use these
+`com.google.code.gson:gson:2.9.0` `com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3` `org.yaml:snakeyaml:1.30` `mysql:mysql-connector-java:8.0.29`(
+You needn't add dependency if you don't use these
 function.)
 
-# Author:
+## Author:
 
 OptiJava
 
-# Contributor:
+## Contributor:
 
 JavauserO
 
-# Future plans
+## Future plans
 
 realize remote call
