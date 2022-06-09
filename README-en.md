@@ -14,7 +14,7 @@ project [wiki](https://github.com/OptiJava/Optilog-Client/wiki) before use Optil
 [OptilogServer](https://github.com/OptiJava/Optilog-Server) matched with this(OptilogClient). See wiki for details.
 
 If you like, you are welcome to contribute to Optilog through fork. The code of this project is quite basic. Anyone can
-contribute. ~~Including those who can't coding, because they can write tutorial~~
+contribute. 
 
 # Precautions:
 
@@ -36,8 +36,7 @@ configuration files are supported. In log4j, the configuration file can only be 
 log4j2 XML
 
 4.Support the client to send logs to the server(See details in [wiki](https://github.com/OptiJava/Optilog-Client/wiki)'
-s 'use
-OptilogServer' Page,Download OptilogServer in [OptilogServer](https://github.com/OptiJava/Optilog-Server))
+s 'use OptilogServer' Page,Download OptilogServer in [OptilogServer](https://github.com/OptiJava/Optilog-Server))
 
 5.All possible exceptions in optilog are captured without affecting the main logic
 
@@ -54,8 +53,8 @@ determine this information internally, and there is no need to write the class i
 10.Optilog can directly generate a default configuration file. Beginners do not need to look for configuration file
 examples
 
-11.Support configuration files in multiple formats, including JSON, XML and properties. Support for toml
-configuration files will be added later(Yaml was supported at latest commit)
+11.Support configuration files in multiple formats, including JSON,YAML, XML and properties. Support for toml
+configuration files will be added later
 
 # Defects of optilog
 
