@@ -16,8 +16,8 @@ public class Assert {
     }
 
     public static void assertEquals(Object value, Object assertValue) {
-        if (Objects.equals(value, assertValue)) {
-            
+        if (!Objects.equals(value, assertValue)) {
+            throw new AssertionError("Assert failed:expect " + assertValue + " but actually " + value);
         }
     }
 }
