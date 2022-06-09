@@ -36,13 +36,13 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 7.适用于初学者，没有复杂的配置文件
 
-8.需要的依赖少，只有一个Gson2.9.0和jackson-format-xml(Tomcat依赖如果你不用的话可以没有，如果你只用properties作为配置文件的话Gson和Jackson也可以不加)
+8.需要的依赖少，只有一个Gson2.9.0和jackson-format-xml(如果你只用properties作为配置文件的话Gson和Jackson也可以不加)
 
 9.日志中输出的Class、Method等信息是绝对准确的，因为Optilog内部使用StackTrace确定这些信息，并且无需在初始化日志时写入Class实例
 
 10.Optilog可以直接生成一个默认的配置文件，初学者不用找配置文件范例
 
-11.支持多种格式的配置文件，包括json,xml和properties，后续还会增加对toml配置文件的支持（在最新的提交中，OptilogClient已经支持yaml格式配置文件，使用还是看wiki）
+11.支持多种格式的配置文件，包括json,yaml,xml和properties，后续还会增加对toml配置文件的支持
 
 12.Optilog支持在运行期修改配置，当然只能修改true和false的一些配置项，输出文件路径什么的不能修改
 
@@ -51,8 +51,6 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 1.没有对jdbc的支持  <-在2022/6/7最新的提交中，已经新增了将日志输出到DataBase的支持~~你们肯定不知道我装mysql装了5遍才成功~~
 
 # Optilog输出日志预览：
-
-~~"输出十分整齐"~~
 ![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
 
 # Dependency:
