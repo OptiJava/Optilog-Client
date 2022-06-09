@@ -14,7 +14,7 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server).
 
-_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献~~包括不会编程的人，因为他们可以写教程~~_
+_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献
 
 ## Optilog的优势
 
