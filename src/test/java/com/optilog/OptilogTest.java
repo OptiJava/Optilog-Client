@@ -7,7 +7,6 @@ import com.optilog.log.Log;
 public class OptilogTest {
     public static void main(String[] args) {
         Log log = Log.initLog("%yaml -cp /Settings.yaml");
-
         log.info("---常规输出测试---");
         log.info("info" + new Object());
         log.error("error");

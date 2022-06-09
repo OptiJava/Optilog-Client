@@ -2,9 +2,11 @@
 
 ![Build](https://img.shields.io/badge/Build-Passing-green)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
-[![Languege](https://img.shields.io/badge/Language-EnglishPage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
-_截止目前，Optilog代码总量3160行！_
+[![Languege](https://img.shields.io/badge/Language-EnglishPage-red)](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
+| [![Languege](https://img.shields.io/badge/Language-ChinesePage-green)](https://github.com/OptiJava/Optilog-Client/blob/master/README.md)
+
+_截止目前，Optilog代码总量3262行！_
 
 **_See English README.md page in [English Page](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)_**
 
@@ -12,13 +14,13 @@ _截止目前，Optilog代码总量3160行！_
 
 Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
-与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server)，具体怎么用去看wiki.
+与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server).
 
 _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献~~包括不会编程的人，因为他们可以写教程~~_
 
 # 注意事项：
 
-**一整个java项目建议全程只用一个初始化出来的实例，不然会出bug...**
+**一整个java项目建议全程只用一个初始化出来的实例，不然会出bug**
 
 # Optilog的优势
 
@@ -51,6 +53,7 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 1.没有对jdbc的支持  <-在2022/6/7最新的提交中，已经新增了将日志输出到DataBase的支持~~你们肯定不知道我装mysql装了5遍才成功~~
 
 # Optilog输出日志预览：
+
 ![image](https://user-images.githubusercontent.com/106148777/170864247-7da18dd5-f5b9-4e5c-aee7-4174d29a8969.png)
 
 # Dependency:
@@ -67,4 +70,4 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 # 未来计划
 
-1.实现远程调用
+实现远程调用
