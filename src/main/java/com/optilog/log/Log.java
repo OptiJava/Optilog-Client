@@ -1,11 +1,21 @@
 package com.optilog.log;
 
+import com.optilog.annotation.AnnotationProcessor;
 import com.optilog.util.LambdaExecute;
 
 public interface Log {
     static Optilog initLog(String pathOfSettingFile) {
         Optilog optilog = new Optilog(pathOfSettingFile);
         Optilog.initLog(pathOfSettingFile, optilog);
+        return optilog;
+    }
+
+    static Optilog initLog(String pathOfSettingFile, boolean checkOptilogAnnotation) {
+        Optilog optilog = new Optilog(pathOfSettingFile);
+        Optilog.initLog(pathOfSettingFile, optilog);
+        if (checkOptilogAnnotation) {
+            AnnotationProcessor.process();
+        }
         return optilog;
     }
 
