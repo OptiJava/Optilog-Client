@@ -2,22 +2,31 @@ package com.optilog.log;
 
 import com.optilog.annotation.AnnotationProcessor;
 import com.optilog.util.LambdaExecute;
+import com.optilog.util.Util;
 
-public interface Log {
-    static Optilog initLog(String pathOfSettingFile) {
+public interface Log extends IOptilog {
+    static Log initLog(String pathOfSettingFile) {
+        if (Util.addon != null) {
+            return Util.addon;
+        }
         Optilog optilog = new Optilog(pathOfSettingFile);
-        Optilog.initLog(pathOfSettingFile, optilog);
+        optilog.logPreparer(pathOfSettingFile, optilog);
         return optilog;
     }
 
-    static Optilog initLog(String pathOfSettingFile, boolean checkOptilogAnnotation) {
+    static Log initLog(String pathOfSettingFile, boolean checkOptilogAnnotation) {
+        if (Util.addon != null) {
+            return Util.addon;
+        }
         Optilog optilog = new Optilog(pathOfSettingFile);
-        Optilog.initLog(pathOfSettingFile, optilog);
+        optilog.logPreparer(pathOfSettingFile, optilog);
         if (checkOptilogAnnotation) {
             AnnotationProcessor.process();
         }
         return optilog;
     }
+
+    void logPreparer(String settingFilePath, Optilog instance);
 
     void info();
 

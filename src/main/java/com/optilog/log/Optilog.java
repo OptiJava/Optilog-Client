@@ -37,8 +37,9 @@ public class Optilog implements Log {
         this.settingFilePath = s;
     }
 
+    @Override
     @OnlyInInit
-    public static void initLog(String settingFilePath, Optilog instance) {
+    public void logPreparer(String settingFilePath, Optilog instance) {
         if (settingFilePath.isBlank()) {
             instance.consoleFileMasterCaution = false;
         }
