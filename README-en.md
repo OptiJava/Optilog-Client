@@ -41,7 +41,7 @@ adding dozens of jar packages at once when using gradle)
 
 7.Suitable for beginners without complex configuration files
 
-8.There are few dependencies, only one Gson2.9.0 and Jackson format XML
+8.There are few dependencies
 
 9.Class, method and other information output in the log is absolutely accurate, because optilog uses stacktrace to
 determine this information internally, and there is no need to write the class instance when initializing the log
