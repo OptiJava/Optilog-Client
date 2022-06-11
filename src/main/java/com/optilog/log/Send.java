@@ -30,7 +30,7 @@ public class Send {
     void loggerConsole(LogEvent le, Optilog instance) {
         String s = Packing.packMessage(le.message, le.level.getName(), instance);
         try {
-            new Thread(() -> {
+            Thread thread = new Thread(() -> {
                 if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank()) {
                     try {
                         synchronized (Send.INSTANCE) {
@@ -133,7 +133,9 @@ public class Send {
                         }
                     }
                 }
-            }).start();
+            });
+            thread.setName("Optilog Logging Thread");
+            thread.start();
         } catch (Exception e) {
             instance.consoleFileMasterCaution = false;
             instance.error("Optilog Note:Java throws Exception when log is output", e);
