@@ -14,7 +14,7 @@ Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看
 
 与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server).
 
-_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献
+_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献_
 
 ## Optilog的优势
 
@@ -53,7 +53,14 @@ _使用[carbon.now.sh](https://carbon.now.sh)生成_
 
 ## Dependency:
 
-`com.google.code.gson:gson:2.9.0` `com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3` `org.yaml:snakeyaml:1.30` `mysql:mysql-connector-java:8.0.29`
+`com.google.code.gson:gson:2.9.0`
+\
+`com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3`
+\
+`org.yaml:snakeyaml:1.30`
+\
+`mysql:mysql-connector-java:8.0.29`
+\
 （如果你只用properties作为配置文件的话Gson，Jackson，snakeyaml也可以不加，mysql不用也可以不加)
 
 ## Author:
