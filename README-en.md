@@ -15,8 +15,8 @@ project [wiki](https://github.com/OptiJava/Optilog-Client/wiki) before use Optil
 
 [OptilogServer](https://github.com/OptiJava/Optilog-Server) matched with OptilogClient. See wiki for details.
 
-If you like, you are welcome to contribute to Optilog through fork. The code of this project is quite basic. Anyone can
-contribute.
+_If you like, you are welcome to contribute to Optilog through fork. The code of this project is quite basic. Anyone can
+contribute._
 
 ## Optilog advantages
 
@@ -29,32 +29,32 @@ supports 9 placeholders.
 
 3.The configuration file can be placed in any location. The name of the configuration file is unlimited. Two types of
 configuration files are supported. In log4j, the configuration file can only be in classpath and the name can only be
-log4j2 XML
+log4j2 XML.
 
-4.Support the client to send logs to the server(See details in [wiki](https://github.com/OptiJava/Optilog-Client/wiki)'
-s 'use OptilogServer' Page,Download OptilogServer in [OptilogServer](https://github.com/OptiJava/Optilog-Server))
+4.Support the client to send logs to the server(See details in [wiki](https://github.com/OptiJava/Optilog-Client/wiki)
+Download OptilogServer in [OptilogServer](https://github.com/OptiJava/Optilog-Server)).
 
-5.All possible exceptions in optilog are captured without affecting the main logic
+5.All possible exceptions in optilog are captured without affecting the main logic.
 
 6.You only need one jar package, and you can use it directly by typing in the classpath (I don't know the feeling of
-adding dozens of jar packages at once when using gradle)
+adding dozens of jar packages at once when using gradle).
 
-7.Suitable for beginners without complex configuration files
+7.Suitable for beginners without complex configuration files.
 
-8.There are few dependencies
+8.There are few dependencies.
 
 9.Class, method and other information output in the log is absolutely accurate, because optilog uses stacktrace to
-determine this information internally, and there is no need to write the class instance when initializing the log
+determine this information internally, and there is no need to write the class instance when initializing the log.
 
 10.Optilog can directly generate a default configuration file. Beginners do not need to look for configuration file
-examples
+examples.
 
 11.Support configuration files in multiple formats, including JSON,YAML, XML and properties. Support for toml
-configuration files will be added later
+configuration files will be added later.
 
-## Defects of optilog
+## Defects of Optilog
 
-1. No JDBC support <- On 2022/6/7,Optilog can send log to DataBase,Optilog already support jdbc!!!
+1. No JDBC support <- On 2022/6/7,Optilog can send log to DataBase,Optilog already support send log to jdbc
 
 ## Optilog log picture:
 
@@ -63,9 +63,15 @@ _Generate by [carbon.now.sh](https://carbon.now.sh)_
 
 ## Dependency:
 
-`com.google.code.gson:gson:2.9.0` `com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3` `org.yaml:snakeyaml:1.30` `mysql:mysql-connector-java:8.0.29`(
-You needn't add dependency if you don't use these
-function.)
+`com.google.code.gson:gson:2.9.0`
+\
+`com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3`
+\
+`org.yaml:snakeyaml:1.30` `mysql:mysql-connector-java:8.0.29`
+\
+`mysql:mysql-connector-java:8.0.29`
+\
+(You needn't add dependency if you don't use these function.)
 
 ## Author:
 
