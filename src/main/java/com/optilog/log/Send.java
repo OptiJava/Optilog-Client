@@ -158,7 +158,11 @@ public class Send {
         synchronized (Send.INSTANCE) {
             le.message = Packing.packMessage(le.message, le.level.getName(), instance);
             String finalMessage = le.message;
-            Client.logAppender(finalMessage + le.level.getName(), instance);
+            if (le.marker != LogMark.NONE) {
+                Client.logAppender(finalMessage + le.marker.getName(), instance);
+            } else {
+                Client.logAppender(finalMessage + le.level.getName(), instance);
+            }
         }
     }
 
