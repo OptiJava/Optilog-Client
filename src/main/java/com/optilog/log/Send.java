@@ -142,6 +142,7 @@ public class Send {
         }
     }
 
+    @OnlyInLog
     private static void outputFile(Optilog instance, String s) {
         try {
             synchronized (Send.INSTANCE) {

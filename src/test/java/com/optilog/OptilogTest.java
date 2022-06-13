@@ -23,6 +23,10 @@ public class OptilogTest {
         log.debug("#1", () -> "de");
         log.log("t!e!s!t！", new LevelBuild("test", Level.INFO));
         test(log);
+        log.setBeforeEach("[LogStart]");
+        log.setAfterEach("[LogEnd]");
+        log.setErrorBefore("[Error]");
+        log.error("Log");
         //打包日志
         //log.command("%zip -d D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs");
     }
@@ -35,7 +39,7 @@ public class OptilogTest {
         System.out.println(log.getAllLogCount());
 
         //重新获得实例
-        Log log2 = Log.initLog("%yaml -cp /Settings.yaml");
+        Log log2 = Log.initLog("");
         log2.info("log2");
     }
 }

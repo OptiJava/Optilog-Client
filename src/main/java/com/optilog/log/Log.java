@@ -210,6 +210,30 @@ public interface Log extends IOptilog {
 
     void getAllField(Object instance);
 
+    void setInfoBefore(String s);
+
+    void setErrorBefore(String s);
+
+    void setWarnBefore(String s);
+
+    void setDebugBefore(String s);
+
+    void setFatalBefore(String s);
+
+    void setInfoAfter(String s);
+
+    void setErrorAfter(String s);
+
+    void setWarnAfter(String s);
+
+    void setDebugAfter(String s);
+
+    void setFatalAfter(String s);
+
+    void setBeforeEach(String s);
+
+    void setAfterEach(String s);
+
     void log(Object obj, LevelBuild levelBuild);
 
     void log(Object x, LevelBuild levelBuild, Object... occupy);
