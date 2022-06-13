@@ -28,7 +28,7 @@ public class Send {
 
     @OnlyInLog
     void loggerConsole(LogEvent le, Optilog instance) {
-        String s = Packing.packMessage(le.message, le.level.getName(), instance);
+        final String s = Packing.packMessage(le.message, le.level.getName(), instance);
         try {
             Thread thread = new Thread(() -> {
                 if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank()) {
@@ -43,7 +43,14 @@ public class Send {
                     return;
                 }
                 if (instance.consoleFileMasterCaution & Level.ERROR.getName().equals(le.level.getName()) & !instance.error.isBlank()) {
-                    outputFile(instance, s);
+                    try {
+                        synchronized (Send.INSTANCE) {
+                            Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        }
+                    } catch (IOException e) {
+                        instance.consoleFileMasterCaution = false;
+                        instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    }
                     return;
                 }
                 if (instance.consoleFileMasterCaution & Level.DEBUG.getName().equals(le.level.getName()) & !instance.debug.isBlank()) {
@@ -81,56 +88,62 @@ public class Send {
                     }
                     return;
                 }
-                if (instance.consoleFileMasterCaution) {
-                    if (le.marker == LogMark.TEMPLATEInfo) {
-                        try {
-                            synchronized (Send.INSTANCE) {
-                                Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
-                            }
-                        } catch (IOException e) {
-                            instance.consoleFileMasterCaution = false;
-                            instance.error("Optilog Note:Java throws Exception when log is output", e);
+                // Marker runner
+                if (le.marker == LogMark.TEMPLATEInfo) {
+                    try {
+                        synchronized (Send.INSTANCE) {
+                            Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
                         }
-                        return;
+                    } catch (IOException e) {
+                        instance.consoleFileMasterCaution = false;
+                        instance.error("Optilog Note:Java throws Exception when log is output", e);
                     }
+                    return;
+                }
 
-                    if (le.marker == LogMark.TEMPLATEError) {
-                        outputFile(instance, s);
-                    }
-
-                    if (le.marker == LogMark.TEMPLATEWarn) {
-                        try {
-                            synchronized (Send.INSTANCE) {
-                                Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
-                            }
-                        } catch (IOException e) {
-                            instance.consoleFileMasterCaution = false;
-                            instance.error("Optilog Note:Java throws Exception when log is output", e);
+                if (le.marker == LogMark.TEMPLATEError) {
+                    try {
+                        synchronized (Send.INSTANCE) {
+                            Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
                         }
-                        return;
+                    } catch (IOException e) {
+                        instance.consoleFileMasterCaution = false;
+                        instance.error("Optilog Note:Java throws Exception when log is output", e);
                     }
+                }
 
-                    if (le.marker == LogMark.TEMPLATEDebug) {
-                        try {
-                            synchronized (Send.INSTANCE) {
-                                Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
-                            }
-                        } catch (IOException e) {
-                            instance.consoleFileMasterCaution = false;
-                            instance.error("Optilog Note:Java throws Exception when log is output", e);
+                if (le.marker == LogMark.TEMPLATEWarn) {
+                    try {
+                        synchronized (Send.INSTANCE) {
+                            Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
                         }
-                        return;
+                    } catch (IOException e) {
+                        instance.consoleFileMasterCaution = false;
+                        instance.error("Optilog Note:Java throws Exception when log is output", e);
                     }
+                    return;
+                }
 
-                    if (le.marker == LogMark.TEMPLATEFatal) {
-                        try {
-                            synchronized (Send.INSTANCE) {
-                                Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
-                            }
-                        } catch (IOException e) {
-                            instance.consoleFileMasterCaution = false;
-                            instance.error("Optilog Note:Java throws Exception when log is output", e);
+                if (le.marker == LogMark.TEMPLATEDebug) {
+                    try {
+                        synchronized (Send.INSTANCE) {
+                            Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
                         }
+                    } catch (IOException e) {
+                        instance.consoleFileMasterCaution = false;
+                        instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    }
+                    return;
+                }
+
+                if (le.marker == LogMark.TEMPLATEFatal) {
+                    try {
+                        synchronized (Send.INSTANCE) {
+                            Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        }
+                    } catch (IOException e) {
+                        instance.consoleFileMasterCaution = false;
+                        instance.error("Optilog Note:Java throws Exception when log is output", e);
                     }
                 }
             });
@@ -142,16 +155,6 @@ public class Send {
         }
     }
 
-    private static void outputFile(Optilog instance, String s) {
-        try {
-            synchronized (Send.INSTANCE) {
-                Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
-            }
-        } catch (IOException e) {
-            instance.consoleFileMasterCaution = false;
-            instance.error("Optilog Note:Java throws Exception when log is output", e);
-        }
-    }
 
     @OnlyInLog
     void loggerToServer(LogEvent le, final Optilog instance) {

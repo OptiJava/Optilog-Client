@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 public class Optilog implements Log {
     public volatile LogState logState = new LogState();
 
+    public volatile BeforeAndAfter baaLog = new BeforeAndAfter();
+
     public volatile DatagramSocket socket;
     public volatile boolean consoleFileMasterCaution = true;
 
@@ -984,6 +986,66 @@ public class Optilog implements Log {
             }
         }
         this.info(str.append("end").toString());
+    }
+
+    @Override
+    public void setInfoBefore(String s) {
+        this.baaLog.beforeInfo = s;
+    }
+
+    @Override
+    public void setErrorBefore(String s) {
+        this.baaLog.beforeError = s;
+    }
+
+    @Override
+    public void setWarnBefore(String s) {
+        this.baaLog.beforeWarn = s;
+    }
+
+    @Override
+    public void setDebugBefore(String s) {
+        this.baaLog.beforeDebug = s;
+    }
+
+    @Override
+    public void setFatalBefore(String s) {
+        this.baaLog.beforeFatal = s;
+    }
+
+    @Override
+    public void setInfoAfter(String s) {
+        this.baaLog.afterInfo = s;
+    }
+
+    @Override
+    public void setErrorAfter(String s) {
+        this.baaLog.afterError = s;
+    }
+
+    @Override
+    public void setWarnAfter(String s) {
+        this.baaLog.afterWarn = s;
+    }
+
+    @Override
+    public void setDebugAfter(String s) {
+        this.baaLog.afterDebug = s;
+    }
+
+    @Override
+    public void setFatalAfter(String s) {
+        this.baaLog.afterFatal = s;
+    }
+
+    @Override
+    public void setBeforeEach(String s) {
+        this.baaLog.beforeEach = s;
+    }
+
+    @Override
+    public void setAfterEach(String s) {
+        this.baaLog.afterEach = s;
     }
 
     @Override

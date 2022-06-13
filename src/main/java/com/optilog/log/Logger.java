@@ -15,6 +15,11 @@ public class Logger {
     void logInfo(LogEvent le, Optilog instance) {
         instance.logState.allLogCount++;
         instance.logState.infoLogCount++;
+
+        synchronized (this) {
+            le.message = instance.baaLog.getInfoBefore() + le.message + instance.baaLog.getInfoAfter();
+        }
+
         if (instance.allSetting.printInfo) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -36,6 +41,11 @@ public class Logger {
     void logError(LogEvent le, Optilog instance) {
         instance.logState.allLogCount++;
         instance.logState.errorLogCount++;
+
+        synchronized (this) {
+            le.message = instance.baaLog.getErrorBefore() + le.message + instance.baaLog.getErrorAfter();
+        }
+
         if (instance.allSetting.printError) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -57,6 +67,11 @@ public class Logger {
     void logWarn(LogEvent le, Optilog instance) {
         instance.logState.allLogCount++;
         instance.logState.warnLogCount++;
+
+        synchronized (this) {
+            le.message = instance.baaLog.getWarnBefore() + le.message + instance.baaLog.getWarnAfter();
+        }
+
         if (instance.allSetting.printWarn) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -78,6 +93,11 @@ public class Logger {
     void logDebug(LogEvent le, Optilog instance) {
         instance.logState.allLogCount++;
         instance.logState.debugLogCount++;
+
+        synchronized (this) {
+            le.message = instance.baaLog.getDebugBefore() + le.message + instance.baaLog.getDebugAfter();
+        }
+
         if (instance.allSetting.printDebug) {
             Send.INSTANCE.loggerPrint(le, instance);
         }
@@ -99,6 +119,11 @@ public class Logger {
     void logFatal(LogEvent le, Optilog instance) {
         instance.logState.allLogCount++;
         instance.logState.fatalLogCount++;
+
+        synchronized (this) {
+            le.message = instance.baaLog.getFatalBefore() + le.message + instance.baaLog.getFatalAfter();
+        }
+
         if (instance.allSetting.printFatal) {
             Send.INSTANCE.loggerPrint(le, instance);
         }

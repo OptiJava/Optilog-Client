@@ -7,8 +7,9 @@ public class LogEvent {
 
     public volatile Level level;
 
-    public volatile LogMark marker;
+    public volatile LogMark marker = LogMark.NONE;
 
+    @Deprecated
     @Override
     public String toString() {
         return this.level + " " + this.message;

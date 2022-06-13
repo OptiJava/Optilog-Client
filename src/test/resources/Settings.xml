@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Optilog>
-    <Print>
-        <info>true</info>
-        <Error>true</Error>
-        <Warn>true</Warn>
-        <debug>true</debug>
-        <Fatal>true</Fatal>
-    </Print>
-
-    <Console>
-        <defaultConsolePath>
-            D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs
-        </defaultConsolePath>
-        <fileName>%timeLog.log</fileName>
-
-        <info>true</info>
-        <Error>true</Error>
-        <Warn>true</Warn>
-        <debug>true</debug>
-        <Fatal>true</Fatal>
-    </Console>
-
-    <Server>
-        <info>true</info>
-        <Error>true</Error>
-        <Warn>true</Warn>
-        <debug>true</debug>
-        <Fatal>true</Fatal>
-
-        <startClient>true</startClient>
-        <socketNumber>65535</socketNumber>
-        <host>localhost</host>
-    </Server>
-
+    <printInfo>true</printInfo>
+    <printError>true</printError>
+    <printWarn>true</printWarn>
+    <printDebug>true</printDebug>
+    <printFatal>true</printFatal>
+    <consoleInfo>false</consoleInfo>
+    <consoleError>false</consoleError>
+    <consoleWarn>false</consoleWarn>
+    <consoleDebug>false</consoleDebug>
+    <consoleFatal>false</consoleFatal>
+    <infoSendToServer>false</infoSendToServer>
+    <errorSendToServer>false</errorSendToServer>
+    <warnSendToServer>false</warnSendToServer>
+    <debugSendToServer>false</debugSendToServer>
+    <fatalSendToServer>false</fatalSendToServer>
+    <startClient>false</startClient>
+    <defaultConsolePath>D:\Program\Project\resources\app\Git\Projects\Optilog-Client\src\test\resources\logs
+    </defaultConsolePath>
+    <fileName>%timeLog(Client).log</fileName>
+    <host>localhost</host>
+    <socketNumber>65535</socketNumber>
     <packingFormat>[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg</packingFormat>
 </Optilog>

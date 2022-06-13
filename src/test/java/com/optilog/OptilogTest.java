@@ -6,7 +6,7 @@ import com.optilog.log.Log;
 
 public class OptilogTest {
     public static void main(String[] args) {
-        Log log = Log.initLog("%xml -cp /Settings.xml");
+        Log log = Log.initLog("%yaml -cp /Settings.yaml");
         log.info("---常规输出测试---");
         log.info("info" + new Object());
         log.error("error");
@@ -35,7 +35,7 @@ public class OptilogTest {
         System.out.println(log.getAllLogCount());
 
         //重新获得实例
-        Log log2 = Log.initLog("%yaml -cp /Settings.yaml");
+        Log log2 = Log.initLog("");
         log2.info("log2");
     }
 }
