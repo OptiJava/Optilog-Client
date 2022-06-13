@@ -20,15 +20,15 @@ public class Send {
     void loggerPrint(LogEvent le, Optilog instance) {
         synchronized (Send.INSTANCE) {
             if (le.level.equals(Level.ERROR) || le.level.equals(Level.FATAL)) {
-                System.err.print(Packing.packMessage(le.message, le.level.getName(), instance));
+                System.err.print(Packing.packMessage(le.message, le.level.getName(), instance, Appender.PRINT));
             }
-            Util.getOutput().print(Packing.packMessage(le.message, le.level.getName(), instance));
+            Util.getOutput().print(Packing.packMessage(le.message, le.level.getName(), instance, Appender.PRINT));
         }
     }
 
     @OnlyInLog
     void loggerConsole(LogEvent le, Optilog instance) {
-        final String s = Packing.packMessage(le.message, le.level.getName(), instance);
+        final String s = Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE);
         try {
             Thread thread = new Thread(() -> {
                 if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank()) {
@@ -159,7 +159,7 @@ public class Send {
     @OnlyInLog
     void loggerToServer(LogEvent le, final Optilog instance) {
         synchronized (Send.INSTANCE) {
-            le.message = Packing.packMessage(le.message, le.level.getName(), instance);
+            le.message = Packing.packMessage(le.message, le.level.getName(), instance, Appender.SERVER);
             String finalMessage = le.message;
             if (le.marker != LogMark.NONE) {
                 Client.logAppender(finalMessage + le.marker.getName(), instance);
@@ -171,6 +171,6 @@ public class Send {
 
     @OnlyInLog
     void loggerToJdbc(LogEvent le, final Optilog instance) {
-        MySQL.logAppender(le, Thread.currentThread().getStackTrace()[4].getClassName(), Packing.packMessage(le.message, le.level.getName(), instance), instance);
+        MySQL.logAppender(le, Thread.currentThread().getStackTrace()[4].getClassName(), Packing.packMessage(le.message, le.level.getName(), instance, Appender.JDBC), instance);
     }
 }

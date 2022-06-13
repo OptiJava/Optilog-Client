@@ -6,39 +6,54 @@
 [中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md) |
 [English](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
-**This is an open source logging framework written in Java language. It has more advantages than other open source logging frameworks (such as log4j and slf4j)**
+**This is an open source logging framework written in Java language. It has more advantages than other open source
+logging frameworks (such as log4j and slf4j)**
 
-The wiki of optilog will be updated at any time. Problems or bugs will be raised on [issues](https://github.com/OptiJava/Optilog-Client/issues) or [discussions](https://github.com/OptiJava/Optilog-Client/discussions).
+The wiki of optilog will be updated at any time. Problems or bugs will be raised
+on [issues](https://github.com/OptiJava/Optilog-Client/issues)
+or [discussions](https://github.com/OptiJava/Optilog-Client/discussions).
 
 **Be sure to read the [wiki](https://github.com/OptiJava/Optilog-Client/wiki) of this project before using it**
 
-_If you like, you are welcome to contribute to optilog through fork. The code of this project is quite basic, and anyone can contribute_
+_If you like, you are welcome to contribute to optilog through fork. The code of this project is quite basic, and anyone
+can contribute_
 
 ## Optilog advantages
 
-1. high performance: After initialization, another log (output to the screen + output to a file + output to the server through socket) can be output as fast as 8 milliseconds (it will be optimized later). Log4j should be at least 41 milliseconds.
+1. high performance: After initialization, another log (output to the screen + output to a file + output to the server
+   through socket) can be output as fast as 8 milliseconds (it will be optimized later). Log4j should be at least 41
+   milliseconds.
 
-2. Placeholder convenience: optilog supports unlimited placeholders and can be reused (#1 #1 outputs the first placeholder twice). Log4j only supports 9 placeholders.
+2. Placeholder convenience: optilog supports unlimited placeholders and can be reused (#1 #1 outputs the first
+   placeholder twice). Log4j only supports 9 placeholders.
 
-3. Configuration file can be placed in any location. The name of the configuration file is unlimited. Two types of configuration files are supported. In log4j, the configuration file can only be in classpath and the name can only be log4j2 xml.
+3. Configuration file can be placed in any location. The name of the configuration file is unlimited. Two types of
+   configuration files are supported. In log4j, the configuration file can only be in classpath and the name can only be
+   log4j2 xml.
 
 4. Support the client to send logs to [Server](https://github.com/OptiJava/Optilog-Server).
 
 5. All possible exceptions in Optilog are basically captured without affecting the main logic.
 
-6. You only need one jar package, and you can use it directly by typing in the classpath (I don't know the feeling of adding dozens of jar packages at once when using gradle).
+6. You only need one jar package, and you can use it directly by typing in the classpath (I don't know the feeling of
+   adding dozens of jar packages at once when using gradle).
 
 7. Suitable for beginners without complex configuration files.
 
 8. Few [dependence](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md#dependency).
 
-9. Class, method and other information output in the log are absolutely accurate, because Optilog uses StackTraceElement internally to determine these information, and there is no need to write the class instance when initializing the log.
+9. Class, method and other information output in the log are absolutely accurate, because Optilog uses StackTraceElement
+   internally to determine these information, and there is no need to write the class instance when initializing the
+   log.
 
-10. Optilog can directly generate a default configuration file. Beginners do not need to look for the configuration file example ([Tutorial](https://github.com/OptiJava/Optilog-Client/wiki/%E6%9B%B4%E5%A4%9A%E5%8A%9F%E8%83%BD#%E5%85%AD%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6))
+10. Optilog can directly generate a default configuration file. Beginners do not need to look for the configuration file
+    example ([Tutorial](https://github.com/OptiJava/Optilog-Client/wiki/%E6%9B%B4%E5%A4%9A%E5%8A%9F%E8%83%BD#%E5%85%AD%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6))
 
-11. Support configuration files in multiple formats, including JSON, yaml, XML and properties. Support for .toml configuration files will be added later.
+11. Support configuration files in multiple formats, including JSON, yaml, XML and properties. Support for .toml
+    configuration files will be added later.
 
-12. Optilog supports configuration modification during runtime. Of course, only some configuration items of true and false can be modified. Output file paths cannot be modified.
+12. Optilog supports configuration modification during runtime. Of course, only some configuration items of true and
+    false can be modified. Output file paths cannot be modified.
 
 13. Support outputting logs to JDBC.
 
@@ -53,8 +68,6 @@ _Generate by [carbon.now.sh](https://carbon.now.sh)_
 
 ## Dependency:
 
-`com.google.code.gson:gson:2.9.0`
-\
 `com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3`
 \
 `org.yaml:snakeyaml:1.30` `mysql:mysql-connector-java:8.0.29`

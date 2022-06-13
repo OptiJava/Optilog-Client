@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Optilog>
-    <printInfo>true</printInfo>
-    <printError>true</printError>
-    <printWarn>true</printWarn>
-    <printDebug>true</printDebug>
-    <printFatal>true</printFatal>
-    <consoleInfo>false</consoleInfo>
-    <consoleError>false</consoleError>
-    <consoleWarn>false</consoleWarn>
-    <consoleDebug>false</consoleDebug>
-    <consoleFatal>false</consoleFatal>
-    <infoSendToServer>false</infoSendToServer>
-    <errorSendToServer>false</errorSendToServer>
-    <warnSendToServer>false</warnSendToServer>
-    <debugSendToServer>false</debugSendToServer>
-    <fatalSendToServer>false</fatalSendToServer>
-    <startClient>false</startClient>
-    <defaultConsolePath>D:\Program\Project\resources\app\Git\Projects\Optilog-Client\src\test\resources\logs
-    </defaultConsolePath>
-    <fileName>%timeLog(Client).log</fileName>
-    <host>localhost</host>
-    <socketNumber>65535</socketNumber>
-    <packingFormat>[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg</packingFormat>
+    <print>
+        <printInfo>true</printInfo>
+        <printError>true</printError>
+        <printWarn>true</printWarn>
+        <printDebug>true</printDebug>
+        <printFatal>true</printFatal>
+
+        <packingFormat>
+            [%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg
+        </packingFormat>
+    </print>
+
+    <file>
+        <consoleInfo>true</consoleInfo>
+        <consoleError>true</consoleError>
+        <consoleWarn>true</consoleWarn>
+        <consoleDebug>true</consoleDebug>
+        <consoleFatal>true</consoleFatal>
+
+        <defaultConsolePath>
+            D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs
+        </defaultConsolePath>
+        <fileName>%timeLog(Client).log</fileName>
+        <packingFormat>
+            [%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg
+        </packingFormat>
+    </file>
+
+    <server>
+        <serverInfo>true</serverInfo>
+        <serverError>true</serverError>
+        <serverWarn>true</serverWarn>
+        <serverDebug>true</serverDebug>
+        <serverFatal>true</serverFatal>
+
+        <startClient>false</startClient>
+        <host>localhost</host>
+        <socketNumber>65535</socketNumber>
+        <packingFormat>
+            [%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg
+        </packingFormat>
+    </server>
 </Optilog>

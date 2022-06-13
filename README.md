@@ -53,8 +53,6 @@ _使用[carbon.now.sh](https://carbon.now.sh)生成_
 
 ## Dependency:
 
-`com.google.code.gson:gson:2.9.0`
-\
 `com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3`
 \
 `org.yaml:snakeyaml:1.30`
