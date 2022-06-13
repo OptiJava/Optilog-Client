@@ -10,9 +10,9 @@ _截止目前，Optilog代码总量3294行！_
 
 这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)
 
-Optilog的Wiki随时会更新，有问题在Issues问，使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
+Optilog的Wiki随时会更新，有问题或者发现了bug在[Issues](https://github.com/OptiJava/Optilog-Client/issues)或[Discussions](https://github.com/OptiJava/Optilog-Client/discussions)上提。
 
-与OptilogClient配套的[OptilogServer](https://github.com/OptiJava/Optilog-Server).
+使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
 _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献_
 
@@ -24,9 +24,9 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 3.配置文件可以放在任意位置，配置文件名字不限，支持两种配置文件，在log4j中配置文件只能在classpath中且名字只能是log4j2.xml
 
-4.支持客户端发送日志到服务端
+4.支持客户端发送日志到[服务端](https://github.com/OptiJava/Optilog-Server)
 
-5.Optilog内部可能出现的异常全部被捕获，不影响主要逻辑
+5.Optilog内部可能出现的异常基本全部被捕获，不影响主要逻辑
 
 6.只需一个jar包，打进classpath就能直接用（用gradle的不知道一下子加几十个jar包的感受）
 
@@ -34,17 +34,15 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 8.需要的依赖少
 
-9.日志中输出的Class、Method等信息是绝对准确的，因为Optilog内部使用StackTrace确定这些信息，并且无需在初始化日志时写入Class实例
+9.日志中输出的Class、Method等信息是绝对准确的，因为Optilog内部使用StackTraceElement确定这些信息，并且无需在初始化日志时写入Class实例
 
-10.Optilog可以直接生成一个默认的配置文件，初学者不用找配置文件范例
+10.Optilog可以直接生成一个默认的配置文件，初学者不用找配置文件范例（[教程](https://github.com/OptiJava/Optilog-Client/wiki/%E6%9B%B4%E5%A4%9A%E5%8A%9F%E8%83%BD#%E5%85%AD%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)）
 
 11.支持多种格式的配置文件，包括json,yaml,xml和properties，后续还会增加对toml配置文件的支持
 
 12.Optilog支持在运行期修改配置，当然只能修改true和false的一些配置项，输出文件路径什么的不能修改
 
-## Optilog的缺陷
-
-1.没有对jdbc的支持  <-在2022/6/7最新的提交中，已经新增了将日志输出到DataBase的支持~~你们肯定不知道我装mysql装了5遍才成功~~
+13.支持输出日志到jdbc
 
 ## Optilog输出日志预览：
 
