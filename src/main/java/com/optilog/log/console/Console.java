@@ -15,7 +15,12 @@ public class Console {
         if (instance.consoleFileMasterCaution) {
             instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now())));
 
-            if (!instance.allSetting.defaultConsolePath.equals("") & instance.consoleFileMasterCaution) {
+            if (instance.allSetting.defaultConsolePath.isBlank() & instance.allSetting.Path1.isBlank() & instance.allSetting.Path2.isBlank() & instance.allSetting.Path3.isBlank() & instance.allSetting.Path4.isBlank() & instance.allSetting.Path5.isBlank()) {
+                instance.consoleFileMasterCaution = false;
+                return;
+            }
+
+            if ((!instance.allSetting.defaultConsolePath.isBlank()) & instance.consoleFileMasterCaution) {
                 final File f = new File(instance.allSetting.defaultConsolePath);
                 if (Console.checkFile(f, instance)) {
                     File defFile = new File(instance.allSetting.defaultConsolePath + "//" + instance.allSetting.fileName);

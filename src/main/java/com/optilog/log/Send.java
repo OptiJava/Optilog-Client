@@ -89,7 +89,7 @@ public class Send {
                     return;
                 }
                 // Marker runner
-                if (le.marker == LogMark.TEMPLATEInfo) {
+                if (le.marker == LogMark.TEMPLATEInfo & instance.consoleFileMasterCaution & (!instance.info.isBlank())) {
                     try {
                         synchronized (Send.INSTANCE) {
                             Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -101,7 +101,7 @@ public class Send {
                     return;
                 }
 
-                if (le.marker == LogMark.TEMPLATEError) {
+                if (le.marker == LogMark.TEMPLATEError & instance.consoleFileMasterCaution & (!instance.error.isBlank())) {
                     try {
                         synchronized (Send.INSTANCE) {
                             Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -112,7 +112,7 @@ public class Send {
                     }
                 }
 
-                if (le.marker == LogMark.TEMPLATEWarn) {
+                if (le.marker == LogMark.TEMPLATEWarn & instance.consoleFileMasterCaution & (!instance.warn.isBlank())) {
                     try {
                         synchronized (Send.INSTANCE) {
                             Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -124,7 +124,7 @@ public class Send {
                     return;
                 }
 
-                if (le.marker == LogMark.TEMPLATEDebug) {
+                if (le.marker == LogMark.TEMPLATEDebug & instance.consoleFileMasterCaution & (!instance.debug.isBlank())) {
                     try {
                         synchronized (Send.INSTANCE) {
                             Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
@@ -136,7 +136,7 @@ public class Send {
                     return;
                 }
 
-                if (le.marker == LogMark.TEMPLATEFatal) {
+                if (le.marker == LogMark.TEMPLATEFatal & instance.consoleFileMasterCaution & (!instance.fatal.isBlank())) {
                     try {
                         synchronized (Send.INSTANCE) {
                             Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
