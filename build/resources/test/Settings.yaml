@@ -23,9 +23,9 @@ print:
 file:
   defaultConsolePath: "D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs"
   fileName: "%timeLog.log"
-  packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] llll %level:%msg"
-  #Path1: ....
-  #infoPath:%path1
+  packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
+  Path1: "D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources"
+  infoPath: "%path1"
 server:
   startClient: true
   socketNumber: 65535

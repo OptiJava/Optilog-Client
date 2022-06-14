@@ -20,7 +20,7 @@ public class Console {
                 return;
             }
 
-            if ((!instance.allSetting.defaultConsolePath.isBlank()) & instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.defaultConsolePath.isBlank() & instance.consoleFileMasterCaution) {
                 final File f = new File(instance.allSetting.defaultConsolePath);
                 if (Console.checkFile(f, instance)) {
                     File defFile = new File(instance.allSetting.defaultConsolePath + "//" + instance.allSetting.fileName);

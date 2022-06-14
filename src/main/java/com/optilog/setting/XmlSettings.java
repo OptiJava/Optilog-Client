@@ -46,37 +46,37 @@ public class XmlSettings {
                     instance.allSetting.defaultConsolePath = object.file.get("defaultConsolePath").trim();
                 }
                 if (object.file.get("Path1") != null) {
-                    instance.allSetting.Path1 = object.file.get("Path1");
+                    instance.allSetting.Path1 = object.file.get("Path1").trim();
                 }
                 if (object.file.get("Path2") != null) {
-                    instance.allSetting.Path2 = object.file.get("Path2");
+                    instance.allSetting.Path2 = object.file.get("Path2").trim();
                 }
                 if (object.file.get("Path3") != null) {
-                    instance.allSetting.Path3 = object.file.get("Path3");
+                    instance.allSetting.Path3 = object.file.get("Path3").trim();
                 }
                 if (object.file.get("Path4") != null) {
-                    instance.allSetting.Path4 = object.file.get("Path4");
+                    instance.allSetting.Path4 = object.file.get("Path4").trim();
                 }
                 if (object.file.get("Path5") != null) {
-                    instance.allSetting.Path5 = object.file.get("Path5");
+                    instance.allSetting.Path5 = object.file.get("Path5").trim();
                 }
                 if (object.file.get("infoPath") != null) {
-                    instance.allSetting.infoPath = object.file.get("infoPath");
+                    instance.allSetting.infoPath = object.file.get("infoPath").trim();
                 }
                 if (object.file.get("errorPath") != null) {
-                    instance.allSetting.errorPath = object.file.get("errorPath");
+                    instance.allSetting.errorPath = object.file.get("errorPath").trim();
                 }
                 if (object.file.get("warnPath") != null) {
-                    instance.allSetting.warnPath = object.file.get("warnPath");
+                    instance.allSetting.warnPath = object.file.get("warnPath").trim();
                 }
                 if (object.file.get("debugPath") != null) {
-                    instance.allSetting.debugPath = object.file.get("debugPath");
+                    instance.allSetting.debugPath = object.file.get("debugPath").trim();
                 }
                 if (object.file.get("fatalPath") != null) {
-                    instance.allSetting.infoPath = object.file.get("fatalPath");
+                    instance.allSetting.fatalPath = object.file.get("fatalPath").trim();
                 }
                 if (object.file.get("fileName") != null) {
-                    instance.allSetting.fileName = object.file.get("fileName");
+                    instance.allSetting.fileName = object.file.get("fileName").trim();
                 }
                 instance.allSetting.consoleInfo = Boolean.parseBoolean(object.file.get("consoleInfo").trim());
                 instance.allSetting.consoleError = Boolean.parseBoolean(object.file.get("consoleError").trim());
@@ -127,37 +127,37 @@ public class XmlSettings {
                     instance.allSetting.defaultConsolePath = object.file.get("defaultConsolePath").trim();
                 }
                 if (object.file.get("Path1") != null) {
-                    instance.allSetting.Path1 = object.file.get("Path1");
+                    instance.allSetting.Path1 = object.file.get("Path1").trim();
                 }
                 if (object.file.get("Path2") != null) {
-                    instance.allSetting.Path2 = object.file.get("Path2");
+                    instance.allSetting.Path2 = object.file.get("Path2").trim();
                 }
                 if (object.file.get("Path3") != null) {
-                    instance.allSetting.Path3 = object.file.get("Path3");
+                    instance.allSetting.Path3 = object.file.get("Path3").trim();
                 }
                 if (object.file.get("Path4") != null) {
-                    instance.allSetting.Path4 = object.file.get("Path4");
+                    instance.allSetting.Path4 = object.file.get("Path4").trim();
                 }
                 if (object.file.get("Path5") != null) {
-                    instance.allSetting.Path5 = object.file.get("Path5");
+                    instance.allSetting.Path5 = object.file.get("Path5").trim();
                 }
                 if (object.file.get("infoPath") != null) {
-                    instance.allSetting.infoPath = object.file.get("infoPath");
+                    instance.allSetting.infoPath = object.file.get("infoPath").trim();
                 }
                 if (object.file.get("errorPath") != null) {
-                    instance.allSetting.errorPath = object.file.get("errorPath");
+                    instance.allSetting.errorPath = object.file.get("errorPath").trim();
                 }
                 if (object.file.get("warnPath") != null) {
-                    instance.allSetting.warnPath = object.file.get("warnPath");
+                    instance.allSetting.warnPath = object.file.get("warnPath").trim();
                 }
                 if (object.file.get("debugPath") != null) {
-                    instance.allSetting.debugPath = object.file.get("debugPath");
+                    instance.allSetting.debugPath = object.file.get("debugPath").trim();
                 }
                 if (object.file.get("fatalPath") != null) {
-                    instance.allSetting.infoPath = object.file.get("fatalPath");
+                    instance.allSetting.fatalPath = object.file.get("fatalPath").trim();
                 }
                 if (object.file.get("fileName") != null) {
-                    instance.allSetting.fileName = object.file.get("fileName");
+                    instance.allSetting.fileName = object.file.get("fileName").trim();
                 }
                 instance.allSetting.consoleInfo = Boolean.parseBoolean(object.file.get("consoleInfo").trim());
                 instance.allSetting.consoleError = Boolean.parseBoolean(object.file.get("consoleError").trim());
