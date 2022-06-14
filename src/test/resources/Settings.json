@@ -14,6 +14,20 @@
     "debug": "true",
     "fatal": "true",
     "defaultConsolePath": "D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs",
+    "Path1": "D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources",
+    "infoPath": "%path1",
+    "fileName": "%timeLog.log",
+    "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
+  },
+  "server": {
+    "info": "true",
+    "error": "true",
+    "warn": "true",
+    "debug": "true",
+    "fatal": "true",
+    "startClient": "true",
+    "socketNumber": "65535",
+    "host": "localhost",
     "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
   }
 }

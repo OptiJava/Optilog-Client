@@ -6,16 +6,16 @@
 [中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md) |
 [English](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
-_截止目前，Optilog代码总量3389行！_
+_截止目前，Optilog代码总量3439行！_
 
 这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)
 
 Optilog的Wiki随时会更新，有问题或者发现了bug在[Issues](https://github.com/OptiJava/Optilog-Client/issues)
 或[Discussions](https://github.com/OptiJava/Optilog-Client/discussions)上提。
 
-使用前一！定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
+使用前一定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
-_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献。_
+_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献，**在此感谢所有支持此项目的人**_
 
 ## Optilog的优势
 
@@ -42,7 +42,7 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 11.支持多种格式的配置文件，包括json,yaml,xml和properties，后续还会增加对toml配置文件的支持
 
-12.Optilog支持在运行期修改配置，当然只能修改true和false的一些配置项，输出文件路径什么的不能修改
+12.Optilog支持在运行期修改配置，当然只能修改true和false的一些配置项，输出文件路径什么的不能修改（以后会加入相关的功能，像packingFormat这类东西可以就直接修改了，如果真要修改输出路径可能要在内部重新初始化一下）
 
 13.支持输出日志到jdbc
 

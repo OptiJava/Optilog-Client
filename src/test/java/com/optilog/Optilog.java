@@ -4,6 +4,7 @@ import com.optilog.log.Log;
 import com.optilog.setting.SettingFiles;
 
 public class Optilog {
+    // 这只是一个教程~~~
     public static void main(String[] args) {
         // 先生成一个默认的properties的配置文件
         SettingFiles.generatePropertiesSettings("/Change/This/To/Your/Own/Path");

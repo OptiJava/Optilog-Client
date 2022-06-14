@@ -115,9 +115,11 @@ public class SettingFiles {
                     "print.fatal=true\n" +
                     "print.packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
                     "# file\n" +
-                    "#file.defaultConsolePath=D:\\\\Program\\\\Project\\\\resources\\\\app\\\\Git\\\\Projects\\\\Optilog-Client\\\\src\\\\test\\\\resources\\\\logs\n" +
-                    "#file.Path1=D:\\\\Program\\\\Project\\\\resources\\\\app\\\\Git\\\\Projects\\\\Optilog-Client\\\\src\\\\test\\\\resources\n" +
+                    "file.defaultConsolePath=(path to your logs directory)\n" +
+                    "#file.Path1=(path to your logs directory)." +
+                    "#file.infoPath=%path1\n" +
                     "#file.debugPath=%path1\n" +
+                    "#file.warnPath=%path1\n" +
                     "file.consoleInfo=true\n" +
                     "file.consoleDebug=true\n" +
                     "file.consoleError=true\n" +
@@ -172,8 +174,9 @@ public class SettingFiles {
                     "        <consoleFatal>true</consoleFatal>\n" +
                     "\n" +
                     "        <defaultConsolePath>\n" +
-                    "            D:\\\\Program\\\\Project\\\\resources\\\\app\\\\Git\\\\Projects\\\\Optilog-Client\\\\src\\\\test\\\\resources\\\\logs\n" +
+                    "            (path to your logs directory)\n" +
                     "        </defaultConsolePath>\n" +
+                    "\n" +
                     "        <fileName>%timeLog(Client).log</fileName>\n" +
                     "        <packingFormat>\n" +
                     "            [%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
@@ -230,17 +233,17 @@ public class SettingFiles {
                     "  print: true\n" +
                     "  console: true\n" +
                     "  server: true\n" +
+                    "print:\n" +
+                    "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
                     "file:\n" +
-                    "  defaultConsolePath: \"D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs\"\n" +
+                    "  defaultConsolePath: \"(path to your directory)\"\n" +
                     "  fileName: \"%timeLog.log\"\n" +
-                    "#Path1: ....\n" +
-                    "#infoPath:%path1\n" +
+                    "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
                     "server:\n" +
                     "  startClient: true\n" +
                     "  socketNumber: 65535\n" +
                     "  host: \"localhost\"\n" +
-                    "packing:\n" +
-                    "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread ] %level:%msg\"", StandardCharsets.UTF_8);
+                    "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n", StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }

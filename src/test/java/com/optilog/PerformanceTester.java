@@ -1,13 +1,9 @@
 package com.optilog;
 
-import com.optilog.log.Log;
-
 public class PerformanceTester {
-	public static void main(String[] args) {
-		long l = System.currentTimeMillis();
-		Log log = Log.initLog("%yaml -cp /Settings.yaml");
-		log.info();
+    public static void main(String[] args) {
+        long l = System.currentTimeMillis();
 		
-		System.out.println(System.currentTimeMillis() - l);
-	}
+        System.out.println(System.currentTimeMillis() - l);
+    }
 }

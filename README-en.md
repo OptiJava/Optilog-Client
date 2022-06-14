@@ -16,7 +16,7 @@ or [discussions](https://github.com/OptiJava/Optilog-Client/discussions).
 **Be sure to read the [wiki](https://github.com/OptiJava/Optilog-Client/wiki) of this project before using it**
 
 _If you like, you are welcome to contribute to optilog through fork. The code of this project is quite basic, and anyone
-can contribute_
+can contribute,**Thank you all for supporting this project**_
 
 ## Optilog advantages
 
@@ -43,7 +43,7 @@ can contribute_
 8. Few [dependence](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md#dependency).
 
 9. Class, method and other information output in the log are absolutely accurate, because Optilog uses StackTraceElement
-   internally to determine these information, and there is no need to write the class instance when initializing the
+   internally to determine that information, and there is no need to write the class instance when initializing the
    log.
 
 10. Optilog can directly generate a default configuration file. Beginners do not need to look for the configuration file
@@ -53,13 +53,11 @@ can contribute_
     configuration files will be added later.
 
 12. Optilog supports configuration modification during runtime. Of course, only some configuration items of true and
-    false can be modified. Output file paths cannot be modified.
+    false can be modified. Output file paths cannot be modified(Related functions will be added in the future. Things
+    like packingFormat can be modified directly. If you really want to modify the output path, you may need to
+    reInitialize it internally).
 
 13. Support outputting logs to JDBC.
-
-## Defects of Optilog
-
-1. No JDBC support <- On 2022/6/7,Optilog can send log to DataBase,Optilog already support send log to jdbc
 
 ## Optilog log picture:
 

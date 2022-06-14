@@ -3,9 +3,14 @@ package com.optilog;
 import com.optilog.log.Level;
 import com.optilog.log.LevelBuild;
 import com.optilog.log.Log;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Optilog测试类
+ */
 public class OptilogTest {
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         Log log = Log.initLog("%xml -cp /Settings.xml");
         log.info("---常规输出测试---");
         log.info("info" + new Object());

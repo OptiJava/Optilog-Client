@@ -21,6 +21,7 @@ public class YamlSettings {
                 instance.consoleFileMasterCaution = false;
                 throw new ConfigureException("Can't find'" + path + "'.", e);
             }
+
         } else {
             try (InputStream input = Optilog.class.getResourceAsStream(path)) {
                 Yaml yaml = new Yaml();

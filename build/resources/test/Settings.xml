@@ -22,11 +22,6 @@
         <defaultConsolePath>
             D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs
         </defaultConsolePath>
-        <Path1>
-            D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources
-        </Path1>
-        <infoPath>%path1</infoPath>
-        <debugPath>%path1</debugPath>
 
         <fileName>%timeLog(Client).log</fileName>
         <packingFormat>
