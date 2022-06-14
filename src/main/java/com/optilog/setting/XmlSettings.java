@@ -25,7 +25,7 @@ public class XmlSettings {
                     return;
                 }
                 // load parser
-                Settings object = new XmlMapper(new JacksonXmlModule()).readValue(input, Settings.class);
+                XmlSettingBean object = new XmlMapper(new JacksonXmlModule()).readValue(input, XmlSettingBean.class);
 
                 // config print
                 if (object.print.get("packingFormat") != null) {
@@ -108,7 +108,7 @@ public class XmlSettings {
             }
         } else {
             try (InputStream input = new FileInputStream(path)) {
-                Settings object = new XmlMapper(new JacksonXmlModule()).readValue(input, Settings.class);
+                XmlSettingBean object = new XmlMapper(new JacksonXmlModule()).readValue(input, XmlSettingBean.class);
                 // config print
                 if (object.print.get("packingFormat") != null) {
                     instance.allSetting.printPackingFormat = object.print.get("packingFormat").trim();

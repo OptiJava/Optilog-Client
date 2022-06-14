@@ -37,6 +37,7 @@ public class YamlSettings {
         LinkedHashMap<String, Boolean> lDebug = map.get("debug");
         LinkedHashMap<String, Boolean> lFatal = map.get("fatal");
         LinkedHashMap<String, Boolean> lWarn = map.get("warn");
+
         instance.allSetting.printInfo = lInfo.get("print");
         instance.allSetting.printError = lError.get("print");
         instance.allSetting.printWarn = lWarn.get("print");
@@ -54,12 +55,6 @@ public class YamlSettings {
         instance.allSetting.serverWarn = lWarn.get("server");
         instance.allSetting.serverDebug = lDebug.get("server");
         instance.allSetting.serverFatal = lFatal.get("server");
-
-
-        String packing$packingFormat = (String) map.get("packing").get("packingFormat");
-        if (packing$packingFormat != null) {
-            instance.allSetting.printPackingFormat = packing$packingFormat;
-        }
 
         String file$defaultConsolePath = (String) map.get("file").get("defaultConsolePath");
         if (file$defaultConsolePath != null) {
@@ -84,6 +79,19 @@ public class YamlSettings {
         String file$Path5 = (String) map.get("file").get("Path5");
         if (file$Path5 != null) {
             instance.allSetting.Path5 = file$Path5;
+        }
+
+        String print$packingFormat = (String) map.get("print").get("packingFormat");
+        if (print$packingFormat != null) {
+            instance.allSetting.printPackingFormat = print$packingFormat;
+        }
+        String file$packingFormat = (String) map.get("file").get("packingFormat");
+        if (file$packingFormat != null) {
+            instance.allSetting.consolePackingFormat = file$packingFormat;
+        }
+        String server$packingFormat = (String) map.get("server").get("packingFormat");
+        if (server$packingFormat != null) {
+            instance.allSetting.serverPackingFormat = server$packingFormat;
         }
 
         String file$infoPath = (String) map.get("file").get("infoPath");

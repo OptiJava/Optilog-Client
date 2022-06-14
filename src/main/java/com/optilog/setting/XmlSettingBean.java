@@ -4,7 +4,7 @@ import com.optilog.util.OnlyInInit;
 
 import java.util.Map;
 
-public class Settings {
+public class XmlSettingBean {
     public Map<String, String> print;
 
     public Map<String, String> file;
@@ -12,7 +12,7 @@ public class Settings {
     public Map<String, String> server;
 
     @OnlyInInit
-    public Settings() {
+    public XmlSettingBean() {
 
     }
 }

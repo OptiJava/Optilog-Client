@@ -18,14 +18,16 @@ fatal:
   print: true
   console: true
   server: true
+print:
+  packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
 file:
   defaultConsolePath: "D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs"
   fileName: "%timeLog.log"
-#Path1: ....
-#infoPath:%path1
+  packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] llll %level:%msg"
+  #Path1: ....
+  #infoPath:%path1
 server:
   startClient: true
   socketNumber: 65535
   host: "localhost"
-packing:
   packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"

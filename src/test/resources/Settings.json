@@ -1,0 +1,10 @@
+{
+  "print": {
+    "info": "true",
+    "error": "true",
+    "warn": "true",
+    "debug": "true",
+    "fatal": "true",
+    "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
+  }
+}
