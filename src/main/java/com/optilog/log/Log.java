@@ -6,9 +6,6 @@ import com.optilog.util.Util;
 
 public interface Log extends IOptilog {
     static Log initLog(String pathOfSettingFile) {
-        if (Util.addon != null) {
-            return Util.addon;
-        }
         Optilog optilog = new Optilog(pathOfSettingFile);
         optilog.logPreparer(pathOfSettingFile, optilog);
         return optilog;

@@ -20,6 +20,8 @@ can contribute,**Thank you all for supporting this project**_
 
 ## Optilog advantages
 
+0.~~Frequent updates(log4j and slf4j have no update since 2017)~~
+
 1. high performance: After initialization, another log (output to the screen + output to a file + output to the server
    through socket) can be output as fast as 8 milliseconds (it will be optimized later). Log4j should be at least 41
    milliseconds.
@@ -73,10 +75,6 @@ _Generate by [carbon.now.sh](https://carbon.now.sh)_
 `mysql:mysql-connector-java:8.0.29`
 \
 (You needn't add dependency if you don't use these function.)
-
-## Author:
-
-OptiJava
 
 ## Contributor:
 

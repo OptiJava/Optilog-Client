@@ -18,12 +18,7 @@ public class Send {
 
     @OnlyInLog
     void loggerPrint(LogEvent le, Optilog instance) {
-        synchronized (Send.INSTANCE) {
-            if (le.level.equals(Level.ERROR) || le.level.equals(Level.FATAL)) {
-                System.err.print(Packing.packMessage(le.message, le.level.getName(), instance, Appender.PRINT));
-            }
-            Util.getOutput().print(Packing.packMessage(le.message, le.level.getName(), instance, Appender.PRINT));
-        }
+        Util.getOutput().print(Packing.packMessage(le.message, le.level.getName(), instance, Appender.PRINT));
     }
 
     @OnlyInLog
@@ -155,14 +150,12 @@ public class Send {
 
     @OnlyInLog
     void loggerToServer(LogEvent le, final Optilog instance) {
-        synchronized (Send.INSTANCE) {
-            le.message = Packing.packMessage(le.message, le.level.getName(), instance, Appender.SERVER);
-            String finalMessage = le.message;
-            if (le.marker != LogMark.NONE) {
-                Client.logAppender(finalMessage + le.marker.getName(), instance);
-            } else {
-                Client.logAppender(finalMessage + le.level.getName(), instance);
-            }
+        le.message = Packing.packMessage(le.message, le.level.getName(), instance, Appender.SERVER);
+        String finalMessage = le.message;
+        if (le.marker != LogMark.NONE) {
+            Client.logAppender(finalMessage + le.marker.getName(), instance);
+        } else {
+            Client.logAppender(finalMessage + le.level.getName(), instance);
         }
     }
 

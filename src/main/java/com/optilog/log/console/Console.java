@@ -118,19 +118,19 @@ public class Console {
 
         if (instance.allSetting.infoPath.startsWith("%path") & instance.consoleFileMasterCaution) {
             try {
-                if (instance.allSetting.infoPath.replace("%path", "").equals("1")) {
+                if (instance.allSetting.infoPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.info = instance.allSetting.Path1;
                 }
-                if (instance.allSetting.infoPath.replace("%path", "").equals("2")) {
+                if (instance.allSetting.infoPath.toLowerCase().replace("%path", "").equals("2")) {
                     instance.info = instance.allSetting.Path2;
                 }
-                if (instance.allSetting.infoPath.replace("%path", "").equals("3")) {
+                if (instance.allSetting.infoPath.toLowerCase().replace("%path", "").equals("3")) {
                     instance.info = instance.allSetting.Path3;
                 }
-                if (instance.allSetting.infoPath.replace("%path", "").equals("4")) {
+                if (instance.allSetting.infoPath.toLowerCase().replace("%path", "").equals("4")) {
                     instance.info = instance.allSetting.Path4;
                 }
-                if (instance.allSetting.infoPath.replace("%path", "").equals("5")) {
+                if (instance.allSetting.infoPath.toLowerCase().replace("%path", "").equals("5")) {
                     instance.info = instance.allSetting.Path5;
                 }
                 if (instance.info.equals("")) {
@@ -145,19 +145,19 @@ public class Console {
         }
         if (instance.allSetting.errorPath.startsWith("%path") & instance.consoleFileMasterCaution) {
             try {
-                if (instance.allSetting.errorPath.replace("%path", "").equals("1")) {
+                if (instance.allSetting.errorPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.error = instance.allSetting.Path1;
                 }
-                if (instance.allSetting.errorPath.replace("%path", "").equals("2")) {
+                if (instance.allSetting.errorPath.toLowerCase().replace("%path", "").equals("2")) {
                     instance.error = instance.allSetting.Path2;
                 }
-                if (instance.allSetting.errorPath.replace("%path", "").equals("3")) {
+                if (instance.allSetting.errorPath.toLowerCase().replace("%path", "").equals("3")) {
                     instance.error = instance.allSetting.Path3;
                 }
-                if (instance.allSetting.errorPath.replace("%path", "").equals("4")) {
+                if (instance.allSetting.errorPath.toLowerCase().replace("%path", "").equals("4")) {
                     instance.error = instance.allSetting.Path4;
                 }
-                if (instance.allSetting.errorPath.replace("%path", "").equals("5")) {
+                if (instance.allSetting.errorPath.toLowerCase().replace("%path", "").equals("5")) {
                     instance.error = instance.allSetting.Path5;
                 }
                 if (instance.error.equals("")) {
@@ -172,19 +172,19 @@ public class Console {
         }
         if (instance.allSetting.warnPath.startsWith("%path") & instance.consoleFileMasterCaution) {
             try {
-                if (instance.allSetting.warnPath.replace("%path", "").equals("1")) {
+                if (instance.allSetting.warnPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.warn = instance.allSetting.Path1;
                 }
-                if (instance.allSetting.warnPath.replace("%path", "").equals("2")) {
+                if (instance.allSetting.warnPath.toLowerCase().replace("%path", "").equals("2")) {
                     instance.warn = instance.allSetting.Path2;
                 }
-                if (instance.allSetting.warnPath.replace("%path", "").equals("3")) {
+                if (instance.allSetting.warnPath.toLowerCase().replace("%path", "").equals("3")) {
                     instance.warn = instance.allSetting.Path3;
                 }
-                if (instance.allSetting.warnPath.replace("%path", "").equals("4")) {
+                if (instance.allSetting.warnPath.toLowerCase().replace("%path", "").equals("4")) {
                     instance.warn = instance.allSetting.Path4;
                 }
-                if (instance.allSetting.warnPath.replace("%path", "").equals("5")) {
+                if (instance.allSetting.warnPath.toLowerCase().replace("%path", "").equals("5")) {
                     instance.warn = instance.allSetting.Path5;
                 }
                 if (instance.warn.equals("")) {
@@ -198,19 +198,19 @@ public class Console {
         }
         if (instance.allSetting.debugPath.startsWith("%path") & instance.consoleFileMasterCaution) {
             try {
-                if (instance.allSetting.debugPath.replace("%path", "").equals("1")) {
+                if (instance.allSetting.debugPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.debug = instance.allSetting.Path1;
                 }
-                if (instance.allSetting.debugPath.replace("%path", "").equals("2")) {
+                if (instance.allSetting.debugPath.toLowerCase().replace("%path", "").equals("2")) {
                     instance.debug = instance.allSetting.Path2;
                 }
-                if (instance.allSetting.debugPath.replace("%path", "").equals("3")) {
+                if (instance.allSetting.debugPath.toLowerCase().replace("%path", "").equals("3")) {
                     instance.debug = instance.allSetting.Path3;
                 }
-                if (instance.allSetting.debugPath.replace("%path", "").equals("4")) {
+                if (instance.allSetting.debugPath.toLowerCase().replace("%path", "").equals("4")) {
                     instance.debug = instance.allSetting.Path4;
                 }
-                if (instance.allSetting.debugPath.replace("%path", "").equals("5")) {
+                if (instance.allSetting.debugPath.toLowerCase().replace("%path", "").equals("5")) {
                     instance.debug = instance.allSetting.Path5;
                 }
                 if (instance.debug.equals("")) {
@@ -224,19 +224,19 @@ public class Console {
         }
         if (instance.allSetting.fatalPath.startsWith("%path") & instance.consoleFileMasterCaution) {
             try {
-                if (instance.allSetting.fatalPath.replace("%path", "").equals("1")) {
+                if (instance.allSetting.fatalPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.fatal = instance.allSetting.Path1;
                 }
-                if (instance.allSetting.fatalPath.replace("%path", "").equals("2")) {
+                if (instance.allSetting.fatalPath.toLowerCase().replace("%path", "").equals("2")) {
                     instance.fatal = instance.allSetting.Path2;
                 }
-                if (instance.allSetting.fatalPath.replace("%path", "").equals("3")) {
+                if (instance.allSetting.fatalPath.toLowerCase().replace("%path", "").equals("3")) {
                     instance.fatal = instance.allSetting.Path3;
                 }
-                if (instance.allSetting.fatalPath.replace("%path", "").equals("4")) {
+                if (instance.allSetting.fatalPath.toLowerCase().replace("%path", "").equals("4")) {
                     instance.fatal = instance.allSetting.Path4;
                 }
-                if (instance.allSetting.fatalPath.replace("%path", "").equals("5")) {
+                if (instance.allSetting.fatalPath.toLowerCase().replace("%path", "").equals("5")) {
                     instance.fatal = instance.allSetting.Path5;
                 }
                 if (instance.fatal.equals("")) {

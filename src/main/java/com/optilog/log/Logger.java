@@ -15,7 +15,6 @@ public class Logger {
     void logInfo(LogEvent le, Optilog instance) {
         instance.logState.allLogCount++;
         instance.logState.infoLogCount++;
-
         synchronized (this) {
             le.message = instance.baaLog.getInfoBefore() + le.message + instance.baaLog.getInfoAfter();
         }

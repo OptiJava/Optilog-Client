@@ -24,7 +24,7 @@ public class Optilog implements Log {
 
     public volatile MySQL connection = new MySQL();
 
-    public volatile SettingFiles allSetting;
+    public volatile SettingFiles allSetting = new SettingFiles();
 
     public volatile String settingFilePath;
 
@@ -44,8 +44,8 @@ public class Optilog implements Log {
     public void logPreparer(String settingFilePath, Optilog instance) {
         if (settingFilePath.isBlank()) {
             instance.consoleFileMasterCaution = false;
+            return;
         }
-        instance.allSetting = new SettingFiles();
 
         try {
             SettingFiles.check(settingFilePath, instance);

@@ -50,6 +50,14 @@ public class SettingFiles {
     @OnlyInInit
     public static void check(String str, Optilog instance) throws IOException {
         if (!str.isBlank()) {
+            if (str.startsWith("%json -cp")) {
+                JsonSettings.getJsonSettings(str.substring(10), true, instance);
+                return;
+            }
+            if (str.startsWith("%json ")) {
+                JsonSettings.getJsonSettings(str.substring(6), false, instance);
+                return;
+            }
             if (str.startsWith("%xml -cp ")) {
                 XmlSettings.xml(str.substring(9), true, instance);
                 return;
@@ -83,12 +91,15 @@ public class SettingFiles {
             }
             if (str.startsWith("%yaml ")) {
                 YamlSettings.yaml(str.substring(6), false, instance);
+                return;
             }
+            instance.consoleFileMasterCaution = false;
+            System.err.println("Argument illegal or that Configure file not be supported");
         }
     }
 
     @OnlyInInit
-    private static String readAsString(InputStream input) throws IOException {
+    public static String readAsString(InputStream input) throws IOException {
         int n;
         StringBuilder sb = new StringBuilder();
         while ((n = input.read()) != -1) {

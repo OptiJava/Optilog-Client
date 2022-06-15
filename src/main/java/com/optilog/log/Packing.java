@@ -14,7 +14,7 @@ public class Packing {
 
     @OnlyInLog
     public static String packMessage(String msg, String level, Optilog instance, Appender appender) {
-        StackTraceElement[] arr = Thread.currentThread().getStackTrace();
+        final StackTraceElement[] arr = Thread.currentThread().getStackTrace();
         String returnString = instance.allSetting.printPackingFormat;
         if (appender == Appender.FILE) {
             returnString = instance.allSetting.consolePackingFormat;
