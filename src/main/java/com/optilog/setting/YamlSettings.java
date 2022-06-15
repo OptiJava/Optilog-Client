@@ -135,6 +135,5 @@ public class YamlSettings {
             }
         } catch (NumberFormatException | NullPointerException ignored) {
         }
-
     }
 }

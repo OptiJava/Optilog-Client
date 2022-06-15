@@ -105,13 +105,16 @@ public class XmlSettings {
                 System.err.println("Optilog Note: Failed to read xml setting file!");
                 instance.consoleFileMasterCaution = false;
                 e.printStackTrace();
+            } catch (NullPointerException ignored) {
+
             }
         } else {
             try (InputStream input = new FileInputStream(path)) {
                 XmlSettingBean object = new XmlMapper(new JacksonXmlModule()).readValue(input, XmlSettingBean.class);
                 // config print
-                if (object.print.get("packingFormat") != null) {
-                    instance.allSetting.printPackingFormat = object.print.get("packingFormat").trim();
+                String a = object.print.get("packingFormat");
+                if (a != null) {
+                    instance.allSetting.printPackingFormat = a.trim();
                 }
                 instance.allSetting.printInfo = Boolean.parseBoolean(object.print.get("printInfo").trim());
                 instance.allSetting.printError = Boolean.parseBoolean(object.print.get("printError").trim());
@@ -120,44 +123,57 @@ public class XmlSettings {
                 instance.allSetting.printFatal = Boolean.parseBoolean(object.print.get("printFatal").trim());
 
                 // config file
-                if (object.file.get("packingFormat") != null) {
-                    instance.allSetting.consolePackingFormat = object.file.get("packingFormat").trim();
+                String b = object.file.get("packingFormat");
+                if (b != null) {
+                    instance.allSetting.consolePackingFormat = b.trim();
                 }
-                if (object.file.get("defaultConsolePath") != null) {
-                    instance.allSetting.defaultConsolePath = object.file.get("defaultConsolePath").trim();
+                String c = object.file.get("defaultConsolePath");
+                if (c != null) {
+                    instance.allSetting.defaultConsolePath = c.trim();
                 }
-                if (object.file.get("Path1") != null) {
-                    instance.allSetting.Path1 = object.file.get("Path1").trim();
+                String d = object.file.get("Path1");
+                if (d != null) {
+                    instance.allSetting.Path1 = d.trim();
                 }
-                if (object.file.get("Path2") != null) {
-                    instance.allSetting.Path2 = object.file.get("Path2").trim();
+                String e = object.file.get("Path2");
+                if (e != null) {
+                    instance.allSetting.Path2 = e.trim();
                 }
-                if (object.file.get("Path3") != null) {
-                    instance.allSetting.Path3 = object.file.get("Path3").trim();
+                String f = object.file.get("Path3");
+                if (f != null) {
+                    instance.allSetting.Path3 = f.trim();
                 }
-                if (object.file.get("Path4") != null) {
-                    instance.allSetting.Path4 = object.file.get("Path4").trim();
+                String g = object.file.get("Path4");
+                if (g != null) {
+                    instance.allSetting.Path4 = g.trim();
                 }
-                if (object.file.get("Path5") != null) {
-                    instance.allSetting.Path5 = object.file.get("Path5").trim();
+                String h = object.file.get("Path5");
+                if (h != null) {
+                    instance.allSetting.Path5 = h.trim();
                 }
-                if (object.file.get("infoPath") != null) {
-                    instance.allSetting.infoPath = object.file.get("infoPath").trim();
+                String i = object.file.get("infoPath");
+                if (i != null) {
+                    instance.allSetting.infoPath = i.trim();
                 }
-                if (object.file.get("errorPath") != null) {
-                    instance.allSetting.errorPath = object.file.get("errorPath").trim();
+                String j = object.file.get("errorPath");
+                if (j != null) {
+                    instance.allSetting.errorPath = j.trim();
                 }
-                if (object.file.get("warnPath") != null) {
-                    instance.allSetting.warnPath = object.file.get("warnPath").trim();
+                String k = object.file.get("warnPath");
+                if (k != null) {
+                    instance.allSetting.warnPath = k.trim();
                 }
-                if (object.file.get("debugPath") != null) {
-                    instance.allSetting.debugPath = object.file.get("debugPath").trim();
+                String l = object.file.get("debugPath");
+                if (l != null) {
+                    instance.allSetting.debugPath = l.trim();
                 }
-                if (object.file.get("fatalPath") != null) {
-                    instance.allSetting.fatalPath = object.file.get("fatalPath").trim();
+                String m = object.file.get("fatalPath");
+                if (m != null) {
+                    instance.allSetting.fatalPath = m.trim();
                 }
-                if (object.file.get("fileName") != null) {
-                    instance.allSetting.fileName = object.file.get("fileName").trim();
+                String n = (object.file.get("fileName"));
+                if (n != null) {
+                    instance.allSetting.fileName = n.trim();
                 }
                 instance.allSetting.consoleInfo = Boolean.parseBoolean(object.file.get("consoleInfo").trim());
                 instance.allSetting.consoleError = Boolean.parseBoolean(object.file.get("consoleError").trim());
@@ -166,8 +182,9 @@ public class XmlSettings {
                 instance.allSetting.consoleFatal = Boolean.parseBoolean(object.file.get("consoleFatal").trim());
 
                 // config server
-                if (object.server.get("packingFormat") != null) {
-                    instance.allSetting.serverPackingFormat = object.server.get("packingFormat").trim();
+                String o = object.server.get("packingFormat");
+                if (o != null) {
+                    instance.allSetting.serverPackingFormat = o.trim();
                 }
                 instance.allSetting.serverInfo = Boolean.parseBoolean(object.server.get("serverInfo").trim());
                 instance.allSetting.serverError = Boolean.parseBoolean(object.server.get("serverError").trim());
@@ -175,16 +192,20 @@ public class XmlSettings {
                 instance.allSetting.serverDebug = Boolean.parseBoolean(object.server.get("serverDebug").trim());
                 instance.allSetting.serverFatal = Boolean.parseBoolean(object.server.get("serverFatal").trim());
                 instance.allSetting.startClient = Boolean.parseBoolean(object.server.get("startClient").trim());
-                if (object.server.get("host") != null) {
-                    instance.allSetting.host = object.server.get("host");
+                String p = object.server.get("host");
+                if (p != null) {
+                    instance.allSetting.host = p.trim();
                 }
-                if (object.server.get("socketNumber") != null) {
-                    instance.allSetting.socketNumber = Integer.parseInt(object.server.get("socketNumber"));
+                String q = object.server.get("socketNumber");
+                if (q != null) {
+                    instance.allSetting.socketNumber = Integer.parseInt(q.trim());
                 }
 
             } catch (IOException e) {
                 System.err.println("Optilog Note: Failed to read xml setting file!");
                 e.printStackTrace();
+            } catch (NullPointerException ignored) {
+
             }
         }
     }
