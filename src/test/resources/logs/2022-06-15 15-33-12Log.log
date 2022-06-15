@@ -1,0 +1,8 @@
+[2022-06-15|15:33:12(57))][com.optilog.OptilogTest test(OptilogTest.java:17)/Test worker] Error:error
+[2022-06-15|15:33:12(58))][com.optilog.OptilogTest test(OptilogTest.java:19)/Test worker] FATAL:null
+[2022-06-15|15:33:12(58))][com.optilog.OptilogTest test(OptilogTest.java:20)/Test worker] FATAL:null
+[2022-06-15|15:33:12(59))][com.optilog.OptilogTest test(OptilogTest.java:21)/Test worker] Warning:warnnull
+[2022-06-15|15:33:12(60))][com.optilog.OptilogTest test(OptilogTest.java:24)/Test worker] Error:1 1
+[2022-06-15|15:33:12(60))][com.optilog.OptilogTest test(OptilogTest.java:25)/Test worker] Warning:null
+[2022-06-15|15:33:12(61))][com.optilog.OptilogTest test(OptilogTest.java:27)/Test worker] FATAL:1 #2
+[2022-06-15|15:33:12(62))][com.optilog.OptilogTest test(OptilogTest.java:36)/Test worker] Warning:---变化栈测试---

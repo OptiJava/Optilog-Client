@@ -1,0 +1,11 @@
+[2022-06-15|15:33:12(55))][com.optilog.OptilogTest test(OptilogTest.java:15)/Test worker] info:---常规输出测试---
+[2022-06-15|15:33:12(57))][com.optilog.OptilogTest test(OptilogTest.java:16)/Test worker] info:infojava.lang.Object@1e8ce150
+[2022-06-15|15:33:12(57))][com.optilog.OptilogTest test(OptilogTest.java:18)/Test worker] debug:debug32.0
+[2022-06-15|15:33:12(59))][com.optilog.OptilogTest test(OptilogTest.java:22)/Test worker] info:---占位符---
+[2022-06-15|15:33:12(60))][com.optilog.OptilogTest test(OptilogTest.java:23)/Test worker] info:1 2
+[2022-06-15|15:33:12(60))][com.optilog.OptilogTest test(OptilogTest.java:26)/Test worker] debug:1 2 #3
+[2022-06-15|15:33:12(61))][com.optilog.OptilogTest test(OptilogTest.java:28)/Test worker] debug:de
+[2022-06-15|15:33:12(62))][com.optilog.OptilogTest test(OptilogTest.java:29)/Test worker] test:t!e!s!t！
+[2022-06-15|15:33:12(62))][com.optilog.OptilogTest test(OptilogTest.java:37)/Test worker] info:info(test)
+[2022-06-15|15:33:12(63))][com.optilog.OptilogTest lambda$test$1(OptilogTest.java:38)/Thread-3] info:hello
+[2022-06-15|15:33:12(63))][com.optilog.OptilogTest test(OptilogTest.java:39)/Test worker] info:$
