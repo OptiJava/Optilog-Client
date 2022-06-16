@@ -911,6 +911,7 @@ public class Optilog implements Log {
     @Override
     public void stopSendToJdbc(String url, String dataBaseName, String username, String password) {
         this.connection.sendToJdbc = false;
+        this.connection = null;
     }
 
     @Override

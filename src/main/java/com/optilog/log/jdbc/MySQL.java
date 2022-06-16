@@ -12,7 +12,7 @@ public class MySQL {
 
     public volatile boolean sendToJdbc = false;
 
-    public volatile String dataBaseName = "";
+    public volatile String dataBaseName;
 
     @OnlyInInit
     public static void initAppender(String url, String username, String password, String dataBaseName, Optilog instance) {
