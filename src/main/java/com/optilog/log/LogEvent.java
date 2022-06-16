@@ -3,17 +3,11 @@ package com.optilog.log;
 import com.optilog.util.OnlyInLog;
 
 public class LogEvent {
-    public volatile String message;
+    public String message;
 
-    public volatile Level level;
+    public final Level level;
 
-    public volatile LogMark marker = LogMark.NONE;
-
-    @Deprecated
-    @Override
-    public String toString() {
-        return this.level + " " + this.message;
-    }
+    public LogMark marker = LogMark.NONE;
 
     @OnlyInLog
     public LogEvent(String msg, Level level) {

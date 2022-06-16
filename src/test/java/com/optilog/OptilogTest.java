@@ -37,7 +37,6 @@ public class OptilogTest {
         log.info("info(test)");
         new Thread(() -> log.info("hello")).start();
         log.info("$");
-        System.out.println(log.getAllLogCount());
 
         //重新获得实例
         Log log2 = Log.initLog("");

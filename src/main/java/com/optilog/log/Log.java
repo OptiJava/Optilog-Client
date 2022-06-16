@@ -181,55 +181,7 @@ public interface Log extends IOptilog {
 
     void stopSendToJdbc(String url, String dataBaseName, String username, String password);
 
-    int getAllLogCount();
-
-    int getInfoLogCount();
-
-    int getErrorLogCount();
-
-    int getWarnLogCount();
-
-    int getDebugLogCount();
-
-    int getFatalLogCount();
-
-    int getCommandCount();
-
-    String getInfoProportion();
-
-    String getErrorProportion();
-
-    String getWarnProportion();
-
-    String getDebugProportion();
-
-    String getFatalProportion();
-
     void getAllField(Object instance);
-
-    void setInfoBefore(String s);
-
-    void setErrorBefore(String s);
-
-    void setWarnBefore(String s);
-
-    void setDebugBefore(String s);
-
-    void setFatalBefore(String s);
-
-    void setInfoAfter(String s);
-
-    void setErrorAfter(String s);
-
-    void setWarnAfter(String s);
-
-    void setDebugAfter(String s);
-
-    void setFatalAfter(String s);
-
-    void setBeforeEach(String s);
-
-    void setAfterEach(String s);
 
     void log(Object obj, LevelBuild levelBuild);
 

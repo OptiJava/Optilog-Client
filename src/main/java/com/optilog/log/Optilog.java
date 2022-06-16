@@ -15,10 +15,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Optilog implements Log {
-    public volatile LogState logState = new LogState();
-
-    public volatile BeforeAndAfter baaLog = new BeforeAndAfter();
-
     public volatile DatagramSocket socket;
     public volatile boolean consoleFileMasterCaution = true;
 
@@ -915,66 +911,6 @@ public class Optilog implements Log {
     }
 
     @Override
-    public int getAllLogCount() {
-        return this.logState.allLogCount;
-    }
-
-    @Override
-    public int getInfoLogCount() {
-        return this.logState.infoLogCount;
-    }
-
-    @Override
-    public int getErrorLogCount() {
-        return this.logState.errorLogCount;
-    }
-
-    @Override
-    public int getWarnLogCount() {
-        return this.logState.warnLogCount;
-    }
-
-    @Override
-    public int getDebugLogCount() {
-        return this.logState.debugLogCount;
-    }
-
-    @Override
-    public int getFatalLogCount() {
-        return this.logState.fatalLogCount;
-    }
-
-    @Override
-    public int getCommandCount() {
-        return this.logState.commandCount;
-    }
-
-    @Override
-    public String getInfoProportion() {
-        return (((double) this.logState.infoLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
-    }
-
-    @Override
-    public String getErrorProportion() {
-        return (((double) this.logState.errorLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
-    }
-
-    @Override
-    public String getWarnProportion() {
-        return (((double) this.logState.warnLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
-    }
-
-    @Override
-    public String getDebugProportion() {
-        return (((double) this.logState.debugLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
-    }
-
-    @Override
-    public String getFatalProportion() {
-        return (((double) this.logState.fatalLogCount / (double) this.logState.allLogCount) * ((double) 100)) + "%";
-    }
-
-    @Override
     public void getAllField(Object instance) {
         final StringBuilder str = new StringBuilder();
         str.append("\n").append(instance.getClass()).append(" -> ").append(instance).append(":\n");
@@ -987,66 +923,6 @@ public class Optilog implements Log {
             }
         }
         this.info(str.append("end").toString());
-    }
-
-    @Override
-    public void setInfoBefore(String s) {
-        this.baaLog.beforeInfo = s;
-    }
-
-    @Override
-    public void setErrorBefore(String s) {
-        this.baaLog.beforeError = s;
-    }
-
-    @Override
-    public void setWarnBefore(String s) {
-        this.baaLog.beforeWarn = s;
-    }
-
-    @Override
-    public void setDebugBefore(String s) {
-        this.baaLog.beforeDebug = s;
-    }
-
-    @Override
-    public void setFatalBefore(String s) {
-        this.baaLog.beforeFatal = s;
-    }
-
-    @Override
-    public void setInfoAfter(String s) {
-        this.baaLog.afterInfo = s;
-    }
-
-    @Override
-    public void setErrorAfter(String s) {
-        this.baaLog.afterError = s;
-    }
-
-    @Override
-    public void setWarnAfter(String s) {
-        this.baaLog.afterWarn = s;
-    }
-
-    @Override
-    public void setDebugAfter(String s) {
-        this.baaLog.afterDebug = s;
-    }
-
-    @Override
-    public void setFatalAfter(String s) {
-        this.baaLog.afterFatal = s;
-    }
-
-    @Override
-    public void setBeforeEach(String s) {
-        this.baaLog.beforeEach = s;
-    }
-
-    @Override
-    public void setAfterEach(String s) {
-        this.baaLog.afterEach = s;
     }
 
     @Override
