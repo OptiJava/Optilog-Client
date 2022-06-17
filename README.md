@@ -1,12 +1,13 @@
 # [Optilog-Client](https://github.com/OptiJava/Optilog-Client/)
 
 ![Build](https://img.shields.io/badge/Build-Passing-green)
+![Statistic](https://img.shields.io/badge/Code-3379Line-red)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 
 [中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md) |
 [English](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
-_截止目前，Optilog代码总量3370行！_
+**_感谢所有支持本项目发展的人！！_**
 
 这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)
 
@@ -15,7 +16,7 @@ Optilog的Wiki随时会更新，有问题或者发现了bug在[Issues](https://g
 
 使用前一定！看[本项目Wiki](https://github.com/OptiJava/Optilog-Client/wiki)
 
-_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献，**在此感谢所有支持此项目的人**_
+_如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献。
 
 ## Optilog的优势
 

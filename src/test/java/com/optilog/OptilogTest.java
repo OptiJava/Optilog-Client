@@ -9,9 +9,10 @@ import org.junit.jupiter.api.Test;
  * Optilog测试类
  */
 public class OptilogTest {
+    static Log log = Log.initLog("%json -cp /Settings.json");
+
     @Test
     public void test() {
-        Log log = Log.initLog("%json -cp /Settings.json");
         log.info("---常规输出测试---");
         log.info("info" + new Object());
         log.error("error");
@@ -30,6 +31,13 @@ public class OptilogTest {
         test(log);
         //打包日志
         //log.command("%zip -d D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs");
+    }
+
+    @Test
+    public void test2() {
+        log.setPrintInfo(false);
+        log.info("");
+        log.setPrintInfo(true);
     }
 
     private static void test(Log log) {
