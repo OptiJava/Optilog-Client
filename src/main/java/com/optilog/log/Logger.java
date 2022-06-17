@@ -9,10 +9,8 @@ public class Logger {
     private Logger() {
     }
 
-    static final Logger INSTANCE = new Logger();
-
     @OnlyInLog
-    void logInfo(LogEvent le, Optilog instance) {
+    static void logInfo(LogEvent le, Optilog instance) {
         if (instance.allSetting.printInfo) {
             Send.loggerPrint(le, instance);
         }
@@ -31,7 +29,7 @@ public class Logger {
     }
 
     @OnlyInLog
-    void logError(LogEvent le, Optilog instance) {
+    static void logError(LogEvent le, Optilog instance) {
 
         if (instance.allSetting.printError) {
             Send.loggerPrint(le, instance);
@@ -51,7 +49,7 @@ public class Logger {
     }
 
     @OnlyInLog
-    void logWarn(LogEvent le, Optilog instance) {
+    static void logWarn(LogEvent le, Optilog instance) {
 
         if (instance.allSetting.printWarn) {
             Send.loggerPrint(le, instance);
@@ -71,7 +69,7 @@ public class Logger {
     }
 
     @OnlyInLog
-    void logDebug(LogEvent le, Optilog instance) {
+    static void logDebug(LogEvent le, Optilog instance) {
 
         if (instance.allSetting.printDebug) {
             Send.loggerPrint(le, instance);
@@ -91,7 +89,7 @@ public class Logger {
     }
 
     @OnlyInLog
-    void logFatal(LogEvent le, Optilog instance) {
+    static void logFatal(LogEvent le, Optilog instance) {
 
         if (instance.allSetting.printFatal) {
             Send.loggerPrint(le, instance);

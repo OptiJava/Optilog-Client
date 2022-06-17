@@ -22,9 +22,12 @@ can contribute,**Thank you all for supporting this project**_
 
 0.~~Frequent updates(log4j and slf4j have no update since 2017)~~
 
-1. high performance: After initialization, another log (output to the screen + output to a file + output to the server
+1. High performance: After initialization, another log (output to the screen + output to a file + output to the server
    through socket) can be output as fast as 8 milliseconds (it will be optimized later). Log4j should be at least 41
+   milliseconds.Optilog is a synchronous log, which has no delay at all, and there is no need to consider the
+   problem of multithreaded atomic operations. Although log4j is asynchronous, it outputs one log for at least 200
    milliseconds.
+   Optilog occupies slightly less memory than log4j, and one log output takes about 502344 bytes.
 
 2. Placeholder convenience: optilog supports unlimited placeholders and can be reused (#1 #1 outputs the first
    placeholder twice). Log4j only supports 9 placeholders.

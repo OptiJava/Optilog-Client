@@ -6,7 +6,7 @@
 [中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md) |
 [English](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
 
-_截止目前，Optilog代码总量3649行！_
+_截止目前，Optilog代码总量3370行！_
 
 这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)
 
@@ -21,8 +21,8 @@ _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的�
 
 0.~~更新快（log4j和slf4j都几年没更新了）~~
 
-1.性能高:在初始化后，再输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端）
-最快只需要30毫秒（后续还会再优化），而且Optilog是同步日志，完全没有延迟，也无需考虑多线程原子操作问题，log4j虽然是异步，但输出一条至少200毫秒
+1.性能高:
+在初始化后，再输出一条日志（输出到屏幕+输出到文件+通过socket输出到服务端）最快只需要30毫秒（后续还会再优化）。而且Optilog是同步日志，完全没有延迟，也无需考虑多线程原子操作问题，log4j虽然是异步，但输出一条至少200毫秒。Optilog占用内存略小于log4j，输出一条日志约占502344字节
 
 2.占位符方便：Optilog支持无限个占位符，并且可以重复使用（#1 #1输出两次第一个占位符），log4j只支持9个占位符
 

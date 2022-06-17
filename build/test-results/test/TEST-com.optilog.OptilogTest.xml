@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.optilog.OptilogTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-16T08:26:06" hostname="LAPTOP-4KAC853E" time="0.154">
+<testsuite name="com.optilog.OptilogTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-17T01:35:46" hostname="LAPTOP-4KAC853E" time="0.193">
   <properties/>
-  <testcase name="test()" classname="com.optilog.OptilogTest" time="0.154"/>
-  <system-out><![CDATA[[2022-06-16|16:26:06(46)][com.optilog.OptilogTest test(OptilogTest.java:15)/Test worker] info:---常规输出测试---
-[2022-06-16|16:26:06(48)][com.optilog.OptilogTest test(OptilogTest.java:16)/Test worker] info:infojava.lang.Object@55dfebeb
-[2022-06-16|16:26:06(48)][com.optilog.OptilogTest test(OptilogTest.java:17)/Test worker] Error:error
-[2022-06-16|16:26:06(48)][com.optilog.OptilogTest test(OptilogTest.java:18)/Test worker] debug:debug32.0
-[2022-06-16|16:26:06(48)][com.optilog.OptilogTest test(OptilogTest.java:19)/Test worker] FATAL:null
-[2022-06-16|16:26:06(49)][com.optilog.OptilogTest test(OptilogTest.java:20)/Test worker] FATAL:null
-[2022-06-16|16:26:06(49)][com.optilog.OptilogTest test(OptilogTest.java:21)/Test worker] Warning:warnnull
-[2022-06-16|16:26:06(49)][com.optilog.OptilogTest test(OptilogTest.java:22)/Test worker] info:---占位符---
-[2022-06-16|16:26:06(50)][com.optilog.OptilogTest test(OptilogTest.java:23)/Test worker] info:1 2
-[2022-06-16|16:26:06(50)][com.optilog.OptilogTest test(OptilogTest.java:24)/Test worker] Error:1 1
-[2022-06-16|16:26:06(50)][com.optilog.OptilogTest test(OptilogTest.java:25)/Test worker] Warning:null
-[2022-06-16|16:26:06(50)][com.optilog.OptilogTest test(OptilogTest.java:26)/Test worker] debug:1 2 #3
-[2022-06-16|16:26:06(51)][com.optilog.OptilogTest test(OptilogTest.java:27)/Test worker] FATAL:1 #2
-[2022-06-16|16:26:06(51)][com.optilog.OptilogTest test(OptilogTest.java:28)/Test worker] debug:de
-[2022-06-16|16:26:06(51)][com.optilog.OptilogTest test(OptilogTest.java:29)/Test worker] test:t!e!s!t！
-[2022-06-16|16:26:06(52)][com.optilog.OptilogTest test(OptilogTest.java:36)/Test worker] Warning:---变化栈测试---
-[2022-06-16|16:26:06(52)][com.optilog.OptilogTest test(OptilogTest.java:37)/Test worker] info:info(test)
-[2022-06-16|16:26:06(52)][com.optilog.OptilogTest test(OptilogTest.java:39)/Test worker] info:$
-[2022-06-16|16:26:06(52)][com.optilog.OptilogTest lambda$test$1(OptilogTest.java:38)/Thread-3] info:hello
-[2022-06-16|16:26:06(52)][com.optilog.OptilogTest test(OptilogTest.java:43)/Test worker] info:log2
+  <testcase name="test()" classname="com.optilog.OptilogTest" time="0.193"/>
+  <system-out><![CDATA[[2022-06-17|09:35:46(39)][com.optilog.OptilogTest test(OptilogTest.java:15)/Test worker] info:---常规输出测试---
+[2022-06-17|09:35:46(42)][com.optilog.OptilogTest test(OptilogTest.java:16)/Test worker] info:infojava.lang.Object@55dfebeb
+[2022-06-17|09:35:46(42)][com.optilog.OptilogTest test(OptilogTest.java:17)/Test worker] Error:error
+[2022-06-17|09:35:46(43)][com.optilog.OptilogTest test(OptilogTest.java:18)/Test worker] debug:debug32.0
+[2022-06-17|09:35:46(43)][com.optilog.OptilogTest test(OptilogTest.java:19)/Test worker] FATAL:null
+[2022-06-17|09:35:46(44)][com.optilog.OptilogTest test(OptilogTest.java:20)/Test worker] FATAL:null
+[2022-06-17|09:35:46(44)][com.optilog.OptilogTest test(OptilogTest.java:21)/Test worker] Warning:warnnull
+[2022-06-17|09:35:46(45)][com.optilog.OptilogTest test(OptilogTest.java:22)/Test worker] info:---占位符---
+[2022-06-17|09:35:46(45)][com.optilog.OptilogTest test(OptilogTest.java:23)/Test worker] info:1 2
+[2022-06-17|09:35:46(45)][com.optilog.OptilogTest test(OptilogTest.java:24)/Test worker] Error:1 1
+[2022-06-17|09:35:46(46)][com.optilog.OptilogTest test(OptilogTest.java:25)/Test worker] Warning:null
+[2022-06-17|09:35:46(46)][com.optilog.OptilogTest test(OptilogTest.java:26)/Test worker] debug:1 2 #3
+[2022-06-17|09:35:46(47)][com.optilog.OptilogTest test(OptilogTest.java:27)/Test worker] FATAL:1 #2
+[2022-06-17|09:35:46(47)][com.optilog.OptilogTest test(OptilogTest.java:28)/Test worker] debug:de
+[2022-06-17|09:35:46(48)][com.optilog.OptilogTest test(OptilogTest.java:29)/Test worker] test:t!e!s!t！
+[2022-06-17|09:35:46(48)][com.optilog.OptilogTest test(OptilogTest.java:36)/Test worker] Warning:---变化栈测试---
+[2022-06-17|09:35:46(49)][com.optilog.OptilogTest test(OptilogTest.java:37)/Test worker] info:info(test)
+[2022-06-17|09:35:46(49)][com.optilog.OptilogTest test(OptilogTest.java:39)/Test worker] info:$
+[2022-06-17|09:35:46(49)][com.optilog.OptilogTest lambda$test$1(OptilogTest.java:38)/Thread-3] info:hello
+[2022-06-17|09:35:46(50)][com.optilog.OptilogTest test(OptilogTest.java:43)/Test worker] info:log2
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

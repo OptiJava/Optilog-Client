@@ -21,12 +21,11 @@ public class Send {
 
     @OnlyInLog
     static void loggerConsole(LogEvent le, Optilog instance) {
-        final String s = Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE);
         try {
             if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank()) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -37,7 +36,7 @@ public class Send {
             if (instance.consoleFileMasterCaution & Level.ERROR.getName().equals(le.level.getName()) & !instance.error.isBlank()) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -49,7 +48,7 @@ public class Send {
                 //String s = Packing.packMessage(message, level, instance);
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -61,7 +60,7 @@ public class Send {
                 //String s = Packing.packMessage(message, level, instance);
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -72,7 +71,7 @@ public class Send {
             if (instance.consoleFileMasterCaution & Level.FATAL.getName().equals(le.level.getName()) & !instance.fatal.isBlank()) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -84,7 +83,7 @@ public class Send {
             if (le.marker == LogMark.TEMPLATEInfo & instance.consoleFileMasterCaution & (!instance.info.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -96,7 +95,7 @@ public class Send {
             if (le.marker == LogMark.TEMPLATEError & instance.consoleFileMasterCaution & (!instance.error.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -107,7 +106,7 @@ public class Send {
             if (le.marker == LogMark.TEMPLATEWarn & instance.consoleFileMasterCaution & (!instance.warn.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -119,7 +118,7 @@ public class Send {
             if (le.marker == LogMark.TEMPLATEDebug & instance.consoleFileMasterCaution & (!instance.debug.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -131,7 +130,7 @@ public class Send {
             if (le.marker == LogMark.TEMPLATEFatal & instance.consoleFileMasterCaution & (!instance.fatal.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
-                        Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + s, StandardCharsets.UTF_8);
+                        Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
@@ -148,12 +147,10 @@ public class Send {
 
     @OnlyInLog
     static void loggerToServer(LogEvent le, final Optilog instance) {
-        le.message = Packing.packMessage(le.message, le.level.getName(), instance, Appender.SERVER);
-        String finalMessage = le.message;
         if (le.marker != LogMark.NONE) {
-            Client.logAppender(finalMessage + le.marker.getName(), instance);
+            Client.logAppender(Packing.packMessage(le.message, le.level.getName(), instance, Appender.SERVER) + le.marker.getName(), instance);
         } else {
-            Client.logAppender(finalMessage + le.level.getName(), instance);
+            Client.logAppender(Packing.packMessage(le.message, le.level.getName(), instance, Appender.SERVER) + le.level.getName(), instance);
         }
     }
 
