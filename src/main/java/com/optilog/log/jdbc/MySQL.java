@@ -43,7 +43,7 @@ public class MySQL {
                 ps.setObject(2, clazz);
                 ps.setObject(3, logEvent.message);
                 ps.setObject(4, allMessage);
-                int n = ps.executeUpdate();
+                ps.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
                 try {

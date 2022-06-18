@@ -22,7 +22,7 @@ public class Send {
     @OnlyInLog
     static void loggerConsole(LogEvent le, Optilog instance) {
         try {
-            if (instance.consoleFileMasterCaution & Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank()) {
+            if (Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank() & instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -33,7 +33,7 @@ public class Send {
                 }
                 return;
             }
-            if (instance.consoleFileMasterCaution & Level.ERROR.getName().equals(le.level.getName()) & !instance.error.isBlank()) {
+            if (Level.ERROR.getName().equals(le.level.getName()) & !instance.error.isBlank() & instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -44,7 +44,7 @@ public class Send {
                 }
                 return;
             }
-            if (instance.consoleFileMasterCaution & Level.DEBUG.getName().equals(le.level.getName()) & !instance.debug.isBlank()) {
+            if (Level.DEBUG.getName().equals(le.level.getName()) & !instance.debug.isBlank() & instance.consoleFileMasterCaution) {
                 //String s = Packing.packMessage(message, level, instance);
                 try {
                     synchronized (Util.getOutput()) {
@@ -56,7 +56,7 @@ public class Send {
                 }
                 return;
             }
-            if (instance.consoleFileMasterCaution & Level.WARN.getName().equals(le.level.getName()) & !instance.warn.isBlank()) {
+            if (Level.WARN.getName().equals(le.level.getName()) & !instance.warn.isBlank() & instance.consoleFileMasterCaution) {
                 //String s = Packing.packMessage(message, level, instance);
                 try {
                     synchronized (Util.getOutput()) {
@@ -68,7 +68,7 @@ public class Send {
                 }
                 return;
             }
-            if (instance.consoleFileMasterCaution & Level.FATAL.getName().equals(le.level.getName()) & !instance.fatal.isBlank()) {
+            if (Level.FATAL.getName().equals(le.level.getName()) & !instance.fatal.isBlank() & instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -143,7 +143,6 @@ public class Send {
             instance.error("Optilog Note:Java throws Exception when log is output", e);
         }
     }
-
 
     @OnlyInLog
     static void loggerToServer(LogEvent le, final Optilog instance) {
