@@ -26,6 +26,6 @@
     "startClient": "true",
     "socketNumber": "65535",
     "host": "localhost",
-    "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
+    "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)] %level:%msg"
   }
 }
