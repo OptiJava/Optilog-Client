@@ -11,13 +11,17 @@ public interface Log extends IOptilog {
         return optilog;
     }
 
-    static Log initLog(String pathOfSettingFile, boolean checkOptilogAnnotation) {
+    static Log initLog(Log optilog) {
+        return optilog;
+    }
+
+    static Log initLog(String pathOfSettingFile, boolean checkOptilogAnnotationAndAddon) {
         if (Util.addon != null) {
             return Util.addon;
         }
         Optilog optilog = new Optilog(pathOfSettingFile);
         optilog.logPreparer(pathOfSettingFile, optilog);
-        if (checkOptilogAnnotation) {
+        if (checkOptilogAnnotationAndAddon) {
             AnnotationProcessor.process();
         }
         return optilog;
