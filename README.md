@@ -18,6 +18,7 @@ Optilog的Wiki随时会更新，有问题或者发现了bug在[Issues](https://g
 
 _如果你愿意，欢迎Fork这个仓库为Optilog做出贡献，本项目的代码比较基础，任何人都可以做出贡献。非常欢迎向本项目发送PullRequest，哪怕只是改改文档也好。_
 想要快速了解本项目的话，推荐看[Optilog的具体日志流程图](https://github.com/OptiJava/Optilog-Client/blob/master/Optilog.png)
+，也可以用IDEA插件：SequenceDiagram看看方法调用流程图
 
 ## Optilog的优势
 
