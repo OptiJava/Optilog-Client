@@ -33,7 +33,7 @@ public class Packing {
             returnString = returnString.replaceAll("%ss", DateTimeFormatter.ofPattern("ss").format(LocalDateTime.now()));
             returnString = returnString.replaceAll("%SS", DateTimeFormatter.ofPattern("SS").format(LocalDateTime.now()));
 
-            returnString = returnString.replaceAll("%level", level);
+            returnString = returnString.replaceAll("%level", Matcher.quoteReplacement(level));
 
             returnString = returnString.replaceAll("%class", Matcher.quoteReplacement(arr[5].getClassName()));
             returnString = returnString.replaceAll("%line", String.valueOf(arr[5].getLineNumber()));
