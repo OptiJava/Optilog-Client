@@ -54,6 +54,7 @@ public class SettingFiles {
                 JsonSettings.getJsonSettings(str.substring(10), true, instance);
                 return;
             }
+
             if (str.startsWith("%json ")) {
                 JsonSettings.getJsonSettings(str.substring(6), false, instance);
                 return;
