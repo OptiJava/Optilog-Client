@@ -181,6 +181,12 @@ public interface Log extends IOptilog {
 
     void setServerFatal(boolean serverFatal);
 
+    void setPrintPackingFormat(String printPackingFormat);
+
+    void setFilePackingFormat(String filePackingFormat);
+
+    void setServerPackingFormat(String serverPackingFormat);
+
     void startSendToJdbc(String url, String dataBaseName, String username, String password);
 
     void stopSendToJdbc(String url, String dataBaseName, String username, String password);

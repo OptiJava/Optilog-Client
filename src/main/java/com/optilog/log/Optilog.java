@@ -899,6 +899,21 @@ public class Optilog implements Log {
     }
 
     @Override
+    public void setPrintPackingFormat(String printPackingFormat) {
+        this.allSetting.printPackingFormat = printPackingFormat;
+    }
+
+    @Override
+    public void setFilePackingFormat(String filePackingFormat) {
+        this.allSetting.consolePackingFormat = filePackingFormat;
+    }
+
+    @Override
+    public void setServerPackingFormat(String serverPackingFormat) {
+        this.allSetting.serverPackingFormat = serverPackingFormat;
+    }
+
+    @Override
     public void startSendToJdbc(String url, String dataBaseName, String username, String password) {
         this.connection.sendToJdbc = true;
         MySQL.initAppender(url, username, password, dataBaseName, this);
