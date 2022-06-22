@@ -4,8 +4,7 @@
 ![Statistic](https://img.shields.io/badge/Code-3379Line-red)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 
-[中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md) |
-[English](https://github.com/OptiJava/Optilog-Client/blob/master/README-en.md)
+[中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md)
 
 **_Thank you all for supporting this project_**
 
