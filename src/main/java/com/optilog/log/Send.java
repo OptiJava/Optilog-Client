@@ -12,6 +12,7 @@ import java.nio.file.Path;
 
 public class Send {
     private Send() {
+        super();
     }
 
     @OnlyInLog
