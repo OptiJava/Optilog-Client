@@ -94,6 +94,14 @@ public class SettingFiles {
                 YamlSettings.yaml(str.substring(6), false, instance);
                 return;
             }
+            if (str.startsWith("%slf4j -cp ")) {
+                Slf4jSettings.xmlSlf4j(str.substring(11), true, instance);
+                return;
+            }
+            if (str.startsWith("%slf4j ")) {
+                Slf4jSettings.xmlSlf4j(str.substring(7), false, instance);
+                return;
+            }
             instance.consoleFileMasterCaution = false;
             System.err.println("Argument illegal or that Configure file not be supported");
         }
