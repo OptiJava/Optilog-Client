@@ -1,7 +1,7 @@
 # [Optilog-Client](https://github.com/OptiJava/Optilog-Client)
 
 ![Build](https://img.shields.io/badge/Build-Passing-green)
-![Statistic](https://img.shields.io/badge/Code-3379Line-red)
+![Statistic](https://img.shields.io/badge/Code-3429Line-red)
 [![Latest-Release](https://img.shields.io/badge/Release-Latest-blue)](https://github.com/OptiJava/Optilog-Client/releases/latest)
 
 [中文](https://github.com/OptiJava/Optilog-Client/blob/master/README.md)
@@ -18,7 +18,7 @@ or [discussions](https://github.com/OptiJava/Optilog-Client/discussions).
 **Be sure to read the [wiki](https://github.com/OptiJava/Optilog-Client/wiki) of this project before using it**
 
 _If you like, you are welcome to contribute to optilog through fork. The code of this project is quite basic, and anyone
-can contribute.
+can contribute._
 
 ## Optilog advantages
 
