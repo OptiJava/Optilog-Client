@@ -127,50 +127,58 @@ public class Optilog implements Log {
 
     @Override
     public void info(Object msg, Throwable ex) {
-        StringBuilder returnString = new StringBuilder();
-        returnString.append(msg.toString()).append("\n");
-        returnString.append(ex);
-        returnString.append("\n");
-        for (StackTraceElement s : ex.getStackTrace()) {
-            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
-        }
-
-        Throwable throwable = ex;
-
-        while (throwable.getCause() != null) {
-            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
-            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
-                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+            StringBuilder returnString = new StringBuilder();
+            returnString.append(msg.toString()).append("\n");
+            returnString.append(ex);
+            returnString.append("\n");
+            for (StackTraceElement s : ex.getStackTrace()) {
+                returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
             }
-            throwable = throwable.getCause();
+
+            Throwable throwable = ex;
+
+            while (throwable.getCause() != null) {
+                returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+                for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                    returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+                }
+                throwable = throwable.getCause();
+            }
+            LogEvent infoEvent = new LogEvent(returnString.toString(), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
         }
-        LogEvent infoEvent = new LogEvent(returnString.toString(), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
     }
 
     @Override
     public void info(long x) {
-        LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
+        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+            LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
+        }
     }
 
     @Override
     public void info(double x) {
-        LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
+        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+            LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
+        }
     }
 
     @Override
     public void info(char[] x) {
-        if (x == null) {
-            x = new char[]{'n', 'u', 'l', 'l'};
+        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+            if (x == null) {
+                x = new char[]{'n', 'u', 'l', 'l'};
+            }
+            LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
         }
-        LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
     }
 
     @Override
