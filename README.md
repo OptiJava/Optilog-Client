@@ -8,6 +8,8 @@
 
 **_欢迎Star或Fork以支持本项目的开发工作！哪怕只是改了一点点也要pr，这是对该项目的巨大支持awa_**
 
+**Optilog目前需要Java11+**
+
 这是一个用java语言编写的开源日志框架，他相比现在其他开源日志框架（比如log4j,slf4j）有更多的[优势](https://github.com/OptiJava/Optilog-Client#optilog%E7%9A%84%E4%BC%98%E5%8A%BF)
 
 Optilog的Wiki随时会更新，有问题或者发现了bug在[Issues](https://github.com/OptiJava/Optilog-Client/issues)

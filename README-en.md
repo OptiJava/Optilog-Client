@@ -8,6 +8,8 @@
 
 **_Thank you all for supporting this project_**
 
+**Optilog needs Java 11+**
+
 **This is an open source logging framework written in Java language. It has more advantages than other open source
 logging frameworks (such as Log4j and SLF4j)**
 
