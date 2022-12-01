@@ -19,6 +19,7 @@ public class OptilogTest {
         log.debug("debug" + 32f);
         log.fatal((char[]) null);
         log.fatal((String) null);
+        log.fatal((Object) null);
         log.warn("warn" + null);
         log.info("---占位符---");
         log.info("#1 #2", "1", "2");

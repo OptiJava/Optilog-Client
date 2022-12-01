@@ -12,11 +12,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public class SettingFiles {
-    public boolean printError = true;
-    public boolean printInfo = true;
-    public boolean printDebug = true;
-    public boolean printWarn = true;
-    public boolean printFatal = true;
+    public volatile boolean printError = true;
+    public volatile boolean printInfo = true;
+    public volatile boolean printDebug = true;
+    public volatile boolean printWarn = true;
+    public volatile boolean printFatal = true;
     public String defaultConsolePath = "";
     public String Path1 = "";
     public String Path2 = "";
@@ -72,8 +72,8 @@ public class SettingFiles {
                 try (InputStream input = Optilog.class.getResourceAsStream(s)) {
                     if (input == null) {
                         instance.consoleFileMasterCaution = false;
-                        System.err.println("Optilog Note: Can't find'" + s + "'in classpath.");
-                        throw new ConfigureException("Can't find'" + s + "'in classpath.");
+                        System.err.println("Optilog Note: Can't find '" + s + "' in classpath.");
+                        throw new ConfigureException("Can't find '" + s + "' in classpath.");
                     }
                     PropSettings.properties(input, instance);
                     return;
@@ -92,14 +92,6 @@ public class SettingFiles {
             }
             if (str.startsWith("%yaml ")) {
                 YamlSettings.yaml(str.substring(6), false, instance);
-                return;
-            }
-            if (str.startsWith("%slf4j -cp ")) {
-                Slf4jSettings.xmlSlf4j(str.substring(11), true, instance);
-                return;
-            }
-            if (str.startsWith("%slf4j ")) {
-                Slf4jSettings.xmlSlf4j(str.substring(7), false, instance);
                 return;
             }
             instance.consoleFileMasterCaution = false;

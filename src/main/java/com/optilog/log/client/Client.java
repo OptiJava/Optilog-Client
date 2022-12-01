@@ -25,7 +25,9 @@ public class Client {
     @OnlyInLog
     public static void logAppender(String msg, Optilog instance) {
         try {
-            instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));
+            if (instance.allSetting.startClient) {
+                instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));
+            }
         } catch (IOException e) {
             instance.error("Optilog Note:IOException in Client.", e);
         }

@@ -15,12 +15,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Optilog implements Log {
-    public volatile DatagramSocket socket;
+    public DatagramSocket socket;
     public volatile boolean consoleFileMasterCaution = true;
 
-    public volatile MySQL connection = new MySQL();
+    public MySQL connection = new MySQL();
 
-    public volatile SettingFiles allSetting = new SettingFiles();
+    public SettingFiles allSetting = new SettingFiles();
 
     public volatile String settingFilePath;
 
@@ -50,14 +50,14 @@ public class Optilog implements Log {
                 Client.initAppender(instance);
             }
         } catch (RuntimeException | IOException e) {
-            System.err.println("Optilog Note:An Exception was thrown when Optilog init logger");
+            System.err.println("Optilog Note: An Exception was thrown when Optilog init logger");
             throw new OptilogException("An Exception was thrown when Optilog init logger", e);
         }
     }
 
     @Override
     public void info() {
-        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
             LogEvent infoEvent = new LogEvent(" ", Level.INFO);
             infoEvent.marker = LogMark.NONE;
             Logger.logInfo(infoEvent, this);
@@ -66,7 +66,7 @@ public class Optilog implements Log {
 
     @Override
     public void info(Object x, Object... occupy) {
-        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
             if (x == null) {
                 x = "null";
             }
@@ -96,7 +96,7 @@ public class Optilog implements Log {
 
     @Override
     public void info(Object x, LambdaExecute... occupy) {
-        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
             if (x == null) {
                 x = "null";
             }
@@ -127,7 +127,7 @@ public class Optilog implements Log {
 
     @Override
     public void info(Object msg, Throwable ex) {
-        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
             StringBuilder returnString = new StringBuilder();
             returnString.append(msg.toString()).append("\n");
             returnString.append(ex);
@@ -153,7 +153,7 @@ public class Optilog implements Log {
 
     @Override
     public void info(long x) {
-        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
             LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
             infoEvent.marker = LogMark.NONE;
             Logger.logInfo(infoEvent, this);
@@ -162,7 +162,7 @@ public class Optilog implements Log {
 
     @Override
     public void info(double x) {
-        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
             LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
             infoEvent.marker = LogMark.NONE;
             Logger.logInfo(infoEvent, this);
@@ -171,7 +171,7 @@ public class Optilog implements Log {
 
     @Override
     public void info(char[] x) {
-        if (!allSetting.printInfo && !allSetting.serverInfo && !allSetting.consoleInfo) {
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
             if (x == null) {
                 x = new char[]{'n', 'u', 'l', 'l'};
             }
@@ -183,651 +183,757 @@ public class Optilog implements Log {
 
     @Override
     public void info(short x) {
-        LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
+            LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
+        }
     }
 
     @Override
     public void info(int x) {
-        LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
+            LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
+        }
     }
 
     @Override
     public void info(float x) {
-        LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
+            LogEvent infoEvent = new LogEvent(String.valueOf(x), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
+        }
     }
 
     @Override
     public void info(String x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent infoEvent = new LogEvent(x, Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
         }
-        LogEvent infoEvent = new LogEvent(x, Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
     }
 
     @Override
     public void info(Object x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printInfo || allSetting.serverInfo || allSetting.consoleInfo || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent infoEvent = new LogEvent(x.toString(), Level.INFO);
+            infoEvent.marker = LogMark.NONE;
+            Logger.logInfo(infoEvent, this);
         }
-        LogEvent infoEvent = new LogEvent(x.toString(), Level.INFO);
-        infoEvent.marker = LogMark.NONE;
-        Logger.logInfo(infoEvent, this);
     }
 
     @Override
     public void error() {
-        LogEvent errorEvent = new LogEvent(" ", Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            LogEvent errorEvent = new LogEvent(" ", Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
+        }
     }
 
     @Override
     public void error(Object x, Object... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
         }
-        LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
     }
 
     @Override
     public void error(Object x, LambdaExecute... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = () -> "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = () -> "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
         }
-        LogEvent errorEvent = new LogEvent(previousMsg, Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
     }
 
     @Override
     public void error(Object msg, Throwable ex) {
-        StringBuilder returnString = new StringBuilder();
-        returnString.append(msg.toString()).append("\n");
-        returnString.append(ex);
-        returnString.append("\n");
-        for (StackTraceElement s : ex.getStackTrace()) {
-            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
-        }
-
-        Throwable throwable = ex;
-
-        while (throwable.getCause() != null) {
-            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
-            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
-                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            StringBuilder returnString = new StringBuilder();
+            returnString.append(msg.toString()).append("\n");
+            returnString.append(ex);
+            returnString.append("\n");
+            for (StackTraceElement s : ex.getStackTrace()) {
+                returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
             }
-            throwable = throwable.getCause();
+
+            Throwable throwable = ex;
+
+            while (throwable.getCause() != null) {
+                returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+                for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                    returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+                }
+                throwable = throwable.getCause();
+            }
+            LogEvent errorEvent = new LogEvent(returnString.toString(), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
         }
-        LogEvent errorEvent = new LogEvent(returnString.toString(), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
     }
 
     @Override
     public void error(long x) {
-        LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
+        }
     }
 
     @Override
     public void error(double x) {
-        LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
+        }
     }
 
     @Override
     public void error(char[] x) {
-        if (x == null) {
-            x = new char[]{'n', 'u', 'l', 'l'};
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = new char[]{'n', 'u', 'l', 'l'};
+            }
+            LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
         }
-        LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
     }
 
     @Override
     public void error(short x) {
-        LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
+        }
     }
 
     @Override
     public void error(int x) {
-        LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
+        }
     }
 
     @Override
     public void error(float x) {
-        LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            LogEvent errorEvent = new LogEvent(String.valueOf(x), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
+        }
     }
 
     @Override
     public void error(String x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent errorEvent = new LogEvent(x, Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
         }
-        LogEvent errorEvent = new LogEvent(x, Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
     }
 
     @Override
     public void error(Object x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printError || allSetting.serverError || allSetting.consoleError || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent errorEvent = new LogEvent(x.toString(), Level.ERROR);
+            errorEvent.marker = LogMark.NONE;
+            Logger.logError(errorEvent, this);
         }
-        LogEvent errorEvent = new LogEvent(x.toString(), Level.ERROR);
-        errorEvent.marker = LogMark.NONE;
-        Logger.logError(errorEvent, this);
     }
 
     @Override
     public void warn() {
-        LogEvent warnEvent = new LogEvent(" ", Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            LogEvent warnEvent = new LogEvent(" ", Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
+        }
     }
 
     @Override
     public void warn(Object x, Object... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent warnEvent = new LogEvent(previousMsg, Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
         }
-        LogEvent warnEvent = new LogEvent(previousMsg, Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
     }
 
     @Override
     public void warn(Object x, LambdaExecute... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = () -> "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = () -> "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent warnEvent = new LogEvent(previousMsg, Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
         }
-        LogEvent warnEvent = new LogEvent(previousMsg, Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
     }
 
     @Override
     public void warn(Object msg, Throwable ex) {
-        StringBuilder returnString = new StringBuilder();
-        returnString.append(msg.toString()).append("\n");
-        returnString.append(ex);
-        returnString.append("\n");
-        for (StackTraceElement s : ex.getStackTrace()) {
-            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
-        }
-
-        Throwable throwable = ex;
-
-        while (throwable.getCause() != null) {
-            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
-            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
-                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            StringBuilder returnString = new StringBuilder();
+            returnString.append(msg.toString()).append("\n");
+            returnString.append(ex);
+            returnString.append("\n");
+            for (StackTraceElement s : ex.getStackTrace()) {
+                returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
             }
-            throwable = throwable.getCause();
+
+            Throwable throwable = ex;
+
+            while (throwable.getCause() != null) {
+                returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+                for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                    returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+                }
+                throwable = throwable.getCause();
+            }
+            LogEvent warnEvent = new LogEvent(returnString.toString(), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
         }
-        LogEvent warnEvent = new LogEvent(returnString.toString(), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
     }
 
     @Override
     public void warn(long x) {
-        LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
+        }
     }
 
     @Override
     public void warn(double x) {
-        LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
+        }
     }
 
     @Override
     public void warn(char[] x) {
-        if (x == null) {
-            x = new char[]{'n', 'u', 'l', 'l'};
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = new char[]{'n', 'u', 'l', 'l'};
+            }
+            LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
         }
-        LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
     }
 
     @Override
     public void warn(short x) {
-        LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
+        }
     }
 
     @Override
     public void warn(int x) {
-        LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
+        }
     }
 
     @Override
     public void warn(float x) {
-        LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            LogEvent warnEvent = new LogEvent(String.valueOf(x), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
+        }
     }
 
     @Override
     public void warn(String x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent warnEvent = new LogEvent(x, Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
         }
-        LogEvent warnEvent = new LogEvent(x, Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
     }
 
     @Override
     public void warn(Object x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printWarn || allSetting.serverWarn || allSetting.consoleWarn || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent warnEvent = new LogEvent(x.toString(), Level.WARN);
+            warnEvent.marker = LogMark.NONE;
+            Logger.logWarn(warnEvent, this);
         }
-        LogEvent warnEvent = new LogEvent(x.toString(), Level.WARN);
-        warnEvent.marker = LogMark.NONE;
-        Logger.logWarn(warnEvent, this);
     }
 
     @Override
     public void debug() {
-        LogEvent debugEvent = new LogEvent(" ", Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            LogEvent debugEvent = new LogEvent(" ", Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
+        }
     }
 
     @Override
     public void debug(Object x, Object... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
         }
-        LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
     }
 
     @Override
     public void debug(Object x, LambdaExecute... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = () -> "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = () -> "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
         }
-        LogEvent debugEvent = new LogEvent(previousMsg, Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
     }
 
     @Override
     public void debug(Object msg, Throwable ex) {
-        StringBuilder returnString = new StringBuilder();
-        returnString.append(msg.toString()).append("\n");
-        returnString.append(ex);
-        returnString.append("\n");
-        for (StackTraceElement s : ex.getStackTrace()) {
-            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
-        }
-
-        Throwable throwable = ex;
-
-        while (throwable.getCause() != null) {
-            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
-            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
-                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            StringBuilder returnString = new StringBuilder();
+            returnString.append(msg.toString()).append("\n");
+            returnString.append(ex);
+            returnString.append("\n");
+            for (StackTraceElement s : ex.getStackTrace()) {
+                returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
             }
-            throwable = throwable.getCause();
+
+            Throwable throwable = ex;
+
+            while (throwable.getCause() != null) {
+                returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+                for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                    returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+                }
+                throwable = throwable.getCause();
+            }
+            LogEvent debugEvent = new LogEvent(returnString.toString(), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
         }
-        LogEvent debugEvent = new LogEvent(returnString.toString(), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
     }
 
     @Override
     public void debug(long x) {
-        LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
+        }
     }
 
     @Override
     public void debug(double x) {
-        LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
+        }
     }
 
     @Override
     public void debug(char[] x) {
-        if (x == null) {
-            x = new char[]{'n', 'u', 'l', 'l'};
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = new char[]{'n', 'u', 'l', 'l'};
+            }
+            LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
         }
-        LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
     }
 
     @Override
     public void debug(short x) {
-        LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
+        }
     }
 
     @Override
     public void debug(int x) {
-        LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
+        }
     }
 
     @Override
     public void debug(float x) {
-        LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            LogEvent debugEvent = new LogEvent(String.valueOf(x), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
+        }
     }
 
     @Override
     public void debug(String x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent debugEvent = new LogEvent(x, Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
         }
-        LogEvent debugEvent = new LogEvent(x, Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
     }
 
     @Override
     public void debug(Object x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printDebug || allSetting.serverDebug || allSetting.consoleDebug || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent debugEvent = new LogEvent(x.toString(), Level.DEBUG);
+            debugEvent.marker = LogMark.NONE;
+            Logger.logDebug(debugEvent, this);
         }
-        LogEvent debugEvent = new LogEvent(x.toString(), Level.DEBUG);
-        debugEvent.marker = LogMark.NONE;
-        Logger.logDebug(debugEvent, this);
     }
 
     @Override
     public void fatal() {
-        LogEvent fatalEvent = new LogEvent(" ", Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            LogEvent fatalEvent = new LogEvent(" ", Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
+        }
     }
 
     @Override
     public void fatal(Object x, Object... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
         }
-        LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
     }
 
     @Override
     public void fatal(Object x, LambdaExecute... occupy) {
-        if (x == null) {
-            x = "null";
-        }
-        String previousMsg = x.toString();
-        int i0 = 0;
-        while (i0 < occupy.length) {
-            Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
-            if (matcher.find()) {
-                String st = previousMsg.substring(matcher.start() + 1, matcher.end());
-                int i = Integer.parseInt(st);
-                if (occupy[i - 1] == null) {
-                    occupy[i - 1] = () -> "null";
-                }
-                if (!occupy[i - 1].toString().contains("#")) {
-                    previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
-                } else {
-                    throw new IllegalArgumentException("Can't contain '#' in occupy log!");
-                }
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
             }
-            i0++;
+            String previousMsg = x.toString();
+            int i0 = 0;
+            while (i0 < occupy.length) {
+                Matcher matcher = Pattern.compile("#\\w{1,10000}").matcher(previousMsg);
+                if (matcher.find()) {
+                    String st = previousMsg.substring(matcher.start() + 1, matcher.end());
+                    int i = Integer.parseInt(st);
+                    if (occupy[i - 1] == null) {
+                        occupy[i - 1] = () -> "null";
+                    }
+                    if (!occupy[i - 1].toString().contains("#")) {
+                        previousMsg = previousMsg.replace("#" + st, occupy[i - 1].execute().toString());
+                    } else {
+                        throw new IllegalArgumentException("Can't contain '#' in occupy log!");
+                    }
+                }
+                i0++;
+            }
+            LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
         }
-        LogEvent fatalEvent = new LogEvent(previousMsg, Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
     }
 
     @Override
     public void fatal(Object msg, Throwable ex) {
-        StringBuilder returnString = new StringBuilder();
-        returnString.append(msg.toString()).append("\n");
-        returnString.append(ex);
-        returnString.append("\n");
-        for (StackTraceElement s : ex.getStackTrace()) {
-            returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
-        }
-
-        Throwable throwable = ex;
-
-        while (throwable.getCause() != null) {
-            returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
-            for (StackTraceElement st : throwable.getCause().getStackTrace()) {
-                returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            StringBuilder returnString = new StringBuilder();
+            returnString.append(msg.toString()).append("\n");
+            returnString.append(ex);
+            returnString.append("\n");
+            for (StackTraceElement s : ex.getStackTrace()) {
+                returnString.append("    at ").append(s.getClassName()).append(" ").append(s.getMethodName()).append("(").append(s.getFileName()).append(":").append(s.getLineNumber()).append(")\n");
             }
-            throwable = throwable.getCause();
+
+            Throwable throwable = ex;
+
+            while (throwable.getCause() != null) {
+                returnString.append("Caused By: ").append(throwable.getCause()).append("\n");
+                for (StackTraceElement st : throwable.getCause().getStackTrace()) {
+                    returnString.append("    at ").append(st.getClassName()).append(" ").append(st.getMethodName()).append("(").append(st.getFileName()).append(":").append(st.getLineNumber()).append(")\n");
+                }
+                throwable = throwable.getCause();
+            }
+            LogEvent fatalEvent = new LogEvent(returnString.toString(), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
         }
-        LogEvent fatalEvent = new LogEvent(returnString.toString(), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
     }
 
     @Override
     public void fatal(long x) {
-        LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
+        }
     }
 
     @Override
     public void fatal(double x) {
-        LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
+        }
     }
 
     @Override
     public void fatal(char[] x) {
-        if (x == null) {
-            x = new char[]{'n', 'u', 'l', 'l'};
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = new char[]{'n', 'u', 'l', 'l'};
+            }
+            LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
         }
-        LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
     }
 
     @Override
     public void fatal(short x) {
-        LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
+        }
     }
 
     @Override
     public void fatal(int x) {
-        LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
+        }
     }
 
     @Override
     public void fatal(float x) {
-        LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            LogEvent fatalEvent = new LogEvent(String.valueOf(x), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
+        }
     }
 
     @Override
     public void fatal(String x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent fatalEvent = new LogEvent(x, Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
         }
-        LogEvent fatalEvent = new LogEvent(x, Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
     }
 
     @Override
     public void fatal(Object x) {
-        if (x == null) {
-            x = "null";
+        if (allSetting.printFatal || allSetting.serverFatal || allSetting.consoleFatal || this.connection.sendToJdbc) {
+            if (x == null) {
+                x = "null";
+            }
+            LogEvent fatalEvent = new LogEvent(x.toString(), Level.FATAL);
+            fatalEvent.marker = LogMark.NONE;
+            Logger.logFatal(fatalEvent, this);
         }
-        LogEvent fatalEvent = new LogEvent(x.toString(), Level.FATAL);
-        fatalEvent.marker = LogMark.NONE;
-        Logger.logFatal(fatalEvent, this);
     }
 
     @Override

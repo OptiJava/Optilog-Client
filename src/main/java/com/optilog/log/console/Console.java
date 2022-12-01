@@ -15,12 +15,12 @@ public class Console {
         if (instance.consoleFileMasterCaution) {
             instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now())));
 
-            if (instance.allSetting.defaultConsolePath.isBlank() & instance.allSetting.Path1.isBlank() & instance.allSetting.Path2.isBlank() & instance.allSetting.Path3.isBlank() & instance.allSetting.Path4.isBlank() & instance.allSetting.Path5.isBlank()) {
+            if (instance.allSetting.defaultConsolePath.isBlank() && instance.allSetting.Path1.isBlank() && instance.allSetting.Path2.isBlank() && instance.allSetting.Path3.isBlank() && instance.allSetting.Path4.isBlank() && instance.allSetting.Path5.isBlank()) {
                 instance.consoleFileMasterCaution = false;
                 return;
             }
 
-            if (!instance.allSetting.defaultConsolePath.isBlank() & instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.defaultConsolePath.isBlank() && instance.consoleFileMasterCaution) {
                 final File f = new File(instance.allSetting.defaultConsolePath);
                 if (Console.checkFile(f, instance)) {
                     File defFile = new File(instance.allSetting.defaultConsolePath + "//" + instance.allSetting.fileName);
@@ -49,7 +49,7 @@ public class Console {
                 }
             }
 
-            if (!instance.allSetting.Path1.equals("") & instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path1.equals("") && instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path1 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
@@ -62,7 +62,7 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path2.equals("") & instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path2.equals("") && instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path2 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
@@ -75,7 +75,7 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path3.equals("") & instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path3.equals("") && instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path3 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
@@ -88,7 +88,7 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path4.equals("") & instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path4.equals("") && instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path4 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
@@ -101,7 +101,7 @@ public class Console {
                     throw new RuntimeException(e);
                 }
             }
-            if (!instance.allSetting.Path5.equals("") & instance.consoleFileMasterCaution) {
+            if (!instance.allSetting.Path5.equals("") && instance.consoleFileMasterCaution) {
                 File file = new File(instance.allSetting.Path5 + "//" + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
@@ -116,7 +116,7 @@ public class Console {
             }
         }
 
-        if (instance.allSetting.infoPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+        if (instance.allSetting.infoPath.startsWith("%path") && instance.consoleFileMasterCaution) {
             try {
                 if (instance.allSetting.infoPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.info = instance.allSetting.Path1;
@@ -143,7 +143,7 @@ public class Console {
                 e.printStackTrace();
             }
         }
-        if (instance.allSetting.errorPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+        if (instance.allSetting.errorPath.startsWith("%path") && instance.consoleFileMasterCaution) {
             try {
                 if (instance.allSetting.errorPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.error = instance.allSetting.Path1;
@@ -170,7 +170,7 @@ public class Console {
                 e.printStackTrace();
             }
         }
-        if (instance.allSetting.warnPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+        if (instance.allSetting.warnPath.startsWith("%path") && instance.consoleFileMasterCaution) {
             try {
                 if (instance.allSetting.warnPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.warn = instance.allSetting.Path1;
@@ -196,7 +196,7 @@ public class Console {
                 System.err.println("Optilog Note: Unexpected error occur when parse warnPath");
             }
         }
-        if (instance.allSetting.debugPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+        if (instance.allSetting.debugPath.startsWith("%path") && instance.consoleFileMasterCaution) {
             try {
                 if (instance.allSetting.debugPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.debug = instance.allSetting.Path1;
@@ -222,7 +222,7 @@ public class Console {
                 System.err.println("Optilog Note: Unexpected error occur when parse debugPath");
             }
         }
-        if (instance.allSetting.fatalPath.startsWith("%path") & instance.consoleFileMasterCaution) {
+        if (instance.allSetting.fatalPath.startsWith("%path") && instance.consoleFileMasterCaution) {
             try {
                 if (instance.allSetting.fatalPath.toLowerCase().replace("%path", "").equals("1")) {
                     instance.fatal = instance.allSetting.Path1;
