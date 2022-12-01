@@ -1,9 +1,5 @@
-.gradle
-# Cache of project
-.gradletasknamecache
+.gradle/
 .idea/
 build/
 Optilog-RunVideo.mp4
 Optilog-Tutorial.mp4
-.gradle/
-*.class
