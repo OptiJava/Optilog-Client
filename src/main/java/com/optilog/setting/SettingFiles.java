@@ -72,8 +72,8 @@ public class SettingFiles {
                 try (InputStream input = Optilog.class.getResourceAsStream(s)) {
                     if (input == null) {
                         instance.consoleFileMasterCaution = false;
-                        System.err.println("Optilog Note: Can't find '" + s + "' in classpath.");
-                        throw new ConfigureException("Can't find '" + s + "' in classpath.");
+                        System.err.println("[Optilog-Client] Optilog Note: Can't find '" + s + "' in classpath.");
+                        throw new ConfigureException("[Optilog-Client] Can't find '" + s + "' in classpath.");
                     }
                     PropSettings.properties(input, instance);
                     return;
@@ -95,7 +95,7 @@ public class SettingFiles {
                 return;
             }
             instance.consoleFileMasterCaution = false;
-            System.err.println("Argument illegal or that Configure file not be supported");
+            System.err.println("[Optilog-Client] Argument illegal or that Configure file not be supported");
         }
     }
 

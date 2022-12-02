@@ -12,7 +12,6 @@ import java.nio.file.Path;
 public class JsonSettings {
     public static void getJsonSettings(String path, boolean isClasspath, Optilog instance) {
         try {
-            // JsonSettingBean bean = new Gson().fromJson(Files.readString(Path.of(path), StandardCharsets.UTF_8), JsonSettingBean.class);
             if (!isClasspath) {
                 JsonSettingBean bean = new Gson().fromJson(Files.readString(Path.of(path), StandardCharsets.UTF_8), JsonSettingBean.class);
                 // print

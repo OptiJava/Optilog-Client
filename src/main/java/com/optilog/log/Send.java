@@ -17,13 +17,13 @@ public class Send {
 
     @OnlyInLog
     static void loggerPrint(LogEvent le, Optilog instance) {
-        System.out.print(Packing.packMessage(le.message, le.level.getName(), instance, Appender.PRINT));
+        Util.getOutput().print(Packing.packMessage(le.message, le.level.getName(), instance, Appender.PRINT));
     }
 
     @OnlyInLog
     static void loggerConsole(LogEvent le, Optilog instance) {
         try {
-            if (Level.INFO.getName().equals(le.level.getName()) & !instance.info.isBlank() & instance.consoleFileMasterCaution) {
+            if (Level.INFO.getName().equals(le.level.getName()) && !instance.info.isBlank() && instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -34,7 +34,7 @@ public class Send {
                 }
                 return;
             }
-            if (Level.ERROR.getName().equals(le.level.getName()) & !instance.error.isBlank() & instance.consoleFileMasterCaution) {
+            if (Level.ERROR.getName().equals(le.level.getName()) && !instance.error.isBlank() && instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -45,8 +45,7 @@ public class Send {
                 }
                 return;
             }
-            if (Level.DEBUG.getName().equals(le.level.getName()) & !instance.debug.isBlank() & instance.consoleFileMasterCaution) {
-                //String s = Packing.packMessage(message, level, instance);
+            if (Level.DEBUG.getName().equals(le.level.getName()) && !instance.debug.isBlank() && instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -57,8 +56,7 @@ public class Send {
                 }
                 return;
             }
-            if (Level.WARN.getName().equals(le.level.getName()) & !instance.warn.isBlank() & instance.consoleFileMasterCaution) {
-                //String s = Packing.packMessage(message, level, instance);
+            if (Level.WARN.getName().equals(le.level.getName()) && !instance.warn.isBlank() && instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -69,7 +67,7 @@ public class Send {
                 }
                 return;
             }
-            if (Level.FATAL.getName().equals(le.level.getName()) & !instance.fatal.isBlank() & instance.consoleFileMasterCaution) {
+            if (Level.FATAL.getName().equals(le.level.getName()) && !instance.fatal.isBlank() && instance.consoleFileMasterCaution) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -81,7 +79,7 @@ public class Send {
                 return;
             }
             // Marker runner
-            if (le.marker == LogMark.TEMPLATEInfo & instance.consoleFileMasterCaution & (!instance.info.isBlank())) {
+            if (le.marker == LogMark.TEMPLATEInfo && instance.consoleFileMasterCaution && (!instance.info.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.info), Files.readString(Path.of(instance.info), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -93,7 +91,7 @@ public class Send {
                 return;
             }
 
-            if (le.marker == LogMark.TEMPLATEError & instance.consoleFileMasterCaution & (!instance.error.isBlank())) {
+            if (le.marker == LogMark.TEMPLATEError && instance.consoleFileMasterCaution && (!instance.error.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.error), Files.readString(Path.of(instance.error), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -104,7 +102,7 @@ public class Send {
                 }
             }
 
-            if (le.marker == LogMark.TEMPLATEWarn & instance.consoleFileMasterCaution & (!instance.warn.isBlank())) {
+            if (le.marker == LogMark.TEMPLATEWarn && instance.consoleFileMasterCaution && (!instance.warn.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.warn), Files.readString(Path.of(instance.warn), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -116,7 +114,7 @@ public class Send {
                 return;
             }
 
-            if (le.marker == LogMark.TEMPLATEDebug & instance.consoleFileMasterCaution & (!instance.debug.isBlank())) {
+            if (le.marker == LogMark.TEMPLATEDebug && instance.consoleFileMasterCaution && (!instance.debug.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.debug), Files.readString(Path.of(instance.debug), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);
@@ -128,7 +126,7 @@ public class Send {
                 return;
             }
 
-            if (le.marker == LogMark.TEMPLATEFatal & instance.consoleFileMasterCaution & (!instance.fatal.isBlank())) {
+            if (le.marker == LogMark.TEMPLATEFatal && instance.consoleFileMasterCaution && (!instance.fatal.isBlank())) {
                 try {
                     synchronized (Util.getOutput()) {
                         Files.writeString(Path.of(instance.fatal), Files.readString(Path.of(instance.fatal), StandardCharsets.UTF_8) + Packing.packMessage(le.message, le.level.getName(), instance, Appender.FILE), StandardCharsets.UTF_8);

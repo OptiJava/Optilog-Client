@@ -23,23 +23,23 @@ public class Packing {
         }
 
         try {
-            returnString = returnString.replaceAll("%thread", Matcher.quoteReplacement(getLocalThread()));
+            returnString = returnString.replace("%thread", Matcher.quoteReplacement(getLocalThread()));
 
-            returnString = returnString.replaceAll("%yyyy", DateTimeFormatter.ofPattern("yyyy").format(LocalDateTime.now()));
-            returnString = returnString.replaceAll("%MM", DateTimeFormatter.ofPattern("MM").format(LocalDateTime.now()));
-            returnString = returnString.replaceAll("%dd", DateTimeFormatter.ofPattern("dd").format(LocalDateTime.now()));
-            returnString = returnString.replaceAll("%HH", DateTimeFormatter.ofPattern("HH").format(LocalDateTime.now()));
-            returnString = returnString.replaceAll("%mm", DateTimeFormatter.ofPattern("mm").format(LocalDateTime.now()));
-            returnString = returnString.replaceAll("%ss", DateTimeFormatter.ofPattern("ss").format(LocalDateTime.now()));
-            returnString = returnString.replaceAll("%SS", DateTimeFormatter.ofPattern("SS").format(LocalDateTime.now()));
+            returnString = returnString.replace("%yyyy", DateTimeFormatter.ofPattern("yyyy").format(LocalDateTime.now()));
+            returnString = returnString.replace("%MM", DateTimeFormatter.ofPattern("MM").format(LocalDateTime.now()));
+            returnString = returnString.replace("%dd", DateTimeFormatter.ofPattern("dd").format(LocalDateTime.now()));
+            returnString = returnString.replace("%HH", DateTimeFormatter.ofPattern("HH").format(LocalDateTime.now()));
+            returnString = returnString.replace("%mm", DateTimeFormatter.ofPattern("mm").format(LocalDateTime.now()));
+            returnString = returnString.replace("%ss", DateTimeFormatter.ofPattern("ss").format(LocalDateTime.now()));
+            returnString = returnString.replace("%SS", DateTimeFormatter.ofPattern("SS").format(LocalDateTime.now()));
 
-            returnString = returnString.replaceAll("%level", Matcher.quoteReplacement(level));
+            returnString = returnString.replace("%level", Matcher.quoteReplacement(level));
 
-            returnString = returnString.replaceAll("%class", Matcher.quoteReplacement(arr[5].getClassName()));
-            returnString = returnString.replaceAll("%line", String.valueOf(arr[5].getLineNumber()));
-            returnString = returnString.replaceAll("%file", Matcher.quoteReplacement(Objects.requireNonNull(arr[5].getFileName())));
-            returnString = returnString.replaceAll("%msg", Matcher.quoteReplacement(msg));
-            returnString = returnString.replaceAll("%method", Matcher.quoteReplacement(arr[5].getMethodName()));
+            returnString = returnString.replace("%class", Matcher.quoteReplacement(arr[5].getClassName()));
+            returnString = returnString.replace("%line", String.valueOf(arr[5].getLineNumber()));
+            returnString = returnString.replace("%file", Matcher.quoteReplacement(Objects.requireNonNull(arr[5].getFileName())));
+            returnString = returnString.replace("%msg", Matcher.quoteReplacement(msg));
+            returnString = returnString.replace("%method", Matcher.quoteReplacement(arr[5].getMethodName()));
         } catch (NullPointerException i) {
             i.getStackTrace();
         }

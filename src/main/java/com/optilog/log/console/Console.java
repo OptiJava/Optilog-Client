@@ -23,7 +23,7 @@ public class Console {
             if (!instance.allSetting.defaultConsolePath.isBlank() && instance.consoleFileMasterCaution) {
                 final File f = new File(instance.allSetting.defaultConsolePath);
                 if (Console.checkFile(f, instance)) {
-                    File defFile = new File(instance.allSetting.defaultConsolePath + "//" + instance.allSetting.fileName);
+                    File defFile = new File(instance.allSetting.defaultConsolePath + File.separator + instance.allSetting.fileName);
                     try {
                         if (!defFile.isFile()) {
                             if (!defFile.createNewFile()) {
@@ -50,7 +50,7 @@ public class Console {
             }
 
             if (!instance.allSetting.Path1.equals("") && instance.consoleFileMasterCaution) {
-                File file = new File(instance.allSetting.Path1 + "//" + instance.allSetting.fileName);
+                File file = new File(instance.allSetting.Path1 + File.separator + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
@@ -63,7 +63,7 @@ public class Console {
                 }
             }
             if (!instance.allSetting.Path2.equals("") && instance.consoleFileMasterCaution) {
-                File file = new File(instance.allSetting.Path2 + "//" + instance.allSetting.fileName);
+                File file = new File(instance.allSetting.Path2 + File.separator + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
@@ -76,7 +76,7 @@ public class Console {
                 }
             }
             if (!instance.allSetting.Path3.equals("") && instance.consoleFileMasterCaution) {
-                File file = new File(instance.allSetting.Path3 + "//" + instance.allSetting.fileName);
+                File file = new File(instance.allSetting.Path3 + File.separator + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
@@ -89,7 +89,7 @@ public class Console {
                 }
             }
             if (!instance.allSetting.Path4.equals("") && instance.consoleFileMasterCaution) {
-                File file = new File(instance.allSetting.Path4 + "//" + instance.allSetting.fileName);
+                File file = new File(instance.allSetting.Path4 + File.separator + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
@@ -102,7 +102,7 @@ public class Console {
                 }
             }
             if (!instance.allSetting.Path5.equals("") && instance.consoleFileMasterCaution) {
-                File file = new File(instance.allSetting.Path5 + "//" + instance.allSetting.fileName);
+                File file = new File(instance.allSetting.Path5 + File.separator + instance.allSetting.fileName);
                 try {
                     if (!file.isFile()) {
                         if (!file.createNewFile()) {
@@ -254,7 +254,7 @@ public class Console {
     @OnlyInInit
     private static boolean checkFile(File f, Optilog instance) {
         try {
-            return f.isDirectory() & f.canRead() & f.canWrite() & instance.consoleFileMasterCaution;
+            return f.isDirectory() && f.canRead() && f.canWrite() && instance.consoleFileMasterCaution;
         } catch (NullPointerException npe) {
             npe.printStackTrace();
             return false;

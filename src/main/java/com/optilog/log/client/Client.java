@@ -29,13 +29,13 @@ public class Client {
                 instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));
             }
         } catch (IOException e) {
-            instance.error("Optilog Note:IOException in Client.", e);
+            instance.error("Optilog Note: IOException in Client.", e);
         }
     }
 
     @OnlyInLog
     public static void stop(Optilog instance) {
         instance.socket.disconnect();
-        instance.info("Optilog Note:Socket Disconnected!");
+        instance.info("Optilog Note: Socket Disconnected!");
     }
 }

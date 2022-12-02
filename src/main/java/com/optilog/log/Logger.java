@@ -15,11 +15,11 @@ public class Logger {
             Send.loggerPrint(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.consoleInfo) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.consoleInfo) {
             Send.loggerConsole(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.serverInfo & instance.allSetting.startClient) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.serverInfo && instance.allSetting.startClient) {
             Send.loggerToServer(le, instance);
         }
 
@@ -35,11 +35,11 @@ public class Logger {
             Send.loggerPrint(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.consoleError) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.consoleError) {
             Send.loggerConsole(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.serverError & instance.allSetting.startClient) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.serverError && instance.allSetting.startClient) {
             Send.loggerToServer(le, instance);
         }
 
@@ -55,11 +55,11 @@ public class Logger {
             Send.loggerPrint(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.consoleWarn) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.consoleWarn) {
             Send.loggerConsole(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.serverWarn & instance.allSetting.startClient) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.serverWarn && instance.allSetting.startClient) {
             Send.loggerToServer(le, instance);
         }
 
@@ -75,11 +75,11 @@ public class Logger {
             Send.loggerPrint(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.consoleDebug) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.consoleDebug) {
             Send.loggerConsole(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.serverDebug & instance.allSetting.startClient) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.serverDebug && instance.allSetting.startClient) {
             Send.loggerToServer(le, instance);
         }
 
@@ -95,11 +95,11 @@ public class Logger {
             Send.loggerPrint(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.consoleFatal) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.consoleFatal) {
             Send.loggerConsole(le, instance);
         }
 
-        if (instance.consoleFileMasterCaution & instance.allSetting.serverFatal & instance.allSetting.startClient) {
+        if (instance.consoleFileMasterCaution && instance.allSetting.serverFatal && instance.allSetting.startClient) {
             Send.loggerToServer(le, instance);
         }
 
