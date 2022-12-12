@@ -8,7 +8,7 @@ jobs:
         # Use these Java versions
         java: [ 11,16,17 ]
         # and run on both Linux and Windows
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-20.04, ubuntu-latest, windows-latest ]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -24,6 +24,8 @@ jobs:
       - name: prepare gradle wrapper
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
+      - name: clean
+        run: ./gradlew clean
       - name: build
         run: ./gradlew build
       - name: capture build artifacts
