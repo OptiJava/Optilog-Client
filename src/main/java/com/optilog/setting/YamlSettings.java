@@ -12,6 +12,11 @@ import java.util.Map;
 
 public class YamlSettings {
     public static void yaml(String path, boolean isClasspath, Optilog instance) {
+        if (isClasspath) {
+            if (!path.startsWith("/")) {
+                path = "/" + path;
+            }
+        }
         Map<String, LinkedHashMap> map;
         if (!isClasspath) {
             try (InputStream input = new FileInputStream(path)) {

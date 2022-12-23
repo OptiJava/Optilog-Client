@@ -11,6 +11,11 @@ import java.nio.file.Path;
 
 public class JsonSettings {
     public static void getJsonSettings(String path, boolean isClasspath, Optilog instance) {
+        if (isClasspath) {
+            if (!path.startsWith("/")) {
+                path = "/" + path;
+            }
+        }
         try {
             if (!isClasspath) {
                 JsonSettingBean bean = new Gson().fromJson(Files.readString(Path.of(path), StandardCharsets.UTF_8), JsonSettingBean.class);

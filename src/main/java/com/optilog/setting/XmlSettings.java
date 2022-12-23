@@ -16,6 +16,11 @@ public class XmlSettings {
     @OnlyInInit
     static void xml(String path, boolean isClasspath, Optilog instance) {
         if (isClasspath) {
+            if (!path.startsWith("/")) {
+                path = "/" + path;
+            }
+        }
+        if (isClasspath) {
             // read in classpath
             try (InputStream input = Optilog.class.getResourceAsStream(path)) {
                 // if file is not exists(input is null),make consoleFileMasterCaution false
