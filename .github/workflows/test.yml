@@ -1,14 +1,15 @@
-name: Build
+name: Test
 on: [ pull_request, push ]
 
 jobs:
-  build:
+  test:
     strategy:
       matrix:
-        java: [ 11,16,17 ]
-        os: [ ubuntu-latest ]
+        java: [ 11,17 ]
+        os: [ ubuntu-latest, windows-latest ]
 
     runs-on: ${{ matrix.os }}
+
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
@@ -26,9 +27,11 @@ jobs:
         run: ./gradlew clean
       - name: build
         run: ./gradlew build
-      - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
+      - name: test
+        run: ./gradlew test
+      - name: capture test log
+        if: ${{ matrix.java == '17' }}
         uses: actions/upload-artifact@v2
         with:
-          name: Artifacts
-          path: build/libs/
+          name: Logs
+          path: test/resources/logs/

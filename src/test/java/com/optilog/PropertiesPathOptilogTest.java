@@ -3,10 +3,12 @@ package com.optilog;
 import com.optilog.log.Log;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 public class PropertiesPathOptilogTest {
     @Test
     void test() {
-        Log log = Log.initLog("%prop .\\src\\test\\resources\\Settings.properties");
+        Log log = Log.initLog("%prop ./src/test/resources/Settings.properties");
 
         log.info("========测试开始========");
 
@@ -123,6 +125,7 @@ public class PropertiesPathOptilogTest {
         log.info("This log will not be console.");
         log.setConsoleInfo(true);
 
+        log.info(new File(".").getAbsolutePath());
     }
 
     public static void stackTest(Log log) {

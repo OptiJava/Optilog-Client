@@ -3,6 +3,8 @@ package com.optilog;
 import com.optilog.log.Log;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 public class PropertiesClassPathOptilogTest {
     @Test
     void test() {
@@ -123,6 +125,7 @@ public class PropertiesClassPathOptilogTest {
         log.info("This log will not be console.");
         log.setConsoleInfo(true);
 
+        log.info(new File(".").getAbsolutePath());
     }
 
     public static void stackTest(Log log) {

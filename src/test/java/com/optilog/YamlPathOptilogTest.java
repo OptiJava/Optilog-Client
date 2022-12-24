@@ -3,10 +3,12 @@ package com.optilog;
 import com.optilog.log.Log;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 public class YamlPathOptilogTest {
     @Test
     void test() {
-        Log log = Log.initLog("%yaml .\\src\\test\\resources\\Settings.yaml");
+        Log log = Log.initLog("%yaml ./src/test/resources/Settings.yaml");
 
         log.info("========测试开始========");
 
@@ -123,6 +125,7 @@ public class YamlPathOptilogTest {
         log.info("This log will not be console.");
         log.setConsoleInfo(true);
 
+        log.info(new File(".").getAbsolutePath());
     }
 
     public static void stackTest(Log log) {

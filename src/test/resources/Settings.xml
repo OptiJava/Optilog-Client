@@ -20,7 +20,7 @@
         <consoleFatal>true</consoleFatal>
 
         <defaultConsolePath>
-            .\\src\\test\\resources\\logs
+            ./src/test/resources/logs
         </defaultConsolePath>
 
         <fileName>%time-Log(Xml).log</fileName>

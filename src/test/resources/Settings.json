@@ -13,7 +13,7 @@
     "warn": "true",
     "debug": "true",
     "fatal": "true",
-    "defaultConsolePath": ".\\src\\test\\resources\\logs",
+    "defaultConsolePath": "./src/test/resources/logs",
     "fileName": "%time-Log(Json).log",
     "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
   },

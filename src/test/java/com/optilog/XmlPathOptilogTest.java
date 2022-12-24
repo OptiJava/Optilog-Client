@@ -3,10 +3,12 @@ package com.optilog;
 import com.optilog.log.Log;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 public class XmlPathOptilogTest {
     @Test
     void test() {
-        Log log = Log.initLog("%xml .\\src\\test\\resources\\Settings.xml");
+        Log log = Log.initLog("%xml ./src/test/resources/Settings.xml");
 
         log.info("========测试开始========");
 
@@ -123,6 +125,7 @@ public class XmlPathOptilogTest {
         log.info("This log will not be console.");
         log.setConsoleInfo(true);
 
+        log.info(new File(".").getAbsolutePath());
     }
 
     public static void stackTest(Log log) {
