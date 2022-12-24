@@ -69,7 +69,7 @@ public class SettingFiles {
             }
             if (str.startsWith("%prop -cp ")) {
                 String s = str.substring(10);
-                if (!s.startsWith("/")) {
+                if (!s.startsWith("/") && !s.startsWith("\\")) {
                     s = "/" + s;
                 }
                 try (InputStream input = Optilog.class.getResourceAsStream(s)) {

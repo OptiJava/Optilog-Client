@@ -16,7 +16,7 @@ public class XmlSettings {
     @OnlyInInit
     static void xml(String path, boolean isClasspath, Optilog instance) {
         if (isClasspath) {
-            if (!path.startsWith("/")) {
+            if (!path.startsWith("/") && !path.startsWith("\\")) {
                 path = "/" + path;
             }
         }

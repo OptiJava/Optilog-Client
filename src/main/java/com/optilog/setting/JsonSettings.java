@@ -12,7 +12,7 @@ import java.nio.file.Path;
 public class JsonSettings {
     public static void getJsonSettings(String path, boolean isClasspath, Optilog instance) {
         if (isClasspath) {
-            if (!path.startsWith("/")) {
+            if (!path.startsWith("/") && !path.startsWith("\\")) {
                 path = "/" + path;
             }
         }

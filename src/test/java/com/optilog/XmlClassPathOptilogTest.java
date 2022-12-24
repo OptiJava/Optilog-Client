@@ -3,14 +3,10 @@ package com.optilog;
 import com.optilog.log.Log;
 import org.junit.jupiter.api.Test;
 
-/**
- * Optilog测试类
- */
-class JsonOptilogTest {
-
+public class XmlClassPathOptilogTest {
     @Test
     void test() {
-        Log log = Log.initLog("%json D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\Settings.json");
+        Log log = Log.initLog("%xml -cp /Settings.xml");
 
         log.info("========测试开始========");
 

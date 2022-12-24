@@ -13,7 +13,7 @@ public class Console {
     @OnlyInInit
     public static void initAppender(Optilog instance) {
         if (instance.consoleFileMasterCaution) {
-            instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss").format(LocalDateTime.now())));
+            instance.allSetting.fileName = instance.allSetting.fileName.replace("%time", Matcher.quoteReplacement(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss-SS").format(LocalDateTime.now())));
 
             if (instance.allSetting.defaultConsolePath.isBlank() && instance.allSetting.Path1.isBlank() && instance.allSetting.Path2.isBlank() && instance.allSetting.Path3.isBlank() && instance.allSetting.Path4.isBlank() && instance.allSetting.Path5.isBlank()) {
                 instance.consoleFileMasterCaution = false;

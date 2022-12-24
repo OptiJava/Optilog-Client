@@ -20,10 +20,10 @@
         <consoleFatal>true</consoleFatal>
 
         <defaultConsolePath>
-            D:\\Program\\Project\\resources\\app\\Git\\Projects\\Optilog-Client\\src\\test\\resources\\logs
+            .\\src\\test\\resources\\logs
         </defaultConsolePath>
 
-        <fileName>%timeLog(Client).log</fileName>
+        <fileName>%time-Log(Xml).log</fileName>
         <packingFormat>
             [%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg
         </packingFormat>
