@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Logs
-          path: test/resources/logs/
+          path: src/test/resources/logs/
