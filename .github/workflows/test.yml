@@ -27,15 +27,51 @@ jobs:
         run: ./gradlew clean
       - name: build
         run: ./gradlew build
-      - name: clean test cache
+      - name: clean log cache (Linux & macOS)
+        if: ${{ runner.os != 'Windows' }}
         run: |
-          rm -rf ./src/test/resources/logs
+          rm -rf src/test/resources/logs
           mkdir ./src/test/resources/logs
+      - name: clean log cache (Windows)
+        if: ${{ runner.os == 'Windows' }}
+        run: |
+          rd /s src\test\resources\logs
+          mkdir .\src\test\resources\logs
       - name: test
         run: ./gradlew test
-      - name: capture test log
-        if: ${{ matrix.java == '17' }}
+      - name: capture test log (Linux)
+        if: ${{ matrix.java == '17' && runner.os = 'Linux' }}
         uses: actions/upload-artifact@v2
         with:
-          name: Logs
+          name: test-log-linux-jdk17
           path: src/test/resources/logs/
+      - name: capture test log (Linux)
+        if: ${{ matrix.java == '11' && runner.os = 'Linux' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-log-linux-jdk11
+          path: src/test/resources/logs/
+      - name: capture test log (macOS)
+        if: ${{ matrix.java == '17' && runner.os = 'macOS' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-log-macos-jdk17
+          path: src/test/resources/logs/
+      - name: capture test log (macOS)
+        if: ${{ matrix.java == '11' && runner.os = 'macOS' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-log-macos-jdk11
+          path: src/test/resources/logs/
+      - name: capture test log (Windows)
+        if: ${{ matrix.java == '17' && runner.os = 'Windows' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-log-windows-jdk17
+          path: src\test\resources\logs\
+      - name: capture test log (Windows)
+        if: ${{ matrix.java == '11' && runner.os = 'Windows' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-log-windows-jdk11
+          path: src\test\resources\logs\
