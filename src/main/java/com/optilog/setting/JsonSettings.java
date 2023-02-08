@@ -226,6 +226,10 @@ public class JsonSettings {
                     if (c != null) {
                         instance.allSetting.serverPackingFormat = c;
                     }
+                    String d = bean.server.get("forceDisableSocketWhenException");
+                    if (d != null) {
+                        instance.allSetting.forceDisableSocketWhenException = Boolean.parseBoolean(d);
+                    }
                 } catch (NullPointerException ignored) {
                 }
             }

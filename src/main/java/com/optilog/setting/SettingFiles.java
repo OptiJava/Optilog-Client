@@ -47,6 +47,8 @@ public class SettingFiles {
 
     public String fileName = "%time Log(Client).log";
 
+    public boolean forceDisableSocketWhenException = true;
+
     @OnlyInInit
     public static void check(String str, Optilog instance) throws IOException {
         if (!str.isBlank()) {
@@ -148,10 +150,11 @@ public class SettingFiles {
                     "server.warnSendToServer=true\n" +
                     "server.debugSendToServer=true\n" +
                     "server.fatalSendToServer=true\n" +
-                    "server.startClient=true\n" +
+                    "server.startClient=false\n" +
                     "server.socketNumber=65535\n" +
                     "server.packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
-                    "server.host=localhost", StandardCharsets.UTF_8);
+                    "server.host=localhost\n" +
+                    "server.forceDisableSocketWhenException=true", StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -211,6 +214,7 @@ public class SettingFiles {
                     "        <packingFormat>\n" +
                     "            [%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
                     "        </packingFormat>\n" +
+                    "        <forceDisableSocketWhenException>true</forceDisableSocketWhenException>\n" +
                     "    </server>\n" +
                     "</Optilog>", StandardCharsets.UTF_8);
         } catch (IOException e) {
@@ -255,10 +259,11 @@ public class SettingFiles {
                     "  fileName: \"%timeLog.log\"\n" +
                     "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
                     "server:\n" +
-                    "  startClient: true\n" +
+                    "  startClient: false\n" +
                     "  socketNumber: 65535\n" +
                     "  host: \"localhost\"\n" +
-                    "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n", StandardCharsets.UTF_8);
+                    "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
+                    "  forceDisableSocketWhenException: \"true\"", StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }

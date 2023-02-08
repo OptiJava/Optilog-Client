@@ -56,6 +56,8 @@ public class PropSettings {
 
             instance.allSetting.fileName = p.getProperty("file.fileName", "%time Log(Client).log");
 
+            instance.allSetting.forceDisableSocketWhenException = Boolean.parseBoolean(p.getProperty("server.forceDisableSocketWhenException","true"));
+
         } catch (IOException e) {
             System.err.println("Optilog Note:Read file failed.");
             throw new ConfigureException("Can't find file.", e);

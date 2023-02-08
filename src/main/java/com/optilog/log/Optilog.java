@@ -8,7 +8,6 @@ import com.optilog.util.LambdaExecute;
 import com.optilog.util.OnlyInInit;
 import com.optilog.util.exception.OptilogException;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.DatagramSocket;
 import java.util.regex.Matcher;
@@ -49,7 +48,7 @@ public class Optilog implements Log {
                 Console.initAppender(instance);
                 Client.initAppender(instance);
             }
-        } catch (RuntimeException | IOException e) {
+        } catch (Throwable e) {
             System.err.println("Optilog Note: An Exception was thrown when Optilog init logger");
             throw new OptilogException("An Exception was thrown when Optilog init logger", e);
         }

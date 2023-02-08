@@ -28,6 +28,17 @@ public class Client {
             if (instance.allSetting.startClient) {
                 instance.socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length));
             }
+        } catch (PortUnreachableException pue) {
+            if (instance.allSetting.forceDisableSocketWhenException) {
+                instance.allSetting.serverInfo = false;
+                instance.allSetting.serverError = false;
+                instance.allSetting.serverWarn = false;
+                instance.allSetting.serverFatal = false;
+                instance.allSetting.serverDebug = false;
+                instance.error("Optilog Note: Force disabled socket because exception when send packet.", pue);
+            } else {
+                instance.error("Optilog Note: PortUnreachableException in Client.", pue);
+            }
         } catch (IOException e) {
             instance.error("Optilog Note: IOException in Client.", e);
         }

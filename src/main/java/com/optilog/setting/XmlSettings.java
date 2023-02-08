@@ -224,6 +224,15 @@ public class XmlSettings {
                             e.printStackTrace();
                         }
                     }
+                    String r = object.server.get("forceDisableSocketWhenException");
+                    if (q != null) {
+                        try {
+                            instance.allSetting.forceDisableSocketWhenException = Boolean.parseBoolean(r);
+                        } catch (NumberFormatException e) {
+                            System.err.println("Optilog Note: NumberFormatException");
+                            e.printStackTrace();
+                        }
+                    }
                 } catch (NullPointerException ignored) {
                 }
             } catch (IOException e) {

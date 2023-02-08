@@ -140,6 +140,11 @@ public class YamlSettings {
                 }
             } catch (NumberFormatException | NullPointerException ignored) {
             }
+
+            try {
+                instance.allSetting.forceDisableSocketWhenException = Boolean.parseBoolean(map.get("server").get("forceDisableSocketWhenException").toString());
+            } catch (NumberFormatException | NullPointerException ignored) {
+            }
         } catch (NullPointerException ignored) {
         }
     }
