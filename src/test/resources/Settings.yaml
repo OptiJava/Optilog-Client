@@ -1,23 +1,23 @@
 info:
-  print: true
-  console: true
-  server: true
+  print: "true"
+  console: "true"
+  server: "true"
 error:
-  print: true
-  console: true
-  server: true
+  print: "true"
+  console: "true"
+  server: "true"
 warn:
-  print: true
-  console: true
-  server: true
+  print: "true"
+  console: "true"
+  server: "true"
 debug:
-  print: true
-  console: true
-  server: true
+  print: "true"
+  console: "true"
+  server: "true"
 fatal:
-  print: true
-  console: true
-  server: true
+  print: "true"
+  console: "true"
+  server: "true"
 print:
   packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
 file:
@@ -25,8 +25,8 @@ file:
   fileName: "%time-Log(Yaml).log"
   packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
 server:
-  startClient: true
-  socketNumber: 65535
+  startClient: "false"
+  socketNumber: "65535"
   host: "localhost"
   packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
   forceDisableSocketWhenException: "true"

@@ -3,7 +3,10 @@ package com.optilog.util;
 import java.io.PrintStream;
 
 public class Util {
-    public static PrintStream output = System.out;
+    private static final PrintStream output = System.out;
+
+    public static final String TRUE = "true";
+    public static final String FALSE = "false";
 
     @OnlyInInit
     @OnlyInLog

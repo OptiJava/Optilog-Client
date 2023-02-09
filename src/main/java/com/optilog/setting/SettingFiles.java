@@ -114,6 +114,53 @@ public class SettingFiles {
         return sb.toString();
     }
 
+    public static void generateJsonSettings(String path) {
+        File f = new File(path + "//Setting.json");
+        try {
+            if (!f.createNewFile()) {
+                throw new IOException();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Files.writeString(f.toPath(), "{\n" +
+                    "  \"print\": {\n" +
+                    "    \"info\": \"true\",\n" +
+                    "    \"error\": \"true\",\n" +
+                    "    \"warn\": \"true\",\n" +
+                    "    \"debug\": \"true\",\n" +
+                    "    \"fatal\": \"true\",\n" +
+                    "    \"packingFormat\": \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
+                    "  },\n" +
+                    "  \"file\": {\n" +
+                    "    \"info\": \"true\",\n" +
+                    "    \"error\": \"true\",\n" +
+                    "    \"warn\": \"true\",\n" +
+                    "    \"debug\": \"true\",\n" +
+                    "    \"fatal\": \"true\",\n" +
+                    "    \"defaultConsolePath\": \"./src/test/resources/logs\",\n" +
+                    "    \"fileName\": \"%time-Log(Json).log\",\n" +
+                    "    \"packingFormat\": \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
+                    "  },\n" +
+                    "  \"server\": {\n" +
+                    "    \"info\": \"true\",\n" +
+                    "    \"error\": \"true\",\n" +
+                    "    \"warn\": \"true\",\n" +
+                    "    \"debug\": \"true\",\n" +
+                    "    \"fatal\": \"true\",\n" +
+                    "    \"startClient\": \"false\",\n" +
+                    "    \"socketNumber\": \"65535\",\n" +
+                    "    \"host\": \"localhost\",\n" +
+                    "    \"packingFormat\": \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\",\n" +
+                    "    \"forceDisableSocketWhenException\": \"true\"\n" +
+                    "  }\n" +
+                    "}", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void generatePropertiesSettings(String path) {
         File f = new File(path + "//Setting.properties");
         try {
@@ -132,8 +179,8 @@ public class SettingFiles {
                     "print.fatal=true\n" +
                     "print.packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
                     "# file\n" +
-                    "file.defaultConsolePath=(path to your logs directory)\n" +
-                    "#file.Path1=(path to your logs directory)." +
+                    "file.defaultConsolePath=./src/test/resources/logs\n" +
+                    "#file.Path1=D:\\\\Program\\\\Project\\\\resources\\\\app\\\\Git\\\\Projects\\\\Optilog-Client\\\\src\\\\test\\\\resources\n" +
                     "#file.infoPath=%path1\n" +
                     "#file.debugPath=%path1\n" +
                     "#file.warnPath=%path1\n" +
@@ -142,7 +189,7 @@ public class SettingFiles {
                     "file.consoleError=true\n" +
                     "file.consoleWarn=true\n" +
                     "file.consoleFatal=true\n" +
-                    "file.fileName=%timeLog.log\n" +
+                    "file.fileName=%time-Log(Properties).log\n" +
                     "file.packingFormat=[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
                     "# server\n" +
                     "server.infoSendToServer=true\n" +
@@ -192,10 +239,10 @@ public class SettingFiles {
                     "        <consoleFatal>true</consoleFatal>\n" +
                     "\n" +
                     "        <defaultConsolePath>\n" +
-                    "            (path to your logs directory)\n" +
+                    "            ./src/test/resources/logs\n" +
                     "        </defaultConsolePath>\n" +
                     "\n" +
-                    "        <fileName>%timeLog(Client).log</fileName>\n" +
+                    "        <fileName>%time-Log(Xml).log</fileName>\n" +
                     "        <packingFormat>\n" +
                     "            [%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\n" +
                     "        </packingFormat>\n" +
@@ -233,34 +280,34 @@ public class SettingFiles {
         }
         try {
             Files.writeString(f.toPath(), "info:\n" +
-                    "  print: true\n" +
-                    "  console: true\n" +
-                    "  server: true\n" +
+                    "  print: \"true\"\n" +
+                    "  console: \"true\"\n" +
+                    "  server: \"true\"\n" +
                     "error:\n" +
-                    "  print: true\n" +
-                    "  console: true\n" +
-                    "  server: true\n" +
+                    "  print: \"true\"\n" +
+                    "  console: \"true\"\n" +
+                    "  server: \"true\"\n" +
                     "warn:\n" +
-                    "  print: true\n" +
-                    "  console: true\n" +
-                    "  server: true\n" +
+                    "  print: \"true\"\n" +
+                    "  console: \"true\"\n" +
+                    "  server: \"true\"\n" +
                     "debug:\n" +
-                    "  print: true\n" +
-                    "  console: true\n" +
-                    "  server: true\n" +
+                    "  print: \"true\"\n" +
+                    "  console: \"true\"\n" +
+                    "  server: \"true\"\n" +
                     "fatal:\n" +
-                    "  print: true\n" +
-                    "  console: true\n" +
-                    "  server: true\n" +
+                    "  print: \"true\"\n" +
+                    "  console: \"true\"\n" +
+                    "  server: \"true\"\n" +
                     "print:\n" +
                     "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
                     "file:\n" +
-                    "  defaultConsolePath: \"(path to your directory)\"\n" +
-                    "  fileName: \"%timeLog.log\"\n" +
+                    "  defaultConsolePath: \"./src/test/resources/logs\"\n" +
+                    "  fileName: \"%time-Log(Yaml).log\"\n" +
                     "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
                     "server:\n" +
-                    "  startClient: false\n" +
-                    "  socketNumber: 65535\n" +
+                    "  startClient: \"false\"\n" +
+                    "  socketNumber: \"65535\"\n" +
                     "  host: \"localhost\"\n" +
                     "  packingFormat: \"[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg\"\n" +
                     "  forceDisableSocketWhenException: \"true\"", StandardCharsets.UTF_8);

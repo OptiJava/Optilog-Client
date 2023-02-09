@@ -23,7 +23,7 @@
     "warn": "true",
     "debug": "true",
     "fatal": "true",
-    "startClient": "true",
+    "startClient": "false",
     "socketNumber": "65535",
     "host": "localhost",
     "packingFormat": "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg",
