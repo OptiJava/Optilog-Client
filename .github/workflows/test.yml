@@ -35,7 +35,7 @@ jobs:
       - name: clean log cache (Windows)
         if: ${{ runner.os == 'Windows' }}
         run: |
-          rd /s src\test\resources\logs
+          if exist src\test\resources\logs rd /s /q src\test\resources\logs
           mkdir .\src\test\resources\logs
       - name: test
         run: ./gradlew test
