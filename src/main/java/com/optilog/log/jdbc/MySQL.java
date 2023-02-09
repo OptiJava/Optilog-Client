@@ -38,7 +38,6 @@ public class MySQL {
             statement.execute("USE " + instance.connection.dataBaseName);
             try (PreparedStatement ps = instance.connection.conn.prepareStatement("INSERT INTO logs (lvl, class, message, AllMessage) VALUES (?,?,?,?);")) {
                 instance.connection.conn.setAutoCommit(false);
-                //instance.connection.conn.setAutoCommit(false);
                 ps.setObject(1, logEvent.level.getName());
                 ps.setObject(2, clazz);
                 ps.setObject(3, logEvent.message);

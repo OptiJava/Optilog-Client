@@ -22,6 +22,8 @@ public class Send {
 
     @OnlyInLog
     static void loggerConsole(LogEvent le, Optilog instance) {
+        String MSG = "Optilog Note:Java throws Exception when log is output";
+
         try {
             if (Level.INFO.getName().equals(le.level.getName()) && !instance.info.isBlank() && instance.consoleFileMasterCaution) {
                 try {
@@ -30,7 +32,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -41,7 +43,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -52,7 +54,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -63,7 +65,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -74,7 +76,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -86,7 +88,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -98,7 +100,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
             }
 
@@ -109,7 +111,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -121,7 +123,7 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
                 return;
             }
@@ -133,13 +135,13 @@ public class Send {
                     }
                 } catch (IOException e) {
                     instance.consoleFileMasterCaution = false;
-                    instance.error("Optilog Note:Java throws Exception when log is output", e);
+                    instance.error(MSG, e);
                 }
             }
 
         } catch (Exception e) {
             instance.consoleFileMasterCaution = false;
-            instance.error("Optilog Note:Java throws Exception when log is output", e);
+            instance.error(MSG, e);
         }
     }
 

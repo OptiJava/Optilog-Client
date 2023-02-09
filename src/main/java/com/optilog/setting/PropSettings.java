@@ -2,7 +2,6 @@ package com.optilog.setting;
 
 import com.optilog.log.Optilog;
 import com.optilog.util.OnlyInInit;
-import com.optilog.util.Util;
 import com.optilog.util.exception.ConfigureException;
 
 import java.io.IOException;
@@ -16,23 +15,23 @@ public class PropSettings {
         try {
             p.load(content);
 
-            instance.allSetting.printInfo = Boolean.parseBoolean(p.getProperty("print.printInfo", Util.TRUE));
-            instance.allSetting.printError = Boolean.parseBoolean(p.getProperty("print.printError", Util.TRUE));
-            instance.allSetting.printWarn = Boolean.parseBoolean(p.getProperty("print.printWarn", Util.TRUE));
-            instance.allSetting.printDebug = Boolean.parseBoolean(p.getProperty("print.printDebug", Util.TRUE));
-            instance.allSetting.printFatal = Boolean.parseBoolean(p.getProperty("print.printFatal", Util.TRUE));
+            instance.allSetting.printInfo = Boolean.parseBoolean(p.getProperty("print.printInfo", Boolean.TRUE.toString()));
+            instance.allSetting.printError = Boolean.parseBoolean(p.getProperty("print.printError", Boolean.TRUE.toString()));
+            instance.allSetting.printWarn = Boolean.parseBoolean(p.getProperty("print.printWarn", Boolean.TRUE.toString()));
+            instance.allSetting.printDebug = Boolean.parseBoolean(p.getProperty("print.printDebug", Boolean.TRUE.toString()));
+            instance.allSetting.printFatal = Boolean.parseBoolean(p.getProperty("print.printFatal", Boolean.TRUE.toString()));
 
-            instance.allSetting.consoleInfo = Boolean.parseBoolean(p.getProperty("file.consoleInfo", Util.FALSE));
-            instance.allSetting.consoleError = Boolean.parseBoolean(p.getProperty("file.consoleError", Util.FALSE));
-            instance.allSetting.consoleWarn = Boolean.parseBoolean(p.getProperty("file.consoleWarn", Util.FALSE));
-            instance.allSetting.consoleDebug = Boolean.parseBoolean(p.getProperty("file.consoleDebug", Util.FALSE));
-            instance.allSetting.consoleFatal = Boolean.parseBoolean(p.getProperty("file.consoleFatal", Util.FALSE));
+            instance.allSetting.consoleInfo = Boolean.parseBoolean(p.getProperty("file.consoleInfo", Boolean.FALSE.toString()));
+            instance.allSetting.consoleError = Boolean.parseBoolean(p.getProperty("file.consoleError", Boolean.FALSE.toString()));
+            instance.allSetting.consoleWarn = Boolean.parseBoolean(p.getProperty("file.consoleWarn", Boolean.FALSE.toString()));
+            instance.allSetting.consoleDebug = Boolean.parseBoolean(p.getProperty("file.consoleDebug", Boolean.FALSE.toString()));
+            instance.allSetting.consoleFatal = Boolean.parseBoolean(p.getProperty("file.consoleFatal", Boolean.FALSE.toString()));
 
-            instance.allSetting.serverInfo = Boolean.parseBoolean(p.getProperty("server.infoSendToServer", Util.FALSE));
-            instance.allSetting.serverError = Boolean.parseBoolean(p.getProperty("server.errorSendToServer", Util.FALSE));
-            instance.allSetting.serverWarn = Boolean.parseBoolean(p.getProperty("server.warnSendToServer", Util.FALSE));
-            instance.allSetting.serverDebug = Boolean.parseBoolean(p.getProperty("server.debugSendToServer", Util.FALSE));
-            instance.allSetting.serverFatal = Boolean.parseBoolean(p.getProperty("server.fatalSendToServer", Util.FALSE));
+            instance.allSetting.serverInfo = Boolean.parseBoolean(p.getProperty("server.infoSendToServer", Boolean.FALSE.toString()));
+            instance.allSetting.serverError = Boolean.parseBoolean(p.getProperty("server.errorSendToServer", Boolean.FALSE.toString()));
+            instance.allSetting.serverWarn = Boolean.parseBoolean(p.getProperty("server.warnSendToServer", Boolean.FALSE.toString()));
+            instance.allSetting.serverDebug = Boolean.parseBoolean(p.getProperty("server.debugSendToServer", Boolean.FALSE.toString()));
+            instance.allSetting.serverFatal = Boolean.parseBoolean(p.getProperty("server.fatalSendToServer", Boolean.FALSE.toString()));
 
             instance.allSetting.defaultConsolePath = p.getProperty("file.defaultConsolePath", "");
             instance.allSetting.Path1 = p.getProperty("file.Path1", "");
@@ -49,15 +48,17 @@ public class PropSettings {
 
             instance.allSetting.host = p.getProperty("server.host", "localhost");
 
-            instance.allSetting.startClient = Boolean.parseBoolean(p.getProperty("server.startClient", Util.FALSE));
+            instance.allSetting.startClient = Boolean.parseBoolean(p.getProperty("server.startClient", Boolean.FALSE.toString()));
 
-            instance.allSetting.printPackingFormat = p.getProperty("print.packingFormat", "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg");
-            instance.allSetting.consolePackingFormat = p.getProperty("file.packingFormat", "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg");
-            instance.allSetting.serverPackingFormat = p.getProperty("server.packingFormat", "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg");
+            String var1 = "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS)][%class %method(%file:%line)/%thread] %level:%msg";
+
+            instance.allSetting.printPackingFormat = p.getProperty("print.packingFormat", var1);
+            instance.allSetting.consolePackingFormat = p.getProperty("file.packingFormat", var1);
+            instance.allSetting.serverPackingFormat = p.getProperty("server.packingFormat", var1);
 
             instance.allSetting.fileName = p.getProperty("file.fileName", "%time Log(Client).log");
 
-            instance.allSetting.forceDisableSocketWhenException = Boolean.parseBoolean(p.getProperty("server.forceDisableSocketWhenException", Util.TRUE));
+            instance.allSetting.forceDisableSocketWhenException = Boolean.parseBoolean(p.getProperty("server.forceDisableSocketWhenException", Boolean.TRUE.toString()));
 
         } catch (IOException e) {
             System.err.println("Optilog Note: Read file failed.");
