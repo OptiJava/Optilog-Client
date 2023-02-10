@@ -30,15 +30,15 @@ jobs:
       - name: clean log cache (Linux & macOS)
         if: ${{ runner.os != 'Windows' }}
         run: |
-          rm -rf src/test/resources/logs
-          mkdir ./src/test/resources/logs
+          rm -rf ./logs
+          mkdir logs
       - name: clean log cache (Windows)
         if: ${{ runner.os == 'Windows' }}
         run: |
-          if (Test-Path '.\src\test\resources\logs') {
-            rd /s /q src\test\resources\logs
+          if (Test-Path '.\logs') {
+            rd /s /q .\logs
           }
-          mkdir .\src\test\resources\logs
+          mkdir .\logs
       - name: test
         run: ./gradlew test
       - name: capture test log (Linux)
@@ -46,34 +46,34 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-log-linux-jdk17
-          path: src/test/resources/logs/
+          path: ./logs/
       - name: capture test log (Linux)
         if: ${{ matrix.java == '11' && runner.os == 'Linux' }}
         uses: actions/upload-artifact@v2
         with:
           name: test-log-linux-jdk11
-          path: src/test/resources/logs/
+          path: ./logs/
       - name: capture test log (macOS)
         if: ${{ matrix.java == '17' && runner.os == 'macOS' }}
         uses: actions/upload-artifact@v2
         with:
           name: test-log-macos-jdk17
-          path: src/test/resources/logs/
+          path: ./logs/
       - name: capture test log (macOS)
         if: ${{ matrix.java == '11' && runner.os == 'macOS' }}
         uses: actions/upload-artifact@v2
         with:
           name: test-log-macos-jdk11
-          path: src/test/resources/logs/
+          path: ./logs/
       - name: capture test log (Windows)
         if: ${{ matrix.java == '17' && runner.os == 'Windows' }}
         uses: actions/upload-artifact@v2
         with:
           name: test-log-windows-jdk17
-          path: src\test\resources\logs\
+          path: .\logs\
       - name: capture test log (Windows)
         if: ${{ matrix.java == '11' && runner.os == 'Windows' }}
         uses: actions/upload-artifact@v2
         with:
           name: test-log-windows-jdk11
-          path: src\test\resources\logs\
+          path: .\logs\

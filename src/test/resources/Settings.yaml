@@ -21,7 +21,7 @@ fatal:
 print:
   packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
 file:
-  defaultConsolePath: "./src/test/resources/logs"
+  defaultConsolePath: "./logs"
   fileName: "%time-Log(Yaml).log"
   packingFormat: "[%yyyy-%MM-%dd|%HH:%mm:%ss(%SS))][%class %method(%file:%line)/%thread] %level:%msg"
 server:

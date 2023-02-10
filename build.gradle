@@ -1,3 +1,6 @@
+import java.nio.file.Files
+import java.nio.file.NoSuchFileException
+
 plugins {
     id 'java'
 }
@@ -21,6 +24,19 @@ dependencies {
 compileJava {
     options.compilerArgs.add("--release")
     options.compilerArgs.add("11")
+}
+
+task cleanTestLog {
+    try {
+        Files.delete(java.nio.file.Path.of('./logs'))
+    } catch (NoSuchFileException ignored) {
+        print "'./logs' file not found."
+    }
+    try {
+        Files.createDirectory(java.nio.file.Path.of('./logs'))
+    } catch (IOException e) {
+        e.printStackTrace()
+    }
 }
 
 test {
